@@ -1,0 +1,9 @@
+{
+  "name": "MahasSpace",
+  "description": "Platform portal mahasiswa terintegrasi untuk mengelola akademik, tugas, jadwal, beasiswa, karir, finansial, kesehatan mental, komunitas, dan marketplace.",
+  "requestFramePermissions": [
+    "geolocation",
+    "microphone"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

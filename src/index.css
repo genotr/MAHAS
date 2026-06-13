@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", var(--font-sans);
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: radial-gradient(circle at 15% 15%, #f4faff 0%, #e0f2fe 30%, #bae6fd 60%, #e0f2fe 85%, #f0f9ff 100%);
+  background-attachment: fixed;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glassmorphic premium card - iOS 26 pristine frosted gloss style, fine satin borders, rich physical refraction */
+.toy-card {
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(35px) saturate(220%);
+  -webkit-backdrop-filter: blur(35px) saturate(220%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 28px;
+  box-shadow: 
+    0 15px 40px -15px rgba(0, 0, 0, 0.04), 
+    0 12px 25px -18px rgba(79, 70, 229, 0.05),
+    inset 0 4px 12px rgba(255, 255, 255, 0.6), 
+    inset 0 -2px 8px rgba(0, 0, 0, 0.01);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toy-card:hover {
+  transform: translateY(-4px) scale(1.006);
+  background: rgba(255, 255, 255, 0.48);
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 22px 48px -12px rgba(0, 0, 0, 0.06), 
+    0 18px 30px -15px rgba(79, 70, 229, 0.08),
+    inset 0 6px 16px rgba(255, 255, 255, 0.75), 
+    inset 0 -3px 10px rgba(0, 0, 0, 0.01);
+}
+
+/* Inflatable pill button like a real toy element! */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.7) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+}
+
+@keyframes float-sparkle {
+  0%, 100% { transform: translateY(0px) scale(0.95); }
+  50% { transform: translateY(-4px) scale(1.05); }
+}
+
+.animate-twinkle {
+  animation: twinkle 1.5s ease-in-out infinite;
+}
+
+.animate-twinkle-delayed {
+  animation: twinkle 1.8s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.animate-float-sparkle {
+  animation: float-sparkle 2.5s ease-in-out infinite;
+}
+
+.animate-marquee-continuous {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 8s linear infinite;
+}
+
+.toy-btn-pink {
+  background: #ff2d75;
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 
+    0 6px 12px rgba(255, 45, 117, 0.3), 
+    inset -3px -3px 0px rgba(0,0,0,0.15), 
+    inset 3px 3px 0px rgba(255,255,255,0.25);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toy-btn-pink:hover {
+  transform: translateY(-2.5px);
+  box-shadow: 
+    0 12px 20px rgba(255, 45, 117, 0.4), 
+    inset -3px -3px 0px rgba(0,0,0,0.15), 
+    inset 3px 3px 0px rgba(255,255,255,0.25);
+}
+
+.toy-btn-pink:active {
+  transform: translateY(1.5px);
+  box-shadow: 0 3px 6px rgba(255, 45, 117, 0.25);
+}
+
+.toy-btn-sky {
+  background: #38bdf8;
+  color: #0369a1;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 
+    0 6px 12px rgba(56, 189, 248, 0.3), 
+    inset -3px -3px 0px rgba(0,0,0,0.12), 
+    inset 3px 3px 0px rgba(255,255,255,0.25);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toy-btn-sky:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 20px rgba(56, 189, 248, 0.4);
+}
+
+.toy-btn-sky:active {
+  transform: translateY(1.5px);
+  box-shadow: 0 3px 6px rgba(56, 189, 248, 0.25);
+}
+
+.toy-btn-yellow {
+  background: #facc15;
+  color: #713f12;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 
+    0 6px 12px rgba(250, 204, 21, 0.3), 
+    inset -3px -3px 0px rgba(0,0,0,0.12), 
+    inset 3px 3px 0px rgba(255,255,255,0.25);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toy-btn-yellow:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 20px rgba(250, 204, 21, 0.4);
+}
+
+.toy-btn-yellow:active {
+  transform: translateY(1.5px);
+  box-shadow: 0 4px 8px rgba(250, 204, 21, 0.25);
+}
+
+.toy-btn-white {
+  background: #ffffff;
+  color: #1e293b;
+  border: 1.5px solid rgba(30, 41, 59, 0.08);
+  border-radius: 20px;
+  box-shadow: 
+    0 6px 12px rgba(30, 41, 59, 0.06),
+    inset -2px -2px 5px rgba(0, 0, 0, 0.02),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.8);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toy-btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 18px rgba(30, 41, 59, 0.1);
+}
+
+.toy-btn-white:active {
+  transform: translateY(1.5px);
+  box-shadow: 0 3px 6px rgba(30, 41, 59, 0.04);
+}
+
+/* Wiggle keyframes for that cute, living elements look! */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg) scale(1.02); }
+  75% { transform: rotate(3deg) scale(1.02); }
+}
+
+.hover-wiggle:hover {
+  animation: wiggle 0.4s ease-in-out infinite alternate;
+}
+
+/* Floating animation styles */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes floatX {
+  0%, 100% { transform: translateX(0px) rotate(0deg); }
+  50% { transform: translateX(12px) rotate(-5deg); }
+}
+
+.animate-float-slow {
+  animation: floatY 6s ease-in-out infinite alternate;
+}
+
+.animate-float-medium {
+  animation: floatX 4.5s ease-in-out infinite alternate;
+}
+
+.animate-float-fast {
+  animation: floatY 3s ease-in-out infinite alternate;
+}
+
+/* Custom glossy glassmorphism */
+.clay-glass {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(32px) saturate(210%);
+  -webkit-backdrop-filter: blur(32px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 24px;
+  box-shadow: 
+    0 12px 30px -10px rgba(0, 0, 0, 0.03),
+    inset 0 4px 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Pill shape tag standard */
+.toy-tag {
+  border: 1.5px solid rgba(30, 41, 59, 0.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.03);
+}
+
+/* Custom scrollbar for better visual polish */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(14, 165, 233, 0.1);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff2d75;
+  border: 3px solid #0ea5e9;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #db2777;
+}
+
+/* Custom iOS 26 High-Fidelity Glassmorphic overrides */
+.backdrop-blur-xs {
+  backdrop-filter: blur(10px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(28px) saturate(220%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(220%) !important;
+}
+
+.backdrop-blur-lg {
+  backdrop-filter: blur(35px) saturate(230%) !important;
+  -webkit-backdrop-filter: blur(35px) saturate(230%) !important;
+}
+
+.backdrop-blur-xl {
+  backdrop-filter: blur(45px) saturate(240%) !important;
+  -webkit-backdrop-filter: blur(45px) saturate(240%) !important;
+}
+
+/* Perfect double specular highlights, diagonal glass glare, and realistic inner blurred shimmers for any backdrop-blur element */
+*[class*="backdrop-blur"] {
+  background-color: rgba(255, 255, 255, 0.16) !important;
+  background-image: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 35%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0.1) 100%),
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.2), transparent 50%) !important;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.005),
+    0 12px 35px -12px rgba(15, 23, 42, 0.03),
+    0 30px 60px -25px rgba(15, 23, 42, 0.05),
+    inset 0 1px 0px rgba(255, 255, 255, 0.85), /* crisp top specular glare line */
+    inset 0 -1px 0px rgba(255, 255, 255, 0.25), /* fine glass bevel on bottom */
+    inset 0 16px 32px -12px rgba(255, 255, 255, 0.55), /* soft blurred overhead ambient shimmer */
+    inset 0 4px 14px rgba(255, 255, 255, 0.35), /* deep inside glass ambient fill */
+    inset 0 -2px 6px rgba(0, 0, 0, 0.01) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+*[class*="backdrop-blur"].absolute {
+  position: absolute !important;
+}
+*[class*="backdrop-blur"].fixed {
+  position: fixed !important;
+}
+
+#map-zoom-controls {
+  position: absolute !important;
+  bottom: 0.75rem !important;
+  right: 0.75rem !important;
+}
+
+/* Beautiful micro reflection sweep effect to make it look even more fluid and animated upon user presence */
+*[class*="backdrop-blur"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  transition: none;
+}
+
+*[class*="backdrop-blur"]:hover::after {
+  left: 150%;
+  transition: left 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Realistic tactile 3D press down style for buttons clicked by users */
+button,
+a[role="button"] {
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease !important;
+}
+
+button:active,
+a[role="button"]:active {
+  transform: translateY(2px) scale(0.96) !important;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Special calendar / navigation item / tag click press scale down feedback */
+button.group:active,
+div[class*="backdrop-blur"] button:active {
+  transform: scale(0.94) translateY(1.5px) !important;
+}
+
+/* Make all headings and display fonts slightly bolder (more pronounced) */
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-weight: 800 !important;
+  -webkit-text-stroke: 0.3px currentColor;
+  letter-spacing: -0.025em !important;
+}
+
+/* Beautiful custom continuous sparkle and shine animation */
+@keyframes continuous-shine-sweep {
+  0% {
+    left: -150%;
+  }
+  30% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+@keyframes gorgeous-gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.always-sparkle-shine {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 240, 245, 0.6) 30%, rgba(254, 243, 199, 0.45) 60%, rgba(255, 255, 255, 0.45) 100%) !important;
+  background-size: 300% 300% !important;
+  animation: gorgeous-gradient-shift 10s ease infinite !important;
+  border: 1.5px solid rgba(255, 45, 117, 0.25) !important;
+  box-shadow: 
+    0 10px 30px rgba(255, 45, 117, 0.04),
+    inset 0 4px 12px rgba(255, 255, 255, 0.7) !important;
+}
+
+.always-sparkle-shine::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -150% !important;
+  width: 150% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 45%,
+    rgba(255, 220, 235, 0.65) 50%,
+    rgba(255, 255, 255, 0.45) 55%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  transform: skewX(-25deg) !important;
+  pointer-events: none !important;
+  animation: continuous-shine-sweep 4s ease-in-out infinite !important;
+}
+
+/* Custom Pulsing Radar Waves for Map Bubble User Position Marker */
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.radar-wave-heavy {
+  animation: radar-pulse 2.2s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+
+.radar-wave-delayed {
+  animation: radar-pulse 2.2s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+  animation-delay: 1.1s;
+}
+
+
+
