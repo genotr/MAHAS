@@ -1313,7 +1313,7 @@ export function AppDashboard() {
           <div className="pt-2 border-t border-slate-100 flex items-center justify-center">
             {isExpanded ? (
               <span className="text-[10px] font-black text-slate-400/90 font-mono tracking-wider bg-slate-50 px-2 py-0.5 rounded-lg border border-slate-200/50">
-                MAHAS v2.4.19
+                MAHAS v2.4.20
               </span>
             ) : (
               <span className="text-[9px] font-black text-slate-400 font-mono">
