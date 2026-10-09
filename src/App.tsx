@@ -1339,8 +1339,8 @@ export function AppDashboard() {
         {/* TOP INTERACTIVE BAR */}
         {!isAddingNote && (
           <header 
-            style={{ borderRadius: "19px" }}
-            className="h-16 bg-white/45 backdrop-blur-[20px] !overflow-visible border border-white/70 rounded-[19px] shadow-[0_10px_35px_rgba(79,70,229,0.04)] flex items-center justify-between px-5 shrink-0 relative z-30 mb-3 md:mb-4"
+            style={{ borderRadius: "19px", marginLeft: "0px", marginBottom: "6px", marginTop: "-12px" }}
+            className="h-16 bg-white/45 backdrop-blur-[20px] !overflow-visible border border-white/70 rounded-[19px] shadow-[0_10px_35px_rgba(79,70,229,0.04)] flex items-center justify-between px-5 shrink-0 relative z-30"
           >
             
             <div className="flex items-center gap-4 flex-1">
