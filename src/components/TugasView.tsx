@@ -823,11 +823,10 @@ export default function TugasView({
             <div>
               <label className="block font-bold text-slate-700 mb-1">Batas Waktu Jam</label>
               <input
-                type="text"
+                type="time"
                 value={timeStr}
                 onChange={(e) => setTimeStr(e.target.value)}
-                placeholder="23:59"
-                className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/60 text-xs"
+                className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/90 text-xs text-slate-800"
               />
             </div>
             <div>
@@ -1180,10 +1179,10 @@ export default function TugasView({
                     <div>
                       <label className="block font-bold text-slate-700 mb-1">Jam Batas</label>
                       <input
-                        type="text"
+                        type="time"
                         value={editTimeStr}
                         onChange={(e) => setEditTimeStr(e.target.value)}
-                        className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
+                        className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs text-slate-800"
                       />
                     </div>
                     <div>
