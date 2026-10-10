@@ -163,18 +163,8 @@ export default function TugasView({
     });
   };
 
-  const safeOpenPicker = (inputEl: HTMLInputElement | null, type: "date" | "time", target: "add" | "edit") => {
-    // Attempt native showPicker, if blocked or in iframe, seamlessly open custom modal picker
-    if (inputEl) {
-      try {
-        if ("showPicker" in inputEl && typeof (inputEl as any).showPicker === "function") {
-          (inputEl as any).showPicker();
-          return;
-        }
-      } catch {
-        // Fallback to custom picker below
-      }
-    }
+  const safeOpenPicker = (_inputEl: HTMLInputElement | null, type: "date" | "time", target: "add" | "edit") => {
+    // Directly open custom interactive modal picker to guarantee 100% reliable opening in all environments (desktop, mobile, cross-origin iframes)
     if (type === "date") {
       openCustomDatePicker(target);
     } else {
@@ -956,14 +946,14 @@ export default function TugasView({
               </div>
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Estimasi Hari Tersisa <span className="text-emerald-600 font-extrabold text-[10px]">(Otomatis)</span></label>
+              <label className="block font-bold text-slate-700 mb-1 select-none cursor-not-allowed">Estimasi Hari Tersisa <span className="text-emerald-600 font-extrabold text-[10px]">(Otomatis)</span></label>
               <input
                 type="number"
                 value={daysValue}
-                onChange={(e) => setDaysValue(Number(e.target.value))}
-                min={0}
-                max={365}
-                className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold text-xs text-emerald-700 font-mono bg-emerald-50/40"
+                readOnly
+                tabIndex={-1}
+                title="Dihitung secara otomatis berdasarkan batas tanggal pengumpulan"
+                className="w-full border border-slate-200 p-2.5 rounded-xl font-bold text-xs text-emerald-700 font-mono bg-slate-100/80 cursor-not-allowed select-none focus:outline-hidden"
               />
             </div>
           </div>
@@ -1348,12 +1338,14 @@ export default function TugasView({
                       </div>
                     </div>
                     <div>
-                      <label className="block font-bold text-slate-700 mb-1">Hari Tersisa <span className="text-emerald-600 font-bold text-[10px]">(Otomatis)</span></label>
+                      <label className="block font-bold text-slate-700 mb-1 select-none cursor-not-allowed">Hari Tersisa <span className="text-emerald-600 font-bold text-[10px]">(Otomatis)</span></label>
                       <input
                         type="number"
                         value={editDaysValue}
-                        onChange={(e) => setEditDaysValue(Number(e.target.value))}
-                        className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-emerald-50/40 text-emerald-800 text-xs font-mono"
+                        readOnly
+                        tabIndex={-1}
+                        title="Dihitung secara otomatis berdasarkan batas tanggal pengumpulan"
+                        className="w-full border border-slate-200 p-2.5 rounded-xl font-bold bg-slate-100/80 text-emerald-800 text-xs font-mono cursor-not-allowed select-none focus:outline-hidden"
                       />
                     </div>
                   </div>
