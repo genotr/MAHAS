@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { createPortal } from "react-dom";
-import { CheckSquare, Plus, CheckCircle2, Circle, Clock, Trash2, Calendar, FileText, Filter, Sparkles, Settings2, KeyRound, Globe, Loader2, LogOut, Check, Smile, ArrowRight, AlertTriangle, Timer, Pencil, AlertCircle, BookOpen } from "lucide-react";
+import { CheckSquare, Plus, CheckCircle2, Circle, Clock, Trash2, Calendar, FileText, Filter, Sparkles, Settings2, KeyRound, Globe, Loader2, LogOut, Check, Smile, ArrowRight, AlertTriangle, Timer, Pencil, AlertCircle, BookOpen, ChevronDown, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Task, InteractiveCalendarEvent, AcademicCourse } from "../types";
 import { syncTasksWithDeviceDate, calculateDaysLeftFromDueDate } from "../utils/taskDateHelper";
 import { initializeApp, getApps, getApp } from "firebase/app";
@@ -91,6 +91,96 @@ export default function TugasView({
   const [editTimeStr, setEditTimeStr] = useState("23:59");
   const [editNotes, setEditNotes] = useState("");
   const [editDaysValue, setEditDaysValue] = useState(3);
+
+  // References for triggering native pickers via the chevron button
+  const dateInputRef = useRef<HTMLInputElement>(null);
+  const timeInputRef = useRef<HTMLInputElement>(null);
+  const editDateInputRef = useRef<HTMLInputElement>(null);
+  const editTimeInputRef = useRef<HTMLInputElement>(null);
+
+  // Custom interactive date/time picker state (guaranteed to work in cross-origin iframes)
+  const [pickerState, setPickerState] = useState<{
+    isOpen: boolean;
+    type: "date" | "time";
+    target: "add" | "edit";
+    // For date view
+    viewYear: number;
+    viewMonth: number;
+    // For time view
+    hour: number;
+    minute: number;
+  }>({
+    isOpen: false,
+    type: "date",
+    target: "add",
+    viewYear: new Date().getFullYear(),
+    viewMonth: new Date().getMonth(),
+    hour: 23,
+    minute: 59,
+  });
+
+  const openCustomDatePicker = (target: "add" | "edit") => {
+    const val = target === "add" ? dateStr : editDateStr;
+    let y = new Date().getFullYear();
+    let m = new Date().getMonth();
+    if (val) {
+      const parts = val.split("-");
+      if (parts.length === 3) {
+        y = parseInt(parts[0], 10) || y;
+        m = (parseInt(parts[1], 10) - 1) || m;
+      }
+    }
+    setPickerState({
+      isOpen: true,
+      type: "date",
+      target,
+      viewYear: y,
+      viewMonth: m,
+      hour: 23,
+      minute: 59,
+    });
+  };
+
+  const openCustomTimePicker = (target: "add" | "edit") => {
+    const val = target === "add" ? timeStr : editTimeStr;
+    let h = 23;
+    let min = 59;
+    if (val) {
+      const parts = val.split(":");
+      if (parts.length >= 2) {
+        h = parseInt(parts[0], 10) || 0;
+        min = parseInt(parts[1], 10) || 0;
+      }
+    }
+    setPickerState({
+      isOpen: true,
+      type: "time",
+      target,
+      viewYear: new Date().getFullYear(),
+      viewMonth: new Date().getMonth(),
+      hour: h,
+      minute: min,
+    });
+  };
+
+  const safeOpenPicker = (inputEl: HTMLInputElement | null, type: "date" | "time", target: "add" | "edit") => {
+    // Attempt native showPicker, if blocked or in iframe, seamlessly open custom modal picker
+    if (inputEl) {
+      try {
+        if ("showPicker" in inputEl && typeof (inputEl as any).showPicker === "function") {
+          (inputEl as any).showPicker();
+          return;
+        }
+      } catch {
+        // Fallback to custom picker below
+      }
+    }
+    if (type === "date") {
+      openCustomDatePicker(target);
+    } else {
+      openCustomTimePicker(target);
+    }
+  };
 
   // Sync all task daysLeft dynamically based on device date
   useEffect(() => {
@@ -813,21 +903,57 @@ export default function TugasView({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label className="block font-bold text-slate-700 mb-1">Batas Tanggal Kumpul</label>
-              <input
-                type="date"
-                value={dateStr}
-                onChange={(e) => setDateStr(e.target.value)}
-                className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/60 text-xs"
-              />
+              <div className="relative flex items-center">
+                <input
+                  ref={dateInputRef}
+                  type="date"
+                  value={dateStr}
+                  onChange={(e) => setDateStr(e.target.value)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    safeOpenPicker(e.currentTarget, "date", "add");
+                  }}
+                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white/60 text-xs cursor-pointer select-none hide-native-picker-icon"
+                />
+                <button
+                  type="button"
+                  tabIndex={-1}
+                  aria-label="Pilih tanggal"
+                  onClick={() => safeOpenPicker(dateInputRef.current, "date", "add")}
+                  className="absolute right-2.5 flex items-center gap-1 text-slate-500 hover:text-pink-600 transition-colors p-1 rounded-md hover:bg-pink-50 cursor-pointer"
+                  title="Klik untuk memilih tanggal"
+                >
+                  <Calendar className="w-3.5 h-3.5 pointer-events-none" />
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 pointer-events-none" />
+                </button>
+              </div>
             </div>
             <div>
               <label className="block font-bold text-slate-700 mb-1">Batas Waktu Jam</label>
-              <input
-                type="time"
-                value={timeStr}
-                onChange={(e) => setTimeStr(e.target.value)}
-                className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/90 text-xs text-slate-800"
-              />
+              <div className="relative flex items-center">
+                <input
+                  ref={timeInputRef}
+                  type="time"
+                  value={timeStr}
+                  onChange={(e) => setTimeStr(e.target.value)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    safeOpenPicker(e.currentTarget, "time", "add");
+                  }}
+                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white/90 text-xs text-slate-800 cursor-pointer select-none hide-native-picker-icon"
+                />
+                <button
+                  type="button"
+                  tabIndex={-1}
+                  aria-label="Pilih waktu"
+                  onClick={() => safeOpenPicker(timeInputRef.current, "time", "add")}
+                  className="absolute right-2.5 flex items-center gap-1 text-slate-500 hover:text-pink-600 transition-colors p-1 rounded-md hover:bg-pink-50 cursor-pointer"
+                  title="Klik untuk memilih jam batas waktu"
+                >
+                  <Clock className="w-3.5 h-3.5 pointer-events-none" />
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 pointer-events-none" />
+                </button>
+              </div>
             </div>
             <div>
               <label className="block font-bold text-slate-700 mb-1">Estimasi Hari Tersisa <span className="text-emerald-600 font-extrabold text-[10px]">(Otomatis)</span></label>
@@ -1169,21 +1295,57 @@ export default function TugasView({
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div>
                       <label className="block font-bold text-slate-700 mb-1">Batas Tanggal</label>
-                      <input
-                        type="date"
-                        value={editDateStr}
-                        onChange={(e) => setEditDateStr(e.target.value)}
-                        className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
-                      />
+                      <div className="relative flex items-center">
+                        <input
+                          ref={editDateInputRef}
+                          type="date"
+                          value={editDateStr}
+                          onChange={(e) => setEditDateStr(e.target.value)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            safeOpenPicker(e.currentTarget, "date", "edit");
+                          }}
+                          className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-xs cursor-pointer select-none"
+                        />
+                        <button
+                          type="button"
+                          tabIndex={-1}
+                          aria-label="Pilih tanggal"
+                          onClick={() => safeOpenPicker(editDateInputRef.current, "date", "edit")}
+                          className="absolute right-2.5 flex items-center gap-1 text-slate-500 hover:text-pink-600 transition-colors p-1 rounded-md hover:bg-pink-50 cursor-pointer"
+                          title="Klik untuk memilih tanggal"
+                        >
+                          <Calendar className="w-3.5 h-3.5 pointer-events-none" />
+                          <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 pointer-events-none" />
+                        </button>
+                      </div>
                     </div>
                     <div>
                       <label className="block font-bold text-slate-700 mb-1">Jam Batas</label>
-                      <input
-                        type="time"
-                        value={editTimeStr}
-                        onChange={(e) => setEditTimeStr(e.target.value)}
-                        className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs text-slate-800"
-                      />
+                      <div className="relative flex items-center">
+                        <input
+                          ref={editTimeInputRef}
+                          type="time"
+                          value={editTimeStr}
+                          onChange={(e) => setEditTimeStr(e.target.value)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            safeOpenPicker(e.currentTarget, "time", "edit");
+                          }}
+                          className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-xs text-slate-800 cursor-pointer select-none"
+                        />
+                        <button
+                          type="button"
+                          tabIndex={-1}
+                          aria-label="Pilih waktu"
+                          onClick={() => safeOpenPicker(editTimeInputRef.current, "time", "edit")}
+                          className="absolute right-2.5 flex items-center gap-1 text-slate-500 hover:text-pink-600 transition-colors p-1 rounded-md hover:bg-pink-50 cursor-pointer"
+                          title="Klik untuk memilih jam batas waktu"
+                        >
+                          <Clock className="w-3.5 h-3.5 pointer-events-none" />
+                          <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 pointer-events-none" />
+                        </button>
+                      </div>
                     </div>
                     <div>
                       <label className="block font-bold text-slate-700 mb-1">Hari Tersisa <span className="text-emerald-600 font-bold text-[10px]">(Otomatis)</span></label>
@@ -1266,6 +1428,297 @@ export default function TugasView({
                     Hapus
                   </button>
                 </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+
+      {/* Custom Universal Date & Time Picker Modal (Works 100% reliably in cross-origin iframes) */}
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {pickerState.isOpen && (
+            <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-[100000] p-4">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0, y: 10 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 10 }}
+                className="bg-white rounded-3xl border border-pink-100 max-w-sm w-full p-5 shadow-2xl space-y-4 text-left select-none"
+              >
+                {/* Header */}
+                <div className="flex items-center justify-between border-b border-pink-100/70 pb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="h-9 w-9 rounded-2xl bg-gradient-to-tr from-pink-500 to-[#FF2D75] text-white flex items-center justify-center shadow-md shadow-pink-200">
+                      {pickerState.type === "date" ? <Calendar size={18} /> : <Clock size={18} />}
+                    </div>
+                    <div>
+                      <h3 className="font-extrabold text-slate-900 text-sm">
+                        {pickerState.type === "date" ? "Pilih Batas Tanggal" : "Pilih Batas Jam"}
+                      </h3>
+                      <p className="text-[11px] text-slate-500 font-medium">
+                        {pickerState.target === "add" ? "Form Tambah Tugas" : "Edit Tugas"}
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setPickerState(prev => ({ ...prev, isOpen: false }))}
+                    className="p-1.5 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                {/* Body: Date Picker Mode */}
+                {pickerState.type === "date" && (
+                  <div>
+                    {/* Month / Year Navigator */}
+                    <div className="flex items-center justify-between mb-3 px-1">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPickerState(prev => {
+                            let newM = prev.viewMonth - 1;
+                            let newY = prev.viewYear;
+                            if (newM < 0) {
+                              newM = 11;
+                              newY -= 1;
+                            }
+                            return { ...prev, viewMonth: newM, viewYear: newY };
+                          });
+                        }}
+                        className="p-1.5 rounded-lg border border-slate-200 hover:bg-pink-50 hover:text-pink-600 text-slate-600 transition-colors cursor-pointer"
+                      >
+                        <ChevronLeft size={16} />
+                      </button>
+                      <span className="font-bold text-xs text-slate-800">
+                        {new Date(pickerState.viewYear, pickerState.viewMonth, 1).toLocaleDateString("id-ID", { month: "long", year: "numeric" })}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPickerState(prev => {
+                            let newM = prev.viewMonth + 1;
+                            let newY = prev.viewYear;
+                            if (newM > 11) {
+                              newM = 0;
+                              newY += 1;
+                            }
+                            return { ...prev, viewMonth: newM, viewYear: newY };
+                          });
+                        }}
+                        className="p-1.5 rounded-lg border border-slate-200 hover:bg-pink-50 hover:text-pink-600 text-slate-600 transition-colors cursor-pointer"
+                      >
+                        <ChevronRight size={16} />
+                      </button>
+                    </div>
+
+                    {/* Day names header */}
+                    <div className="grid grid-cols-7 gap-1 text-center font-bold text-[10px] text-slate-400 mb-1">
+                      {["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"].map((d, idx) => (
+                        <div key={idx} className="py-1">{d}</div>
+                      ))}
+                    </div>
+
+                    {/* Day cells */}
+                    <div className="grid grid-cols-7 gap-1">
+                      {(() => {
+                        const firstDayIdx = new Date(pickerState.viewYear, pickerState.viewMonth, 1).getDay();
+                        const daysInMonth = new Date(pickerState.viewYear, pickerState.viewMonth + 1, 0).getDate();
+                        const cells = [];
+                        
+                        // Current selected date string
+                        const activeVal = pickerState.target === "add" ? dateStr : editDateStr;
+                        const todayStr = (() => {
+                          const t = new Date();
+                          return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+                        })();
+
+                        // Empty padding cells for start of month
+                        for (let i = 0; i < firstDayIdx; i++) {
+                          cells.push(<div key={`pad-${i}`} className="h-8" />);
+                        }
+
+                        // Day number buttons
+                        for (let day = 1; day <= daysInMonth; day++) {
+                          const mStr = String(pickerState.viewMonth + 1).padStart(2, "0");
+                          const dStr = String(day).padStart(2, "0");
+                          const cellDateStr = `${pickerState.viewYear}-${mStr}-${dStr}`;
+                          const isSelected = activeVal === cellDateStr;
+                          const isToday = todayStr === cellDateStr;
+
+                          cells.push(
+                            <button
+                              key={`day-${day}`}
+                              type="button"
+                              onClick={() => {
+                                if (pickerState.target === "add") {
+                                  setDateStr(cellDateStr);
+                                } else {
+                                  setEditDateStr(cellDateStr);
+                                }
+                                setPickerState(prev => ({ ...prev, isOpen: false }));
+                              }}
+                              className={`h-8 rounded-xl font-bold text-xs flex items-center justify-center transition-all cursor-pointer relative ${
+                                isSelected 
+                                  ? "bg-gradient-to-r from-pink-500 to-[#FF2D75] text-white shadow-md shadow-pink-200" 
+                                  : isToday 
+                                    ? "bg-pink-50 text-pink-600 font-extrabold hover:bg-pink-100" 
+                                    : "text-slate-700 hover:bg-slate-100"
+                              }`}
+                            >
+                              {day}
+                              {isToday && !isSelected && (
+                                <span className="absolute bottom-1 w-1 h-1 bg-pink-500 rounded-full" />
+                              )}
+                            </button>
+                          );
+                        }
+                        return cells;
+                      })()}
+                    </div>
+
+                    {/* Quick presets footer */}
+                    <div className="flex gap-2 pt-3 border-t border-slate-100 mt-3">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const t = new Date();
+                          const str = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+                          if (pickerState.target === "add") setDateStr(str); else setEditDateStr(str);
+                          setPickerState(prev => ({ ...prev, isOpen: false }));
+                        }}
+                        className="flex-1 py-1.5 text-[11px] font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
+                      >
+                        Hari Ini
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const t = new Date();
+                          t.setDate(t.getDate() + 1);
+                          const str = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+                          if (pickerState.target === "add") setDateStr(str); else setEditDateStr(str);
+                          setPickerState(prev => ({ ...prev, isOpen: false }));
+                        }}
+                        className="flex-1 py-1.5 text-[11px] font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
+                      >
+                        Besok
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const t = new Date();
+                          t.setDate(t.getDate() + 7);
+                          const str = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+                          if (pickerState.target === "add") setDateStr(str); else setEditDateStr(str);
+                          setPickerState(prev => ({ ...prev, isOpen: false }));
+                        }}
+                        className="flex-1 py-1.5 text-[11px] font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
+                      >
+                        +7 Hari
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Body: Time Picker Mode */}
+                {pickerState.type === "time" && (
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-center gap-3 py-2 bg-slate-50 rounded-2xl border border-slate-100">
+                      {/* Hour selector */}
+                      <div className="flex flex-col items-center">
+                        <span className="text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-wider">Jam</span>
+                        <select
+                          value={pickerState.hour}
+                          onChange={(e) => setPickerState(prev => ({ ...prev, hour: parseInt(e.target.value, 10) }))}
+                          className="bg-white border border-pink-200 rounded-xl font-mono font-bold text-xl px-3 py-2 text-slate-800 focus:outline-hidden focus:border-pink-500 shadow-xs cursor-pointer"
+                        >
+                          {Array.from({ length: 24 }).map((_, i) => (
+                            <option key={i} value={i}>
+                              {String(i).padStart(2, "0")}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <span className="font-mono text-2xl font-black text-pink-500 pt-4">:</span>
+
+                      {/* Minute selector */}
+                      <div className="flex flex-col items-center">
+                        <span className="text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-wider">Menit</span>
+                        <select
+                          value={pickerState.minute}
+                          onChange={(e) => setPickerState(prev => ({ ...prev, minute: parseInt(e.target.value, 10) }))}
+                          className="bg-white border border-pink-200 rounded-xl font-mono font-bold text-xl px-3 py-2 text-slate-800 focus:outline-hidden focus:border-pink-500 shadow-xs cursor-pointer"
+                        >
+                          {Array.from({ length: 60 }).map((_, i) => (
+                            <option key={i} value={i}>
+                              {String(i).padStart(2, "0")}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Common deadline shortcut chips */}
+                    <div>
+                      <span className="block text-[11px] font-bold text-slate-500 mb-1.5">Preset Batas Waktu Cepat:</span>
+                      <div className="grid grid-cols-3 gap-2">
+                        {[
+                          { label: "23:59 (Malam)", h: 23, m: 59 },
+                          { label: "17:00 (Sore)", h: 17, m: 0 },
+                          { label: "12:00 (Siang)", h: 12, m: 0 },
+                          { label: "08:00 (Pagi)", h: 8, m: 0 },
+                          { label: "21:00 (Malam)", h: 21, m: 0 },
+                          { label: "15:00 (Asar)", h: 15, m: 0 },
+                        ].map((preset, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => {
+                              setPickerState(prev => ({ ...prev, hour: preset.h, minute: preset.m }));
+                            }}
+                            className={`py-1.5 px-2 rounded-xl text-[10px] font-bold border transition-colors cursor-pointer ${
+                              pickerState.hour === preset.h && pickerState.minute === preset.m
+                                ? "bg-pink-50 border-pink-300 text-[#FF2D75]"
+                                : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
+                            }`}
+                          >
+                            {preset.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Save action button */}
+                    <div className="flex gap-2 pt-2">
+                      <button
+                        type="button"
+                        onClick={() => setPickerState(prev => ({ ...prev, isOpen: false }))}
+                        className="flex-1 py-2 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
+                      >
+                        Batal
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const timeStrValue = `${String(pickerState.hour).padStart(2, "0")}:${String(pickerState.minute).padStart(2, "0")}`;
+                          if (pickerState.target === "add") {
+                            setTimeStr(timeStrValue);
+                          } else {
+                            setEditTimeStr(timeStrValue);
+                          }
+                          setPickerState(prev => ({ ...prev, isOpen: false }));
+                        }}
+                        className="flex-1 py-2 text-xs font-bold text-white bg-gradient-to-r from-pink-500 to-[#FF2D75] hover:opacity-95 rounded-xl shadow-md shadow-pink-200 transition-opacity cursor-pointer"
+                      >
+                        Pilih Jam Ini
+                      </button>
+                    </div>
+                  </div>
+                )}
               </motion.div>
             </div>
           )}

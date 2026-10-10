@@ -1372,4 +1372,24 @@ div#root:nth-of-type(1) > div#campushub_root.dark-theme > div:nth-of-type(3) > m
   animation: spin-clockwise 3s linear infinite;
 }
 
+/* Hide native black calendar and clock picker indicators */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+  background: transparent !important;
+}
+
+input.hide-native-picker-icon::-webkit-calendar-picker-indicator {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
 
