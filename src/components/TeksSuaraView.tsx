@@ -5,7 +5,8 @@ import {
   Mic, MicOff, Sparkles, Sparkle, AlertCircle, Search, Filter, PlusCircle, 
   FileText, Copy, Edit, Trash2, Bold, Italic, Underline, Strikethrough, 
   List, ListOrdered, Highlighter, Quote, Calendar, User, Save, X, BookOpen, Volume2, AudioLines,
-  BarChart2, Clock, Award, Upload, AlertTriangle, ExternalLink, Pause, Play
+  BarChart2, Clock, Award, Upload, AlertTriangle, ExternalLink, Pause, Play,
+  ChevronDown, ChevronLeft, ChevronRight
 } from "lucide-react";
 import { AgendaItem, CalendarNote, AcademicCourse } from "../types";
 
@@ -387,6 +388,26 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
     return today.toISOString().split("T")[0];
   });
   const [noteTagsRaw, setNoteTagsRaw] = useState("");
+
+  // Custom interactive date picker state
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+  const [pickerViewYear, setPickerViewYear] = useState(() => new Date().getFullYear());
+  const [pickerViewMonth, setPickerViewMonth] = useState(() => new Date().getMonth());
+
+  const openDatePicker = () => {
+    let y = new Date().getFullYear();
+    let m = new Date().getMonth();
+    if (noteDate) {
+      const parts = noteDate.split("-");
+      if (parts.length === 3) {
+        y = parseInt(parts[0], 10) || y;
+        m = (parseInt(parts[1], 10) - 1) || m;
+      }
+    }
+    setPickerViewYear(y);
+    setPickerViewMonth(m);
+    setIsDatePickerOpen(true);
+  };
 
   // Timing effects
   useEffect(() => {
@@ -1282,13 +1303,6 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
           <div className="flex flex-col items-center justify-center p-8 bg-white/50 border border-dashed border-slate-200 rounded-3xl text-slate-400 space-y-3 min-h-[300px]">
             <FileText size={48} className="text-slate-300 stroke-1" />
             <p className="text-xs font-bold">Tidak ada catatan kelas "Suara Teks" yang cocok.</p>
-            <button
-              type="button"
-              onClick={openNewNoteModal}
-              className="py-1.5 px-4 bg-slate-900 hover:bg-black text-white text-[11px] font-black rounded-lg transition-colors cursor-pointer"
-            >
-              Mulai Buat Catatan Pertama Anda
-            </button>
           </div>
         )}
       </div>
@@ -1425,12 +1439,29 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           <label className="block text-xs font-bold text-slate-700">
                             Tanggal Pertemuan <span className="text-[#FF2D75]">*</span>
                           </label>
-                          <input
-                            type="date"
-                            value={noteDate}
-                            onChange={(e) => setNoteDate(e.target.value)}
-                            className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-xs transition-all shadow-3xs"
-                          />
+                          <div className="relative flex items-center">
+                            <input
+                              type="date"
+                              value={noteDate}
+                              onChange={(e) => setNoteDate(e.target.value)}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                openDatePicker();
+                              }}
+                              className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 pr-14 rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-xs transition-all shadow-3xs select-none hide-native-picker-icon"
+                            />
+                            <button
+                              type="button"
+                              tabIndex={-1}
+                              aria-label="Pilih tanggal pertemuan"
+                              onClick={openDatePicker}
+                              className="absolute right-2.5 flex items-center gap-1 text-slate-500 hover:text-pink-600 transition-colors p-1 rounded-md hover:bg-pink-50 cursor-pointer"
+                              title="Klik untuk memilih tanggal pertemuan"
+                            >
+                              <Calendar className="w-3.5 h-3.5 pointer-events-none" />
+                              <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 pointer-events-none" />
+                            </button>
+                          </div>
                         </div>
                       </div>
 
@@ -1967,6 +1998,181 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
             </div>
           )}
         </AnimatePresence>,
+        document.body
+      )}
+
+      {/* Custom Universal Date Picker Modal for Tanggal Pertemuan (Works 100% reliably in cross-origin iframes, renders instantly without lag) */}
+      {typeof document !== 'undefined' && isDatePickerOpen && createPortal(
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-[100000] p-4">
+          <div className="bg-white rounded-3xl border border-pink-100 max-w-sm w-full p-5 shadow-2xl space-y-4 text-left select-none animate-in fade-in zoom-in-95 duration-100">
+            {/* Header */}
+            <div className="flex items-center justify-between border-b border-pink-100/70 pb-3">
+              <div className="flex items-center gap-2.5">
+                <div className="h-9 w-9 rounded-2xl bg-gradient-to-tr from-pink-500 to-[#FF2D75] text-white flex items-center justify-center shadow-md shadow-pink-200">
+                  <Calendar size={18} />
+                </div>
+                <div>
+                  <h3 className="font-extrabold text-slate-900 text-sm">
+                    Pilih Tanggal Pertemuan
+                  </h3>
+                  <p className="text-[11px] text-slate-500 font-medium">
+                    Jadwal Pertemuan Kuliah
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsDatePickerOpen(false)}
+                className="p-1.5 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Body: Date Picker Mode */}
+            <div>
+              {/* Month / Year Navigator */}
+              <div className="flex items-center justify-between mb-3 px-1">
+                <button
+                  type="button"
+                  onClick={() => {
+                    let newM = pickerViewMonth - 1;
+                    let newY = pickerViewYear;
+                    if (newM < 0) {
+                      newM = 11;
+                      newY -= 1;
+                    }
+                    setPickerViewMonth(newM);
+                    setPickerViewYear(newY);
+                  }}
+                  className="p-1.5 rounded-lg border border-slate-200 hover:bg-pink-50 hover:text-pink-600 text-slate-600 transition-colors cursor-pointer"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <span className="font-bold text-xs text-slate-800">
+                  {new Date(pickerViewYear, pickerViewMonth, 1).toLocaleDateString("id-ID", { month: "long", year: "numeric" })}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    let newM = pickerViewMonth + 1;
+                    let newY = pickerViewYear;
+                    if (newM > 11) {
+                      newM = 0;
+                      newY += 1;
+                    }
+                    setPickerViewMonth(newM);
+                    setPickerViewYear(newY);
+                  }}
+                  className="p-1.5 rounded-lg border border-slate-200 hover:bg-pink-50 hover:text-pink-600 text-slate-600 transition-colors cursor-pointer"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+
+              {/* Day names header */}
+              <div className="grid grid-cols-7 gap-1 text-center font-bold text-[10px] text-slate-400 mb-1">
+                {["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"].map((d, idx) => (
+                  <div key={idx} className="py-1">{d}</div>
+                ))}
+              </div>
+
+              {/* Day cells */}
+              <div className="grid grid-cols-7 gap-1">
+                {(() => {
+                  const firstDayIdx = new Date(pickerViewYear, pickerViewMonth, 1).getDay();
+                  const daysInMonth = new Date(pickerViewYear, pickerViewMonth + 1, 0).getDate();
+                  const cells = [];
+                  
+                  const todayStr = (() => {
+                    const t = new Date();
+                    return `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+                  })();
+
+                  // Empty padding cells
+                  for (let i = 0; i < firstDayIdx; i++) {
+                    cells.push(<div key={`pad-${i}`} className="h-8" />);
+                  }
+
+                  // Day buttons
+                  for (let day = 1; day <= daysInMonth; day++) {
+                    const mStr = String(pickerViewMonth + 1).padStart(2, "0");
+                    const dStr = String(day).padStart(2, "0");
+                    const cellDateStr = `${pickerViewYear}-${mStr}-${dStr}`;
+                    const isSelected = noteDate === cellDateStr;
+                    const isToday = todayStr === cellDateStr;
+
+                    cells.push(
+                      <button
+                        key={`day-${day}`}
+                        type="button"
+                        onClick={() => {
+                          setNoteDate(cellDateStr);
+                          setIsDatePickerOpen(false);
+                        }}
+                        className={`h-8 rounded-xl font-bold text-xs flex items-center justify-center transition-all cursor-pointer relative ${
+                          isSelected 
+                            ? "bg-gradient-to-r from-pink-500 to-[#FF2D75] text-white shadow-md shadow-pink-200" 
+                            : isToday 
+                              ? "bg-pink-50 text-pink-600 font-extrabold hover:bg-pink-100" 
+                              : "text-slate-700 hover:bg-slate-100"
+                        }`}
+                      >
+                        {day}
+                        {isToday && !isSelected && (
+                          <span className="absolute bottom-1 w-1 h-1 bg-pink-500 rounded-full" />
+                        )}
+                      </button>
+                    );
+                  }
+                  return cells;
+                })()}
+              </div>
+
+              {/* Quick presets footer */}
+              <div className="flex gap-2 pt-3 border-t border-slate-100 mt-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const t = new Date();
+                    const str = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+                    setNoteDate(str);
+                    setIsDatePickerOpen(false);
+                  }}
+                  className="flex-1 py-1.5 text-[11px] font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
+                >
+                  Hari Ini
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const t = new Date();
+                    t.setDate(t.getDate() + 1);
+                    const str = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+                    setNoteDate(str);
+                    setIsDatePickerOpen(false);
+                  }}
+                  className="flex-1 py-1.5 text-[11px] font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
+                >
+                  Besok
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const t = new Date();
+                    t.setDate(t.getDate() + 7);
+                    const str = `${t.getFullYear()}-${String(t.getMonth()+1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+                    setNoteDate(str);
+                    setIsDatePickerOpen(false);
+                  }}
+                  className="flex-1 py-1.5 text-[11px] font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
+                >
+                  +7 Hari
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>,
         document.body
       )}
 
