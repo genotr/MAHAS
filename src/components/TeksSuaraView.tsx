@@ -1318,12 +1318,12 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.98, opacity: 0 }}
               transition={{ duration: 0.12, ease: "easeOut" }}
-              className="bg-white/95 backdrop-blur-2xl rounded-3xl w-full max-w-5xl shadow-2xl border border-white/80 overflow-hidden text-left max-h-[92vh] flex flex-col ring-1 ring-black/5 will-change-transform"
+              className="bg-white rounded-3xl w-full max-w-5xl shadow-2xl border border-slate-200 overflow-hidden text-left max-h-[92vh] flex flex-col ring-1 ring-black/5 will-change-transform"
             >
-              {/* Header with Senior UI Branding and Micro-badges */}
-              <div className="bg-gradient-to-r from-pink-50/70 via-white to-sky-50/50 px-6 sm:px-7 py-4.5 flex justify-between items-center shrink-0 border-b border-slate-100">
+              {/* Clean White Header */}
+              <div className="bg-white px-6 sm:px-7 py-4.5 flex justify-between items-center shrink-0 border-b border-slate-100">
                 <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#FF2D75] via-pink-500 to-rose-400 text-white flex items-center justify-center shadow-lg shadow-pink-500/25 shrink-0 ring-4 ring-pink-50">
+                  <div className="w-11 h-11 rounded-2xl bg-pink-50 text-[#FF2D75] flex items-center justify-center shrink-0 border border-pink-100">
                     <Mic size={20} className="stroke-[2.5]" />
                   </div>
                   <div>
@@ -1538,7 +1538,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
 
                         {/* Rich text container with design system elevation */}
                         <div className="border border-slate-200/90 rounded-2xl overflow-hidden focus-within:border-[#FF2D75] focus-within:ring-3 focus-within:ring-pink-500/10 bg-white transition-all shadow-3xs">
-                          <div className="flex flex-wrap items-center justify-between gap-1 p-2 bg-gradient-to-r from-slate-50 via-white to-pink-50/20 border-b border-slate-200/80 text-slate-700">
+                          <div className="flex flex-wrap items-center justify-between gap-1 p-2 bg-white border-b border-slate-100 text-slate-700">
                             <div className="flex items-center gap-1">
                               <button
                                 type="button"
@@ -1637,7 +1637,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
 
                     {/* Right Column: Audio Recording and Assistant Panel */}
                     <div className="lg:col-span-5 space-y-4">
-                      <div className="bg-gradient-to-br from-pink-50/40 via-white to-sky-50/40 border border-pink-100/90 p-5 rounded-3xl space-y-4 shadow-sm ring-1 ring-pink-500/5">
+                      <div className="bg-white border border-slate-200 p-5 rounded-3xl space-y-4 shadow-sm">
                         <div className="flex items-center justify-between">
                           <h4 className="font-extrabold text-xs text-slate-900 flex items-center gap-2">
                             <span className="w-2.5 h-2.5 rounded-full bg-[#FF2D75] ring-4 ring-pink-100" />
@@ -1815,7 +1815,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                 </div>
 
                 {/* Footer buttons */}
-                <div className="px-6 sm:px-7 py-4 bg-gradient-to-r from-slate-50 via-white to-pink-50/20 border-t border-slate-100 flex justify-end gap-3 shrink-0">
+                <div className="px-6 sm:px-7 py-4 bg-white border-t border-slate-100 flex justify-end gap-3 shrink-0">
                   <button
                     type="button"
                     onClick={() => {
