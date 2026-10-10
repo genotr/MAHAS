@@ -1427,18 +1427,11 @@ export default function TugasView({
         document.body
       )}
 
-      {/* Custom Universal Date & Time Picker Modal (Works 100% reliably in cross-origin iframes) */}
-      {typeof document !== 'undefined' && createPortal(
-        <AnimatePresence>
-          {pickerState.isOpen && (
-            <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-[100000] p-4">
-              <motion.div
-                initial={{ scale: 0.95, opacity: 0, y: 10 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0.95, opacity: 0, y: 10 }}
-                className="bg-white rounded-3xl border border-pink-100 max-w-sm w-full p-5 shadow-2xl space-y-4 text-left select-none"
-              >
-                {/* Header */}
+      {/* Custom Universal Date & Time Picker Modal (Works 100% reliably in cross-origin iframes, renders instantly without animation) */}
+      {typeof document !== 'undefined' && pickerState.isOpen && createPortal(
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center z-[100000] p-4">
+          <div className="bg-white rounded-3xl border border-pink-100 max-w-sm w-full p-5 shadow-2xl space-y-4 text-left select-none">
+            {/* Header */}
                 <div className="flex items-center justify-between border-b border-pink-100/70 pb-3">
                   <div className="flex items-center gap-2.5">
                     <div className="h-9 w-9 rounded-2xl bg-gradient-to-tr from-pink-500 to-[#FF2D75] text-white flex items-center justify-center shadow-md shadow-pink-200">
@@ -1711,10 +1704,8 @@ export default function TugasView({
                     </div>
                   </div>
                 )}
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>,
+              </div>
+            </div>,
         document.body
       )}
 
