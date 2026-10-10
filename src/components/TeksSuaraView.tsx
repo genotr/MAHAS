@@ -1323,8 +1323,8 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               {/* Clean White Header */}
               <div className="bg-white px-6 sm:px-7 py-4.5 flex justify-between items-center shrink-0 border-b border-slate-100">
                 <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-2xl bg-pink-50 text-[#FF2D75] flex items-center justify-center shrink-0 border border-pink-100">
-                    <Mic size={20} className="stroke-[2.5]" />
+                  <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-pink-500 to-[#FF2D75] text-white flex items-center justify-center shrink-0 shadow-md shadow-pink-200">
+                    <Mic size={20} className="stroke-[2.5] text-white" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
