@@ -1849,10 +1849,10 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.98, opacity: 0 }}
               transition={{ duration: 0.12, ease: "easeOut" }}
-              className="bg-white/95 backdrop-blur-2xl border border-white/80 shadow-2xl rounded-3xl max-w-xl w-full p-5 sm:p-6 text-left space-y-4 relative overflow-hidden my-auto max-h-[90vh] flex flex-col z-[100000] will-change-transform"
+              className="bg-white border border-slate-200 shadow-2xl rounded-3xl max-w-xl w-full p-5 sm:p-6 text-left space-y-4 relative overflow-hidden my-auto max-h-[90vh] flex flex-col z-[100000] will-change-transform"
             >
               {/* Header card info */}
-              <div className="flex justify-between items-start pt-1 border-b border-pink-100/70 pb-3.5">
+              <div className="flex justify-between items-start pt-1 border-b border-slate-100 pb-3.5">
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-[11px] font-black bg-pink-50 text-[#FF2D75] px-2.5 py-0.5 rounded-full border border-pink-200 uppercase tracking-wider">
@@ -1888,7 +1888,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               </div>
 
               {/* Rich contents */}
-              <div className="leading-relaxed whitespace-pre-wrap font-normal text-slate-800 bg-gradient-to-br from-pink-50/20 via-white to-sky-50/20 p-4.5 rounded-2xl border border-pink-100/80 text-xs max-h-80 overflow-y-auto custom-scroll shadow-2xs">
+              <div className="leading-relaxed whitespace-pre-wrap font-normal text-slate-800 bg-white p-4.5 rounded-2xl border border-slate-200 text-xs max-h-80 overflow-y-auto custom-scroll shadow-3xs">
                 {renderFormattedText(selectedNote.content)}
               </div>
 
@@ -1910,7 +1910,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               )}
 
               {/* Action buttons inside note modal */}
-              <div className="flex flex-col sm:flex-row justify-between items-center gap-3 pt-3 border-t border-pink-100/70">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-3 pt-3 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => {
