@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { 
-  Home, GraduationCap, CheckSquare, Calendar, Users, Award, Star, Sparkle,
+  Home, GraduationCap, CheckSquare, Calendar, Users, Star, Sparkle,
   Heart, Briefcase, User, Search, Bell, Menu, X, ChevronDown, HelpCircle, LogOut, Check, 
-  BookOpen, Laptop, Sparkles, Calculator, Backpack, Coffee, Brain, ShieldCheck, Mail, KeyRound,
+  BookOpen, Sparkles, ShieldCheck, Mail, KeyRound,
   Eye, EyeOff, Sun, Moon, Mic, Wind, Settings, LogIn
 } from "lucide-react";
 import { 
@@ -935,207 +935,15 @@ export function AppDashboard() {
       {isReadMode && (
         <div className="fixed inset-0 bg-yellow-500/15 pointer-events-none z-[99999]" />
       )}
-      
-      {/* 3D GLASSMORPHIC ATMOSPHERIC LIGHT BLUE BACKGROUND */}
+      {/* 3D GLASSMORPHIC ATMOSPHERIC LIGHT BLUE BACKGROUND (RESTORED FULL VIBRANT COLORS) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-10 bg-gradient-to-tr from-[#e0f2fe] via-[#bae6fd]/40 to-[#f0f9ff]">
-        {/* Soft high-blur beautiful light blue atmospheric cloud blobs */}
+        {/* Soft high-blur beautiful light blue atmospheric cloud color fields */}
         <div className={`absolute top-10 left-10 w-[70vw] h-[55vh] bg-[#38bdf8]/25 rounded-full blur-[130px] transform -translate-x-12 -translate-y-12 ${isBgAnimated ? "animate-float-slow" : ""}`}></div>
         <div className={`absolute bottom-10 right-10 w-[60vw] h-[50vh] bg-[#0ea5e9]/20 rounded-full blur-[120px] transform translate-x-12 translate-y-12 ${isBgAnimated ? "animate-float-medium" : ""}`}></div>
         <div className={`absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-[#bae6fd]/30 rounded-full blur-[100px] ${isBgAnimated ? "animate-pulse" : ""}`}></div>
         <div className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] bg-[#e0f2fe]/45 rounded-full blur-[90px]"></div>
       </div>
 
-      {/* 3D FLOATING BACKGROUND ACCENTS (CRISP BACKGROUND ACCENT LAYER, BEHIND CARD CANVASES) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-[11]">
-        
-        {/* Graduation Cap - Top Left */}
-        <div 
-          className={`absolute w-16 h-16 rounded-2xl select-none opacity-95 border-2 border-white/95 bg-gradient-to-tr from-rose-500/25 via-pink-500/35 to-white/80 shadow-[0_15px_35px_rgba(219,39,119,0.35)] hover:scale-110 p-3.5 flex items-center justify-center z-20 left-6 md:left-[calc(17rem+3%)] ${isBgAnimated ? "animate-float-slow" : ""}`}
-          style={isBgAnimated ? { 
-            top: "6%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * 40px), calc(var(--mouse-y, 0) * 40px), 0) rotate(calc(var(--mouse-x, 0) * 15deg))",
-            transition: "none"
-          } : { top: "6%" }}
-          title="Pendidikan Tinggi"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/40 to-transparent pointer-events-none"></div>
-          <div className="absolute -top-4 -left-4 w-10 h-10 bg-pink-400/30 rounded-full blur-md"></div>
-          <GraduationCap className={`w-8 h-8 text-[#FF2D75] drop-shadow-[0_4px_8px_rgba(255,45,117,0.55)] relative z-10 ${isBgAnimated ? "animate-pulse" : ""}`} style={isBgAnimated ? { animationDuration: "3s" } : undefined} />
-        </div>
-
-        {/* Backpack - Top Right */}
-        <div 
-          className={`absolute w-14 h-14 rounded-2xl select-none opacity-95 border-2 border-white/90 bg-gradient-to-tr from-amber-450/20 via-orange-500/25 to-white/70 shadow-[0_15px_30px_rgba(249,115,22,0.3)] hover:scale-110 p-3 flex items-center justify-center z-20 right-4 sm:right-6 md:right-10 ${isBgAnimated ? "animate-float-medium" : ""}`}
-          style={isBgAnimated ? { 
-            top: "4%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * -25px), calc(var(--mouse-y, 0) * -25px), 0)",
-            transition: "none"
-          } : { top: "4%" }}
-          title="Persiapan Kelas"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/30 to-transparent pointer-events-none"></div>
-          <Backpack className="w-7 h-7 text-orange-600 drop-shadow-[0_4px_8px_rgba(249,115,22,0.45)] relative z-10" />
-        </div>
-
-        {/* Book Open - Mid Left Gutter */}
-        <div 
-          className={`absolute w-15 h-15 rounded-2xl select-none opacity-95 border-2 border-white/95 bg-gradient-to-tr from-sky-400/30 via-blue-500/25 to-white/80 shadow-[0_15px_35px_rgba(14,165,233,0.35)] hover:scale-110 p-3 flex items-center justify-center z-20 left-4 md:left-[calc(17rem+2%)] ${isBgAnimated ? "animate-float-medium" : ""}`}
-          style={isBgAnimated ? { 
-            top: "35%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * -30px), calc(var(--mouse-y, 0) * -30px), 0)",
-            transition: "none"
-          } : { top: "35%" }}
-          title="Perpustakaan Literasi"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/30 to-transparent pointer-events-none"></div>
-          <div className="absolute -bottom-3 -right-3 w-10 h-10 bg-sky-400/30 rounded-full blur-md"></div>
-          <BookOpen className="w-7 h-7 text-sky-600 drop-shadow-[0_3px_8px_rgba(14,165,233,0.5)] relative z-10" />
-        </div>
-
-        {/* Laptop - Mid Right Side */}
-        <div 
-          className={`absolute w-15 h-15 rounded-2xl select-none opacity-95 border-2 border-white/90 bg-gradient-to-tr from-purple-500/30 via-indigo-500/25 to-white/70 shadow-[0_15px_35px_rgba(168,85,247,0.35)] hover:scale-110 p-3 flex items-center justify-center z-20 right-4 md:right-8 lg:right-12 ${isBgAnimated ? "animate-float-fast" : ""}`}
-          style={isBgAnimated ? { 
-            top: "48%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * 25px), calc(var(--mouse-y, 0) * -45px), 0)",
-            transition: "none"
-          } : { top: "48%" }}
-          title="Teknologi Developer"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/30 to-transparent pointer-events-none"></div>
-          <Laptop className="w-7 h-7 text-indigo-700 drop-shadow-[0_4px_10px_rgba(168,85,247,0.5)] relative z-10" />
-        </div>
-
-        {/* Calculator - Bottom Left Gutter */}
-        <div 
-          className={`absolute w-14 h-14 rounded-2xl select-none opacity-95 border-2 border-white/90 bg-gradient-to-tr from-emerald-500/25 via-teal-500/25 to-white/80 shadow-[0_15px_30px_rgba(16,185,129,0.3)] hover:scale-110 p-3.5 flex items-center justify-center z-20 left-6 md:left-[calc(17rem+4%)] ${isBgAnimated ? "animate-float-slow" : ""}`}
-          style={isBgAnimated ? { 
-            bottom: "18%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * -20px), calc(var(--mouse-y, 0) * 35px), 0)",
-            transition: "none"
-          } : { bottom: "18%" }}
-          title="Kalkulator IPK"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/35 to-transparent pointer-events-none"></div>
-          <Calculator className="w-7 h-7 text-emerald-650 drop-shadow-[0_4px_8px_rgba(16,185,129,0.4)] relative z-10" />
-        </div>
-
-        {/* Award Medal - Bottom Right Corner */}
-        <div 
-          className={`absolute w-16 h-16 rounded-2xl select-none opacity-95 border-2 border-white/95 bg-gradient-to-tr from-emerald-500/30 via-teal-500/25 to-white/70 shadow-[0_20px_45px_rgba(16,185,129,0.35)] hover:scale-110 p-3 flex items-center justify-center z-20 right-4 md:right-10 lg:right-16 ${isBgAnimated ? "animate-float-fast" : ""}`}
-          style={isBgAnimated ? { 
-            bottom: "11%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * 28px), calc(var(--mouse-y, 0) * 28px), 0) rotate(calc(var(--mouse-x, 0) * 25deg))",
-            transition: "none"
-          } : { bottom: "11%" }}
-          title="Medali Cum Laude"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/45 to-transparent pointer-events-none"></div>
-          <div className="absolute -top-4 -right-4 w-10 h-10 bg-emerald-400/35 rounded-full blur-md"></div>
-          <Award className="w-8 h-8 text-emerald-600 drop-shadow-[0_4px_10px_rgba(16,185,129,0.5)] relative z-10" />
-        </div>
-
-        {/* Steaming Coffee Cup - Late night study */}
-        <div 
-          className={`absolute w-14 h-14 rounded-2xl select-none opacity-95 border-2 border-white/95 bg-gradient-to-tr from-amber-500/25 via-red-500/20 to-white/80 shadow-[0_15px_30px_rgba(239,68,68,0.25)] hover:scale-110 p-3 items-center justify-center z-20 hidden xl:flex ${isBgAnimated ? "animate-float-slow" : ""}`}
-          style={isBgAnimated ? { 
-            bottom: "35%", 
-            right: "14%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * 35px), calc(var(--mouse-y, 0) * -20px), 0)",
-            transition: "none"
-          } : { bottom: "35%", right: "14%" }}
-          title="Kopi Begadang Nugas"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/30 to-transparent pointer-events-none"></div>
-          <Coffee className="w-7 h-7 text-amber-900 drop-shadow-[0_3px_6px_rgba(146,64,14,0.4)] relative z-10" />
-        </div>
-
-        {/* Brain Sparkle boost - High Creativity */}
-        <div 
-          className={`absolute w-14 h-14 rounded-2xl select-none opacity-95 border-2 border-white/95 bg-gradient-to-tr from-pink-500/30 via-purple-500/20 to-white/80 shadow-[0_15px_30px_rgba(236,72,153,0.25)] hover:scale-110 p-3 items-center justify-center z-20 hidden xl:flex ${isBgAnimated ? "animate-pulse" : ""}`}
-          style={isBgAnimated ? { 
-            top: "22%", 
-            right: "18%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * -15px), calc(var(--mouse-y, 0) * 35px), 0)",
-            transition: "none"
-          } : { top: "22%", right: "18%" }}
-          title="Kreativitas Mahasiswa"
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/35 to-transparent pointer-events-none"></div>
-          <Brain className="w-7 h-7 text-pink-600 drop-shadow-[0_3px_6px_rgba(219,39,119,0.4)] relative z-10" />
-        </div>
-
-        {/* Decorative student emoji 👩‍🎓 */}
-        <div 
-          className={`absolute w-12 h-12 rounded-2xl select-none opacity-95 border-2 border-white/90 bg-gradient-to-tr from-pink-300/35 to-white/70 shadow-[0_10px_20px_rgba(244,63,94,0.3)] flex items-center justify-center z-20 left-28 sm:left-36 md:left-[calc(17rem+15%)] ${isBgAnimated ? "animate-pulse" : ""}`}
-          style={isBgAnimated ? { 
-            top: "30%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * 50px), calc(var(--mouse-y, 0) * 50px), 0)",
-            transition: "none"
-          } : { top: "30%" }}
-        >
-          <span className="text-xl drop-shadow-md">👩‍🎓</span>
-        </div>
-
-        {/* Decorative study book emoji 📚 */}
-        <div 
-          className={`absolute w-11 h-11 rounded-2xl select-none opacity-90 border-2 border-white/90 bg-gradient-to-tr from-teal-300/30 to-white/70 shadow-[0_10px_20px_rgba(20,184,166,0.25)] flex items-center justify-center z-20 right-[15%] md:right-[25%] ${isBgAnimated ? "animate-pulse" : ""}`}
-          style={isBgAnimated ? { 
-            bottom: "35%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * -40px), calc(var(--mouse-y, 0) * -40px), 0)",
-            transition: "none"
-          } : { bottom: "35%" }}
-        >
-          <span className="text-lg drop-shadow-md">📚</span>
-        </div>
-
-        {/* Glowing glass capsule with MahasSpace label */}
-        <div 
-          className={`absolute w-32 h-10 rounded-full select-none opacity-95 filter drop-shadow-[0_12px_20px_rgba(16,185,129,0.15)] bg-gradient-to-r from-white/80 to-emerald-200/50 backdrop-blur-md border-2 border-white/90 z-20 ${isBgAnimated ? "animate-float-slow" : ""}`}
-          style={isBgAnimated ? { 
-            top: "42%", 
-            right: "12%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * -20px), calc(var(--mouse-y, 0) * 35px), 0) rotate(calc(var(--mouse-y, 0) * 12deg))",
-            transition: "none"
-          } : { top: "42%", right: "12%" }}
-        >
-          <div className="w-full h-full rounded-full bg-gradient-to-b from-white/40 to-transparent flex items-center justify-center relative">
-            <span className="text-[10px] font-black uppercase text-emerald-800 tracking-widest leading-normal">MahasSpace</span>
-          </div>
-        </div>
-
-        {/* Glowing GPA label capsule */}
-        <div 
-          className={`absolute w-24 h-11 rounded-full select-none opacity-95 backdrop-blur-md border-2 border-white/90 bg-gradient-to-r from-amber-400/30 to-orange-400/20 shadow-[0_12px_30px_rgba(245,158,11,0.25)] hover:scale-110 flex items-center justify-center px-4 z-20 ${isBgAnimated ? "animate-float-medium" : ""}`}
-          style={isBgAnimated ? { 
-            bottom: "20%", 
-            right: "42%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * 45px), calc(var(--mouse-y, 0) * 20px), 0) rotate(calc(var(--mouse-x, 0) * -12deg))",
-            transition: "none"
-          } : { bottom: "20%", right: "42%" }}
-          title="Prestasi Akademik"
-        >
-          <span className="text-[11px] font-black tracking-widest text-amber-800 font-mono flex items-center gap-1 relative z-10">
-            ★ GPA 4.0
-          </span>
-        </div>
-
-        {/* Soft floating accent orb */}
-        <div 
-          className={`absolute w-28 h-28 rounded-full select-none opacity-55 filter blur-[2px] bg-gradient-to-br from-amber-200/60 via-pink-200/40 to-purple-300/50 z-10 ${isBgAnimated ? "animate-pulse" : ""}`}
-          style={isBgAnimated ? { 
-            top: "28%", 
-            left: "48%", 
-            transform: "translate3d(calc(var(--mouse-x, 0) * -35px), calc(var(--mouse-y, 0) * -20px), 0)",
-            transition: "none"
-          } : { top: "28%", left: "48%" }}
-        >
-          <div className="w-full h-full rounded-full relative">
-            <div className="absolute top-4 left-5 w-6 h-3 bg-white/80 rounded-full rotate-[-15deg] blur-[0.5px]"></div>
-          </div>
-        </div>
-
-      </div>
 
       {/* SIDEBAR NAVIGATION PANEL (SMOOTH GLASSY PUFFY DESIGN) */}
       <aside 
