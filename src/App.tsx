@@ -37,7 +37,7 @@ import ZonamuView from "./components/ZonamuView";
 import RuangBelajarView from "./components/RuangBelajarView";
 import TeksSuaraView from "./components/TeksSuaraView";
 // @ts-ignore
-import mahasLogo from "./assets/images/regenerated_image_1784117604430.png";
+import mahasLogo from "./assets/images/regenerated_image_1784117604430 (2).png";
 
 export function AppDashboard() {
   const navigate = useNavigate();

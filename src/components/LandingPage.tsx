@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 // @ts-ignore
-import mahasLogo from "../assets/images/regenerated_image_1784117604430.png";
+import mahasLogo from "../assets/images/regenerated_image_1784117604430 (2).png";
 
 export default function LandingPage() {
   const navigate = useNavigate();
