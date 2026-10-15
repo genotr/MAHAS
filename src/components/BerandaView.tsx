@@ -1024,9 +1024,6 @@ export default function BerandaView({
                 <Smile size={16} className="text-pink-500" />
                 Progres Mingguan saya
               </h3>
-              <span className="text-[10px] font-black uppercase text-[#FF2D75] bg-pink-50 px-2 py-0.5 rounded-md tracking-wider">
-                Target Minggu Ini
-              </span>
             </div>
 
             {/* Auto-Reset Countdown Banner */}
@@ -1637,7 +1634,7 @@ export default function BerandaView({
                       Reset Progres Mingguan?
                     </h3>
                     <p className="text-[11px] text-slate-500 font-bold leading-relaxed px-1">
-                      Tindakan ini akan mengembalikan jumlah tugas selesai menjadi <strong className="text-emerald-300 font-black">0</strong> dan jam belajar menjadi <strong className="text-emerald-300 font-black">0j</strong> untuk target minggu baru.
+                      Tindakan ini akan mengembalikan jumlah tugas selesai menjadi <strong className="text-emerald-300 font-black">0</strong> dan jam belajar menjadi <strong className="text-emerald-300 font-black">0j</strong> untuk minggu baru.
                     </p>
                   </div>
                 </div>
