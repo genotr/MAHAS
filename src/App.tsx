@@ -1019,7 +1019,7 @@ export function AppDashboard() {
  
             {/* Sidebar nav items checklist */}
             <nav className={`space-y-1.5 ${isIconOnly ? "" : "pr-0.5"}`}>
-              {sidebarItems.map((item) => {
+              {sidebarItems.map((item, index) => {
                 const Icon = item.icon;
                 const isActive = activeTab === item.label;
                 const isProfile = item.label === "Profile";
@@ -1052,7 +1052,11 @@ export function AppDashboard() {
                       setSidebarOpen(false);
                     }}
                     title={isIconOnly ? (item.shortcutKey ? `${item.label} (${item.shortcutKey})` : item.label) : undefined}
-                    className={`w-full flex items-center ${isIconOnly ? "justify-center px-2 gap-0" : "gap-3 px-3.5"} py-2.5 text-xs font-black rounded-[14px] text-left transition-none cursor-pointer border ${buttonBgStyle} relative overflow-visible`}
+                    style={{
+                      borderRadius: "12px",
+                      ...(index === 0 ? { borderWidth: "1.666667px" } : {})
+                    }}
+                    className={`w-full flex items-center ${isIconOnly ? "justify-center px-2 gap-0" : "gap-3 px-3.5"} py-2.5 text-xs font-black rounded-[12px] text-left transition-none cursor-pointer border ${buttonBgStyle} relative overflow-visible`}
                   >
                     <div className="relative flex items-center justify-center shrink-0">
                       <Icon size={isIconOnly ? 18 : 15} className={isActive ? "text-white" : (isProfile ? "text-[#0284c7]" : (isSuaraTeks ? "text-pink-600" : "text-slate-500"))} />
@@ -1075,7 +1079,7 @@ export function AppDashboard() {
                       {item.label}
                     </span>
                     {isSuaraTeks && (
-                      <div className="absolute inset-0 rounded-[14px] overflow-hidden pointer-events-none">
+                      <div className="absolute inset-0 rounded-[12px] overflow-hidden pointer-events-none">
                         {/* Shimmer light effect running across */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full animate-shimmer-sweep" />
                         
