@@ -682,7 +682,7 @@ export default function TugasView({
     <div className="space-y-6 text-left relative z-10 font-sans">
       
       {/* View Title */}
-      <div className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="space-y-1">
           <h2 className="text-xl md:text-2xl font-black font-display text-slate-900 leading-tight">
             Tugas & Lingkup Deadline Akademik{" "}
@@ -799,7 +799,7 @@ export default function TugasView({
 
       {/* Add Task Form Collapsible */}
       {showAddForm && (
-        <form onSubmit={handleCreateTask} className="bg-white/85 backdrop-blur-md p-6 rounded-3xl border border-pink-150 shadow-md text-xs text-left space-y-4 animate-in slide-in-from-top-3 duration-200">
+        <form onSubmit={handleCreateTask} className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] text-xs text-left space-y-4 animate-in slide-in-from-top-3 duration-200">
           <div className="flex items-center justify-between border-b border-pink-100/60 pb-3">
             <h3 className="font-extrabold text-[#FF2D75] text-sm flex items-center gap-1.5 font-display">
               <Plus size={16} />
@@ -819,7 +819,7 @@ export default function TugasView({
                 required
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/90 text-xs"
+                className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
               />
             </div>
 
@@ -855,7 +855,7 @@ export default function TugasView({
                     required
                     value={course}
                     onChange={(e) => setCourse(e.target.value)}
-                    className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2 rounded-xl font-bold bg-white/70 text-xs"
+                    className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2 rounded-xl font-bold bg-white text-xs"
                   />
 
                   {/* Quick Select Badges */}
@@ -884,7 +884,7 @@ export default function TugasView({
                   required
                   value={course}
                   onChange={(e) => setCourse(e.target.value)}
-                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/60 text-xs"
+                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
                 />
               )}
             </div>
@@ -903,7 +903,7 @@ export default function TugasView({
                     e.preventDefault();
                     safeOpenPicker(e.currentTarget, "date", "add");
                   }}
-                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white/60 text-xs cursor-pointer select-none hide-native-picker-icon"
+                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-xs cursor-pointer select-none hide-native-picker-icon"
                 />
                 <button
                   type="button"
@@ -930,7 +930,7 @@ export default function TugasView({
                     e.preventDefault();
                     safeOpenPicker(e.currentTarget, "time", "add");
                   }}
-                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white/90 text-xs text-slate-800 cursor-pointer select-none hide-native-picker-icon"
+                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-xs text-slate-800 cursor-pointer select-none hide-native-picker-icon"
                 />
                 <button
                   type="button"
@@ -965,7 +965,7 @@ export default function TugasView({
               placeholder="Masukkan instruksi khusus dari dosen, misal: 'File PDF kumpul di portal dengan format NIM_Nama_Tugas'"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/60 text-xs"
+              className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
             ></textarea>
           </div>
 
@@ -988,7 +988,7 @@ export default function TugasView({
       )}
 
       {/* Task Filters and Search */}
-      <div className="bg-white/45 backdrop-blur-md p-4 rounded-3xl border border-white/60 flex flex-col md:flex-row gap-4 justify-between items-center shadow-xs">
+      <div className="bg-[#fdfdfe] p-4 rounded-[28px] border border-white flex flex-col md:flex-row gap-4 justify-between items-center shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
         <div className="flex gap-1.5 flex-wrap">
           {(["semua", "aktif", "selesai"] as const).map((mode) => (
             <button
@@ -997,7 +997,7 @@ export default function TugasView({
               className={`px-4 py-2.5 rounded-2xl text-xs font-bold transition-all cursor-pointer ${
                 filterMode === mode 
                   ? "bg-gradient-to-r from-pink-500 to-[#FF2D75] text-white shadow-md shadow-pink-100" 
-                  : "bg-white/65 text-slate-655 hover:bg-white/80 border border-white/85"
+                  : "bg-white text-slate-600 hover:bg-sky-50 border border-slate-200"
               }`}
             >
               {mode === "aktif" ? "Belum Selesai" : mode === "selesai" ? "Telah Selesai" : "Semua Tugas"}
@@ -1011,7 +1011,7 @@ export default function TugasView({
             placeholder="Cari kata kunci tugas..."
             value={searchWord}
             onChange={(e) => setSearchWord(e.target.value)}
-            className="w-full text-xs pl-4 pr-10 py-2.5 border border-pink-100 rounded-2xl focus:outline-hidden focus:border-pink-300 bg-white/60 font-semibold"
+            className="w-full text-xs pl-4 pr-10 py-2.5 border border-pink-100 rounded-2xl focus:outline-hidden focus:border-pink-300 bg-white font-semibold"
           />
           <Filter size={13} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
         </div>
@@ -1027,8 +1027,8 @@ export default function TugasView({
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.94, y: -15, transition: { duration: 0.22, ease: "easeInOut" } }}
-                className={`bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 shadow-xs flex flex-col justify-between hover:border-pink-100 hover:shadow-md transition-all duration-300 ${
-                  task.completed ? "opacity-75 relative bg-white/20" : ""
+                className={`bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col justify-between hover:border-pink-100 hover:shadow-md transition-all duration-300 ${
+                  task.completed ? "opacity-75 relative" : ""
                 }`}
               >
               <div className="space-y-3.5 text-left">
@@ -1097,7 +1097,7 @@ export default function TugasView({
 
                 {/* Task notes details */}
                 {task.notes && (
-                  <p className="text-[11px] text-slate-655 bg-white/40 border border-white/50 p-3 rounded-xl flex items-start gap-1.5 leading-relaxed font-semibold">
+                  <p className="text-[11px] text-slate-655 bg-slate-50 border border-slate-100 p-3 rounded-xl flex items-start gap-1.5 leading-relaxed font-semibold">
                     <FileText size={13} className="text-pink-400 shrink-0 mt-0.5" />
                     <span className={index === 3 ? "text-black" : ""}>{task.notes}</span>
                   </p>
@@ -1152,7 +1152,7 @@ export default function TugasView({
         </AnimatePresence>
 
         {displayTasks.length === 0 && (
-          <div className="col-span-full py-16 text-center bg-white/40 border border-white/60 backdrop-blur-md rounded-3xl space-y-3">
+          <div className="col-span-full py-16 text-center bg-[#fdfdfe] border border-white rounded-[28px] shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-3">
             <span className="text-4xl">
               {allMergedTasks.length === 0 ? "📝" : filterMode === "selesai" ? "⏳" : "🎉"}
             </span>
