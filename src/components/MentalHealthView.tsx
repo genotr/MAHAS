@@ -303,7 +303,7 @@ export default function MentalHealthView({
     <div className="space-y-6 text-left relative z-10 font-sans">
       
       {/* Title */}
-      <div className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in">
+      <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in">
         <div className="space-y-1">
           <h2 className="text-xl md:text-2xl font-black font-display text-slate-900 leading-tight">
             Obrolan Kesehatan Mental Anda{" "}
@@ -321,7 +321,7 @@ export default function MentalHealthView({
         <div className="lg:col-span-2 space-y-6">
 
           {/* Tab Selector Buttons - Beautiful Segmented Control Button-style Base with same style as Title Card */}
-          <div className="bg-white/45 backdrop-blur-md p-1.5 rounded-3xl border border-white/60 flex gap-2 w-full shadow-xs">
+          <div className="bg-[#fdfdfe] p-1.5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex gap-2 w-full">
             <button
               onClick={() => {
                 setActiveTabMode("chatbot");
@@ -350,7 +350,7 @@ export default function MentalHealthView({
 
           {activeTabMode === "chatbot" ? (
             /* AI EMPATHETIC CHATBOT COMPONENT PANEL - Style unified with Obrolan Kesehatan Mental Anda */
-            <div className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs space-y-5 flex flex-col justify-between h-[520px]">
+            <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-5 flex flex-col justify-between h-[520px]">
               
               {/* Inner Dialogue History Thread */}
               <div className="flex-1 overflow-y-auto space-y-3.5 pr-1.5 custom-scroll">
@@ -464,7 +464,7 @@ export default function MentalHealthView({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-left">
                 
                 {/* Visual Breathing Card */}
-                <div className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 shadow-xs flex flex-col justify-between items-center text-center space-y-4">
+                <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col justify-between items-center text-center space-y-4">
                   <div className="w-full text-left">
                     <h4 className="font-extrabold text-[#2e1065] text-xs uppercase tracking-wide flex items-center gap-1.5 font-display mb-1">
                       <Wind className="text-sky-500 animate-pulse" size={15} />
@@ -545,7 +545,7 @@ export default function MentalHealthView({
                 </div>
 
                 {/* Ambient Sound Card */}
-                <div className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 shadow-xs flex flex-col justify-between text-left space-y-4">
+                <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col justify-between text-left space-y-4">
                   <div>
                     <h4 className="font-extrabold text-[#2e1065] text-xs uppercase tracking-wide flex items-center gap-1.5 font-display mb-1">
                       <Music className="text-pink-500" size={15} />
@@ -589,7 +589,7 @@ export default function MentalHealthView({
 
                   {/* indicator display of sound wave feedback lines */}
                   {ambientPlay ? (
-                    <div className="flex gap-1 justify-center items-end h-7 py-1 bg-white/45 rounded-xl border border-white/50">
+                    <div className="flex gap-1 justify-center items-end h-7 py-1 bg-slate-50 rounded-xl border border-slate-100">
                       {[1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 3, 2, 1].map((val, idx) => (
                         <span 
                           key={idx} 
@@ -633,7 +633,7 @@ export default function MentalHealthView({
               </div>
 
               {/* Stress Quiz assessment element */}
-              <div className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 shadow-xs text-left space-y-4">
+              <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] text-left space-y-4">
                 <div className="flex justify-between items-center flex-wrap gap-2 pb-2.5 border-b border-slate-100/50">
                   <div>
                     <h4 className="font-extrabold text-[#2e1065] text-xs uppercase tracking-wide flex items-center gap-1.5 font-display">
@@ -864,7 +864,7 @@ export default function MentalHealthView({
           )}
 
           {/* New Self-Care Tip Card */}
-          <div className="bg-white/80 backdrop-blur-md p-5 rounded-3xl border border-pink-100 shadow-xs space-y-3.5">
+          <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-3.5">
             <h4 className="font-extrabold text-[#2e1065] text-xs uppercase tracking-wider font-display flex items-center gap-1.5">
               Tips Relaksasi Hari Ini
             </h4>
@@ -874,7 +874,7 @@ export default function MentalHealthView({
           </div>
 
           {/* 5-4-3-2-1 Grounding Method Widget */}
-          <div className="bg-gradient-to-br from-indigo-50/50 to-pink-50/50 backdrop-blur-md p-5 rounded-3xl border border-pink-100/60 shadow-xs space-y-4">
+          <div className="bg-[#f8f6ff] p-5 rounded-[28px] border border-pink-100 shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-4">
             <h4 className="font-extrabold text-[#2e1065] text-xs uppercase tracking-wider font-display flex items-center gap-1.5">
               <Wind size={14} className="text-indigo-600 animate-pulse" />
               Metode Redakan Panik (5-4-3-2-1)
@@ -883,23 +883,23 @@ export default function MentalHealthView({
               Jika kamu merasa tiba-tiba sangat cemas atau panik karena tekanan tugas kuliah, diamlah sejenak dan sebutkan di dalam hati:
             </p>
             <div className="space-y-2.5 text-[11px] font-bold text-slate-700">
-              <div className="flex items-center gap-2 bg-white/70 px-3 py-1.5 rounded-xl border border-slate-100">
+              <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100">
                 <span className="text-xs shrink-0 font-extrabold text-indigo-600 bg-indigo-50 w-5 h-5 rounded-full flex items-center justify-center">5</span>
                 <span>Hal yang bisa kamu <b>lihat</b> di sekitarmu</span>
               </div>
-              <div className="flex items-center gap-2 bg-white/70 px-3 py-1.5 rounded-xl border border-slate-100">
+              <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100">
                 <span className="text-xs shrink-0 font-extrabold text-indigo-600 bg-indigo-50 w-5 h-5 rounded-full flex items-center justify-center">4</span>
                 <span>Benda fisik yang bisa kamu <b>sentuh</b></span>
               </div>
-              <div className="flex items-center gap-2 bg-white/70 px-3 py-1.5 rounded-xl border border-slate-100">
+              <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100">
                 <span className="text-xs shrink-0 font-extrabold text-indigo-600 bg-indigo-50 w-5 h-5 rounded-full flex items-center justify-center">3</span>
                 <span>Suara berbeda yang bisa kamu <b>dengar</b></span>
               </div>
-              <div className="flex items-center gap-2 bg-white/70 px-3 py-1.5 rounded-xl border border-slate-100">
+              <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100">
                 <span className="text-xs shrink-0 font-extrabold text-indigo-600 bg-indigo-50 w-5 h-5 rounded-full flex items-center justify-center">2</span>
                 <span>Aroma harum/khas yang bisa di<b>hirup</b></span>
               </div>
-              <div className="flex items-center gap-2 bg-white/70 px-3 py-1.5 rounded-xl border border-slate-100">
+              <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100">
                 <span className="text-xs shrink-0 font-extrabold text-indigo-600 bg-indigo-50 w-5 h-5 rounded-full flex items-center justify-center">1</span>
                 <span>Hal baik yang bisa kamu <b>rasakan / syukuri</b></span>
               </div>
@@ -907,7 +907,7 @@ export default function MentalHealthView({
           </div>
 
           {/* Positive Affirmation Card */}
-          <div className="bg-white/80 backdrop-blur-md p-5 rounded-3xl border border-pink-100 shadow-xs space-y-2 text-center">
+          <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-2 text-center">
             <span className="text-2xl block animate-bounce">💬</span>
             <p className="text-[11px] text-slate-450 font-black uppercase tracking-widest text-[#FF2D75]">Afirmasi Diri</p>
             <p className="text-xs text-slate-700 italic font-extrabold leading-relaxed">
