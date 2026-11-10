@@ -936,7 +936,7 @@ export function AppDashboard() {
         <div className="fixed inset-0 bg-yellow-500/15 pointer-events-none z-[99999]" />
       )}
       {/* 3D GLASSMORPHIC ATMOSPHERIC LIGHT BLUE BACKGROUND (RESTORED FULL VIBRANT COLORS) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-10 bg-gradient-to-tr from-[#e0f2fe] via-[#bae6fd]/40 to-[#f0f9ff]">
+      <div className={`absolute inset-0 pointer-events-none overflow-hidden z-10 bg-[#c9edff] ${isBgAnimated ? "" : "[&>div]:hidden"}`}>
         {/* Soft high-blur beautiful light blue atmospheric cloud color fields */}
         <div className={`absolute top-10 left-10 w-[70vw] h-[55vh] bg-[#38bdf8]/25 rounded-full blur-[130px] transform -translate-x-12 -translate-y-12 ${isBgAnimated ? "animate-float-slow" : ""}`}></div>
         <div className={`absolute bottom-10 right-10 w-[60vw] h-[50vh] bg-[#0ea5e9]/20 rounded-full blur-[120px] transform translate-x-12 translate-y-12 ${isBgAnimated ? "animate-float-medium" : ""}`}></div>
@@ -948,7 +948,7 @@ export function AppDashboard() {
       {/* SIDEBAR NAVIGATION PANEL (SMOOTH GLASSY PUFFY DESIGN) */}
       <aside 
         id="campushub_sidebar"
-        className={`${isExpanded ? "w-56 p-3.5" : "w-[62px] p-2 overflow-x-hidden"} bg-white/95 border border-white/95 rounded-[22px] shadow-[0_15px_40px_rgba(79,70,229,0.08)] flex flex-col justify-between shrink-0 transition-none h-full
+        className={`${isExpanded ? "w-[264px] p-4" : "w-[66px] p-2 overflow-x-hidden"} bg-[#fdfdfe] border border-white rounded-[28px] shadow-[0_10px_30px_rgba(70,140,190,0.14)] flex flex-col justify-between shrink-0 transition-none h-full
           ${sidebarOpen ? "fixed inset-y-2 left-2 z-40 flex" : "hidden md:flex md:relative z-20"}`}
       >
         <div className="space-y-6 flex flex-col h-full justify-between pb-4 overflow-y-auto custom-scroll relative z-10">
@@ -1038,9 +1038,9 @@ export function AppDashboard() {
                   if (isProfile) {
                     buttonBgStyle = "text-[#0369a1] bg-[#e0f2fe] border-[#bae6fd] hover:border-pink-300 hover:bg-pink-50 hover:text-[#FF2D75] hover:shadow-none";
                   } else if (isSuaraTeks) {
-                    buttonBgStyle = "text-pink-600 bg-pink-50/80 border-pink-200/60 hover:border-pink-400 hover:bg-pink-100/90 hover:text-[#FF2D75] shadow-none transition-all duration-300";
+                    buttonBgStyle = "text-pink-600 bg-pink-50/70 border-pink-200 hover:border-pink-400 hover:bg-pink-100/90 hover:text-[#FF2D75] shadow-none transition-all duration-300";
                   } else {
-                    buttonBgStyle = "text-slate-700 bg-slate-100/90 border-slate-200/50 hover:border-pink-300 hover:bg-pink-50 hover:text-[#FF2D75] hover:shadow-none";
+                    buttonBgStyle = "text-slate-800 bg-[#f1f5fb] border-slate-200/60 hover:border-pink-300 hover:bg-pink-50 hover:text-[#FF2D75] hover:shadow-none";
                   }
                 }
                 
@@ -1053,10 +1053,10 @@ export function AppDashboard() {
                     }}
                     title={isIconOnly ? (item.shortcutKey ? `${item.label} (${item.shortcutKey})` : item.label) : undefined}
                     style={{
-                      borderRadius: "12px",
+                      borderRadius: "16px",
                       ...(index === 0 ? { borderWidth: "1.666667px" } : {})
                     }}
-                    className={`w-full flex items-center ${isIconOnly ? "justify-center px-2 gap-0" : "gap-3 px-3.5"} py-2.5 text-xs font-black rounded-[12px] text-left transition-none cursor-pointer border ${buttonBgStyle} relative overflow-visible`}
+                    className={`w-full flex items-center ${isIconOnly ? "justify-center px-2 gap-0" : "gap-3 px-3.5"} py-3 text-[13px] font-black rounded-2xl text-left transition-none cursor-pointer border ${buttonBgStyle} relative overflow-visible`}
                   >
                     <div className="relative flex items-center justify-center shrink-0">
                       <Icon size={isIconOnly ? 18 : 15} className={isActive ? "text-white" : (isProfile ? "text-[#0284c7]" : (isSuaraTeks ? "text-pink-600" : "text-slate-500"))} />
@@ -1079,7 +1079,7 @@ export function AppDashboard() {
                       {item.label}
                     </span>
                     {isSuaraTeks && (
-                      <div className="absolute inset-0 rounded-[12px] overflow-hidden pointer-events-none">
+                      <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
                         {/* Shimmer light effect running across */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full animate-shimmer-sweep" />
                         
@@ -1124,7 +1124,7 @@ export function AppDashboard() {
           {/* Footer version indicator */}
           <div className="pt-2 border-t border-slate-100 flex items-center justify-center">
             {isExpanded ? (
-              <span className="text-[10px] font-black text-slate-400/90 font-mono tracking-wider bg-slate-50 px-2 py-0.5 rounded-lg border border-slate-200/50">
+              <span className="text-[10px] font-black text-slate-400 font-mono tracking-wider bg-slate-50 px-3 py-1 rounded-lg border border-slate-200/60">
                 MAHAS v2.4.20
               </span>
             ) : (
@@ -1151,8 +1151,8 @@ export function AppDashboard() {
         {/* TOP INTERACTIVE BAR */}
         {!isAddingNote && (
           <header 
-            style={{ borderRadius: "19px" }}
-            className="h-16 shrink-0 bg-white/45 backdrop-blur-[20px] !overflow-visible border border-white/70 rounded-[19px] shadow-[0_10px_35px_rgba(79,70,229,0.04)] flex items-center justify-between px-3 sm:px-5 relative z-30 ml-0 mt-2 sm:mt-1.5 md:-mt-3 mb-2.5"
+            style={{ borderRadius: "24px" }}
+            className="h-[68px] shrink-0 bg-[#fdfdfe] !overflow-visible border border-white rounded-[24px] shadow-[0_10px_30px_rgba(70,140,190,0.12)] flex items-center justify-between px-3 sm:px-5 relative z-30 ml-0 mt-2 sm:mt-1.5 md:-mt-3 mb-2.5"
           >
             
             <div className="flex items-center gap-4 flex-1">
@@ -1165,7 +1165,7 @@ export function AppDashboard() {
                     setSidebarCollapsed(prev => !prev);
                   }
                 }}
-                className="h-10 w-10 bg-[#FF2D75] text-white rounded-[13px] border border-white/30 shadow-none flex items-center justify-center cursor-pointer hover:bg-pink-600 transition-none"
+                className="h-11 w-11 bg-[#FF2D75] text-white rounded-2xl border border-white/30 shadow-none flex items-center justify-center cursor-pointer hover:bg-pink-600 transition-none"
                 title={isExpanded ? "Tutup Sidebar" : "Buka Sidebar"}
               >
                 {isExpanded ? (
@@ -1200,14 +1200,14 @@ export function AppDashboard() {
               </button>
 
               {/* Global Finder Input */}
-              <div className="relative flex-1 max-w-[160px] xs:max-w-xs sm:max-w-sm">
+              <div className="relative flex-1 max-w-[160px] xs:max-w-xs sm:max-w-md lg:max-w-lg">
                 <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 pr-0 pt-0 pb-0 mr-[6px] -ml-[12px]" />
                 <input
                   type="text"
                   placeholder="Cari fitur, event, beasiswa, atau barang..."
                   value={globalSearch}
                   onChange={(e) => setGlobalSearch(e.target.value)}
-                  className="w-full h-10 text-xs pl-[25px] pr-[10px] -ml-[7px] mr-0 mt-0 rounded-[12px] border border-slate-200 bg-slate-50 focus:outline-hidden focus:border-[#FF2D75] focus:bg-white transition-all text-slate-800 font-extrabold"
+                  className="w-full h-11 text-xs pl-[25px] pr-[10px] -ml-[7px] mr-0 mt-0 rounded-2xl border border-sky-200 bg-white focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-extrabold"
                 />
 
                 {/* Instant Search Results Dropdown overlay */}
@@ -1319,7 +1319,7 @@ export function AppDashboard() {
                     setProfileDropdown(!profileDropdown);
                     setNotificationOpen(false);
                   }}
-                  className={`profile-trigger flex items-center gap-2 border border-slate-200 rounded-[13px] p-1 md:pr-4 shadow-xs hover:scale-102 transition-all cursor-pointer ${
+                  className={`profile-trigger flex items-center gap-2 border border-slate-200/80 rounded-2xl p-1 md:pr-4 shadow-xs hover:scale-102 transition-all cursor-pointer ${
                     profileDropdown ? "bg-white" : "bg-white hover:bg-slate-50"
                   }`}
                 >
