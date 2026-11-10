@@ -539,7 +539,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       )}
       
       {/* Title & Credit System Selector */}
-      <div className="bg-white/40 backdrop-blur-md p-5 rounded-3xl border border-white/60 flex flex-col lg:flex-row justify-between lg:items-center gap-5">
+      <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col lg:flex-row justify-between lg:items-center gap-5">
         <div className="space-y-1.5 flex-1">
           <h2 className="text-2xl font-black font-display text-slate-800 leading-tight">
             Detail Akademik & Kartu Hasil Studi (KHS){" "}
@@ -559,7 +559,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
             <select
               value={creditSystem}
               onChange={(e) => setCreditSystem(e.target.value)}
-              className="w-full sm:w-72 bg-white/90 backdrop-blur-lg border border-pink-200/80 hover:border-pink-300 focus:outline-hidden focus:ring-2 focus:ring-pink-100 p-3 pr-10 rounded-2xl text-xs font-black text-slate-800 appearance-none shadow-xs cursor-pointer transition-all"
+              className="w-full sm:w-72 bg-white border border-pink-200/80 hover:border-pink-300 focus:outline-hidden focus:ring-2 focus:ring-pink-100 p-3 pr-10 rounded-2xl text-xs font-black text-slate-800 appearance-none shadow-xs cursor-pointer transition-all"
             >
               {CREDIT_SYSTEMS.map((sys) => (
                 <option key={sys.id} value={sys.id}>
@@ -577,7 +577,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       </div>
 
       {/* Selected Credit System Info Banner */}
-      <div className="bg-white/40 backdrop-blur-md p-4.5 rounded-3xl border border-white/60 flex flex-col sm:flex-row items-start sm:items-center gap-3.5 animate-in fade-in duration-200">
+      <div className="bg-[#fdfdfe] p-4.5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col sm:flex-row items-start sm:items-center gap-3.5 animate-in fade-in duration-200">
         <div className="w-10 h-10 bg-white rounded-xl shadow-2xs flex items-center justify-center text-xl shrink-0">
           <span>{activeSystem.flag}</span>
         </div>
@@ -601,7 +601,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       {/* Stats Cards Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <div className="bg-white/40 backdrop-blur-md p-5 rounded-3xl border border-white/60 flex items-center gap-4 hover:bg-white/50 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-[#FF2D75] rounded-2xl shadow-xs">
             <GraduationCap size={22} />
           </div>
@@ -612,7 +612,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
           </div>
         </div>
 
-        <div className="bg-white/40 backdrop-blur-md p-5 rounded-3xl border border-white/60 flex items-center gap-4 hover:bg-white/50 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-[#FF2D75] rounded-2xl shadow-xs">
             <BookOpen size={22} />
           </div>
@@ -623,7 +623,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
           </div>
         </div>
 
-        <div className="bg-white/40 backdrop-blur-md p-5 rounded-3xl border border-white/60 flex items-center gap-4 hover:bg-white/50 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-sky-600 rounded-2xl shadow-xs">
             <Clock size={22} />
           </div>
@@ -636,7 +636,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
           </div>
         </div>
 
-        <div className="bg-white/40 backdrop-blur-md p-5 rounded-3xl border border-white/60 flex items-center gap-4 hover:bg-white/50 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-emerald-600 rounded-2xl shadow-xs">
             <PartyPopper size={22} className="text-emerald-600 animate-pulse" />
           </div>
@@ -830,11 +830,11 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       </div>
 
       {/* Filter and Search Section */}
-      <div className="bg-white/45 backdrop-blur-md p-4 rounded-3xl border border-white/60 flex flex-col md:flex-row justify-between gap-4">
+      <div className="bg-[#fdfdfe] p-4 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col md:flex-row justify-between gap-4">
         <div className="flex gap-1.5 shrink-0 max-w-full overflow-x-auto pb-1.5 md:pb-0 items-center">
           <button
             onClick={() => setSemesterFilter(0)}
-            className={`px-3 py-2 text-xs font-bold rounded-xl transition-all whitespace-nowrap cursor-pointer ${semesterFilter === 0 ? "bg-gradient-to-r from-pink-500 to-[#FF2D75] text-white shadow-md" : "bg-white/60 text-slate-600 hover:bg-white/80 border border-white/85"}`}
+            className={`px-3 py-2 text-xs font-bold rounded-xl transition-all whitespace-nowrap cursor-pointer ${semesterFilter === 0 ? "bg-gradient-to-r from-pink-500 to-[#FF2D75] text-white shadow-md" : "bg-white text-slate-600 hover:bg-white/80 border border-white/85"}`}
           >
             Semua
           </button>
@@ -842,7 +842,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
             <button
               key={sem}
               onClick={() => setSemesterFilter(sem)}
-              className={`px-3.5 py-2 text-xs font-bold rounded-xl transition-all whitespace-nowrap cursor-pointer ${semesterFilter === sem ? "bg-gradient-to-r from-pink-500 to-[#FF2D75] text-white shadow-md" : "bg-white/60 text-slate-600 hover:bg-white/80 border border-white/85"}`}
+              className={`px-3.5 py-2 text-xs font-bold rounded-xl transition-all whitespace-nowrap cursor-pointer ${semesterFilter === sem ? "bg-gradient-to-r from-pink-500 to-[#FF2D75] text-white shadow-md" : "bg-white text-slate-600 hover:bg-white/80 border border-white/85"}`}
             >
               Sem. {sem} {sem === 6 ? "(Kini)" : ""}
             </button>
@@ -869,7 +869,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
               placeholder="Cari matkul, kode, atau dosen..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full text-xs pl-10 pr-4 py-2.5 rounded-2xl border border-pink-100 focus:outline-hidden focus:border-pink-300 bg-white/60 font-semibold"
+              className="w-full text-xs pl-10 pr-4 py-2.5 rounded-2xl border border-pink-100 focus:outline-hidden focus:border-pink-300 bg-white font-semibold"
             />
           </div>
           <button
@@ -883,11 +883,11 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       </div>
 
       {/* Academic course Table/Cards */}
-      <div className="bg-white/45 backdrop-blur-md border border-white/60 rounded-3xl overflow-hidden shadow-xs">
+      <div className="bg-[#fdfdfe] border border-white rounded-[28px] overflow-hidden shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs text-slate-650 border-collapse">
             <thead>
-              <tr className="bg-white/40 border-b border-white/60 text-[10px] uppercase font-black text-slate-500 tracking-wider">
+              <tr className="bg-slate-50 border-b border-slate-100 text-[10px] uppercase font-black text-slate-500 tracking-wider">
                 <th className="py-3.5 px-5">Kode Matkul</th>
                 <th className="py-3.5 px-5">Nama Mata Kuliah</th>
                 <th className="py-3.5 px-5 text-center">Semester</th>
@@ -899,7 +899,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
             </thead>
             <tbody className="divide-y divide-white/40">
               {filteredCourses.map((c) => (
-                <tr key={c.id} className="hover:bg-white/50 transition-colors">
+                <tr key={c.id} className="hover:bg-sky-50 transition-colors">
                   <td className="py-4 px-5 font-black text-[#FF2D75]" style={{ fontFamily: "Inter, sans-serif" }}>{c.code}</td>
                   <td className="py-4 px-5 font-extrabold text-[#080808]">{c.name}</td>
                   <td className="py-4 px-5 text-center font-bold">{c.semester}</td>
@@ -918,7 +918,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
               ))}
               {filteredCourses.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="text-center py-12 text-slate-400 font-bold bg-white/20">
+                  <td colSpan={7} className="text-center py-12 text-slate-400 font-bold bg-slate-50/60">
                     Tidak ditemukan mata kuliah yang sesuai kata kunci pencarian.
                   </td>
                 </tr>
@@ -926,7 +926,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
             </tbody>
           </table>
         </div>
-        <div className="bg-white/60 p-4 border-t border-white/60 flex justify-between items-center text-[11px] font-black text-slate-500">
+        <div className="bg-slate-50 p-4 border-t border-slate-100 flex justify-between items-center text-[11px] font-black text-slate-500">
           <span>Menampilkan {filteredCourses.length} Mata Kuliah</span>
           <span className="text-[#FF2D75]">Total Terpilih: {convertSks(totalSksEnroll)} {activeSystem.unit}</span>
         </div>
@@ -935,7 +935,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       {/* Add KRS Course Modal */}
       {showAddModal && typeof document !== 'undefined' && createPortal(
         <div className="fixed inset-0 z-[99999] bg-black/40 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-white/90 backdrop-blur-xl rounded-2xl max-w-sm w-full shadow-2xl border border-white/80 overflow-hidden text-left transform animate-in fade-in duration-200">
+          <div className="bg-[#fdfdfe] rounded-2xl max-w-sm w-full shadow-2xl border border-white/80 overflow-hidden text-left transform animate-in fade-in duration-200">
             <div className="bg-gradient-to-r from-pink-500 to-[#FF2D75] text-white p-5 flex justify-between items-center">
               <h3 className="font-black font-display text-sm flex items-center gap-1">
                 Tambah Rencana Kelas (KRS Mandiri)
@@ -957,7 +957,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
                   required
                   value={newCode}
                   onChange={(e) => setNewCode(e.target.value)}
-                  className="w-full border border-pink-100/80 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/60 text-slate-800"
+                  className="w-full border border-pink-100/80 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-slate-800"
                 />
               </div>
 
@@ -969,7 +969,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
                   required
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
-                  className="w-full border border-pink-100/80 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/60 text-slate-800"
+                  className="w-full border border-pink-100/80 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-slate-800"
                 />
               </div>
 
@@ -994,7 +994,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
                     placeholder="Contoh: Ruang 305 atau LAB"
                     value={newRoom}
                     onChange={(e) => setNewRoom(e.target.value)}
-                    className="w-full border border-pink-100/80 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/60 text-slate-800"
+                    className="w-full border border-pink-100/80 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-slate-800"
                   />
                 </div>
               </div>
@@ -1007,7 +1007,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
                   required
                   value={newLecturer}
                   onChange={(e) => setNewLecturer(e.target.value)}
-                  className="w-full border border-pink-100/80 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/60 text-slate-800"
+                  className="w-full border border-pink-100/80 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-slate-800"
                 />
               </div>
 
@@ -1046,7 +1046,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
                     placeholder="08:00 - 10:30"
                     value={newTime}
                     onChange={(e) => setNewTime(e.target.value)}
-                    className="w-full border border-pink-100/80 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/60 text-slate-800"
+                    className="w-full border border-pink-100/80 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-slate-800"
                   />
                 </div>
               </div>
@@ -1075,7 +1075,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       {/* Add Semester Modal */}
       {showAddSemesterModal && typeof document !== 'undefined' && createPortal(
         <div className="fixed inset-0 z-[99999] bg-black/40 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-xl rounded-2xl w-full max-w-xs shadow-2xl border border-white/80 overflow-hidden transform animate-in fade-in duration-150 text-left">
+          <div className="bg-[#fdfdfe] rounded-2xl w-full max-w-xs shadow-2xl border border-white/80 overflow-hidden transform animate-in fade-in duration-150 text-left">
             <div className="bg-gradient-to-r from-pink-500 to-[#FF2D75] text-white p-4.5 flex justify-between items-center">
               <h3 className="font-black font-display text-xs flex items-center gap-1.5 uppercase tracking-wide">
                 <Plus size={15} strokeWidth={3} />
