@@ -146,7 +146,7 @@ export default function ZonamuView({
     <div className="space-y-6 text-left relative z-10">
       
       {/* Title */}
-      <div className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="space-y-1">
           <h2 className="text-xl md:text-2xl font-black font-display text-slate-900 leading-tight">
             Profile (Laporan Aktivitas Mahasiswa){" "}
@@ -161,7 +161,7 @@ export default function ZonamuView({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         
         {/* Left Column: Personal info summary */}
-        <div className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs space-y-5">
+        <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-5">
           <div className="text-center space-y-4">
             <div className="relative mx-auto w-24 h-24">
               <img 
@@ -189,7 +189,7 @@ export default function ZonamuView({
                   required
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white/60 font-semibold text-slate-800"
+                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white font-semibold text-slate-800"
                 />
               </div>
 
@@ -200,7 +200,7 @@ export default function ZonamuView({
                   required
                   value={editMajor}
                   onChange={(e) => setEditMajor(e.target.value)}
-                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white/60 font-semibold text-slate-800"
+                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white font-semibold text-slate-800"
                 />
               </div>
 
@@ -224,7 +224,7 @@ export default function ZonamuView({
                     required
                     value={editNim}
                     onChange={(e) => setEditNim(e.target.value)}
-                    className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white/60 font-semibold text-slate-800"
+                    className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white font-semibold text-slate-800"
                   />
                 </div>
               </div>
@@ -239,7 +239,7 @@ export default function ZonamuView({
                   required
                   value={editGpa}
                   onChange={(e) => setEditGpa(e.target.value)}
-                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white/60 font-semibold text-slate-800"
+                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white font-semibold text-slate-800"
                 />
               </div>
 
@@ -252,7 +252,7 @@ export default function ZonamuView({
                   </label>
                   <label 
                     htmlFor="device-avatar-upload" 
-                    className="flex items-center justify-center gap-2 border-2 border-dashed border-pink-200/70 hover:border-pink-300 hover:bg-white bg-white/45 py-2 px-3 rounded-xl cursor-pointer transition-all text-center select-none"
+                    className="flex items-center justify-center gap-2 border-2 border-dashed border-pink-200/70 hover:border-pink-300 hover:bg-white bg-slate-50/60 py-2 px-3 rounded-xl cursor-pointer transition-all text-center select-none"
                   >
                     <Upload size={13} className="text-[#FF2D75]" />
                     <span className="text-[10px] text-slate-600 font-extrabold">Pilih Berkas Foto</span>
@@ -285,15 +285,15 @@ export default function ZonamuView({
             </form>
           ) : (
             <div className="space-y-3 pt-4 border-t border-slate-100 text-xs">
-              <div className="flex justify-between items-center bg-white/40 backdrop-blur-md p-3 rounded-2xl border border-white/50">
+              <div className="flex justify-between items-center bg-slate-50 p-3 rounded-2xl border border-slate-100">
                 <span className="text-slate-500 font-bold">NIM Mahasiswa:</span>
                 <span className="font-sans font-black text-[#FF2D75]">{profile.nim}</span>
               </div>
-              <div className="flex justify-between items-center bg-white/40 backdrop-blur-md p-3 rounded-2xl border border-white/50">
+              <div className="flex justify-between items-center bg-slate-50 p-3 rounded-2xl border border-slate-100">
                 <span className="text-slate-500 font-bold">IPK Kumulatif:</span>
                 <span className="font-sans font-black text-[#FF2D75]">{profile.gpa} <span className="text-pink-600 font-extrabold text-[10px] ml-1">({getIpkClassification(profile.gpa)})</span></span>
               </div>
-              <div className="flex justify-between items-center bg-white/40 backdrop-blur-md p-3 rounded-2xl border border-white/50">
+              <div className="flex justify-between items-center bg-slate-50 p-3 rounded-2xl border border-slate-100">
                 <span className="text-slate-500 font-bold">Semester:</span>
                 <span className="font-black text-[#2e1065]">{profile.semester} ({profile.semester % 2 === 0 ? "Genap" : "Ganjil"})</span>
               </div>
@@ -308,7 +308,7 @@ export default function ZonamuView({
                   setEditAvatar(profile.avatar);
                   setIsEditing(true);
                 }}
-                className="w-full py-2.5 border border-dashed border-pink-200 hover:border-pink-300 text-slate-600 hover:text-pink-600 font-extrabold text-center rounded-2xl transition-all cursor-pointer text-[11px] bg-white/20"
+                className="w-full py-2.5 border border-dashed border-pink-200 hover:border-pink-300 text-slate-600 hover:text-pink-600 font-extrabold text-center rounded-2xl transition-all cursor-pointer text-[11px] bg-slate-50/60"
               >
                 Ubah Data Profil Kamu
               </button>
@@ -318,7 +318,7 @@ export default function ZonamuView({
 
         {/* Right Columns: Dynamic statistics resume */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 shadow-xs">
+          <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
             <h3 className="font-extrabold font-display text-slate-800 text-sm mb-4">Ringkasan Riwayat Portofolio</h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -343,7 +343,7 @@ export default function ZonamuView({
           </div>
 
           {/* Grafik Perkembangan & Peningkatan Belajar */}
-          <div className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 shadow-xs space-y-5">
+          <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-slate-100">
               <div className="flex items-center gap-2 text-left">
                 <div className="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center shrink-0">
