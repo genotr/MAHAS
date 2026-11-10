@@ -22,8 +22,7 @@ body, input, button, textarea, select {
 }
 
 body {
-  background: radial-gradient(circle at 15% 15%, #f4faff 0%, #e0f2fe 30%, #bae6fd 60%, #e0f2fe 85%, #f0f9ff 100%);
-  background-attachment: fixed;
+  background: #c9edff;
   color: #1e293b;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
