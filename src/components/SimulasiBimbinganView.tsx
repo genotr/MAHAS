@@ -218,7 +218,7 @@ export default function SimulasiBimbinganView() {
     <div className="space-y-6 text-left relative z-10 font-sans">
       
       {/* View Title Header */}
-      <div className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-in fade-in duration-300">
+      <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-in fade-in duration-300">
         <div className="space-y-1">
           <h2 className="text-xl md:text-2xl font-black font-display text-slate-900 leading-tight">
             Simulasi Sidang & Bimbingan Skripsi AI{" "}
@@ -244,7 +244,7 @@ export default function SimulasiBimbinganView() {
         <div className="lg:col-span-5 space-y-6">
           
           {/* Character Selector Options */}
-          <div className="bg-white/80 backdrop-blur-md p-6 rounded-3xl border border-pink-100 shadow-sm space-y-4">
+          <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-4">
             <h3 className="font-extrabold text-[#2e1065] text-sm font-display">
               1. Tentukan Karakter Dosen Pembimbing
             </h3>
@@ -318,7 +318,7 @@ export default function SimulasiBimbinganView() {
           </div>
 
           {/* Title & Progress Inputs */}
-          <div className="bg-white/80 backdrop-blur-md p-6 rounded-3xl border border-pink-100 shadow-sm space-y-4 text-xs">
+          <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-4 text-xs">
             <h3 className="font-extrabold text-[#2e1065] text-sm font-display">
               2. Detail Kriteria Skripsi Anda
             </h3>
@@ -331,7 +331,7 @@ export default function SimulasiBimbinganView() {
                   required
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white/60 text-xs text-slate-800"
+                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs text-slate-800"
                   placeholder="Contoh: Implementasi Jaringan Syaraf Tiruan Untuk Klasifikasi Citra Rontgen Paru"
                 />
               </div>
@@ -354,7 +354,7 @@ export default function SimulasiBimbinganView() {
           </div>
 
           {/* File Drag & Drop Upload Zone */}
-          <div className="bg-white/80 backdrop-blur-md p-6 rounded-3xl border border-pink-100 shadow-sm space-y-4">
+          <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-4">
             <h3 className="font-extrabold text-[#2e1065] text-sm font-display">
               3. Unggah Berkas Skripsi (PDF / DOCX)
             </h3>
@@ -368,7 +368,7 @@ export default function SimulasiBimbinganView() {
               className={`border-2 border-dashed rounded-3xl p-6 flex flex-col items-center justify-center gap-2.5 cursor-pointer text-center transition-all ${
                 isDragging 
                   ? "border-[#FF2D75] bg-pink-50/50" 
-                  : "border-pink-150 bg-white/60 hover:bg-white hover:border-[#FF2D75]"
+                  : "border-pink-150 bg-white hover:bg-white hover:border-[#FF2D75]"
               }`}
             >
               <input 
@@ -414,7 +414,7 @@ export default function SimulasiBimbinganView() {
 
         {/* RIGHT COMPONENT: ACTIVE CHAT DIALOGUE WITH ADVISOR */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="bg-white/95 backdrop-blur-md rounded-[32px] border border-pink-100 shadow-sm flex flex-col justify-between overflow-hidden h-[635px]">
+          <div className="bg-[#fdfdfe] rounded-[32px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col justify-between overflow-hidden h-[635px]">
             
             {/* Adviser Active Identity Bar */}
             <div className="bg-gradient-to-r from-slate-700 via-zinc-800 to-zinc-950 px-5 py-4 flex justify-between items-center shrink-0">
