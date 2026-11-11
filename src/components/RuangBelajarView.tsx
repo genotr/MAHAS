@@ -2101,7 +2101,7 @@ export default function RuangBelajarView({
   return (
     <div className="space-y-6 pb-12 text-left">
       {/* Title block */}
-      <div className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <h1 className="text-xl md:text-2xl font-black font-display text-slate-900 leading-tight">
@@ -2151,7 +2151,7 @@ export default function RuangBelajarView({
             {soundEnabled ? <Volume2 size={15} /> : <VolumeX size={15} />}
           </button>
 
-          <div className="bg-white/90 border border-slate-200 px-3.5 py-1.5 rounded-2xl flex items-center gap-2 shadow-2xs">
+          <div className="bg-white border border-slate-200 px-3.5 py-1.5 rounded-2xl flex items-center gap-2 shadow-2xs">
             <Clock
               size={14}
               className="text-pink-500 animate-spin"
@@ -2176,7 +2176,7 @@ export default function RuangBelajarView({
             initial={{ opacity: 0, y: -15, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -15, scale: 0.95 }}
-            className="bg-green-50/90 backdrop-blur-md border border-green-200/90 p-4.5 rounded-3xl flex items-start gap-3.5 relative overflow-hidden shadow-md"
+            className="bg-green-50 border border-green-200/90 p-4.5 rounded-3xl flex items-start gap-3.5 relative overflow-hidden shadow-md"
           >
             <div className="w-9 h-9 rounded-full bg-green-150 flex items-center justify-center shrink-0 border border-green-200/50 shadow-xs">
               <Award className="text-green-600 animate-bounce" size={17} />
@@ -2204,7 +2204,7 @@ export default function RuangBelajarView({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* LEFT COMPACT PANEL (TECH SELECTION DETAILS) - 4 COLS */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 shadow-xs space-y-3.5">
+          <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white space-y-3.5 shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
             <h3 className="font-extrabold text-slate-800 text-xs uppercase tracking-wider">
               PILIH TEKNIK BELAJAR
             </h3>
@@ -2217,7 +2217,7 @@ export default function RuangBelajarView({
                 className={`w-full p-3 rounded-2xl border text-left transition-all cursor-pointer flex gap-3 relative overflow-hidden ${
                   selectedTech === "pomodoro"
                     ? "bg-slate-900 text-white border-slate-900 shadow-md scale-101"
-                    : "bg-white/60 hover:bg-white border-slate-200 text-slate-800"
+                    : "bg-white hover:bg-sky-50 border-slate-200 text-slate-800"
                 }`}
               >
                 <div
@@ -2254,7 +2254,7 @@ export default function RuangBelajarView({
                 className={`w-full p-3 rounded-2xl border text-left transition-all cursor-pointer flex gap-3 relative overflow-hidden ${
                   selectedTech === "feynman"
                     ? "bg-slate-900 text-white border-slate-900 shadow-md scale-101"
-                    : "bg-white/60 hover:bg-white border-slate-200 text-slate-800"
+                    : "bg-white hover:bg-sky-50 border-slate-200 text-slate-800"
                 }`}
               >
                 <div
@@ -2291,7 +2291,7 @@ export default function RuangBelajarView({
                 className={`w-full p-3 rounded-2xl border text-left transition-all cursor-pointer flex gap-3 relative overflow-hidden ${
                   selectedTech === "spaced"
                     ? "bg-slate-900 text-white border-slate-900 shadow-md scale-101"
-                    : "bg-white/60 hover:bg-white border-slate-200 text-slate-800"
+                    : "bg-white hover:bg-sky-50 border-slate-200 text-slate-800"
                 }`}
               >
                 <div
@@ -2330,7 +2330,7 @@ export default function RuangBelajarView({
                 className={`w-full p-3 rounded-2xl border text-left transition-all cursor-pointer flex gap-3 relative overflow-hidden ${
                   selectedTech === "recall"
                     ? "bg-slate-900 text-white border-slate-900 shadow-md scale-101"
-                    : "bg-white/60 hover:bg-white border-slate-200 text-slate-800"
+                    : "bg-white hover:bg-sky-50 border-slate-200 text-slate-800"
                 }`}
               >
                 <div
@@ -2367,7 +2367,7 @@ export default function RuangBelajarView({
                 className={`w-full p-3 rounded-2xl border text-left transition-all cursor-pointer flex gap-3 relative overflow-hidden ${
                   selectedTech === "cornell"
                     ? "bg-slate-900 text-white border-slate-900 shadow-md scale-101"
-                    : "bg-white/60 hover:bg-white border-slate-200 text-slate-800"
+                    : "bg-white hover:bg-sky-50 border-slate-200 text-slate-800"
                 }`}
               >
                 <div
@@ -2406,7 +2406,7 @@ export default function RuangBelajarView({
                 className={`w-full p-3 rounded-2xl border text-left transition-all cursor-pointer flex gap-3 relative overflow-hidden ${
                   selectedTech === "timeboxing"
                     ? "bg-slate-900 text-white border-slate-900 shadow-md scale-101"
-                    : "bg-white/60 hover:bg-white border-slate-200 text-slate-800"
+                    : "bg-white hover:bg-sky-50 border-slate-200 text-slate-800"
                 }`}
               >
                 <div
@@ -2445,7 +2445,7 @@ export default function RuangBelajarView({
                 className={`w-full p-3 rounded-2xl border text-left transition-all cursor-pointer flex gap-3 relative overflow-hidden ${
                   selectedTech === "mind-mapping"
                     ? "bg-slate-900 text-white border-slate-900 shadow-md scale-101"
-                    : "bg-white/60 hover:bg-white border-slate-200 text-slate-800"
+                    : "bg-white hover:bg-sky-50 border-slate-200 text-slate-800"
                 }`}
               >
                 <div
@@ -2477,7 +2477,7 @@ export default function RuangBelajarView({
             </div>
 
             {/* Explain the active method simply and comprehensively */}
-            <div className="bg-white/45 backdrop-blur-md rounded-2xl p-4 text-left border border-white/60 space-y-2 mt-4 shadow-xs">
+            <div className="bg-slate-50 rounded-2xl p-4 text-left border border-slate-100 space-y-2 mt-4 ">
               <span className="text-[9px] font-black uppercase text-[#FF2D75] tracking-widest block">
                 CARA KERJA METODE
               </span>
@@ -2628,7 +2628,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-white/45 backdrop-blur-md p-6.5 rounded-3xl border border-white/60 shadow-xs space-y-6 text-center"
+                className="bg-[#fdfdfe] p-6.5 rounded-[28px] border border-white space-y-6 text-center shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
               >
                 <div className="flex justify-between items-center pb-2.5 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -2911,7 +2911,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs space-y-5"
+                className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white space-y-5 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
               >
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -3157,7 +3157,7 @@ export default function RuangBelajarView({
                           <span className="text-[8.5px] font-black uppercase text-purple-600 tracking-wider flex items-center gap-1">
                             Pratinjau Hasil Format (Live Preview)
                           </span>
-                          <div className="p-2.5 bg-white/70 border border-slate-150 rounded-lg shadow-3xs max-h-36 overflow-y-auto">
+                          <div className="p-2.5 bg-slate-50 border border-slate-150 rounded-lg shadow-3xs max-h-36 overflow-y-auto">
                             {renderFormattedText(feynmanExplanation)}
                           </div>
                         </div>
@@ -3345,7 +3345,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs space-y-5"
+                className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white space-y-5 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
               >
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -3438,7 +3438,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs space-y-5"
+                className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white space-y-5 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
               >
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -3661,7 +3661,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 shadow-xs space-y-4"
+                className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white space-y-4 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
               >
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -3843,7 +3843,7 @@ export default function RuangBelajarView({
                       <span className="text-[8px] font-black uppercase text-purple-600 tracking-wider flex items-center gap-1">
                         Format Hasil Pratinjau
                       </span>
-                      <div className="p-2.5 bg-white/70 border border-slate-155 rounded-lg shadow-3xs max-h-24 overflow-y-auto">
+                      <div className="p-2.5 bg-slate-50 border border-slate-155 rounded-lg shadow-3xs max-h-24 overflow-y-auto">
                         {renderFormattedText(cornellRight)}
                       </div>
                     </div>
@@ -3888,7 +3888,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs space-y-5 text-center"
+                className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white space-y-5 text-center shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
               >
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -4116,7 +4116,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-white/45 backdrop-blur-md p-6 rounded-3xl border border-white/60 shadow-xs space-y-6"
+                className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white space-y-6 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
               >
                 {/* Header Section */}
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pb-4 border-b border-slate-200">
@@ -4156,7 +4156,7 @@ export default function RuangBelajarView({
                       placeholder="Cari matakuliah, topik, dosen, atau isi catatan..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full text-xs pl-9 pr-4 py-2.5 bg-white/70 border border-slate-200/80 rounded-xl text-slate-800 focus:outline-hidden focus:border-pink-500 placeholder-slate-400 font-semibold"
+                      className="w-full text-xs pl-9 pr-4 py-2.5 bg-white border border-slate-200/80 rounded-xl text-slate-800 focus:outline-hidden focus:border-pink-500 placeholder-slate-400 font-semibold"
                     />
                     {searchTerm && (
                       <button
@@ -4187,7 +4187,7 @@ export default function RuangBelajarView({
                         className={`px-3 py-1.5 text-[10px] font-bold rounded-lg shrink-0 transition-all ${
                           selectedTag === "Semua"
                             ? "bg-pink-500 text-white shadow-xs"
-                            : "bg-white/80 border border-slate-200 text-slate-600 hover:bg-white"
+                            : "bg-white border border-slate-200 text-slate-600 hover:bg-sky-50"
                         }`}
                       >
                         Semua ({notes.length})
@@ -4205,7 +4205,7 @@ export default function RuangBelajarView({
                             className={`px-3 py-1.5 text-[10px] font-bold rounded-lg shrink-0 transition-all ${
                               selectedTag === tg
                                 ? "bg-pink-500 text-white shadow-xs"
-                                : "bg-white/80 border border-slate-200 text-slate-600 hover:bg-white"
+                                : "bg-white border border-slate-200 text-slate-600 hover:bg-sky-50"
                             }`}
                           >
                             {tg} ({count})
@@ -4222,7 +4222,7 @@ export default function RuangBelajarView({
                     <div
                       key={note.id}
                       onClick={() => setSelectedNote(note)}
-                      className="group p-5 bg-white/75 hover:bg-white rounded-2xl border border-slate-200/80 hover:border-pink-300 shadow-3xs hover:shadow-xs transition-all cursor-pointer text-left flex flex-col justify-between space-y-4"
+                      className="group p-5 bg-slate-50/70 hover:bg-white rounded-2xl border border-slate-200/80 hover:border-pink-300 shadow-3xs hover:shadow-xs transition-all cursor-pointer text-left flex flex-col justify-between space-y-4"
                     >
                       <div className="space-y-2">
                         <div className="flex justify-between items-start">
@@ -4333,7 +4333,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-white/45 backdrop-blur-md p-5 sm:p-6 rounded-3xl border border-white/60 shadow-xs space-y-6"
+                className="bg-[#fdfdfe] p-5 sm:p-6 rounded-[28px] border border-white space-y-6 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
               >
                 {/* Header Section */}
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pb-4 border-b border-slate-200">
@@ -4473,7 +4473,7 @@ export default function RuangBelajarView({
                       <div
                         onMouseDown={(e) => e.stopPropagation()}
                         onTouchStart={(e) => e.stopPropagation()}
-                        className="absolute right-4 bottom-4 z-30 flex items-center gap-1.5 bg-white/85 backdrop-blur-md border border-slate-200 p-1.5 rounded-2xl shadow-lg select-none pointer-events-auto"
+                        className="absolute right-4 bottom-4 z-30 flex items-center gap-1.5 bg-white border border-slate-200 p-1.5 rounded-2xl shadow-lg select-none pointer-events-auto"
                       >
                         <button
                           type="button"
@@ -5161,7 +5161,7 @@ CREATE TABLE nodes (
 
       {/* THREE PILLAR VISUAL STATS DASHBOARD - METRIC COUNTERS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 flex items-center gap-4 text-left shadow-xs">
+        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white flex items-center gap-4 text-left shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
           <div className="w-11 h-11 rounded-2xl bg-white text-[#FF2D75] border border-pink-100 shadow-xs flex items-center justify-center shrink-0">
             <Clock size={20} className="animate-pulse" />
           </div>
@@ -5178,7 +5178,7 @@ CREATE TABLE nodes (
           </div>
         </div>
 
-        <div className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 flex items-center gap-4 text-left shadow-xs">
+        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white flex items-center gap-4 text-left shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
           <div className="w-11 h-11 rounded-2xl bg-white text-indigo-600 border border-indigo-100 shadow-xs flex items-center justify-center shrink-0">
             <BarChart2 size={20} />
           </div>
@@ -5206,7 +5206,7 @@ CREATE TABLE nodes (
           </div>
         </div>
 
-        <div className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 flex items-center gap-4 text-left shadow-xs">
+        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white flex items-center gap-4 text-left shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
           <div className="w-11 h-11 rounded-2xl bg-white text-emerald-600 border border-emerald-100 shadow-xs flex items-center justify-center shrink-0">
             <Award size={20} />
           </div>
@@ -5225,7 +5225,7 @@ CREATE TABLE nodes (
       </div>
 
       {/* METRIC VISUAL INTERACTIVE WEEKLY ACTIVITY GRID */}
-      <div className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 shadow-xs space-y-4">
+      <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white space-y-4 shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
         <h3 className="font-extrabold text-slate-850 text-xs uppercase tracking-wider flex items-center gap-2">
           <Calendar size={15} className="text-[#FF2D75]" />
           Jejak Belajar Harian
@@ -5260,7 +5260,7 @@ CREATE TABLE nodes (
                 key={dayNode.day}
                 type="button"
                 onClick={() => handleDayClick(dayNode, i)}
-                className="group p-3 bg-white/65 hover:bg-white hover:border-[#FF2D75]/45 rounded-3xl border border-slate-200/80 flex flex-col items-center justify-between gap-2.5 shadow-2xs cursor-pointer hover:shadow-md hover:scale-[1.04] active:scale-95 transition-all duration-200 text-center w-full min-h-[110px] focus:outline-none focus:ring-2 focus:ring-pink-100"
+                className="group p-3 bg-slate-50/70 hover:bg-white hover:border-[#FF2D75]/45 rounded-3xl border border-slate-200/80 flex flex-col items-center justify-between gap-2.5 shadow-2xs cursor-pointer hover:shadow-md hover:scale-[1.04] active:scale-95 transition-all duration-200 text-center w-full min-h-[110px] focus:outline-none focus:ring-2 focus:ring-pink-100"
                 title={`Klik untuk detail sesi hari ${dayNode.day}`}
               >
               <span className="text-[10px] font-black text-slate-500 uppercase tracking-wide group-hover:text-slate-800 transition-colors">
@@ -5306,7 +5306,7 @@ CREATE TABLE nodes (
       </div>
 
       {/* SESSION LOG LIST RECORD TABULAR */}
-      <div className="bg-white/45 backdrop-blur-md p-5 rounded-3xl border border-white/60 shadow-xs space-y-4">
+      <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white space-y-4 shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
         <div className="flex justify-between items-center">
           <h3 className="font-extrabold text-slate-850 text-xs uppercase tracking-wider flex items-center gap-2">
             <ListTodo size={15} className="text-purple-600" />
@@ -5319,7 +5319,7 @@ CREATE TABLE nodes (
           {logs.map((item) => (
             <div
               key={item.id}
-              className="p-4 bg-white/70 hover:bg-white rounded-3xl border border-slate-200/80 transition-all flex flex-col md:flex-row justify-between items-start md:items-center gap-3 shadow-2xs text-left"
+              className="p-4 bg-slate-50/70 hover:bg-white rounded-3xl border border-slate-200/80 transition-all flex flex-col md:flex-row justify-between items-start md:items-center gap-3 shadow-2xs text-left"
             >
               <div className="space-y-1 flex-1 min-w-0 pr-4">
                 <div className="flex items-center gap-2.5 flex-wrap">
@@ -5409,7 +5409,7 @@ CREATE TABLE nodes (
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 350 }}
-              className="bg-white/95 backdrop-blur-xl border border-white/90 shadow-2xl rounded-3xl max-w-sm w-full p-6 text-left space-y-4 relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
+              className="bg-[#fdfdfe] border border-white shadow-2xl rounded-[28px] max-w-sm w-full p-6 text-left space-y-4 relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
             >
               {/* Decorative top shimmer bar */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-pink-500 via-indigo-500 to-cyan-500" />
@@ -5534,7 +5534,7 @@ CREATE TABLE nodes (
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white/95 backdrop-blur-xl border border-white/90 shadow-2xl rounded-3xl max-w-4xl w-full p-5 text-left relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
+              className="bg-[#fdfdfe] border border-white shadow-2xl rounded-[28px] max-w-4xl w-full p-5 text-left relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
             >
               {/* Top gradient indicator */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-pink-500 via-indigo-500 to-cyan-500" />
@@ -5994,7 +5994,7 @@ CREATE TABLE nodes (
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white/95 backdrop-blur-xl border border-white/90 shadow-2xl rounded-3xl max-w-lg w-full p-6 text-left space-y-4 relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
+              className="bg-[#fdfdfe] border border-white shadow-2xl rounded-[28px] max-w-lg w-full p-6 text-left space-y-4 relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
             >
               {/* Top accent line */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-pink-500 via-indigo-500 to-cyan-500" />
