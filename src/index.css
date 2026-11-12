@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+/* Skala radius & bayangan (mengikuti gaya Apple: 8 / 12 / 16 / 24 / 32) */
+@theme static {
+  --radius-chip: 0.5rem;      /* 8px  - chip, badge kecil */
+  --radius-control: 0.75rem;  /* 12px - tombol, input, tile */
+  --radius-inner: 1rem;       /* 16px - menu, kotak dalam kartu */
+  --radius-card: 1.5rem;      /* 24px - kartu, header */
+  --radius-panel: 2rem;       /* 32px - sidebar, hero, panel besar, modal */
+  --shadow-card: 0 8px 24px rgba(70, 140, 190, 0.12);
+}
+
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Inter", var(--font-sans);
@@ -1391,4 +1402,3 @@ input.hide-native-picker-icon::-webkit-calendar-picker-indicator {
   width: 0 !important;
   height: 0 !important;
 }
-
