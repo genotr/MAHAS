@@ -224,7 +224,7 @@ export default function SimulasiBimbinganView() {
             Simulasi Sidang & Bimbingan Skripsi AI{" "}
             <GraduationCap className="text-[#FF2D75] inline-block align-middle ml-1.5" size={24} />
           </h2>
-          <p className="text-xs text-slate-500 leading-normal font-semibold">
+          <p className="text-sm text-slate-600 leading-normal font-semibold max-w-prose">
             Rasakan simulasi mental bimbingan tugas akhir skripsi interaktif. Pilih tipe dosen pembimbing dambaanmu atau pembimbing killer teruji, unggah berkas draf tulisanmu, dan lakukan tanya-jawab ulasan draf ilmiah instan!
           </p>
         </div>
@@ -259,7 +259,7 @@ export default function SimulasiBimbinganView() {
                 }`}
               >
                 {character === "angel" && (
-                  <span className="absolute top-2 right-2 bg-emerald-500 text-white p-1 rounded-full text-[8px] font-black leading-none">
+                  <span className="absolute top-2 right-2 bg-emerald-500 text-white p-1 rounded-full text-xs font-black leading-none">
                     ACTIVE
                   </span>
                 )}
@@ -267,7 +267,7 @@ export default function SimulasiBimbinganView() {
                   {renderAdvisorAvatar("angel", "border-2 border-slate-900", "sidebar")}
                   <div>
                     <p className="font-extrabold text-[12px] text-slate-850">Prof. Topus</p>
-                    <p className="text-[9px] text-emerald-700 font-black">Bertindak lembut</p>
+                    <p className="text-xs text-emerald-700 font-black">Bertindak lembut</p>
                   </div>
                 </div>
               </button>
@@ -281,7 +281,7 @@ export default function SimulasiBimbinganView() {
                 }`}
               >
                 {character === "devil" && (
-                  <span className="absolute top-2 right-2 bg-rose-600 text-white p-1 rounded-full text-[8px] font-black leading-none">
+                  <span className="absolute top-2 right-2 bg-rose-600 text-white p-1 rounded-full text-xs font-black leading-none">
                     ACTIVE
                   </span>
                 )}
@@ -289,7 +289,7 @@ export default function SimulasiBimbinganView() {
                   {renderAdvisorAvatar("devil", "border-2 border-slate-900", "sidebar")}
                   <div>
                     <p className="font-extrabold text-[12px] text-slate-850">Prof. Octo</p>
-                    <p className="text-[9px] text-rose-700 font-black">Menguji Kritis</p>
+                    <p className="text-xs text-rose-700 font-black">Menguji Kritis</p>
                   </div>
                 </div>
               </button>
@@ -301,17 +301,17 @@ export default function SimulasiBimbinganView() {
                 ? "border-emerald-500"
                 : "border-rose-500"
             }`}>
-              <p className={`font-extrabold text-[11px] ${
+              <p className={`font-extrabold text-xs ${
                 character === "angel" ? "text-emerald-700" : "text-rose-700"
               }`}>
                 {characterDetails[character].name}
               </p>
-              <p className={`text-[9px] font-bold ${
+              <p className={`text-xs font-bold ${
                 character === "angel" ? "text-emerald-600" : "text-rose-600"
               }`}>
                 {characterDetails[character].title}
               </p>
-              <p className="text-[10px] text-slate-600 leading-relaxed font-semibold italic mt-1">
+              <p className="text-xs text-slate-600 leading-relaxed font-semibold italic mt-1">
                 "{characterDetails[character].intro}"
               </p>
             </div>
@@ -331,7 +331,7 @@ export default function SimulasiBimbinganView() {
                   required
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs text-slate-800"
+                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-sm text-slate-800"
                   placeholder="Contoh: Implementasi Jaringan Syaraf Tiruan Untuk Klasifikasi Citra Rontgen Paru"
                 />
               </div>
@@ -341,7 +341,7 @@ export default function SimulasiBimbinganView() {
                 <select
                   value={progressStep}
                   onChange={(e) => setProgressStep(e.target.value)}
-                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs bg-white rounded-xl font-bold cursor-pointer"
+                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 text-sm bg-white rounded-xl font-bold cursor-pointer"
                 >
                   <option value="Bab 1 - Pendahuluan">Bab 1 - Pendahuluan</option>
                   <option value="Bab 2 - Tinjauan Pustaka">Bab 2 - Tinjauan Pustaka</option>
@@ -381,10 +381,10 @@ export default function SimulasiBimbinganView() {
               />
               <Upload size={24} className="text-[#FF2D75] animate-pulse" />
               <div>
-                <p className="text-xs font-black text-slate-800">Tarik & Lepas draf skripsi ke sini</p>
-                <p className="text-[10px] text-slate-400 font-bold mt-0.5">Atau klik untuk pilih file dari komputer Anda</p>
+                <p className="text-sm font-black text-slate-800 leading-normal">Tarik & Lepas draf skripsi ke sini</p>
+                <p className="text-xs text-slate-600 font-bold mt-0.5">Atau klik untuk pilih file dari komputer Anda</p>
               </div>
-              <span className="text-[8px] bg-slate-100 text-slate-500 font-black px-2 py-1 rounded-lg uppercase tracking-wider">
+              <span className="text-xs bg-slate-100 text-slate-500 font-black px-2 py-1 rounded-lg uppercase tracking-wider">
                 PDF, DOCX, DOC, TXT (MAKS. 50MB)
               </span>
             </div>
@@ -392,15 +392,15 @@ export default function SimulasiBimbinganView() {
             {/* List of successfully uploaded drafts */}
             {files.length > 0 && (
               <div className="space-y-2 text-xs">
-                <p className="font-bold text-slate-500 text-[10px] uppercase">DRAFS TERUNGGAH ({files.length}):</p>
+                <p className="font-bold text-slate-500 text-xs uppercase">DRAFS TERUNGGAH ({files.length}):</p>
                 <div className="space-y-1.5 max-h-32 overflow-y-auto">
                   {files.map((f, i) => (
                     <div key={i} className="flex justify-between items-center p-2.5 bg-emerald-50 rounded-xl border border-emerald-150">
                       <div className="flex items-center gap-2 min-w-0">
                         <FileText size={14} className="text-emerald-600 shrink-0" />
-                        <span className="font-bold text-slate-800 truncate text-[11px]">{f.name}</span>
+                        <span className="font-bold text-slate-800 truncate text-xs">{f.name}</span>
                       </div>
-                      <span className="text-[9px] text-emerald-700 bg-white border border-emerald-200 px-1.5 py-0.5 rounded-md font-bold uppercase tracking-wider shrink-0 font-mono">
+                      <span className="text-xs text-emerald-700 bg-white border border-emerald-200 px-1.5 py-0.5 rounded-md font-bold uppercase tracking-wider shrink-0 font-mono">
                         {f.size}
                       </span>
                     </div>
@@ -427,7 +427,7 @@ export default function SimulasiBimbinganView() {
                   <h4 className="font-extrabold text-[12px] text-white leading-tight">
                     {characterDetails[character].name}
                   </h4>
-                  <p className={`text-[9px] font-black uppercase tracking-wider mt-0.5 ${character === "angel" ? "text-emerald-400" : "text-[#FF2D75]"}`}>
+                  <p className={`text-xs font-black uppercase tracking-wider mt-0.5 ${character === "angel" ? "text-emerald-400" : "text-[#FF2D75]"}`}>
                     PEMBIMBING {character === "angel" ? "LEMBUT" : "KRITIS"} SAKTI
                   </p>
                 </div>
@@ -449,7 +449,7 @@ export default function SimulasiBimbinganView() {
                     {!isUser && renderAdvisorAvatar(character, "w-8 h-8 border border-slate-200 mt-1") }
                     
                     <div className="space-y-0.5 text-xs max-w-[80%]">
-                      <p className={`text-[9px] font-bold text-slate-400 ${isUser ? "text-right" : "text-left"}`}>
+                      <p className={`text-xs font-bold text-slate-600 ${isUser ? "text-right" : "text-left"}`}>
                         {isUser ? "Saya (Mahasiswa)" : characterDetails[character].name} • {msg.timestamp}
                       </p>
                       
@@ -490,7 +490,7 @@ export default function SimulasiBimbinganView() {
                 value={messageInput}
                 onChange={(e) => setMessageInput(e.target.value)}
                 disabled={isLoading}
-                className="flex-1 border border-pink-100 focus:outline-hidden focus:border-pink-300 p-3 rounded-2xl font-semibold text-xs bg-slate-50 text-slate-800 focus:bg-white transition-all"
+                className="flex-1 border border-pink-100 focus:outline-hidden focus:border-pink-300 p-3 rounded-2xl font-semibold text-sm bg-slate-50 text-slate-800 focus:bg-white transition-all"
               />
               <button
                 type="submit"
