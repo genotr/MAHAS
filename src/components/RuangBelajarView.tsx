@@ -2099,7 +2099,7 @@ export default function RuangBelajarView({
     circleCircumference - (timeboxPercentLeft / 100) * circleCircumference;
 
   return (
-    <div className="space-y-6 pb-12 text-left">
+    <div className="space-y-4 pb-12 text-left">
       {/* Title block */}
       <div className="bg-[#fdfdfe] p-6 rounded-card border border-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-card">
         <div className="space-y-1">
@@ -2201,9 +2201,9 @@ export default function RuangBelajarView({
       </AnimatePresence>
 
       {/* CORE CONFIGURATION AREA: POMODORO vs FEYNMAN SELECTOR */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
         {/* LEFT COMPACT PANEL (TECH SELECTION DETAILS) - 4 COLS */}
-        <div className="lg:col-span-4 space-y-6">
+        <div className="lg:col-span-4 space-y-4">
           <div className="bg-[#fdfdfe] p-6 rounded-card border border-white space-y-3.5 shadow-card">
             <h3 className="font-extrabold text-slate-800 text-xs uppercase tracking-wider">
               PILIH TEKNIK BELAJAR
@@ -2619,7 +2619,7 @@ export default function RuangBelajarView({
         </div>
 
         {/* RIGHT DISPLAY PANEL (ACTIVE WORKING WINDOWS) - 8 COLS */}
-        <div className="lg:col-span-8 space-y-6">
+        <div className="lg:col-span-8 space-y-4">
           <AnimatePresence mode="wait">
             {/* 1. POMODORO UI INTERFACE */}
             {selectedTech === "pomodoro" && (
@@ -4423,7 +4423,7 @@ export default function RuangBelajarView({
                 </div>
 
                 {/* Main Dual Pane Layout: Canvas vs Editor Sidebar */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
                   {/* INDEPENDENT CANVAS CONTAINER (12 cols: 8 cols for canvas) */}
                   <div className="lg:col-span-8 flex flex-col gap-2">
                     <div className="flex justify-between items-center px-1">
@@ -5076,7 +5076,7 @@ export default function RuangBelajarView({
                   </div>
 
                   {/* Grid 3 Columns Architecture Specs */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* Recommendation 1: Open Source Library */}
                     <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-2.5 text-left">
                       <span className="text-[8.5px] font-black text-indigo-700 bg-indigo-50 border border-indigo-150 px-2 py-0.5 rounded-full uppercase tracking-wider">
@@ -5160,7 +5160,7 @@ CREATE TABLE nodes (
       </div>
 
       {/* THREE PILLAR VISUAL STATS DASHBOARD - METRIC COUNTERS */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-[#fdfdfe] p-6 rounded-card border border-white flex items-center gap-4 text-left shadow-card">
           <div className="w-11 h-11 rounded-2xl bg-white text-[#FF2D75] border border-pink-100 shadow-xs flex items-center justify-center shrink-0">
             <Clock size={20} className="animate-pulse" />
@@ -5560,7 +5560,7 @@ CREATE TABLE nodes (
               {/* Scrollable container to keep the height beautifully constrained and robust */}
               <div className="flex-1 overflow-y-auto pr-1 py-3 scrollbar-thin scrollbar-thumb-slate-200 custom-scroll">
                 {/* Major grid layout: Form left side, Dictation and Voice Transcription right side */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   {/* FORM COLUMN */}
                   <form
                     onSubmit={handleSaveNote}
