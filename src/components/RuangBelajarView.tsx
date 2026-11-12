@@ -2101,7 +2101,7 @@ export default function RuangBelajarView({
   return (
     <div className="space-y-6 pb-12 text-left">
       {/* Title block */}
-      <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+      <div className="bg-[#fdfdfe] p-6 rounded-card border border-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-card">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <h1 className="text-xl md:text-2xl font-black font-display text-slate-900 leading-tight">
@@ -2204,7 +2204,7 @@ export default function RuangBelajarView({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* LEFT COMPACT PANEL (TECH SELECTION DETAILS) - 4 COLS */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white space-y-3.5 shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white space-y-3.5 shadow-card">
             <h3 className="font-extrabold text-slate-800 text-xs uppercase tracking-wider">
               PILIH TEKNIK BELAJAR
             </h3>
@@ -2628,7 +2628,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-[#fdfdfe] p-6.5 rounded-[28px] border border-white space-y-6 text-center shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
+                className="bg-[#fdfdfe] p-6.5 rounded-card border border-white space-y-6 text-center shadow-card"
               >
                 <div className="flex justify-between items-center pb-2.5 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -2911,7 +2911,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white space-y-5 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
+                className="bg-[#fdfdfe] p-6 rounded-card border border-white space-y-5 shadow-card"
               >
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -3345,7 +3345,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white space-y-5 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
+                className="bg-[#fdfdfe] p-6 rounded-card border border-white space-y-5 shadow-card"
               >
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -3438,7 +3438,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white space-y-5 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
+                className="bg-[#fdfdfe] p-6 rounded-card border border-white space-y-5 shadow-card"
               >
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -3661,7 +3661,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white space-y-4 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
+                className="bg-[#fdfdfe] p-5 rounded-card border border-white space-y-4 shadow-card"
               >
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -3888,7 +3888,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white space-y-5 text-center shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
+                className="bg-[#fdfdfe] p-6 rounded-card border border-white space-y-5 text-center shadow-card"
               >
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -4116,7 +4116,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white space-y-6 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
+                className="bg-[#fdfdfe] p-6 rounded-card border border-white space-y-6 shadow-card"
               >
                 {/* Header Section */}
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pb-4 border-b border-slate-200">
@@ -4333,7 +4333,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-[#fdfdfe] p-5 sm:p-6 rounded-[28px] border border-white space-y-6 shadow-[0_8px_24px_rgba(70,140,190,0.12)]"
+                className="bg-[#fdfdfe] p-5 sm:p-6 rounded-card border border-white space-y-6 shadow-card"
               >
                 {/* Header Section */}
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pb-4 border-b border-slate-200">
@@ -4443,7 +4443,7 @@ export default function RuangBelajarView({
                       onMouseLeave={handleCanvasMouseUp}
                       onTouchMove={handleCanvasTouchMove}
                       onTouchEnd={handleCanvasMouseUp}
-                      className="relative w-full h-[460px] bg-slate-50 border border-slate-200/80 rounded-[24px] overflow-hidden select-none cursor-grab active:cursor-grabbing shadow-inner flex items-center justify-center p-3"
+                      className="relative w-full h-[460px] bg-slate-50 border border-slate-200/80 rounded-card overflow-hidden select-none cursor-grab active:cursor-grabbing shadow-inner flex items-center justify-center p-3"
                       style={{
                         backgroundImage:
                           "radial-gradient(#cbd5e1 0.75px, transparent 0.75px), radial-gradient(#cbd5e1 0.75px, #f8fafc 0.75px)",
@@ -4741,7 +4741,7 @@ export default function RuangBelajarView({
 
                   {/* RIGHT SIDEBAR: NODE DETAILED CUSTOMISATION EDITOR (4 COLS) */}
                   <div className="lg:col-span-4 flex flex-col">
-                    <div className="bg-slate-50/70 border border-slate-200/60 rounded-[24px] p-4.5 space-y-4 flex-1 h-full flex flex-col justify-between">
+                    <div className="bg-slate-50/70 border border-slate-200/60 rounded-card p-4.5 space-y-4 flex-1 h-full flex flex-col justify-between">
                       {selectedNodeId ? (
                         (() => {
                           const activeNode = mindMapNodes.find(
@@ -5161,7 +5161,7 @@ CREATE TABLE nodes (
 
       {/* THREE PILLAR VISUAL STATS DASHBOARD - METRIC COUNTERS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white flex items-center gap-4 text-left shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white flex items-center gap-4 text-left shadow-card">
           <div className="w-11 h-11 rounded-2xl bg-white text-[#FF2D75] border border-pink-100 shadow-xs flex items-center justify-center shrink-0">
             <Clock size={20} className="animate-pulse" />
           </div>
@@ -5178,7 +5178,7 @@ CREATE TABLE nodes (
           </div>
         </div>
 
-        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white flex items-center gap-4 text-left shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white flex items-center gap-4 text-left shadow-card">
           <div className="w-11 h-11 rounded-2xl bg-white text-indigo-600 border border-indigo-100 shadow-xs flex items-center justify-center shrink-0">
             <BarChart2 size={20} />
           </div>
@@ -5206,7 +5206,7 @@ CREATE TABLE nodes (
           </div>
         </div>
 
-        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white flex items-center gap-4 text-left shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white flex items-center gap-4 text-left shadow-card">
           <div className="w-11 h-11 rounded-2xl bg-white text-emerald-600 border border-emerald-100 shadow-xs flex items-center justify-center shrink-0">
             <Award size={20} />
           </div>
@@ -5225,7 +5225,7 @@ CREATE TABLE nodes (
       </div>
 
       {/* METRIC VISUAL INTERACTIVE WEEKLY ACTIVITY GRID */}
-      <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white space-y-4 shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+      <div className="bg-[#fdfdfe] p-5 rounded-card border border-white space-y-4 shadow-card">
         <h3 className="font-extrabold text-slate-850 text-xs uppercase tracking-wider flex items-center gap-2">
           <Calendar size={15} className="text-[#FF2D75]" />
           Jejak Belajar Harian
@@ -5306,7 +5306,7 @@ CREATE TABLE nodes (
       </div>
 
       {/* SESSION LOG LIST RECORD TABULAR */}
-      <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white space-y-4 shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+      <div className="bg-[#fdfdfe] p-5 rounded-card border border-white space-y-4 shadow-card">
         <div className="flex justify-between items-center">
           <h3 className="font-extrabold text-slate-850 text-xs uppercase tracking-wider flex items-center gap-2">
             <ListTodo size={15} className="text-purple-600" />
@@ -5409,7 +5409,7 @@ CREATE TABLE nodes (
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 350 }}
-              className="bg-[#fdfdfe] border border-white shadow-2xl rounded-[28px] max-w-sm w-full p-6 text-left space-y-4 relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
+              className="bg-[#fdfdfe] border border-white shadow-2xl rounded-card max-w-sm w-full p-6 text-left space-y-4 relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
             >
               {/* Decorative top shimmer bar */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-pink-500 via-indigo-500 to-cyan-500" />
@@ -5534,7 +5534,7 @@ CREATE TABLE nodes (
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-[#fdfdfe] border border-white shadow-2xl rounded-[28px] max-w-4xl w-full p-5 text-left relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
+              className="bg-[#fdfdfe] border border-white shadow-2xl rounded-card max-w-4xl w-full p-5 text-left relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
             >
               {/* Top gradient indicator */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-pink-500 via-indigo-500 to-cyan-500" />
@@ -5994,7 +5994,7 @@ CREATE TABLE nodes (
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-[#fdfdfe] border border-white shadow-2xl rounded-[28px] max-w-lg w-full p-6 text-left space-y-4 relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
+              className="bg-[#fdfdfe] border border-white shadow-2xl rounded-card max-w-lg w-full p-6 text-left space-y-4 relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
             >
               {/* Top accent line */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-pink-500 via-indigo-500 to-cyan-500" />
