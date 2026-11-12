@@ -1051,7 +1051,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
   return (
     <div className="space-y-6 text-left relative z-10 font-sans">
       {/* SECTION A: HEADER & ACTIONS */}
-      <div className="bg-[#fdfdfe] rounded-[28px] border border-white p-5 md:p-6 shadow-[0_8px_24px_rgba(70,140,190,0.12)] relative">
+      <div className="bg-[#fdfdfe] rounded-card border border-white p-5 md:p-6 shadow-card relative">
         <div className="flex flex-col gap-4">
           <div className="flex items-start gap-3">
             <div className="text-left flex-1 space-y-3.5">
@@ -1128,7 +1128,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
       </div>
 
       {/* SECTION B: PENCARIAN & FILTER DISATUKAN */}
-      <div className="bg-[#fdfdfe] rounded-[28px] border border-white p-5 shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+      <div className="bg-[#fdfdfe] rounded-card border border-white p-5 shadow-card">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Search input */}
           <div className="relative">
@@ -1215,7 +1215,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               <div
                 key={note.id}
                 onClick={() => setSelectedNote(note)}
-                className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col justify-between hover:border-pink-100 hover:shadow-md transition-all duration-150 cursor-pointer group relative text-left will-change-transform"
+                className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex flex-col justify-between hover:border-pink-100 hover:shadow-md transition-all duration-150 cursor-pointer group relative text-left will-change-transform"
               >
                 <div className="space-y-3.5 text-left">
                   {/* Header status info */}
@@ -1300,7 +1300,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center p-8 bg-slate-50/60 border border-dashed border-slate-200 rounded-[28px] text-slate-400 space-y-3 min-h-[300px]">
+          <div className="flex flex-col items-center justify-center p-8 bg-slate-50/60 border border-dashed border-slate-200 rounded-card text-slate-400 space-y-3 min-h-[300px]">
             <FileText size={48} className="text-slate-300 stroke-1" />
             <p className="text-xs font-bold">Tidak ada catatan kelas "Suara Teks" yang cocok.</p>
           </div>
