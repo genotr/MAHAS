@@ -1981,7 +1981,7 @@ export default function RuangBelajarView({
       }
       if (part.startsWith("~~") && part.endsWith("~~")) {
         return (
-          <del key={i} className="line-through text-slate-400">
+          <del key={i} className="line-through text-slate-500">
             {part.slice(2, -2)}
           </del>
         );
@@ -2013,14 +2013,14 @@ export default function RuangBelajarView({
   const renderFormattedText = (text: string) => {
     if (!text)
       return (
-        <p className="text-slate-400 italic text-[11px]">
+        <p className="text-slate-600 italic text-xs">
           Belum ada tulisan... Mulai mengetik dan gunakan alat bantu format di
           atas.
         </p>
       );
     const lines = text.split("\n");
     return (
-      <div className="space-y-1 text-left text-xs text-slate-700 leading-relaxed font-semibold">
+      <div className="space-y-1 text-left text-sm text-slate-700 leading-relaxed font-semibold">
         {lines.map((line, idx) => {
           let isList = false;
           let content = line;
@@ -2109,14 +2109,14 @@ export default function RuangBelajarView({
               <Brain className="text-[#FF2D75] inline-block align-middle ml-1.5" size={24} />
             </h1>
           </div>
-          <p className="text-xs text-slate-500 leading-normal font-semibold">
+          <p className="text-sm text-slate-600 leading-normal font-semibold max-w-prose">
             Pusat optimalisasi produktivitas belajar Anda secara mandiri
             menggunakan teknik kognitif terbaik dunia.
           </p>
 
           {/* Quick-Access Banner for Suara Teks */}
           <div className="pt-2.5 flex flex-wrap items-center gap-2">
-            <span className="text-[10px] text-black font-black tracking-wider">
+            <span className="text-xs text-black font-black tracking-wider">
               AKSES FITUR UTAMA:
             </span>
             <button
@@ -2144,7 +2144,7 @@ export default function RuangBelajarView({
             className={`p-2.5 rounded-full border transition-all cursor-pointer ${
               soundEnabled
                 ? "bg-amber-50 text-amber-600 border-amber-200"
-                : "bg-slate-50 text-slate-400 border-slate-250"
+                : "bg-slate-50 text-slate-500 border-slate-250"
             }`}
             title={soundEnabled ? "Suara Aktif" : "Suara Senyap"}
           >
@@ -2158,7 +2158,7 @@ export default function RuangBelajarView({
               style={{ animationDuration: "6s" }}
             />
             <div className="text-left leading-tight">
-              <span className="text-[10px] text-slate-400 font-black block">
+              <span className="text-xs text-slate-500 font-black block">
                 PROGRES BULANAN
               </span>
               <span className="text-xs font-bold font-sans text-slate-800">
@@ -2185,13 +2185,13 @@ export default function RuangBelajarView({
               <h4 className="font-extrabold text-xs text-green-800">
                 Umpan Balik Kognitif Sukses!
               </h4>
-              <p className="text-[11px] text-slate-600 font-medium mt-0.5 leading-relaxed">
+              <p className="text-xs text-slate-600 font-medium mt-0.5 leading-relaxed">
                 {successBannerText}
               </p>
             </div>
             <button
               onClick={() => setShowProgressSuccessBanner(false)}
-              className="text-xs text-slate-400 hover:text-slate-800 font-black cursor-pointer bg-white px-2.5 py-1 border border-slate-150 rounded-lg shadow-2xs"
+              className="text-xs text-slate-500 hover:text-slate-800 font-black cursor-pointer bg-white px-2.5 py-1 border border-slate-150 rounded-lg shadow-2xs"
             >
               Tutup
             </button>
@@ -2204,7 +2204,7 @@ export default function RuangBelajarView({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* LEFT COMPACT PANEL (TECH SELECTION DETAILS) - 4 COLS */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white space-y-3.5 shadow-card">
+          <div className="bg-[#fdfdfe] p-6 rounded-card border border-white space-y-3.5 shadow-card">
             <h3 className="font-extrabold text-slate-800 text-xs uppercase tracking-wider">
               PILIH TEKNIK BELAJAR
             </h3>
@@ -2232,10 +2232,10 @@ export default function RuangBelajarView({
                 <div className="space-y-0.5">
                   <h4 className="font-extrabold text-xs">1. Teknik Pomodoro</h4>
                   <p
-                    className={`text-[10px] leading-normal ${
+                    className={`text-xs leading-normal ${
                       selectedTech === "pomodoro"
                         ? "text-slate-305 text-slate-300 font-medium"
-                        : "text-slate-500"
+                        : "text-slate-600"
                     }`}
                   >
                     Blok fokus terstruktur (25 menit belajar & 5 menit
@@ -2269,10 +2269,10 @@ export default function RuangBelajarView({
                 <div className="space-y-0.5 font-sans">
                   <h4 className="font-extrabold text-xs">2. Teknik Feynman</h4>
                   <p
-                    className={`text-[10px] leading-normal ${
+                    className={`text-xs leading-normal ${
                       selectedTech === "feynman"
                         ? "text-slate-305 text-slate-300 font-medium"
-                        : "text-slate-500"
+                        : "text-slate-600"
                     }`}
                   >
                     Sederhanakan materi kompleks seolah diajarkan ke anak kecil
@@ -2308,10 +2308,10 @@ export default function RuangBelajarView({
                     3. Spaced Repetition
                   </h4>
                   <p
-                    className={`text-[10px] leading-normal ${
+                    className={`text-xs leading-normal ${
                       selectedTech === "spaced"
                         ? "text-slate-305 text-slate-300 font-medium"
-                        : "text-slate-500"
+                        : "text-slate-600"
                     }`}
                   >
                     Belajar dalam beberapa sesi singkat berjarak berkala (1, 3,
@@ -2345,10 +2345,10 @@ export default function RuangBelajarView({
                 <div className="space-y-0.5">
                   <h4 className="font-extrabold text-xs">4. Active Recall</h4>
                   <p
-                    className={`text-[10px] leading-normal ${
+                    className={`text-xs leading-normal ${
                       selectedTech === "recall"
                         ? "text-slate-305 text-slate-300 font-medium"
-                        : "text-slate-500"
+                        : "text-slate-600"
                     }`}
                   >
                     Gali memori otak secara aktif lewat kuis mandiri & deck
@@ -2384,10 +2384,10 @@ export default function RuangBelajarView({
                     5. Catatan Cornell (Fischler)
                   </h4>
                   <p
-                    className={`text-[10px] leading-normal ${
+                    className={`text-xs leading-normal ${
                       selectedTech === "cornell"
                         ? "text-slate-305 text-slate-300 font-medium"
-                        : "text-slate-500"
+                        : "text-slate-600"
                     }`}
                   >
                     Format 3 bagian: kata kunci di kiri, catatan inti di kanan,
@@ -2423,10 +2423,10 @@ export default function RuangBelajarView({
                     6. Timeboxing (Eat the Frog)
                   </h4>
                   <p
-                    className={`text-[10px] leading-normal ${
+                    className={`text-xs leading-normal ${
                       selectedTech === "timeboxing"
                         ? "text-slate-305 text-slate-300 font-medium"
-                        : "text-slate-500"
+                        : "text-slate-600"
                     }`}
                   >
                     Tetapkan batas waktu absolut (60 menit) tanpa jeda demi
@@ -2460,10 +2460,10 @@ export default function RuangBelajarView({
                 <div className="space-y-0.5">
                   <h4 className="font-extrabold text-xs">7. Mind Mapping</h4>
                   <p
-                    className={`text-[10px] leading-normal ${
+                    className={`text-xs leading-normal ${
                       selectedTech === "mind-mapping"
                         ? "text-slate-305 text-slate-300 font-medium"
-                        : "text-slate-500"
+                        : "text-slate-600"
                     }`}
                   >
                     Visualisasikan peta konsep riset & materi kuliah lewat
@@ -2478,7 +2478,7 @@ export default function RuangBelajarView({
 
             {/* Explain the active method simply and comprehensively */}
             <div className="bg-slate-50 rounded-2xl p-4 text-left border border-slate-100 space-y-2 mt-4 ">
-              <span className="text-[9px] font-black uppercase text-[#FF2D75] tracking-widest block">
+              <span className="text-xs font-black uppercase text-[#FF2D75] tracking-widest block">
                 CARA KERJA METODE
               </span>
 
@@ -2487,7 +2487,7 @@ export default function RuangBelajarView({
                   <h5 className="font-extrabold text-xs text-slate-800">
                     Pomodoro 25/5 Cycle
                   </h5>
-                  <p className="text-[10px] text-slate-550 font-bold leading-normal">
+                  <p className="text-xs text-slate-550 font-bold leading-normal">
                     Diciptakan oleh Francesco Cirillo, teknik ini melatih otak
                     untuk fokus maksimal dalam rentang waktu terukur (25 menit),
                     dilanjutkan istirahat singkat (5 menit) guna memulihkan
@@ -2501,7 +2501,7 @@ export default function RuangBelajarView({
                   <h5 className="font-extrabold text-xs text-slate-800">
                     Feynman Mental Framework
                   </h5>
-                  <p className="text-[10px] text-slate-550 font-bold leading-normal">
+                  <p className="text-xs text-slate-550 font-bold leading-normal">
                     Sangat cocok untuk memahami materi yang rumit. Caranya
                     adalah dengan mempelajari suatu topik, lalu jelaskan konsep
                     tersebut menggunakan bahasa yang sangat
@@ -2517,7 +2517,7 @@ export default function RuangBelajarView({
                   <h5 className="font-extrabold text-xs text-slate-800">
                     Spaced Repetition
                   </h5>
-                  <p className="text-[10px] text-slate-550 font-bold leading-normal">
+                  <p className="text-xs text-slate-550 font-bold leading-normal">
                     Sangat ideal untuk persiapan ujian dan menghafal jangka
                     panjang. Alih-alih belajar dalam sistem sks (sistem kebut
                     semalam), pelajari materi dalam beberapa sesi singkat yang
@@ -2532,7 +2532,7 @@ export default function RuangBelajarView({
                   <h5 className="font-extrabold text-xs text-slate-800">
                     Active Recall
                   </h5>
-                  <p className="text-[10px] text-slate-550 font-bold leading-normal">
+                  <p className="text-xs text-slate-550 font-bold leading-normal">
                     Metode ini berfokus pada menggali informasi dari memori otak
                     secara aktif, bukan sekadar membaca ulang buku atau catatan.
                     Kamu bisa menggunakan flashcard (kartu kilat) atau membuat
@@ -2547,7 +2547,7 @@ export default function RuangBelajarView({
                   <h5 className="font-extrabold text-xs text-slate-800">
                     Teknik Cornell (The Fischler)
                   </h5>
-                  <p className="text-[10px] text-slate-550 font-bold leading-normal">
+                  <p className="text-xs text-slate-550 font-bold leading-normal">
                     Jika kamu lebih suka metode pencatatan yang terstruktur,
                     cobalah teknik Cornell. Bagi kertas menjadi tiga bagian:
                     kolom kiri untuk kata kunci/pertanyaan, kolom kanan untuk
@@ -2562,7 +2562,7 @@ export default function RuangBelajarView({
                   <h5 className="font-extrabold text-xs text-slate-800">
                     Timeboxing (Eat the Frog)
                   </h5>
-                  <p className="text-[10px] text-slate-550 font-bold leading-normal">
+                  <p className="text-xs text-slate-550 font-bold leading-normal">
                     Alternatif yang lebih luwes dibanding Pomodoro. Kamu
                     menetapkan batas waktu absolut (misalnya 60 menit) untuk
                     menyelesaikan satu tugas spesifik dan wajib mengerjakannya
@@ -2577,7 +2577,7 @@ export default function RuangBelajarView({
                   <h5 className="font-extrabold text-xs text-slate-800">
                     Catatan Kelas (Live Memo)
                   </h5>
-                  <p className="text-[10px] text-slate-550 font-bold leading-normal">
+                  <p className="text-xs text-slate-550 font-bold leading-normal">
                     Satukan seluruh rincian penjelasan dosen dengan asisten
                     verbatim pintar. Rekam & transkripsikan audio penjelasan
                     dosen saat di kelas langsung ke notepad, tandai pointer
@@ -2592,7 +2592,7 @@ export default function RuangBelajarView({
                   <h5 className="font-extrabold text-xs text-slate-800">
                     Mind Mapping (Peta Pikiran)
                   </h5>
-                  <p className="text-[10px] text-slate-550 font-bold leading-normal">
+                  <p className="text-xs text-slate-550 font-bold leading-normal">
                     Visualisasikan hubungan antarkonsep secara hierarkis pada
                     kanvas tanpa batas. Tambahkan sub-node, atur posisi secara
                     fleksibel lewat drag-and-drop, serta lengkapi node dengan
@@ -2604,7 +2604,7 @@ export default function RuangBelajarView({
 
             {/* Shared Subject input */}
             <div className="space-y-1.5 pt-2">
-              <label className="text-[9px] font-black uppercase text-slate-400 tracking-wider block">
+              <label className="text-xs font-black uppercase text-slate-500 tracking-wider block">
                 TOPIK / MATA KULIAH BELAJAR:
               </label>
               <input
@@ -2612,7 +2612,7 @@ export default function RuangBelajarView({
                 value={topicName}
                 onChange={(e) => setTopicName(e.target.value)}
                 placeholder="cth: Statistika Inferensial No. 3"
-                className="w-full text-xs font-extrabold px-3 py-2.5 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-slate-800 text-slate-800 focus:shadow-2xs"
+                className="w-full text-sm font-extrabold px-3 py-2.5 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-slate-800 text-slate-800 focus:shadow-2xs"
               />
             </div>
           </div>
@@ -2633,12 +2633,12 @@ export default function RuangBelajarView({
                 <div className="flex justify-between items-center pb-2.5 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
                     <Clock size={16} className="text-pink-500" />
-                    <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-black text-slate-500 uppercase tracking-wider">
                       Timer Fokus Kontrol
                     </span>
                   </div>
                   <span
-                    className={`text-[9px] font-black px-2.5 py-0.5 rounded-md ${
+                    className={`text-xs font-black px-2.5 py-0.5 rounded-md ${
                       isBreak
                         ? "bg-amber-100 text-amber-700"
                         : "bg-pink-100 text-[#FF2D75]"
@@ -2653,7 +2653,7 @@ export default function RuangBelajarView({
                   <button
                     type="button"
                     onClick={() => applyPreset("focus")}
-                    className={`px-3.5 py-1.5 rounded-full text-[10px] font-black transition-all cursor-pointer ${
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-black transition-all cursor-pointer ${
                       timerPresetIndex === "focus"
                         ? "bg-pink-500 text-white border-pink-500 shadow-md"
                         : "bg-white text-slate-500 hover:text-slate-800 border border-slate-200"
@@ -2664,7 +2664,7 @@ export default function RuangBelajarView({
                   <button
                     type="button"
                     onClick={() => applyPreset("shortBreak")}
-                    className={`px-3.5 py-1.5 rounded-full text-[10px] font-black transition-all cursor-pointer ${
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-black transition-all cursor-pointer ${
                       timerPresetIndex === "shortBreak"
                         ? "bg-amber-400 text-slate-900 border-amber-400 shadow-md"
                         : "bg-white text-slate-500 hover:text-slate-800 border border-slate-200"
@@ -2675,7 +2675,7 @@ export default function RuangBelajarView({
                   <button
                     type="button"
                     onClick={() => applyPreset("longBreak")}
-                    className={`px-3.5 py-1.5 rounded-full text-[10px] font-black transition-all cursor-pointer ${
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-black transition-all cursor-pointer ${
                       timerPresetIndex === "longBreak"
                         ? "bg-teal-500 text-white border-teal-500 shadow-md"
                         : "bg-white text-slate-500 hover:text-slate-800 border border-slate-200"
@@ -2846,7 +2846,7 @@ export default function RuangBelajarView({
                         triggerTimerEnd();
                       }
                     }}
-                    className="text-[9px] font-black border border-pink-200 bg-pink-50/50 hover:bg-pink-100 text-[#FF2D75] px-2.5 py-1.5 rounded-lg cursor-pointer transition-all uppercase"
+                    className="text-xs font-black border border-pink-200 bg-pink-50/50 hover:bg-pink-100 text-[#FF2D75] px-2.5 py-1.5 rounded-lg cursor-pointer transition-all uppercase"
                     title="Selesaikan waktu belajar instan"
                   >
                     Instan Selesai
@@ -2856,7 +2856,7 @@ export default function RuangBelajarView({
                 {/* Adjustable customize parameters inputs block */}
                 <div className="bg-slate-100/40 border border-slate-200/60 p-4.5 rounded-3xl text-left grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-[9px] font-black uppercase text-slate-500 block">
+                    <label className="text-xs font-black uppercase text-slate-500 block">
                       FOKUS POMODORO (MENIT)
                     </label>
                     <div className="flex items-center gap-1.5">
@@ -2870,16 +2870,16 @@ export default function RuangBelajarView({
                             Math.max(1, Number(e.target.value)),
                           )
                         }
-                        className="w-18 text-xs font-bold font-sans px-2 py-1 border border-slate-300 rounded-lg bg-white"
+                        className="w-18 text-sm font-bold font-sans px-2 py-1 border border-slate-300 rounded-lg bg-white"
                       />
-                      <span className="text-[10px] text-slate-400 font-bold">
+                      <span className="text-xs text-slate-500 font-bold">
                         menit
                       </span>
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-[9px] font-black uppercase text-slate-500 block">
+                    <label className="text-xs font-black uppercase text-slate-500 block">
                       ISTIRAHAT PENDEK (MENIT)
                     </label>
                     <div className="flex items-center gap-1.5">
@@ -2893,9 +2893,9 @@ export default function RuangBelajarView({
                             Math.max(1, Number(e.target.value)),
                           )
                         }
-                        className="w-18 text-xs font-bold font-sans px-2 py-1 border border-slate-300 rounded-lg bg-white"
+                        className="w-18 text-sm font-bold font-sans px-2 py-1 border border-slate-300 rounded-lg bg-white"
                       />
-                      <span className="text-[10px] text-slate-400 font-bold">
+                      <span className="text-xs text-slate-500 font-bold">
                         menit
                       </span>
                     </div>
@@ -2916,7 +2916,7 @@ export default function RuangBelajarView({
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
                     <Brain size={16} className="text-purple-600" />
-                    <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-black text-slate-500 uppercase tracking-wider">
                       Konsol Pemahaman Feynman
                     </span>
                   </div>
@@ -2927,10 +2927,10 @@ export default function RuangBelajarView({
                       <span
                         key={step}
                         onClick={() => setFeynmanStep(step as any)}
-                        className={`w-5.5 h-5.5 rounded-full flex items-center justify-center text-[10px] font-black cursor-pointer transition-all ${
+                        className={`w-5.5 h-5.5 rounded-full flex items-center justify-center text-xs font-black cursor-pointer transition-all ${
                           feynmanStep === step
                             ? "bg-gradient-to-r from-purple-500 to-indigo-600 text-white shadow-xs"
-                            : "bg-slate-100 text-slate-400 hover:bg-slate-200"
+                            : "bg-slate-100 text-slate-500 hover:bg-slate-200"
                         }`}
                       >
                         {step}
@@ -2951,7 +2951,7 @@ export default function RuangBelajarView({
                     {feynmanStep === 4 &&
                       "Langkah 4: Checklist Evaluasi Pemahaman & Gap Kognitif"}
                   </h4>
-                  <p className="text-[10px] text-slate-500 mt-0.5 leading-relaxed font-semibold">
+                  <p className="text-xs text-slate-600 mt-0.5 leading-relaxed font-semibold">
                     {feynmanStep === 1 &&
                       "Ketik konsep inti yang sedang Anda pelajari. Cobalah tuliskan deskripsi paling singkatnya."}
                     {feynmanStep === 2 &&
@@ -2968,7 +2968,7 @@ export default function RuangBelajarView({
                   {feynmanStep === 1 && (
                     <div className="space-y-4">
                       <div className="space-y-2 text-left">
-                        <label className="text-[10px] font-black text-slate-500 uppercase tracking-wide">
+                        <label className="text-xs font-black text-slate-500 uppercase tracking-wide">
                           Konsep Inti yang Ingin Dikuasai:
                         </label>
                         <input
@@ -2976,7 +2976,7 @@ export default function RuangBelajarView({
                           value={topicName}
                           onChange={(e) => setTopicName(e.target.value)}
                           placeholder="cth: Cara Kerja Big-O Notation pada Pencarian Binary Search"
-                          className="w-full text-xs font-extrabold px-3 py-2.5 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-purple-500 focus:shadow-2xs"
+                          className="w-full text-sm font-extrabold px-3 py-2.5 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-purple-500 focus:shadow-2xs"
                         />
                       </div>
 
@@ -2997,11 +2997,11 @@ export default function RuangBelajarView({
                         <div className="flex justify-between items-center">
                           <label
                             id="feynman-explanation-label"
-                            className="text-[10px] font-black text-slate-500 uppercase"
+                            className="text-xs font-black text-slate-500 uppercase"
                           >
                             Paparan Sederhana & Analogi Gagasan:
                           </label>
-                          <span className="text-[10px] text-slate-400 font-bold">
+                          <span className="text-xs text-slate-500 font-bold">
                             {feynmanExplanation.length} karakter
                           </span>
                         </div>
@@ -3136,7 +3136,7 @@ export default function RuangBelajarView({
                             <Quote size={13} className="text-indigo-500" />
                           </button>
 
-                          <span className="ml-auto text-[9px] font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-md uppercase tracking-wider">
+                          <span className="ml-auto text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-md uppercase tracking-wider">
                             Alat Bantu Format Aktif
                           </span>
                         </div>
@@ -3185,7 +3185,7 @@ export default function RuangBelajarView({
 
                   {feynmanStep === 3 && (
                     <div className="space-y-4 text-center py-2">
-                      <p className="text-xs font-extrabold text-slate-700">
+                      <p className="text-sm font-extrabold text-slate-700 leading-normal">
                         Latihlah artikulasi suaramu secara lisan.
                       </p>
 
@@ -3209,7 +3209,7 @@ export default function RuangBelajarView({
 
                         <div className="space-y-1">
                           <span
-                            className={`text-[10px] font-black uppercase tracking-wider block ${
+                            className={`text-xs font-black uppercase tracking-wider block ${
                               isRecordingSimulated
                                 ? "text-red-500"
                                 : "text-indigo-600"
@@ -3219,7 +3219,7 @@ export default function RuangBelajarView({
                               ? "● MEREKAM AKTIF..."
                               : "SIAP MEREKAM"}
                           </span>
-                          <p className="text-[10px] text-slate-400 font-bold px-4 max-w-sm">
+                          <p className="text-xs text-slate-600 font-bold px-4 max-w-sm">
                             {isRecordingSimulated
                               ? "Mulai jelaskan konsep sulitnya lewat suara keras. Tekan tombol jika sudah tuntas memaparkan."
                               : "Klik tombol mic di atas untuk memulai simulasi pengumpulan perekaman audio penjelasan materi."}
@@ -3243,7 +3243,7 @@ export default function RuangBelajarView({
                         {simulatedVoiceLog && (
                           <div className="mx-4 p-2.5 bg-green-50 border border-green-200 rounded-xl flex items-center justify-center gap-2">
                             <span className="text-xs">💾</span>
-                            <span className="text-[10px] font-sans text-green-800 font-extrabold">
+                            <span className="text-xs font-sans text-green-800 font-extrabold">
                               {simulatedVoiceLog}
                             </span>
                             <button
@@ -3252,7 +3252,7 @@ export default function RuangBelajarView({
                                 beep(400, 100);
                                 setSimulatedVoiceLog(null);
                               }}
-                              className="text-[9px] font-black text-rose-500 hover:text-rose-700 cursor-pointer"
+                              className="text-xs font-black text-rose-500 hover:text-rose-700 cursor-pointer"
                             >
                               Hapus
                             </button>
@@ -3283,7 +3283,7 @@ export default function RuangBelajarView({
                   {feynmanStep === 4 && (
                     <div className="space-y-4 text-left">
                       <div className="space-y-2.5">
-                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">
+                        <label className="text-xs font-black text-slate-500 uppercase tracking-widest block">
                           INSTRUMEN EVALUASI PEMAHAMAN MANDIRI:
                         </label>
 
@@ -3307,7 +3307,7 @@ export default function RuangBelajarView({
                               >
                                 {item.checked && <Check size={11} />}
                               </div>
-                              <span className="text-[11px] font-extrabold">
+                              <span className="text-xs font-extrabold">
                                 {item.label}
                               </span>
                             </div>
@@ -3350,11 +3350,11 @@ export default function RuangBelajarView({
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
                     <Layers size={16} className="text-teal-600" />
-                    <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-black text-slate-500 uppercase tracking-wider">
                       Spaced Repetition Scheduler
                     </span>
                   </div>
-                  <span className="text-[9px] font-black px-2.5 py-0.5 rounded-md bg-teal-100 text-teal-700">
+                  <span className="text-xs font-black px-2.5 py-0.5 rounded-md bg-teal-100 text-teal-700">
                     Fase Pengulangan Berkala
                   </span>
                 </div>
@@ -3363,7 +3363,7 @@ export default function RuangBelajarView({
                   <h4 className="text-xs font-black text-slate-800">
                     Sistem Belajar Mengatasi Lupa (Forgetting Curve)
                   </h4>
-                  <p className="text-[10px] text-slate-500 leading-normal font-semibold text-slate-500">
+                  <p className="text-xs text-slate-600 leading-normal font-semibold text-slate-600">
                     Alih-alih merutinkan SKS (Kebut Semalam), pecah pemahaman
                     Anda menjadi beberapa interval pengulangan di bawah ini.
                     Centang tiap kali Anda meninjau ulang topik ini!
@@ -3371,7 +3371,7 @@ export default function RuangBelajarView({
                 </div>
 
                 <div className="space-y-2 text-left">
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">
+                  <p className="text-xs font-black text-slate-500 uppercase tracking-widest block mb-1">
                     INTERVAL SESI & RENCANA REVIEW:
                   </p>
 
@@ -3401,7 +3401,7 @@ export default function RuangBelajarView({
                           </span>
                         </div>
                         <span
-                          className={`text-[10px] font-sans font-bold px-2 py-0.5 rounded-md ${
+                          className={`text-xs font-sans font-bold px-2 py-0.5 rounded-md ${
                             session.checked
                               ? "bg-teal-100 text-teal-850"
                               : "bg-slate-100 text-slate-505"
@@ -3415,7 +3415,7 @@ export default function RuangBelajarView({
                 </div>
 
                 <div className="flex justify-between items-center gap-2 pt-2 border-t border-slate-150">
-                  <span className="text-[10px] text-slate-400 font-bold block text-left">
+                  <span className="text-xs text-slate-500 font-bold block text-left">
                     *Mencatatkan progres akan menambah durasi belajar mandiri
                     Anda secara visual.
                   </span>
@@ -3443,14 +3443,14 @@ export default function RuangBelajarView({
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
                     <Bookmark size={16} className="text-amber-600" />
-                    <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-black text-slate-500 uppercase tracking-wider">
                       Active Recall Flashcards
                     </span>
                   </div>
                   <button
                     type="button"
                     onClick={() => setShowAddCard(!showAddCard)}
-                    className="text-[10px] bg-amber-500 hover:bg-amber-600 text-white px-2.5 py-1 rounded-lg font-black transition-all shadow-2xs"
+                    className="text-xs bg-amber-500 hover:bg-amber-600 text-white px-2.5 py-1 rounded-lg font-black transition-all shadow-2xs"
                   >
                     {showAddCard ? "Kembali Ke Dek" : "+ Tambah Kartu Baru"}
                   </button>
@@ -3458,7 +3458,7 @@ export default function RuangBelajarView({
 
                 {showAddCard ? (
                   <div className="space-y-4 text-left">
-                    <div className="bg-amber-50/50 p-3 rounded-xl border border-amber-200 text-[10px] text-amber-900 font-bold">
+                    <div className="bg-amber-50/50 p-3 rounded-xl border border-amber-200 text-xs text-amber-900 font-bold">
                       Tuliskan pertanyaan penguji di bagian depan, lalu kunci
                       jawabannya di bagian belakang untuk melatih daya ingat
                       Anda secara mandiri.
@@ -3466,7 +3466,7 @@ export default function RuangBelajarView({
 
                     <div className="space-y-3">
                       <div className="space-y-1">
-                        <label className="text-[10px] font-black text-slate-500 uppercase">
+                        <label className="text-xs font-black text-slate-500 uppercase">
                           Pertanyaan (Sisi Depan):
                         </label>
                         <input
@@ -3474,12 +3474,12 @@ export default function RuangBelajarView({
                           value={newQuestion}
                           onChange={(e) => setNewQuestion(e.target.value)}
                           placeholder="Cth: Apa kompleksitas waktu terburuk dari Bubble Sort?"
-                          className="w-full text-xs font-extrabold px-3 py-2.5 border border-slate-200 rounded-xl focus:outline-hidden focus:border-amber-500"
+                          className="w-full text-sm font-extrabold px-3 py-2.5 border border-slate-200 rounded-xl focus:outline-hidden focus:border-amber-500"
                         />
                       </div>
 
                       <div className="space-y-1">
-                        <label className="text-[10px] font-black text-slate-500 uppercase">
+                        <label className="text-xs font-black text-slate-500 uppercase">
                           Jawaban Kunci (Sisi Belakang):
                         </label>
                         <textarea
@@ -3487,7 +3487,7 @@ export default function RuangBelajarView({
                           value={newAnswer}
                           onChange={(e) => setNewAnswer(e.target.value)}
                           placeholder="Cth: O(n^2) karena memerlukan nested loops untuk membandingkan semua pasangan elemen."
-                          className="w-full text-xs font-bold leading-normal px-3 py-2.5 border border-slate-200 rounded-xl focus:outline-hidden focus:border-amber-500 h-20 text-slate-800"
+                          className="w-full text-sm font-bold leading-normal px-3 py-2.5 border border-slate-200 rounded-xl focus:outline-hidden focus:border-amber-500 h-20 text-slate-800"
                         />
                       </div>
                     </div>
@@ -3518,7 +3518,7 @@ export default function RuangBelajarView({
                           onClick={() => handleFlipCard(currentFcIndex)}
                           className="min-h-48 rounded-3xl border-2 border-dashed border-amber-200 bg-amber-50/20 hover:bg-amber-50/30 p-6 flex flex-col items-center justify-center relative cursor-pointer transition-all shadow-2xs group"
                         >
-                          <span className="absolute top-3 left-3 px-2.5 py-0.5 bg-amber-100 border border-amber-200 text-amber-800 text-[9px] font-black rounded-md tracking-wider">
+                          <span className="absolute top-3 left-3 px-2.5 py-0.5 bg-amber-100 border border-amber-200 text-amber-800 text-xs font-black rounded-md tracking-wider">
                             KARTU {currentFcIndex + 1} DARI {flashcards.length}
                           </span>
 
@@ -3530,33 +3530,33 @@ export default function RuangBelajarView({
                                 e,
                               )
                             }
-                            className="absolute top-2 right-2 p-1.5 hover:bg-pink-50 text-slate-400 hover:text-[#FF2D75] rounded-lg transition-all"
+                            className="absolute top-2 right-2 p-1.5 hover:bg-pink-50 text-slate-500 hover:text-[#FF2D75] rounded-lg transition-all"
                             title="Hapus Kartu ini"
                           >
                             <Trash2 size={13} className="text-[#FF2D75]" />
                           </button>
 
                           <div className="text-center space-y-3 px-4 py-2">
-                            <span className="text-[9px] font-black uppercase text-amber-600 block tracking-widest leading-none">
+                            <span className="text-xs font-black uppercase text-amber-600 block tracking-widest leading-none">
                               {flashcards[currentFcIndex].flipped
                                 ? "SISI BELAKANG (JAWABAN)"
                                 : "SISI DEPAN (PERTANYAAN)"}
                             </span>
 
-                            <p className="text-xs font-extrabold text-slate-800 leading-relaxed max-w-lg">
+                            <p className="text-sm font-extrabold text-slate-800 leading-relaxed max-w-lg">
                               {flashcards[currentFcIndex].flipped
                                 ? flashcards[currentFcIndex].answer
                                 : flashcards[currentFcIndex].question}
                             </p>
 
-                            <span className="text-[9px] font-black text-slate-400 group-hover:text-amber-500 block transition-all mt-1">
+                            <span className="text-xs font-black text-slate-500 group-hover:text-amber-500 block transition-all mt-1">
                               (Klik kartu untuk membalik)
                             </span>
                           </div>
 
                           {flashcards[currentFcIndex].correct !== null && (
                             <span
-                              className={`absolute bottom-3 right-3 text-[9px] font-black px-2 py-0.5 rounded-md ${
+                              className={`absolute bottom-3 right-3 text-xs font-black px-2 py-0.5 rounded-md ${
                                 flashcards[currentFcIndex].correct
                                   ? "bg-green-100 text-green-850"
                                   : "bg-red-100 text-red-750"
@@ -3643,7 +3643,7 @@ export default function RuangBelajarView({
                         <h5 className="font-extrabold text-xs text-slate-700">
                           Dek Kartu Kosong
                         </h5>
-                        <p className="text-[10px] text-slate-400 mt-0.5">
+                        <p className="text-xs text-slate-600 mt-0.5">
                           Mulai dengan menambahkan kartu kilat pertamamu di
                           kanan atas!
                         </p>
@@ -3661,7 +3661,7 @@ export default function RuangBelajarView({
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="bg-[#fdfdfe] p-5 rounded-card border border-white space-y-4 shadow-card"
+                className="bg-[#fdfdfe] p-6 rounded-card border border-white space-y-4 shadow-card"
               >
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
@@ -3669,11 +3669,11 @@ export default function RuangBelajarView({
                       size={16}
                       className="text-purple-650 text-purple-600"
                     />
-                    <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-black text-slate-500 uppercase tracking-wider">
                       Lembar Catatan Cornell (The Fischler)
                     </span>
                   </div>
-                  <span className="text-[9px] font-black px-2.5 py-0.5 rounded-md bg-purple-100 text-purple-700">
+                  <span className="text-xs font-black px-2.5 py-0.5 rounded-md bg-purple-100 text-purple-700">
                     Format Catatan Terstruktur
                   </span>
                 </div>
@@ -3682,7 +3682,7 @@ export default function RuangBelajarView({
                   <h4 className="text-xs font-black text-slate-800">
                     Bagi Pemikiran Anda Secara Geografis
                   </h4>
-                  <p className="text-[10px] text-slate-500 leading-normal font-semibold text-slate-500">
+                  <p className="text-xs text-slate-600 leading-normal font-semibold text-slate-600">
                     Atur kata kunci/pertanyaan penting di sebelah kiri, letakkan
                     poin catatan penjelasan detailnya di sebelah kanan, lalu
                     akhiri dengan merangkum materi secara luhur di kolom bawah
@@ -3693,7 +3693,7 @@ export default function RuangBelajarView({
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
                   {/* Left cues column (4 cols) */}
                   <div className="md:col-span-4 space-y-1.5 text-left">
-                    <label className="text-[9px] font-black uppercase text-purple-600 block">
+                    <label className="text-xs font-black uppercase text-purple-600 block">
                       KATA KUNCI / PERNYATAAN / CUES:
                     </label>
                     <textarea
@@ -3701,13 +3701,13 @@ export default function RuangBelajarView({
                       value={cornellLeft}
                       onChange={(e) => setCornellLeft(e.target.value)}
                       placeholder="Tuliskan keyword kritis / pertanyaan pemicu di sini...&#10;- Subyek OOP&#10;- Apa itu Enkapsulasi?&#10;- Kenapa penting?"
-                      className="w-full text-xs font-bold leading-relaxed px-3 py-2 border border-slate-200 rounded-xl bg-white focus:outline-hidden focus:border-purple-500 h-64 text-slate-800 custom-scroll resize-none"
+                      className="w-full text-sm font-bold leading-relaxed px-3 py-2 border border-slate-200 rounded-xl bg-white focus:outline-hidden focus:border-purple-500 h-64 text-slate-800 custom-scroll resize-none"
                     />
                   </div>
 
                   {/* Right main notes column (8 cols) */}
                   <div className="md:col-span-8 space-y-1.5 text-left">
-                    <label className="text-[9px] font-black uppercase text-slate-500 block">
+                    <label className="text-xs font-black uppercase text-slate-500 block">
                       POIN CATATAN INTI (SELAMA BELAJAR):
                     </label>
 
@@ -3723,7 +3723,7 @@ export default function RuangBelajarView({
                             "cornell-right-textarea",
                           )
                         }
-                        className="p-1 px-1.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-md text-slate-600 hover:text-slate-950 transition-all hover:scale-105 cursor-pointer flex items-center justify-center text-[10px]"
+                        className="p-1 px-1.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-md text-slate-600 hover:text-slate-950 transition-all hover:scale-105 cursor-pointer flex items-center justify-center text-xs"
                         title="Tebal (ctrl+b)"
                       >
                         <Bold size={11} className="mr-0.5" />B
@@ -3738,7 +3738,7 @@ export default function RuangBelajarView({
                             "cornell-right-textarea",
                           )
                         }
-                        className="p-1 px-1.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-md text-slate-600 hover:text-slate-950 transition-all hover:scale-105 cursor-pointer flex items-center justify-center text-[10px] italic"
+                        className="p-1 px-1.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-md text-slate-600 hover:text-slate-950 transition-all hover:scale-105 cursor-pointer flex items-center justify-center text-xs italic"
                         title="Miring (ctrl+i)"
                       >
                         <Italic size={11} className="mr-0.5" />I
@@ -3753,7 +3753,7 @@ export default function RuangBelajarView({
                             "cornell-right-textarea",
                           )
                         }
-                        className="p-1 px-1.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-md text-slate-600 hover:text-slate-950 transition-all hover:scale-105 cursor-pointer flex items-center justify-center text-[10px] underline"
+                        className="p-1 px-1.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-md text-slate-600 hover:text-slate-950 transition-all hover:scale-105 cursor-pointer flex items-center justify-center text-xs underline"
                         title="Garis Bawah"
                       >
                         <Underline size={11} className="mr-0.5" />U
@@ -3768,7 +3768,7 @@ export default function RuangBelajarView({
                             "cornell-right-textarea",
                           )
                         }
-                        className="p-1 px-1.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-md text-slate-600 hover:text-slate-950 transition-all hover:scale-105 cursor-pointer flex items-center justify-center text-[10px] line-through"
+                        className="p-1 px-1.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-md text-slate-600 hover:text-slate-950 transition-all hover:scale-105 cursor-pointer flex items-center justify-center text-xs line-through"
                         title="Coret"
                       >
                         <Strikethrough size={11} className="mr-0.5" />S
@@ -3840,7 +3840,7 @@ export default function RuangBelajarView({
 
                     {/* LIVE RENDER PREVIEW BOX */}
                     <div className="bg-slate-50/50 rounded-xl p-2.5 border border-dashed border-slate-200 text-left space-y-1">
-                      <span className="text-[8px] font-black uppercase text-purple-600 tracking-wider flex items-center gap-1">
+                      <span className="text-xs font-black uppercase text-purple-600 tracking-wider flex items-center gap-1">
                         Format Hasil Pratinjau
                       </span>
                       <div className="p-2.5 bg-slate-50 border border-slate-155 rounded-lg shadow-3xs max-h-24 overflow-y-auto">
@@ -3852,7 +3852,7 @@ export default function RuangBelajarView({
 
                 {/* Bottom summaries section */}
                 <div className="space-y-1.5 text-left pt-2">
-                  <label className="text-[9px] font-black uppercase text-pink-600 block">
+                  <label className="text-xs font-black uppercase text-pink-600 block">
                     RANGKUMAN MANIFESTASI (BAHASA SENDIRI):
                   </label>
                   <textarea
@@ -3860,12 +3860,12 @@ export default function RuangBelajarView({
                     value={cornellSummary}
                     onChange={(e) => setCornellSummary(e.target.value)}
                     placeholder="Tulis ringkasan padat paling mendasar yang menjelaskan seluruh topik di atas menggunakan tata bahasa paling kasual Anda..."
-                    className="w-full text-xs font-bold leading-relaxed px-3 py-2.5 border border-slate-200 rounded-xl bg-white focus:outline-hidden focus:border-purple-500 h-24 text-slate-800 resize-none"
+                    className="w-full text-sm font-bold leading-relaxed px-3 py-2.5 border border-slate-200 rounded-xl bg-white focus:outline-hidden focus:border-purple-500 h-24 text-slate-800 resize-none"
                   />
                 </div>
 
                 <div className="flex justify-between items-center gap-2 pt-2 border-t border-slate-150">
-                  <span className="text-[10px] text-slate-400 font-semibold text-left">
+                  <span className="text-xs text-slate-500 font-semibold text-left">
                     *Menyimpan Cornell Notes akan menyumbangkan durasi 30 menit
                     ke target progres mingguan.
                   </span>
@@ -3893,11 +3893,11 @@ export default function RuangBelajarView({
                 <div className="flex justify-between items-center pb-2 border-b border-slate-200">
                   <div className="flex items-center gap-1.5">
                     <Flame size={16} className="text-indigo-600" />
-                    <span className="text-[11px] font-black text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-black text-slate-500 uppercase tracking-wider">
                       Timer Timeboxing (Eat the Frog)
                     </span>
                   </div>
-                  <span className="text-[9px] font-black px-2.5 py-0.5 rounded-md bg-indigo-100 text-indigo-805 text-indigo-700">
+                  <span className="text-xs font-black px-2.5 py-0.5 rounded-md bg-indigo-100 text-indigo-805 text-indigo-700">
                     Batas Fokus Absolut
                   </span>
                 </div>
@@ -3906,7 +3906,7 @@ export default function RuangBelajarView({
                   <h4 className="text-xs font-black text-slate-800">
                     Selesaikan Tugas Tersulit Tanpa Henti
                   </h4>
-                  <p className="text-[10px] text-slate-500 leading-normal font-semibold text-slate-550 mb-1 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-normal font-semibold text-slate-550 mb-1 leading-relaxed">
                     Pilih "Katak Terbesar" Anda (tugas terpenting & paling
                     menantang hari ini), atur batas waktu mutlak (misalnya 60
                     menit), dan wajib mengerjakannya tanpa jeda atau berselancar
@@ -3916,7 +3916,7 @@ export default function RuangBelajarView({
 
                 <div className="space-y-4 text-left">
                   <div className="space-y-1">
-                    <label className="text-[9px] font-black uppercase text-slate-400 tracking-wider">
+                    <label className="text-xs font-black uppercase text-slate-500 tracking-wider">
                       KATAK TERBESAR ANDA (EAT THE FROG):
                     </label>
                     <input
@@ -3924,7 +3924,7 @@ export default function RuangBelajarView({
                       value={frogTask}
                       onChange={(e) => setFrogTask(e.target.value)}
                       placeholder="Cth: Menguraikan Algoritma Dijkstra & Menghitung Beban Graf..."
-                      className="w-full text-xs font-extrabold px-3 py-2.5 border border-slate-200 bg-white rounded-xl focus:outline-hidden text-slate-800 focus:border-indigo-550"
+                      className="w-full text-sm font-extrabold px-3 py-2.5 border border-slate-200 bg-white rounded-xl focus:outline-hidden text-slate-800 focus:border-indigo-550"
                     />
                   </div>
                 </div>
@@ -4070,7 +4070,7 @@ export default function RuangBelajarView({
                         triggerTimeboxEnd();
                       }
                     }}
-                    className="text-[9px] font-black border border-indigo-250 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-2.5 py-1.5 rounded-lg cursor-pointer transition-all uppercase"
+                    className="text-xs font-black border border-indigo-250 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-2.5 py-1.5 rounded-lg cursor-pointer transition-all uppercase"
                   >
                     Instan Selesai
                   </button>
@@ -4079,7 +4079,7 @@ export default function RuangBelajarView({
                 {/* Duration Picker slider scale */}
                 <div className="bg-slate-100/60 border border-slate-200/60 p-4 rounded-2xl text-left space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-[9px] font-black uppercase text-slate-500">
+                    <span className="text-xs font-black uppercase text-slate-500">
                       DURASI TIMEBOX ABSOLUT
                     </span>
                     <span className="text-xs font-bold font-sans text-[#FF2D75]">
@@ -4096,7 +4096,7 @@ export default function RuangBelajarView({
                     disabled={isTimeboxRunning}
                     className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#FF2D75] disabled:opacity-50"
                   />
-                  <div className="flex justify-between text-[8px] font-sans text-slate-400">
+                  <div className="flex justify-between text-xs font-sans text-slate-500">
                     <span>15m</span>
                     <span>30m</span>
                     <span>45m</span>
@@ -4126,7 +4126,7 @@ export default function RuangBelajarView({
                       <h3 className="font-extrabold text-slate-800 text-sm">
                         Catatan Kalender Kelas (Live Memo)
                       </h3>
-                      <p className="text-[10px] text-slate-500 leading-normal font-semibold">
+                      <p className="text-xs text-slate-600 leading-normal font-semibold">
                         Sistem rekam audio, transkripsi verbatim otomatis, &
                         manajemen draf perkuliahan.
                       </p>
@@ -4148,7 +4148,7 @@ export default function RuangBelajarView({
                   {/* Search input */}
                   <div className="relative">
                     <Search
-                      className="absolute left-3 top-2.5 text-slate-400"
+                      className="absolute left-3 top-2.5 text-slate-500"
                       size={14}
                     />
                     <input
@@ -4156,13 +4156,13 @@ export default function RuangBelajarView({
                       placeholder="Cari matakuliah, topik, dosen, atau isi catatan..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full text-xs pl-9 pr-4 py-2.5 bg-white border border-slate-200/80 rounded-xl text-slate-800 focus:outline-hidden focus:border-pink-500 placeholder-slate-400 font-semibold"
+                      className="w-full text-sm pl-9 pr-4 py-2.5 bg-white border border-slate-200/80 rounded-xl text-slate-800 focus:outline-hidden focus:border-pink-500 placeholder-slate-400 font-semibold"
                     />
                     {searchTerm && (
                       <button
                         type="button"
                         onClick={() => setSearchTerm("")}
-                        className="absolute right-3 top-2.5 p-0.5 text-slate-400 hover:text-slate-600 text-xs font-bold"
+                        className="absolute right-3 top-2.5 p-0.5 text-slate-500 hover:text-slate-600 text-xs font-bold"
                       >
                         ✕
                       </button>
@@ -4171,7 +4171,7 @@ export default function RuangBelajarView({
 
                   {/* Horizontal Scrollable tags - with dragging */}
                   <div className="flex items-center gap-2 overflow-hidden">
-                    <Filter size={12} className="text-slate-400 shrink-0" />
+                    <Filter size={12} className="text-slate-500 shrink-0" />
                     <div
                       ref={dragScrollRefLiveMemo}
                       onMouseDown={handleDragScrollMouseDown}
@@ -4184,7 +4184,7 @@ export default function RuangBelajarView({
                       <button
                         type="button"
                         onClick={() => setSelectedTag("Semua")}
-                        className={`px-3 py-1.5 text-[10px] font-bold rounded-lg shrink-0 transition-all ${
+                        className={`px-3 py-1.5 text-xs font-bold rounded-lg shrink-0 transition-all ${
                           selectedTag === "Semua"
                             ? "bg-pink-500 text-white shadow-xs"
                             : "bg-white border border-slate-200 text-slate-600 hover:bg-sky-50"
@@ -4202,7 +4202,7 @@ export default function RuangBelajarView({
                             key={tg}
                             type="button"
                             onClick={() => setSelectedTag(tg)}
-                            className={`px-3 py-1.5 text-[10px] font-bold rounded-lg shrink-0 transition-all ${
+                            className={`px-3 py-1.5 text-xs font-bold rounded-lg shrink-0 transition-all ${
                               selectedTag === tg
                                 ? "bg-pink-500 text-white shadow-xs"
                                 : "bg-white border border-slate-200 text-slate-600 hover:bg-sky-50"
@@ -4226,10 +4226,10 @@ export default function RuangBelajarView({
                     >
                       <div className="space-y-2">
                         <div className="flex justify-between items-start">
-                          <span className="text-[10px] bg-pink-50 text-[#FF2D75] font-black border border-pink-100 px-2 py-0.5 rounded-md">
+                          <span className="text-xs bg-pink-50 text-[#FF2D75] font-black border border-pink-100 px-2 py-0.5 rounded-md">
                             {note.courseTitle}
                           </span>
-                          <span className="text-[9px] text-slate-400 font-bold font-sans">
+                          <span className="text-xs text-slate-500 font-bold font-sans">
                             {note.date}
                           </span>
                         </div>
@@ -4238,7 +4238,7 @@ export default function RuangBelajarView({
                           {note.topic}
                         </h4>
 
-                        <p className="text-[10px] text-slate-500 font-medium leading-relaxed line-clamp-3">
+                        <p className="text-xs text-slate-600 font-medium leading-relaxed line-clamp-3">
                           {note.content}
                         </p>
                       </div>
@@ -4249,7 +4249,7 @@ export default function RuangBelajarView({
                             note.tags.slice(0, 3).map((tg) => (
                               <span
                                 key={tg}
-                                className="text-[8px] font-bold bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded-md"
+                                className="text-xs font-bold bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded-md"
                               >
                                 #{tg}
                               </span>
@@ -4291,15 +4291,15 @@ export default function RuangBelajarView({
                   ))}
 
                   {filteredNotes.length === 0 && (
-                    <div className="md:col-span-2 py-12 text-center text-slate-400 border-2 border-dashed border-slate-200 rounded-2xl p-6">
+                    <div className="md:col-span-2 py-12 text-center text-slate-500 border-2 border-dashed border-slate-200 rounded-2xl p-6">
                       <Smile
                         className="mx-auto text-slate-350 animate-pulse mb-2"
                         size={24}
                       />
-                      <p className="font-extrabold text-xs text-slate-600">
+                      <p className="font-extrabold text-sm text-slate-600 leading-normal">
                         Catatan Kuliah Tidak Ditemukan
                       </p>
-                      <p className="text-[10px] text-slate-400 mt-1 font-semibold">
+                      <p className="text-xs text-slate-600 mt-1 font-semibold">
                         Coba gunakan kata kunci lain atau silakan catat materi
                         baru!
                       </p>
@@ -4310,10 +4310,10 @@ export default function RuangBelajarView({
                 {/* Integration with Active study session tip */}
                 <div className="p-4 bg-pink-500/5 border border-pink-500/10 rounded-2xl flex items-start gap-3 text-left">
                   <div className="space-y-1">
-                    <h5 className="text-[11px] font-extrabold text-slate-800">
+                    <h5 className="text-xs font-extrabold text-slate-800">
                       Sinergi Draf Kuliah & Studio Belajar
                     </h5>
-                    <p className="text-[10px] text-slate-550 leading-normal font-semibold">
+                    <p className="text-xs text-slate-550 leading-normal font-semibold">
                       Anda dapat mereferensikan catatan kuliah di sini saat
                       berkonsentrasi menggunakan teknik Feynman atau Spaced
                       Repetition di Ruang Belajar ini, menyalin draf dengan
@@ -4345,7 +4345,7 @@ export default function RuangBelajarView({
                       <h3 className="font-extrabold text-slate-800 text-sm">
                         Workspace Studio Mind Mapping
                       </h3>
-                      <p className="text-[10px] text-slate-500 leading-normal font-semibold">
+                      <p className="text-xs text-slate-600 leading-normal font-semibold">
                         Gambar konsep riset, skripsi, & mind maps belajar secara
                         visual tanpa batas.
                       </p>
@@ -4391,32 +4391,32 @@ export default function RuangBelajarView({
                 {/* Control Presets & Templates Row */}
                 <div className="flex flex-wrap gap-2 justify-between items-center bg-slate-100/50 p-2.5 rounded-2xl border border-slate-200/50">
                   <div className="flex flex-wrap gap-1.5 items-center">
-                    <span className="text-[9px] font-black text-slate-450 uppercase tracking-wilder mr-1">
+                    <span className="text-xs font-black text-slate-450 uppercase tracking-wilder mr-1">
                       Muat Templat:
                     </span>
                     <button
                       type="button"
                       onClick={() => loadTemplate("skripsi")}
-                      className="py-1 px-3 bg-white text-slate-700 hover:text-[#FF2D75] border border-slate-200 text-[10px] font-black rounded-lg cursor-pointer hover:border-[#FF2D75]/30 transition-all shadow-2xs"
+                      className="py-1 px-3 bg-white text-slate-700 hover:text-[#FF2D75] border border-slate-200 text-xs font-black rounded-lg cursor-pointer hover:border-[#FF2D75]/30 transition-all shadow-2xs"
                     >
                       Research & Skripsi
                     </button>
                     <button
                       type="button"
                       onClick={() => loadTemplate("db")}
-                      className="py-1 px-3 bg-white text-slate-700 hover:text-indigo-600 border border-slate-200 text-[10px] font-black rounded-lg cursor-pointer hover:border-indigo-600/30 transition-all shadow-2xs"
+                      className="py-1 px-3 bg-white text-slate-700 hover:text-indigo-600 border border-slate-200 text-xs font-black rounded-lg cursor-pointer hover:border-indigo-600/30 transition-all shadow-2xs"
                     >
                       Skema Database
                     </button>
                     <button
                       type="button"
                       onClick={() => loadTemplate("empty")}
-                      className="py-1 px-3 bg-white text-slate-705 text-slate-600 hover:text-rose-600 border border-dashed border-slate-200 text-[10px] font-black rounded-lg cursor-pointer hover:border-rose-450 transition-all shadow-2xs"
+                      className="py-1 px-3 bg-white text-slate-705 text-slate-600 hover:text-rose-600 border border-dashed border-slate-200 text-xs font-black rounded-lg cursor-pointer hover:border-rose-450 transition-all shadow-2xs"
                     >
                       Kanvas Kosong
                     </button>
                   </div>
-                  <div className="text-[9px] font-bold text-slate-500 italic pr-1 select-none">
+                  <div className="text-xs font-bold text-slate-500 italic pr-1 select-none">
                     *Seret / Drag node di dalam kanvas untuk memosisikan ulang
                     konsep Anda!
                   </div>
@@ -4427,10 +4427,10 @@ export default function RuangBelajarView({
                   {/* INDEPENDENT CANVAS CONTAINER (12 cols: 8 cols for canvas) */}
                   <div className="lg:col-span-8 flex flex-col gap-2">
                     <div className="flex justify-between items-center px-1">
-                      <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">
+                      <span className="text-xs font-black uppercase text-slate-500 tracking-wider">
                         Koleksi Node ({mindMapNodes.length})
                       </span>
-                      <span className="text-[9px] font-bold text-slate-400">
+                      <span className="text-xs font-bold text-slate-500">
                         Resolusi Kanvas: Auto-Responsive
                       </span>
                     </div>
@@ -4452,7 +4452,7 @@ export default function RuangBelajarView({
                       }}
                     >
                       {connectingSourceId && (
-                        <div className="absolute top-4 left-4 right-16 z-30 bg-amber-500 text-white px-3 py-2 rounded-xl text-[10px] font-bold flex items-center justify-between shadow-md border border-amber-400 animate-pulse">
+                        <div className="absolute top-4 left-4 right-16 z-30 bg-amber-500 text-white px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-between shadow-md border border-amber-400 animate-pulse">
                           <span className="flex items-center gap-1.5">
                             <GitBranch size={12} />
                             Mode Penghubung Jalur: Klik node tujuan untuk menyambungkan dari "{mindMapNodes.find((n) => n.id === connectingSourceId)?.text}"
@@ -4463,7 +4463,7 @@ export default function RuangBelajarView({
                               e.stopPropagation();
                               setConnectingSourceId(null);
                             }}
-                            className="px-2 py-0.5 bg-amber-600 hover:bg-amber-700 rounded-md text-[9px] font-black cursor-pointer transition-colors"
+                            className="px-2 py-0.5 bg-amber-600 hover:bg-amber-700 rounded-md text-xs font-black cursor-pointer transition-colors"
                           >
                             Batal
                           </button>
@@ -4489,7 +4489,7 @@ export default function RuangBelajarView({
                           <ZoomOut size={13} />
                         </button>
 
-                        <span className="text-[10px] font-extrabold text-slate-700 min-w-[36px] text-center font-sans">
+                        <span className="text-xs font-extrabold text-slate-700 min-w-[36px] text-center font-sans">
                           {Math.round(canvasScale * 100)}%
                         </span>
 
@@ -4515,7 +4515,7 @@ export default function RuangBelajarView({
                             e.stopPropagation();
                             setCanvasScale(1.0);
                           }}
-                          className="py-1 px-2 text-[9px] font-black bg-slate-900 hover:bg-slate-800 text-white rounded-lg transition-all cursor-pointer"
+                          className="py-1 px-2 text-xs font-black bg-slate-900 hover:bg-slate-800 text-white rounded-lg transition-all cursor-pointer"
                           title="Reset Zoom ke 100%"
                         >
                           1:1
@@ -4620,7 +4620,7 @@ export default function RuangBelajarView({
                                     e.stopPropagation();
                                     handleDeleteNode(node.id);
                                   }}
-                                  className="p-1 hover:bg-slate-100 rounded-md transition-colors cursor-pointer text-slate-400 hover:text-rose-500"
+                                  className="p-1 hover:bg-slate-100 rounded-md transition-colors cursor-pointer text-slate-500 hover:text-rose-500"
                                   title="Hapus Node"
                                 >
                                   <X size={10} />
@@ -4628,7 +4628,7 @@ export default function RuangBelajarView({
                               </div>
 
                               {/* Node Content Title */}
-                              <span className="font-extrabold text-[#1e293b] text-[11px] leading-snug break-words">
+                              <span className="font-extrabold text-[#1e293b] text-xs leading-snug break-words">
                                 {node.text}
                               </span>
 
@@ -4681,7 +4681,7 @@ export default function RuangBelajarView({
                                     ]);
                                     setSelectedNodeId(subId);
                                   }}
-                                  className="flex-1 py-1 px-1.5 border border-dashed border-slate-200 hover:border-indigo-400 text-indigo-650 hover:bg-indigo-50/50 rounded-lg text-[8px] font-black text-center cursor-pointer transition-all flex items-center justify-center gap-0.5"
+                                  className="flex-1 py-1 px-1.5 border border-dashed border-slate-200 hover:border-indigo-400 text-indigo-650 hover:bg-indigo-50/50 rounded-lg text-xs font-black text-center cursor-pointer transition-all flex items-center justify-center gap-0.5"
                                   title="Tambah cabang/anak di bawah node ini"
                                 >
                                   <PlusCircle size={9.5} />
@@ -4698,7 +4698,7 @@ export default function RuangBelajarView({
                                       setConnectingSourceId(node.id);
                                     }
                                   }}
-                                  className={`flex-1 py-1 px-1.5 border border-dashed rounded-lg text-[8px] font-black text-center cursor-pointer transition-all flex items-center justify-center gap-0.5 ${
+                                  className={`flex-1 py-1 px-1.5 border border-dashed rounded-lg text-xs font-black text-center cursor-pointer transition-all flex items-center justify-center gap-0.5 ${
                                     connectingSourceId === node.id
                                       ? "bg-amber-500 border-amber-500 text-white animate-pulse"
                                       : "border-slate-200 hover:border-amber-500 text-amber-600 hover:bg-amber-50/50"
@@ -4718,17 +4718,17 @@ export default function RuangBelajarView({
                         })}
 
                         {mindMapNodes.length === 0 && (
-                          <div className="text-center text-slate-400 p-6">
+                          <div className="text-center text-slate-500 p-6">
                             <Smile
-                              className="mx-auto mb-2 text-slate-400"
+                              className="mx-auto mb-2 text-slate-500"
                               size={32}
                             />
-                            <p className="font-extrabold text-xs text-slate-600">
+                            <p className="font-extrabold text-sm text-slate-600 leading-normal">
                               Opps, Kanvas Kosong!
                             </p>
                             <button
                               onClick={() => loadTemplate("skripsi")}
-                              className="mt-3 px-4 py-1.5 bg-indigo-600 text-white rounded-xl text-[10px] font-black shadow-xs cursor-pointer"
+                              className="mt-3 px-4 py-1.5 bg-indigo-600 text-white rounded-xl text-xs font-black shadow-xs cursor-pointer"
                               type="button"
                             >
                               Reset Templat Contoh
@@ -4749,7 +4749,7 @@ export default function RuangBelajarView({
                           );
                           if (!activeNode) {
                             return (
-                              <div className="text-center py-12 text-slate-400">
+                              <div className="text-center py-12 text-slate-500">
                                 Node tidak ditemukan atau telah dihapus.
                               </div>
                             );
@@ -4760,13 +4760,13 @@ export default function RuangBelajarView({
                               {/* Heading info */}
                               <div className="space-y-1">
                                 <div className="flex justify-between items-center">
-                                  <span className="text-[9px] font-black bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-md border border-indigo-100 uppercase tracking-wider">
+                                  <span className="text-xs font-black bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-md border border-indigo-100 uppercase tracking-wider">
                                     Kustomisasi Node
                                   </span>
                                   <button
                                     type="button"
                                     onClick={() => setSelectedNodeId(null)}
-                                    className="text-slate-450 hover:text-slate-600 text-[10px] font-black"
+                                    className="text-slate-450 hover:text-slate-600 text-xs font-black"
                                   >
                                     Tutup
                                   </button>
@@ -4780,7 +4780,7 @@ export default function RuangBelajarView({
                               <div className="space-y-3.5 flex-1 overflow-y-auto max-h-[340px] pr-1.5 custom-scroll">
                                 {/* Label title */}
                                 <div className="space-y-1">
-                                  <label className="text-[9px] font-black uppercase text-slate-400 tracking-wider">
+                                  <label className="text-xs font-black uppercase text-slate-500 tracking-wider">
                                     Nama / Label Node
                                   </label>
                                   <input
@@ -4800,7 +4800,7 @@ export default function RuangBelajarView({
 
                                 {/* Parent Select */}
                                 <div className="space-y-1">
-                                  <label className="text-[9px] font-black uppercase text-slate-400 tracking-wider">
+                                  <label className="text-xs font-black uppercase text-slate-500 tracking-wider">
                                     Hubungkan ke Parent (Aliran)
                                   </label>
                                   <select
@@ -4813,7 +4813,7 @@ export default function RuangBelajarView({
                                         val ? val : undefined,
                                       );
                                     }}
-                                    className="w-full text-[10.5px] font-bold p-2 bg-white rounded-xl border border-slate-250"
+                                    className="w-full text-xs font-bold p-2 bg-white rounded-xl border border-slate-250"
                                   >
                                     <option value="">
                                       -- Tanpa Parent (Topik Utama) --
@@ -4830,7 +4830,7 @@ export default function RuangBelajarView({
 
                                 {/* Pick Accent Colors presets */}
                                 <div className="space-y-1.5">
-                                  <span className="text-[9px] font-black uppercase text-slate-400 tracking-wider block">
+                                  <span className="text-xs font-black uppercase text-slate-500 tracking-wider block">
                                     Warna Aksent Cabang
                                   </span>
                                   <div className="flex flex-wrap gap-1.5">
@@ -4869,9 +4869,9 @@ export default function RuangBelajarView({
 
                                 {/* Notes textarea */}
                                 <div className="space-y-1">
-                                  <label className="text-[9px] font-black uppercase text-slate-400 tracking-wider flex items-center justify-between">
+                                  <label className="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center justify-between">
                                     <span>Catatan Ringkas</span>
-                                    <span className="font-sans text-[8px] text-slate-400 font-normal">
+                                    <span className="font-sans text-xs text-slate-500 font-normal">
                                       Optional
                                     </span>
                                   </label>
@@ -4892,9 +4892,9 @@ export default function RuangBelajarView({
 
                                 {/* Image URL inserter */}
                                 <div className="space-y-1">
-                                  <label className="text-[9px] font-black uppercase text-slate-400 tracking-wider flex items-center justify-between">
+                                  <label className="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center justify-between">
                                     <span>URL Gambar Pendukung</span>
-                                    <span className="font-sans text-[8px] text-indigo-600 font-bold">
+                                    <span className="font-sans text-xs text-indigo-600 font-bold">
                                       Image
                                     </span>
                                   </label>
@@ -4909,7 +4909,7 @@ export default function RuangBelajarView({
                                       )
                                     }
                                     placeholder="Masukkan tautan gambar https://..."
-                                    className="w-full text-[10px] font-sans p-2 rounded-xl border border-slate-205 border-slate-200 bg-white"
+                                    className="w-full text-xs font-sans p-2 rounded-xl border border-slate-205 border-slate-200 bg-white"
                                   />
                                   {activeNode.imageUrl && (
                                     <div className="flex gap-1.5 flex-wrap pt-0.5">
@@ -4932,7 +4932,7 @@ export default function RuangBelajarView({
 
                                 {/* Checklist list manager */}
                                 <div className="space-y-1.5 pt-1 border-t border-slate-200">
-                                  <label className="text-[9px] font-black uppercase text-slate-400 tracking-wider block">
+                                  <label className="text-xs font-black uppercase text-slate-500 tracking-wider block">
                                     Daftar Sub-Tugas Checklist
                                   </label>
 
@@ -4954,7 +4954,7 @@ export default function RuangBelajarView({
                                             className="flex items-center gap-1.5 text-left flex-1 min-w-0"
                                           >
                                             <span
-                                              className={`w-3.5 h-3.5 rounded flex items-center justify-center border text-[9px] ${
+                                              className={`w-3.5 h-3.5 rounded flex items-center justify-center border text-[11px] ${
                                                 item.done
                                                   ? "bg-[#0d9488] border-[#0d9488] text-white"
                                                   : "border-slate-350 bg-white"
@@ -4963,9 +4963,9 @@ export default function RuangBelajarView({
                                               {item.done && "✔"}
                                             </span>
                                             <span
-                                              className={`text-[10px] font-bold truncate ${
+                                              className={`text-xs font-bold truncate ${
                                                 item.done
-                                                  ? "text-slate-400 line-through"
+                                                  ? "text-slate-500 line-through"
                                                   : "text-slate-700"
                                               }`}
                                             >
@@ -4980,7 +4980,7 @@ export default function RuangBelajarView({
                                                 item.id,
                                               )
                                             }
-                                            className="text-slate-400 hover:text-rose-500 text-[10px] px-1"
+                                            className="text-slate-500 hover:text-rose-500 text-xs px-1"
                                           >
                                             ✕
                                           </button>
@@ -4989,7 +4989,7 @@ export default function RuangBelajarView({
                                     )}
                                     {(!activeNode.checklist ||
                                       activeNode.checklist.length === 0) && (
-                                      <p className="text-[9px] text-slate-400 italic">
+                                      <p className="text-xs text-slate-600 italic">
                                         Belum ada tugas checklist.
                                       </p>
                                     )}
@@ -5010,14 +5010,14 @@ export default function RuangBelajarView({
                                           handleAddChecklistItem(activeNode.id);
                                         }
                                       }}
-                                      className="flex-1 text-[10px] font-semibold px-2 py-1.5 rounded-lg border border-slate-200 bg-white"
+                                      className="flex-1 text-xs font-semibold px-2 py-1.5 rounded-lg border border-slate-200 bg-white"
                                     />
                                     <button
                                       type="button"
                                       onClick={() =>
                                         handleAddChecklistItem(activeNode.id)
                                       }
-                                      className="px-2 bg-slate-900 text-white rounded-lg text-[9px] font-black cursor-pointer hover:bg-slate-800"
+                                      className="px-2 bg-slate-900 text-white rounded-lg text-xs font-black cursor-pointer hover:bg-slate-800"
                                     >
                                       Tambah
                                     </button>
@@ -5032,7 +5032,7 @@ export default function RuangBelajarView({
                                   onClick={() =>
                                     handleDeleteNode(activeNode.id)
                                   }
-                                  className="text-[10px] font-black text-rose-600 hover:text-rose-800 hover:underline flex items-center gap-1 ml-auto"
+                                  className="text-xs font-black text-rose-600 hover:text-rose-800 hover:underline flex items-center gap-1 ml-auto"
                                 >
                                   ☠ Hapus Node Ini
                                 </button>
@@ -5041,15 +5041,15 @@ export default function RuangBelajarView({
                           );
                         })()
                       ) : (
-                        <div className="py-20 text-center text-slate-400 flex flex-col justify-center items-center h-full">
+                        <div className="py-20 text-center text-slate-500 flex flex-col justify-center items-center h-full">
                           <GitBranch
                             className="text-slate-300 animate-pulse mb-3"
                             size={32}
                           />
-                          <p className="font-extrabold text-[11px] text-slate-600 leading-snug">
+                          <p className="font-extrabold text-xs text-slate-600 leading-snug">
                             Tidak Ada Node yang Terpilih
                           </p>
-                          <p className="text-[9.5px] text-slate-400 mt-1 max-w-[190px] mx-auto font-semibold leading-normal">
+                          <p className="text-xs text-slate-600 mt-1 max-w-[190px] mx-auto font-semibold leading-normal">
                             Silakan klik salah satu node berbentuk kotak di
                             dalam kanvas untuk mengedit teks warna, checklist,
                             serta lampiran gambar!
@@ -5067,7 +5067,7 @@ export default function RuangBelajarView({
                       Rekomendasi Arsitektur Teknis Senior PM (KampusMAHAS
                       Specialist)
                     </h4>
-                    <p className="text-[10px] leading-relaxed text-slate-500 font-semibold">
+                    <p className="text-xs leading-relaxed text-slate-600 font-semibold">
                       Sebagai Senior PM & Full-Stack Architect, berikut adalah
                       blueprints pengembangan tingkat lanjut untuk
                       diintegrasikan dalam rilis produksi web/mobile portal
@@ -5076,16 +5076,16 @@ export default function RuangBelajarView({
                   </div>
 
                   {/* Grid 3 Columns Architecture Specs */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Recommendation 1: Open Source Library */}
                     <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-2.5 text-left">
                       <span className="text-[8.5px] font-black text-indigo-700 bg-indigo-50 border border-indigo-150 px-2 py-0.5 rounded-full uppercase tracking-wider">
                         1. Client Libraries
                       </span>
-                      <h5 className="font-extrabold text-[11px] text-slate-800">
+                      <h5 className="font-extrabold text-xs text-slate-800">
                         React Flow / Cytoscape.js
                       </h5>
-                      <p className="text-[9.5px] text-slate-500 leading-relaxed font-medium">
+                      <p className="text-xs text-slate-600 leading-relaxed font-medium">
                         <strong>React Flow (Direkomendasikan)</strong> sangat
                         ideal untuk UI berbasis nodal di React. Menyediakan
                         zooming, panning, custom node renderer (HTML/JSX), serta
@@ -5102,7 +5102,7 @@ export default function RuangBelajarView({
                       <span className="text-[8.5px] font-black text-teal-700 bg-teal-50 border border-teal-150 px-2 py-0.5 rounded-full uppercase tracking-wider">
                         2. Relational Schema Draft (PostgreSQL)
                       </span>
-                      <div className="p-2 bg-slate-900 rounded-xl text-[8px] font-sans text-cyan-400 overflow-x-auto select-all leading-normal max-h-[110px]">
+                      <div className="p-2 bg-slate-900 rounded-xl text-xs font-sans text-cyan-400 overflow-x-auto select-all leading-normal max-h-[110px]">
                         {`CREATE TABLE mind_maps (
   id VARCHAR(50) PRIMARY KEY,
   title VARCHAR(150),
@@ -5129,7 +5129,7 @@ CREATE TABLE nodes (
                       <span className="text-[8.5px] font-black text-purple-700 bg-purple-50 border border-purple-150 px-2 py-0.5 rounded-full uppercase tracking-wider">
                         3. NoSQL Schema Draft (MongoDB/Firestore)
                       </span>
-                      <div className="p-2 bg-slate-900 rounded-xl text-[8px] font-sans text-purple-300 overflow-x-auto select-all leading-normal max-h-[110px]">
+                      <div className="p-2 bg-slate-900 rounded-xl text-xs font-sans text-purple-300 overflow-x-auto select-all leading-normal max-h-[110px]">
                         {`{
   "_id": "map_sc_90112",
   "ownerId": "usr_789",
@@ -5160,30 +5160,30 @@ CREATE TABLE nodes (
       </div>
 
       {/* THREE PILLAR VISUAL STATS DASHBOARD - METRIC COUNTERS */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white flex items-center gap-4 text-left shadow-card">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-[#fdfdfe] p-6 rounded-card border border-white flex items-center gap-4 text-left shadow-card">
           <div className="w-11 h-11 rounded-2xl bg-white text-[#FF2D75] border border-pink-100 shadow-xs flex items-center justify-center shrink-0">
             <Clock size={20} className="animate-pulse" />
           </div>
           <div className="space-y-0.5">
-            <span className="text-[9px] font-black text-black block uppercase tracking-wider font-sans">
+            <span className="text-xs font-black text-black block uppercase tracking-wider font-sans">
               TOTAL DURASI DIKUMPULKAN
             </span>
             <span className="text-lg font-sans font-black text-slate-800">
               {totalMinStudied} Menit
             </span>
-            <p className="text-[10px] text-slate-500 font-medium">
+            <p className="text-xs text-slate-600 font-medium">
               dari semua rekam jejak tersimpan.
             </p>
           </div>
         </div>
 
-        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white flex items-center gap-4 text-left shadow-card">
+        <div className="bg-[#fdfdfe] p-6 rounded-card border border-white flex items-center gap-4 text-left shadow-card">
           <div className="w-11 h-11 rounded-2xl bg-white text-indigo-600 border border-indigo-100 shadow-xs flex items-center justify-center shrink-0">
             <BarChart2 size={20} />
           </div>
           <div className="space-y-0.5">
-            <span className="text-[9px] font-black text-black block uppercase tracking-wider font-sans">
+            <span className="text-xs font-black text-black block uppercase tracking-wider font-sans">
               TEKNIK TERPOPULER
             </span>
             <div className="flex items-center gap-2 mt-1">
@@ -5206,18 +5206,18 @@ CREATE TABLE nodes (
           </div>
         </div>
 
-        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white flex items-center gap-4 text-left shadow-card">
+        <div className="bg-[#fdfdfe] p-6 rounded-card border border-white flex items-center gap-4 text-left shadow-card">
           <div className="w-11 h-11 rounded-2xl bg-white text-emerald-600 border border-emerald-100 shadow-xs flex items-center justify-center shrink-0">
             <Award size={20} />
           </div>
           <div className="space-y-0.5">
-            <span className="text-[9px] font-black text-black block uppercase tracking-wider font-sans">
+            <span className="text-xs font-black text-black block uppercase tracking-wider font-sans">
               PRESTASI AKTIVITAS HARI INI
             </span>
             <span className="text-lg font-sans font-black text-slate-800">
               {totalCompletedSessions} Sesi
             </span>
-            <p className="text-[10px] text-slate-500 font-medium">
+            <p className="text-xs text-slate-600 font-medium">
               Setiap sesi melipatgandakan retensi ingatan.
             </p>
           </div>
@@ -5225,13 +5225,13 @@ CREATE TABLE nodes (
       </div>
 
       {/* METRIC VISUAL INTERACTIVE WEEKLY ACTIVITY GRID */}
-      <div className="bg-[#fdfdfe] p-5 rounded-card border border-white space-y-4 shadow-card">
+      <div className="bg-[#fdfdfe] p-6 rounded-card border border-white space-y-4 shadow-card">
         <h3 className="font-extrabold text-slate-850 text-xs uppercase tracking-wider flex items-center gap-2">
           <Calendar size={15} className="text-[#FF2D75]" />
           Jejak Belajar Harian
         </h3>
 
-        <p className="text-[10px] text-slate-500 leading-relaxed font-bold">
+        <p className="text-xs text-slate-600 leading-relaxed font-bold">
           Visualisasi log di bawah ini menandakan keaktifan harian Anda. Tiap
           Dot berwarna melambangkan sesi belajar mandiri yang berhasil dikunci
           secara konsisten.{" "}
@@ -5263,7 +5263,7 @@ CREATE TABLE nodes (
                 className="group p-3 bg-slate-50/70 hover:bg-white hover:border-[#FF2D75]/45 rounded-3xl border border-slate-200/80 flex flex-col items-center justify-between gap-2.5 shadow-2xs cursor-pointer hover:shadow-md hover:scale-[1.04] active:scale-95 transition-all duration-200 text-center w-full min-h-[110px] focus:outline-none focus:ring-2 focus:ring-pink-100"
                 title={`Klik untuk detail sesi hari ${dayNode.day}`}
               >
-              <span className="text-[10px] font-black text-slate-500 uppercase tracking-wide group-hover:text-slate-800 transition-colors">
+              <span className="text-xs font-black text-slate-500 uppercase tracking-wide group-hover:text-slate-800 transition-colors">
                 {dayNode.day.substring(0, 3)}
               </span>
 
@@ -5292,7 +5292,7 @@ CREATE TABLE nodes (
               </div>
 
               <div className="space-y-0.5">
-                <span className="text-[9.5px] font-sans font-black text-slate-800 block">
+                <span className="text-xs font-sans font-black text-slate-800 block">
                   {dayNode.count} sesi
                 </span>
                 <span className="text-[7.5px] font-black text-indigo-500 uppercase tracking-widest block opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-3 transition-all duration-200 leading-none">
@@ -5306,7 +5306,7 @@ CREATE TABLE nodes (
       </div>
 
       {/* SESSION LOG LIST RECORD TABULAR */}
-      <div className="bg-[#fdfdfe] p-5 rounded-card border border-white space-y-4 shadow-card">
+      <div className="bg-[#fdfdfe] p-6 rounded-card border border-white space-y-4 shadow-card">
         <div className="flex justify-between items-center">
           <h3 className="font-extrabold text-slate-850 text-xs uppercase tracking-wider flex items-center gap-2">
             <ListTodo size={15} className="text-purple-600" />
@@ -5324,7 +5324,7 @@ CREATE TABLE nodes (
               <div className="space-y-1 flex-1 min-w-0 pr-4">
                 <div className="flex items-center gap-2.5 flex-wrap">
                   <span
-                    className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider ${
+                    className={`px-2 py-0.5 rounded-md text-xs font-black uppercase tracking-wider ${
                       item.technique === "Pomodoro"
                         ? "bg-pink-100 text-[#FF2D75] border border-pink-200"
                         : "bg-purple-100 text-purple-700 border border-purple-200"
@@ -5333,7 +5333,7 @@ CREATE TABLE nodes (
                     {item.technique}
                   </span>
 
-                  <span className="text-[10px] text-slate-400 font-bold font-sans">
+                  <span className="text-xs text-slate-500 font-bold font-sans">
                     {item.timestamp}
                   </span>
                 </div>
@@ -5343,7 +5343,7 @@ CREATE TABLE nodes (
                 </h4>
 
                 {item.noteExcerpt && (
-                  <p className="text-[10px] text-slate-550 border-l-2 border-slate-205 pl-2 font-semibold italic text-slate-500 leading-relaxed max-w-2xl break-words mt-1">
+                  <p className="text-xs text-slate-550 border-l-2 border-slate-205 pl-2 font-semibold italic text-slate-600 leading-relaxed max-w-2xl break-words mt-1">
                     "{item.noteExcerpt}"
                   </p>
                 )}
@@ -5353,7 +5353,7 @@ CREATE TABLE nodes (
                     {item.evaluations.map((labelStr, lIdx) => (
                       <span
                         key={lIdx}
-                        className="text-[8px] bg-indigo-50 text-indigo-700 font-black px-1.5 py-0.5 rounded-sm"
+                        className="text-xs bg-indigo-50 text-indigo-700 font-black px-1.5 py-0.5 rounded-sm"
                       >
                         ✓ {labelStr.substring(0, 30)}...
                       </span>
@@ -5364,7 +5364,7 @@ CREATE TABLE nodes (
 
               <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
                 <div className="flex items-center gap-1.5 leading-none">
-                  <Hourglass size={13} className="text-slate-400 shrink-0" />
+                  <Hourglass size={13} className="text-slate-500 shrink-0" />
                   <span className="text-xs font-bold font-sans text-slate-850 text-slate-705">
                     {item.duration}m
                   </span>
@@ -5383,15 +5383,15 @@ CREATE TABLE nodes (
           ))}
 
           {logs.length === 0 && (
-            <div className="py-12 text-center text-slate-400 p-4 border-2 border-dashed border-slate-200 rounded-3xl">
+            <div className="py-12 text-center text-slate-500 p-4 border-2 border-dashed border-slate-200 rounded-3xl">
               <Smile
                 className="mx-auto text-slate-350 animate-pulse mb-2.5"
                 size={28}
               />
-              <p className="font-extrabold text-sm text-slate-600">
+              <p className="font-extrabold text-sm text-slate-600 leading-normal">
                 Belum Ada Sesi Belajar Tersimpan
               </p>
-              <p className="text-xs text-slate-400 font-semibold mt-1">
+              <p className="text-sm text-slate-600 font-semibold mt-1 leading-normal">
                 Pilihlah salah satu teknik belajar di atas dan mulai sesi
                 pertamamu!
               </p>
@@ -5416,7 +5416,7 @@ CREATE TABLE nodes (
 
               <div className="flex justify-between items-start pt-1">
                 <div>
-                  <span className="text-[9px] font-black uppercase tracking-wider bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-100">
+                  <span className="text-xs font-black uppercase tracking-wider bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full border border-indigo-100">
                     Sesi Tersimpan • {selectedDayNode.day}
                   </span>
                   <h3 className="text-base font-extrabold text-slate-800 mt-1 flex items-center gap-2">
@@ -5439,7 +5439,7 @@ CREATE TABLE nodes (
               {/* Stats overview banner inside modal */}
               <div className="grid grid-cols-2 gap-3 p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
                 <div className="space-y-0.5 text-center sm:text-left">
-                  <span className="text-[8px] font-black uppercase text-slate-400">
+                  <span className="text-xs font-black uppercase text-slate-500">
                     Total Sesi
                   </span>
                   <p className="text-xl font-sans font-black text-slate-800">
@@ -5447,10 +5447,10 @@ CREATE TABLE nodes (
                   </p>
                 </div>
                 <div className="space-y-0.5 text-center sm:text-left border-l border-slate-200 pl-3">
-                  <span className="text-[8px] font-black uppercase text-slate-400">
+                  <span className="text-xs font-black uppercase text-slate-500">
                     Status Konsistensi
                   </span>
-                  <p className="text-sm font-bold text-emerald-600 flex items-center gap-1 justify-center sm:justify-start">
+                  <p className="text-sm font-bold text-emerald-600 flex items-center gap-1 justify-center sm:justify-start leading-normal">
                     {selectedDayNode.count > 0
                       ? "✓ Konsisten"
                       : "⊙ Hari Istirahat"}
@@ -5460,7 +5460,7 @@ CREATE TABLE nodes (
 
               {/* Sessions List */}
               <div className="space-y-2.5">
-                <span className="text-[10px] font-black uppercase text-slate-400 block tracking-wider">
+                <span className="text-xs font-black uppercase text-slate-500 block tracking-wider">
                   RINCIAN SESI AKTIVITAS
                 </span>
 
@@ -5483,7 +5483,7 @@ CREATE TABLE nodes (
                           {ses.technique}
                         </span>
 
-                        <div className="flex items-center gap-1.5 text-slate-400 text-[10px] font-bold font-sans">
+                        <div className="flex items-center gap-1.5 text-slate-500 text-xs font-bold font-sans">
                           <Clock size={10} />
                           <span>
                             {ses.time} • {ses.duration}m
@@ -5496,7 +5496,7 @@ CREATE TABLE nodes (
                       </h4>
 
                       {ses.focusNote && (
-                        <p className="text-[10px] text-slate-500 font-medium italic border-l-2 border-slate-200 pl-1.5 leading-relaxed">
+                        <p className="text-xs text-slate-600 font-medium italic border-l-2 border-slate-200 pl-1.5 leading-relaxed">
                           "{ses.focusNote}"
                         </p>
                       )}
@@ -5507,7 +5507,7 @@ CREATE TABLE nodes (
 
               {/* Encouragement footer */}
               <div className="pt-1.5 text-center">
-                <p className="text-[9.5px] text-slate-400 font-semibold leading-relaxed">
+                <p className="text-xs text-slate-600 font-semibold leading-relaxed">
                   {selectedDayNode.count > 0
                     ? "Hebat! Pertahankan momentum belajar produktif ini untuk membuka pencapaian yang lebih tinggi!"
                     : "Ambil waktu jeda sejenak untuk memulihkan energi sebelum sesi belajar berikutnya."}
@@ -5534,7 +5534,7 @@ CREATE TABLE nodes (
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-[#fdfdfe] border border-white shadow-2xl rounded-card max-w-4xl w-full p-5 text-left relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
+              className="bg-[#fdfdfe] border border-white shadow-2xl rounded-card max-w-4xl w-full p-6 text-left relative overflow-hidden my-0 max-h-[85vh] sm:max-h-[88vh] flex flex-col"
             >
               {/* Top gradient indicator */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-pink-500 via-indigo-500 to-cyan-500" />
@@ -5560,7 +5560,7 @@ CREATE TABLE nodes (
               {/* Scrollable container to keep the height beautifully constrained and robust */}
               <div className="flex-1 overflow-y-auto pr-1 py-3 scrollbar-thin scrollbar-thumb-slate-200 custom-scroll">
                 {/* Major grid layout: Form left side, Dictation and Voice Transcription right side */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {/* FORM COLUMN */}
                   <form
                     onSubmit={handleSaveNote}
@@ -5667,21 +5667,21 @@ CREATE TABLE nodes (
                           <button
                             type="button"
                             onClick={() => applyTemplateStructure("general")}
-                            className="px-1.5 py-0.5 bg-pink-50 text-[#FF2D75] border border-pink-100 rounded text-[9px] font-extrabold hover:bg-pink-100 transition-all cursor-pointer bg-white"
+                            className="px-1.5 py-0.5 bg-pink-50 text-[#FF2D75] border border-pink-100 rounded text-xs font-extrabold hover:bg-pink-100 transition-all cursor-pointer bg-white"
                           >
                             + Templat Materi
                           </button>
                           <button
                             type="button"
                             onClick={() => applyTemplateStructure("points")}
-                            className="px-1.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded text-[9px] font-extrabold hover:bg-emerald-100 transition-all cursor-pointer bg-white"
+                            className="px-1.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded text-xs font-extrabold hover:bg-emerald-100 transition-all cursor-pointer bg-white"
                           >
                             + Poin Rumus
                           </button>
                           <button
                             type="button"
                             onClick={() => applyTemplateStructure("tasks")}
-                            className="px-1.5 py-0.5 bg-amber-50 text-amber-700 border border-amber-100 rounded text-[9px] font-extrabold hover:bg-amber-100 transition-all cursor-pointer bg-white"
+                            className="px-1.5 py-0.5 bg-amber-50 text-amber-700 border border-amber-100 rounded text-xs font-extrabold hover:bg-amber-100 transition-all cursor-pointer bg-white"
                           >
                             + Semat Tugas
                           </button>
@@ -5826,19 +5826,19 @@ CREATE TABLE nodes (
                         value={noteContent}
                         onChange={(e) => setNoteContent(e.target.value)}
                         placeholder="Tuliskan utasan penjelasan materi kuliah di sini secara mendalam... Hubungkan pointer penting."
-                        className="w-full border border-t-0 border-slate-200 focus:outline-hidden focus:border-t focus:border-pink-300 p-2.5 rounded-b-xl font-semibold bg-white text-slate-800 leading-relaxed font-sans text-xs min-h-[100px]"
+                        className="w-full border border-t-0 border-slate-200 focus:outline-hidden focus:border-t focus:border-pink-300 p-2.5 rounded-b-xl font-semibold bg-white text-slate-800 leading-relaxed font-sans text-sm min-h-[100px]"
                       />
 
                       {/* LIVE RENDER PREVIEW BOX */}
                       <div className="bg-slate-50 rounded-xl p-2.5 border border-dashed border-slate-200 text-left space-y-1">
-                        <span className="text-[9px] font-black uppercase text-pink-500 tracking-wider flex items-center gap-1">
+                        <span className="text-xs font-black uppercase text-pink-500 tracking-wider flex items-center gap-1">
                           Pratinjau Hasil Format Tulisan (Live Render)
                         </span>
                         <div className="p-2.5 bg-white border border-slate-200 rounded-lg shadow-3xs max-h-24 overflow-y-auto leading-relaxed whitespace-pre-wrap text-slate-700">
                           {noteContent.trim() ? (
                             renderFormattedText(noteContent)
                           ) : (
-                            <span className="text-slate-400 italic">
+                            <span className="text-slate-500 italic">
                               Ketikkan catatan di atas untuk melihat preview
                               render real-time...
                             </span>
@@ -5887,13 +5887,13 @@ CREATE TABLE nodes (
                           Asisten Audio Dosen Kuliah Verbatim
                         </h4>
                         {isRecording && (
-                          <span className="text-[10px] text-rose-500 animate-pulse bg-rose-50 border border-rose-100 px-2 py-0.5 rounded-sm">
+                          <span className="text-xs text-rose-500 animate-pulse bg-rose-50 border border-rose-100 px-2 py-0.5 rounded-sm">
                             REC • {formatRecordingTime(recordingSeconds)}
                           </span>
                         )}
                       </div>
 
-                      <p className="text-[10px] text-slate-500 font-semibold leading-relaxed">
+                      <p className="text-xs text-slate-600 font-semibold leading-relaxed">
                         Sambil mendengarkan kuliah, aktifkan perekam di bawah!
                         Sistem akan menyalin ucapan lisan dosen secara verbatim
                         (kata per kata) ke panel transkrip. Anda dapat langsung
@@ -5905,7 +5905,7 @@ CREATE TABLE nodes (
                         <button
                           type="button"
                           onClick={handleStartRecording}
-                          className={`font-semibold text-[10px] py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                          className={`font-semibold text-xs py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
                             isRecording
                               ? "bg-rose-500 text-white shadow-xs"
                               : "bg-slate-900 text-white hover:bg-black/90 shadow-md"
@@ -5925,14 +5925,14 @@ CREATE TABLE nodes (
                           type="button"
                           onClick={handleStartSimulasi}
                           disabled={isRecording && !simulationInterval}
-                          className="font-extrabold text-[10px] py-2.5 px-3 rounded-xl border border-pink-250 text-pink-600 hover:bg-pink-50/50 disabled:opacity-50 transition-all flex items-center justify-center gap-1.5 cursor-pointer bg-white"
+                          className="font-extrabold text-xs py-2.5 px-3 rounded-xl border border-pink-250 text-pink-600 hover:bg-pink-50/50 disabled:opacity-50 transition-all flex items-center justify-center gap-1.5 cursor-pointer bg-white"
                         >
                           Simulasikan Suara Dosen
                         </button>
                       </div>
 
                       {/* Status Logger box */}
-                      <div className="bg-white border border-slate-200 rounded-xl p-3 text-[10px] font-semibold text-slate-500 text-left flex items-start gap-1.5 leading-relaxed">
+                      <div className="bg-white border border-slate-200 rounded-xl p-3 text-xs font-semibold text-slate-500 text-left flex items-start gap-1.5 leading-relaxed">
                         <AlertCircle
                           size={12}
                           className="text-pink-400 shrink-0 mt-0.5"
@@ -5942,13 +5942,13 @@ CREATE TABLE nodes (
 
                       {/* Transcription container */}
                       <div className="space-y-2 pt-2">
-                        <div className="flex justify-between items-center text-[10px] font-bold text-slate-700">
+                        <div className="flex justify-between items-center text-xs font-bold text-slate-700">
                           <span>HASIL TRANSKRIP VERBATIM:</span>
                           {transcription && (
                             <button
                               type="button"
                               onClick={() => setTranscription("")}
-                              className="text-slate-400 hover:text-red-500 text-[10px] font-bold underline transition-colors cursor-pointer"
+                              className="text-slate-500 hover:text-red-500 text-xs font-bold underline transition-colors cursor-pointer"
                             >
                               Hapus Hasil
                             </button>
@@ -5959,7 +5959,7 @@ CREATE TABLE nodes (
                           readOnly
                           value={transcription}
                           placeholder="Transkrip uraian lisan penjelasan dosen akan tercetak verbatim otomatis di sini ketika perekaman suara aktif..."
-                          className="w-full border border-slate-205 focus:outline-hidden p-2.5 rounded-xl font-sans text-[10px] leading-relaxed bg-white text-slate-700 font-semibold min-h-[85px]"
+                          className="w-full border border-slate-205 focus:outline-hidden p-2.5 rounded-xl font-sans text-xs leading-relaxed bg-white text-slate-700 font-semibold min-h-[85px]"
                         />
                       </div>
                     </div>
@@ -5974,7 +5974,7 @@ CREATE TABLE nodes (
                       >
                         ✓ Masukkan Transkrip Dosen ke Catatan
                       </button>
-                      <p className="text-[9px] text-slate-400 text-center font-bold mt-1.5">
+                      <p className="text-xs text-slate-600 text-center font-bold mt-1.5">
                         Menempelkan verbatim suara secara instan di kursor/akhir
                         catatan.
                       </p>
@@ -6001,10 +6001,10 @@ CREATE TABLE nodes (
 
               <div className="flex justify-between items-start pt-1">
                 <div>
-                  <span className="text-[10px] font-black uppercase bg-pink-50 text-[#FF2D75] px-2.5 py-0.5 rounded-md border border-pink-100">
+                  <span className="text-xs font-black uppercase bg-pink-50 text-[#FF2D75] px-2.5 py-0.5 rounded-md border border-pink-100">
                     {selectedNote.courseTitle}
                   </span>
-                  <p className="text-[10px] text-slate-500 font-bold mt-1.5">
+                  <p className="text-xs text-slate-600 font-bold mt-1.5">
                     Dosen: {selectedNote.lecturerName}
                   </p>
                 </div>
@@ -6017,14 +6017,14 @@ CREATE TABLE nodes (
                   >
                     ✕
                   </button>
-                  <span className="text-[9px] text-slate-400 font-extrabold mt-1.5">
+                  <span className="text-xs text-slate-500 font-extrabold mt-1.5">
                     {selectedNote.date}
                   </span>
                 </div>
               </div>
 
               <div className="space-y-1">
-                <span className="text-[8px] font-black bg-slate-100 text-slate-400 uppercase tracking-widest px-1.5 py-0.5 rounded-md">
+                <span className="text-xs font-black bg-slate-100 text-slate-500 uppercase tracking-widest px-1.5 py-0.5 rounded-md">
                   TOPIK JURNAL
                 </span>
                 <h3 className="text-sm font-extrabold text-slate-800 leading-snug">
@@ -6039,21 +6039,21 @@ CREATE TABLE nodes (
 
               {/* tags display */}
               <div className="flex flex-wrap gap-1.5 items-center">
-                <span className="text-[9px] font-black text-slate-400 uppercase tracking-wider">
+                <span className="text-xs font-black text-slate-500 uppercase tracking-wider">
                   Tag Kategori:
                 </span>
                 {selectedNote.tags &&
                   selectedNote.tags.map((tg) => (
                     <span
                       key={tg}
-                      className="text-[9px] font-bold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-md border border-slate-200"
+                      className="text-xs font-bold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-md border border-slate-200"
                     >
                       #{tg}
                     </span>
                   ))}
               </div>
 
-              <div className="text-[9px] text-[#FF2D75] font-extrabold text-right">
+              <div className="text-xs text-[#FF2D75] font-extrabold text-right">
                 Dibuat pada: {selectedNote.createdAt}
               </div>
 
@@ -6122,7 +6122,7 @@ CREATE TABLE nodes (
                   <h3 className="font-extrabold text-sm text-slate-800">
                     Konfirmasi Hapus
                   </h3>
-                  <p className="text-xs text-slate-500 font-semibold mt-1">
+                  <p className="text-sm text-slate-600 font-semibold mt-1 leading-normal">
                     {deleteConfirm.type === 'note' && "Apakah Anda yakin ingin menghapus catatan materi kuliah ini?"}
                     {deleteConfirm.type === 'log' && "Apakah Anda yakin ingin menghapus data log aktivitas belajar ini?"}
                     {deleteConfirm.type === 'node' && "Apakah Anda yakin ingin menghapus node mind map ini beserta relasinya?"}
