@@ -407,10 +407,10 @@ export default function BerandaView({
   ];
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 items-start relative z-10">
+    <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start relative z-10">
       
       {/* Left + Mid Content Columns (Span 2) */}
-      <div className="xl:col-span-2 space-y-8">
+      <div className="xl:col-span-2 space-y-6">
         
         {/* Welcome message & 3D Glassmetric Pills */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
@@ -418,7 +418,7 @@ export default function BerandaView({
             <h1 className="text-2xl md:text-3xl font-extrabold font-display tracking-tight text-[#14213d] flex items-center gap-2">
               Hai, {profile.name} <span className="animate-bounce inline-block">👋</span>
             </h1>
-            <p className="text-slate-600 text-xs font-semibold flex items-center gap-1.5 leading-normal">
+            <p className="text-slate-600 text-sm font-semibold flex items-center gap-1.5 leading-normal max-w-prose">
               Semangat ngerjain tugas hari ini! Kamu hebat!
             </p>
           </div>
@@ -434,14 +434,14 @@ export default function BerandaView({
               <div className="bg-blue-50 p-2 rounded-full text-blue-600 group-hover:bg-blue-500/20 transition-all">
                 <GraduationCap size={15} />
               </div>
-              <div className="text-left text-[10px]">
+              <div className="text-left text-xs">
                 <div className="flex items-center gap-1">
                   <p className="text-slate-500 font-extrabold leading-none uppercase tracking-wider">IPK Kamu</p>
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" style={{ color: "#000000" }} />
                 </div>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <span className="font-sans font-black text-sm leading-tight" style={{ color: "#000000" }}>{profile.gpa}</span>
-                  <span className="bg-emerald-500/10 text-[8px] font-black px-1.5 py-0.5 rounded-md flex items-center border border-emerald-500/20 gap-0.5 hover:bg-emerald-500/20" style={{ color: "#000000" }}>
+                  <span className="bg-emerald-500/10 text-xs font-black px-1.5 py-0.5 rounded-md flex items-center border border-emerald-500/20 gap-0.5 hover:bg-emerald-500/20" style={{ color: "#000000" }}>
                     Proyeksi IPK
                   </span>
                 </div>
@@ -460,7 +460,7 @@ export default function BerandaView({
                     </div>
                     <button 
                       onClick={() => setShowGpaProjection(false)}
-                      className="text-slate-400 hover:text-slate-600 font-black text-xs cursor-pointer p-1 hover:bg-slate-100 rounded-lg transition-all"
+                      className="text-slate-500 hover:text-slate-600 font-black text-xs cursor-pointer p-1 hover:bg-slate-100 rounded-lg transition-all"
                     >
                       ✕
                     </button>
@@ -488,8 +488,8 @@ export default function BerandaView({
                     return (
                       <div className="space-y-3.5">
                         <div className="bg-pink-50/50 rounded-2xl p-3 border border-pink-100">
-                          <p className="text-[9px] text-slate-400 uppercase font-black tracking-wider">Latar Belakang Akademik</p>
-                          <div className="grid grid-cols-2 gap-2 mt-1 font-semibold text-slate-700 text-[10px]">
+                          <p className="text-xs text-slate-500 uppercase font-black tracking-wider">Latar Belakang Akademik</p>
+                          <div className="grid grid-cols-2 gap-2 mt-1 font-semibold text-slate-700 text-xs">
                             <div>SKS Kumulatif: <strong className="font-mono text-slate-900">{completedSks} SKS</strong></div>
                             <div>Semester Ini: <strong className="font-mono text-slate-900">{currentSks} SKS</strong></div>
                           </div>
@@ -497,7 +497,7 @@ export default function BerandaView({
 
                         {/* Interactive Slider */}
                         <div className="space-y-1.5">
-                          <div className="flex justify-between items-center text-[10px]">
+                          <div className="flex justify-between items-center text-xs">
                             <span className="font-bold text-slate-600">Simulasi IPS Semester Ini:</span>
                             <span className="font-mono font-black text-[#FF2D75] text-xs bg-pink-100/50 px-2 py-0.5 rounded-lg border border-pink-200">
                               {targetIps.toFixed(2)}
@@ -516,7 +516,7 @@ export default function BerandaView({
 
                         {/* Projection result stats */}
                         <div className="text-center py-2 bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl border border-slate-205">
-                          <p className="text-[9px] text-slate-400 uppercase font-extrabold tracking-wider">Prediksi IPK Setelah Semester Ini</p>
+                          <p className="text-xs text-slate-500 uppercase font-extrabold tracking-wider">Prediksi IPK Setelah Semester Ini</p>
                           <p className="font-sans font-black text-xl text-slate-900 mt-1 flex items-center justify-center gap-2">
                             {projectedGpa.toFixed(2)}
                             <span className={`text-xs px-1.5 py-0.5 rounded-md font-bold ${deltaGpa >= 0 ? "bg-emerald-100/70 text-emerald-600" : "bg-rose-100/70 text-rose-600"}`}>
@@ -529,16 +529,16 @@ export default function BerandaView({
                         <div className="grid grid-cols-2 gap-2">
                           {/* Potensi Meningkat */}
                           <div className="bg-emerald-50/50 rounded-2xl p-2.5 border border-emerald-110 flex flex-col justify-between">
-                            <div className="flex items-center gap-1 text-emerald-700 text-[9px] uppercase font-black tracking-wider">
+                            <div className="flex items-center gap-1 text-emerald-700 text-xs uppercase font-black tracking-wider">
                               <TrendingUp size={12} className="text-emerald-500" />
                               <span>Meningkat (Max)</span>
                             </div>
                             <div className="mt-1.5">
-                              <p className="text-[10px] text-slate-500 font-bold">IPS Sempurna 4.00</p>
-                              <p className="font-sans font-black text-sm text-slate-950 mt-0.5">
+                              <p className="text-xs text-slate-600 font-bold">IPS Sempurna 4.00</p>
+                              <p className="font-sans font-black text-sm text-slate-950 mt-0.5 leading-normal">
                                 {maxProjected.toFixed(2)}
                               </p>
-                              <p className="text-[9px] text-emerald-600 font-black mt-0.5">
+                              <p className="text-xs text-emerald-600 font-black mt-0.5">
                                 Dapat Naik (+{maxDelta.toFixed(2)})
                               </p>
                             </div>
@@ -546,23 +546,23 @@ export default function BerandaView({
 
                           {/* Potensi Menurun */}
                           <div className="bg-rose-50/50 rounded-2xl p-2.5 border border-rose-110 flex flex-col justify-between">
-                            <div className="flex items-center gap-1 text-rose-700 text-[9px] uppercase font-black tracking-wider">
+                            <div className="flex items-center gap-1 text-rose-700 text-xs uppercase font-black tracking-wider">
                               <TrendingDown size={12} className="text-rose-500" />
                               <span>Menurun (Min)</span>
                             </div>
                             <div className="mt-1.5">
-                              <p className="text-[10px] text-slate-500 font-bold">IPS Rendah 2.00</p>
-                              <p className="font-sans font-black text-sm text-slate-950 mt-0.5">
+                              <p className="text-xs text-slate-600 font-bold">IPS Rendah 2.00</p>
+                              <p className="font-sans font-black text-sm text-slate-950 mt-0.5 leading-normal">
                                 {minProjected.toFixed(2)}
                               </p>
-                              <p className="text-[9px] text-rose-600 font-black mt-0.5">
+                              <p className="text-xs text-rose-600 font-black mt-0.5">
                                 Dapat Turun (-{minDelta.toFixed(2)})
                               </p>
                             </div>
                           </div>
                         </div>
 
-                        <div className="flex items-start gap-1 py-1 px-1.5 bg-slate-50 rounded-xl border border-slate-100 text-[8.5px] text-slate-400 font-semibold leading-relaxed">
+                        <div className="flex items-start gap-1 py-1 px-1.5 bg-slate-50 rounded-xl border border-slate-100 text-[8.5px] text-slate-500 font-semibold leading-relaxed">
                           <Info size={11} className="text-slate-500 mt-0.5 shrink-0" />
                           <span>Klik pilar mana saja untuk memperkirakan strategi perolehan IPK ideal di semester berjalan.</span>
                         </div>
@@ -578,9 +578,9 @@ export default function BerandaView({
               <div className="bg-purple-50 p-2 rounded-full text-purple-600">
                 <TrendingUp size={15} />
               </div>
-              <div className="text-left text-[10px]">
+              <div className="text-left text-xs">
                 <p className="text-slate-500 font-extrabold leading-none uppercase tracking-wider">Tingkat IPK</p>
-                <p className="font-display font-bold text-[#FF2D75] text-xs mt-0.5">
+                <p className="font-display font-bold text-[#FF2D75] text-sm mt-0.5 leading-normal">
                   {profile.gpa >= 3.51 ? "Cum Laude" :
                    profile.gpa >= 3.01 ? "Sangat Memuaskan" :
                    profile.gpa >= 2.76 ? "Memuaskan" :
@@ -711,7 +711,7 @@ export default function BerandaView({
                     key={uncompletedTasksCount + (octopusQuote ? 100 : 0)}
                     className="absolute top-1 left-1/2 transform -translate-x-1/2 z-30 bg-white border-2 border-pink-200 rounded-inner px-3.5 py-2 w-max max-w-[240px] text-center select-none"
                   >
-                    <p className="text-[10px] font-black leading-tight text-slate-800">
+                    <p className="text-xs font-black leading-tight text-slate-800">
                       {activeQuote}
                     </p>
                     {/* Arrow Pointer */}
@@ -928,7 +928,7 @@ export default function BerandaView({
             <span className="w-1.5 h-5 bg-[#FF2D75] rounded-full block"></span>
             Akses Cepat
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {quickAccess.map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -953,7 +953,7 @@ export default function BerandaView({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Deadline Terdekat Component */}
-          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex flex-col">
+          <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-extrabold font-display text-slate-800 text-sm flex items-center gap-2">
                 <Clock size={16} className="text-blue-500" />
@@ -984,16 +984,16 @@ export default function BerandaView({
                     className="flex justify-between items-center p-3 rounded-2xl border border-white/50 bg-white/30 hover:bg-white/60 transition-all text-left"
                   >
                     <div className="min-w-0 pr-2">
-                      <p className="font-extrabold text-[#000000] text-xs truncate">{task.title}</p>
-                      <p className="text-[10px] text-slate-500 font-medium mt-0.5 truncate">{task.course} • {task.dueDate}</p>
+                      <p className="font-extrabold text-[#000000] text-sm truncate leading-normal">{task.title}</p>
+                      <p className="text-xs text-slate-600 font-medium mt-0.5 truncate">{task.course} • {task.dueDate}</p>
                     </div>
                     {task.daysLeft <= 0 ? (
-                      <span className="text-[9.5px] font-black px-2.5 py-1 rounded-xl shrink-0 uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-300 flex items-center gap-1">
+                      <span className="text-xs font-black px-2.5 py-1 rounded-xl shrink-0 uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-300 flex items-center gap-1">
                         <AlertTriangle size={10} />
                         Closed
                       </span>
                     ) : (
-                      <span className="text-[9.5px] font-black px-2.5 py-1 rounded-xl shrink-0 uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1">
+                      <span className="text-xs font-black px-2.5 py-1 rounded-xl shrink-0 uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1">
                         <Timer size={11} className="text-amber-800" />
                         {task.daysLeft} hari
                       </span>
@@ -1004,21 +1004,21 @@ export default function BerandaView({
               {tasks.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-8 text-center bg-white/20 rounded-2xl border border-dashed border-slate-200">
                   <span className="text-3xl">📝</span>
-                  <p className="text-xs font-extrabold text-slate-700 mt-2">Masih belum ada tugas yang Anda masukkan</p>
-                  <p className="text-[10px] text-slate-400">Tambahkan tugas baru pada menu Tugas &amp; Deadline.</p>
+                  <p className="text-sm font-extrabold text-slate-700 mt-2 leading-normal">Masih belum ada tugas yang Anda masukkan</p>
+                  <p className="text-xs text-slate-600">Tambahkan tugas baru pada menu Tugas &amp; Deadline.</p>
                 </div>
               ) : tasks.filter(t => !t.completed).length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-8 text-center bg-white/20 rounded-2xl border border-dashed border-slate-200">
                   <span className="text-3xl">🎉</span>
-                  <p className="text-xs font-extrabold text-slate-700 mt-2">Semua tugas beres!</p>
-                  <p className="text-[10px] text-slate-400">Selamat bersantai atau cari ilmu baru.</p>
+                  <p className="text-sm font-extrabold text-slate-700 mt-2 leading-normal">Semua tugas beres!</p>
+                  <p className="text-xs text-slate-600">Selamat bersantai atau cari ilmu baru.</p>
                 </div>
               ) : null}
             </div>
           </div>
 
           {/* Progres Mingguan saya */}
-          <div className="bg-[#fdfdfe] p-5.5 rounded-card border border-white shadow-card flex flex-col justify-between">
+          <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col justify-between">
             <div className="flex justify-between items-center mb-3">
               <h3 className="font-extrabold font-display text-slate-800 text-sm flex items-center gap-2">
                 <Smile size={16} className="text-pink-500" />
@@ -1038,15 +1038,15 @@ export default function BerandaView({
                   <div className="flex items-start gap-2">
                     <span className="text-xs pt-0.5 animate-bounce block">✨</span>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-black text-[10px] text-green-800 uppercase tracking-wider">Progres 100% Tercapai!</h4>
-                      <p className="text-[10px] text-slate-600 font-bold mt-0.5 leading-snug">
+                      <h4 className="font-black text-xs text-green-800 uppercase tracking-wider">Progres 100% Tercapai!</h4>
+                      <p className="text-xs text-slate-600 font-bold mt-0.5 leading-snug">
                         Sistem mendeteksi pencapaian penuh. Otomatis meriset dalam <strong className="text-pink-600 font-black font-mono text-xs">{autoResetSecondsLeft}s</strong> untuk minggu baru.
                       </p>
                       <div className="flex items-center gap-2 mt-2">
                         <button
                           type="button"
                           onClick={() => handleResetProgressAction()}
-                          className="px-2.5 py-1 bg-green-600 hover:bg-green-700 text-white rounded-lg text-[9px] font-black transition-colors cursor-pointer"
+                          className="px-2.5 py-1 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-black transition-colors cursor-pointer"
                         >
                           Reset Sekarang
                         </button>
@@ -1056,7 +1056,7 @@ export default function BerandaView({
                             setDismissedAutoReset(true);
                             setAutoResetSecondsLeft(null);
                           }}
-                          className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-500 rounded-lg text-[9px] font-bold border border-slate-200 transition-colors cursor-pointer"
+                          className="px-2.5 py-1 bg-white hover:bg-slate-100 text-slate-500 rounded-lg text-xs font-bold border border-slate-200 transition-colors cursor-pointer"
                         >
                           Batal Auto-Reset
                         </button>
@@ -1152,7 +1152,7 @@ export default function BerandaView({
                         <span className="text-xl font-black font-display text-slate-800 leading-none">
                           {combinedPct}%
                         </span>
-                        <span className="text-[8px] font-black uppercase text-[#FF2D75] tracking-widest mt-1">
+                        <span className="text-xs font-black uppercase text-[#FF2D75] tracking-widest mt-1">
                           TUNTAS
                         </span>
                       </div>
@@ -1163,7 +1163,7 @@ export default function BerandaView({
                   <div className="w-full space-y-3.5 text-left">
                     {/* Task progress with adjustments */}
                     <div>
-                      <div className="flex justify-between items-center text-[10px] text-slate-650 mb-1">
+                      <div className="flex justify-between items-center text-xs text-slate-650 mb-1">
                         <span className="font-extrabold flex items-center gap-1">
                           <span className="w-1.5 h-1.5 rounded-full bg-[#FF2D75]"></span>
                           Tugas Selesai: <strong className="text-slate-800">{completedCount}/{totalTaskCount}</strong>
@@ -1172,7 +1172,7 @@ export default function BerandaView({
                           <button 
                             type="button"
                             onClick={() => setCompletedCount(c => Math.max(0, c - 1))}
-                            className="w-4 h-4 bg-white/70 shadow-xs border border-white/95 hover:bg-white rounded text-[9px] font-black text-slate-650 flex items-center justify-center cursor-pointer transition-all active:scale-90"
+                            className="w-4 h-4 bg-white/70 shadow-xs border border-white/95 hover:bg-white rounded text-[11px] font-black text-slate-650 flex items-center justify-center cursor-pointer transition-all active:scale-90"
                             title="Kurangi tugas selesai"
                           >
                             -
@@ -1182,7 +1182,7 @@ export default function BerandaView({
                             onClick={() => {
                               setCompletedCount(c => Math.min(totalTaskCount, c + 1));
                             }}
-                            className="w-4 h-4 bg-white/70 shadow-xs border border-white/95 hover:bg-white rounded text-[9px] font-black text-slate-655 flex items-center justify-center cursor-pointer transition-all active:scale-90"
+                            className="w-4 h-4 bg-white/70 shadow-xs border border-white/95 hover:bg-white rounded text-[11px] font-black text-slate-655 flex items-center justify-center cursor-pointer transition-all active:scale-90"
                             title="Tambah tugas selesai"
                           >
                             +
@@ -1199,7 +1199,7 @@ export default function BerandaView({
 
                     {/* Study Hours progress with adjustments */}
                     <div>
-                      <div className="flex justify-between items-center text-[10px] text-slate-650 mb-1">
+                      <div className="flex justify-between items-center text-xs text-slate-650 mb-1">
                         <span className="font-extrabold flex items-center gap-1">
                           <span className="w-1.5 h-1.5 rounded-full bg-sky-500 text-sky-500 font-black">•</span>
                           Jam Belajar: <strong className="text-slate-800">{studyHours}/{targetStudyHours}j</strong>
@@ -1208,14 +1208,14 @@ export default function BerandaView({
                           <button 
                             type="button"
                             onClick={() => setStudyHours(h => Math.max(0, h - 1))}
-                            className="w-4 h-4 bg-white/70 shadow-xs border border-white/95 hover:bg-white rounded text-[9px] font-black text-slate-650 flex items-center justify-center cursor-pointer transition-all active:scale-90"
+                            className="w-4 h-4 bg-white/70 shadow-xs border border-white/95 hover:bg-white rounded text-[11px] font-black text-slate-650 flex items-center justify-center cursor-pointer transition-all active:scale-90"
                           >
                             -
                           </button>
                           <button 
                             type="button"
                             onClick={() => setStudyHours(h => Math.min(targetStudyHours, h + 1))}
-                            className="w-4 h-4 bg-white/70 shadow-xs border border-white/95 hover:bg-white rounded text-[9px] font-black text-slate-655 flex items-center justify-center cursor-pointer transition-all active:scale-90"
+                            className="w-4 h-4 bg-white/70 shadow-xs border border-white/95 hover:bg-white rounded text-[11px] font-black text-slate-655 flex items-center justify-center cursor-pointer transition-all active:scale-90"
                           >
                             +
                           </button>
@@ -1231,7 +1231,7 @@ export default function BerandaView({
 
                     {/* Mood indicator with Select drop query */}
                     <div>
-                      <div className="flex justify-between items-center text-[10px] text-slate-655 mb-1">
+                      <div className="flex justify-between items-center text-xs text-slate-655 mb-1">
                         <span className="font-extrabold flex items-center gap-1">
                           <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
                           Mood Anda: <strong className="text-slate-800">{mood === "Baik" ? "😊 Baik" : mood === "Sempurna" ? "🤩 Sempurna" : mood === "Lelah" ? "😴 Lelah" : mood === "Bad Mood" ? "😡 Bad..." : "😐 Biasa"}</strong>
@@ -1239,7 +1239,7 @@ export default function BerandaView({
                         <select 
                           value={mood} 
                           onChange={(e) => setMood(e.target.value)}
-                          className="text-[8px] border border-white bg-white/60 backdrop-blur-xs rounded px-1.5 py-0.5 font-bold text-slate-600 cursor-pointer hover:bg-white transition-all shadow-xs"
+                          className="text-xs border border-white bg-white/60 backdrop-blur-xs rounded px-1.5 py-0.5 font-bold text-slate-600 cursor-pointer hover:bg-white transition-all shadow-xs"
                         >
                           <option value="Sempurna">Sempurna</option>
                           <option value="Baik">Baik</option>
@@ -1268,7 +1268,7 @@ export default function BerandaView({
                         <button
                           type="button"
                           onClick={() => setShowResetConfirmModal(true)}
-                          className="w-full py-2 bg-pink-100 hover:bg-pink-200 text-[#FF2D75] rounded-xl text-[10px] font-black transition-all cursor-pointer flex items-center justify-center gap-1 shadow-xs ring-1 ring-pink-200"
+                          className="w-full py-2 bg-pink-100 hover:bg-pink-200 text-[#FF2D75] rounded-xl text-xs font-black transition-all cursor-pointer flex items-center justify-center gap-1 shadow-xs ring-1 ring-pink-200"
                         >
                           <AlertTriangle size={11} className="animate-pulse" />
                           Reset Progres Mingguan
@@ -1286,11 +1286,11 @@ export default function BerandaView({
 
         {/* Tip Belajar Sukses Section (Replacer for event slot to keep visual balance block) */}
         <section className="space-y-4">
-          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card text-left">
+          <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card text-left">
             <h3 className="font-extrabold font-display text-slate-800 text-sm flex items-center gap-2 mb-2">
               Tips Belajar Pintar Hari Ini
             </h3>
-            <p className="text-xs text-slate-650 leading-relaxed font-semibold">
+            <p className="text-sm text-slate-650 leading-relaxed font-semibold">
               Gunakan teknik Pomodoro di sub-fitur <b>Ruang Belajar</b> kami. Belajar fokus selama 25 menit secara intensif, diikuti dengan istirahat singkat selama 5 menit. Sesi studi seimbang sangat membantu meningkatkan retensi memori jangka panjang!
             </p>
           </div>
@@ -1299,10 +1299,10 @@ export default function BerandaView({
       </div>
 
       {/* Right Sidebar Column (Span 1) */}
-      <div className="space-y-8">
+      <div className="space-y-6">
         
         {/* Kalender Card Container */}
-        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card">
+        <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-extrabold font-display text-slate-800 text-sm flex items-center gap-1.5">
               <Calendar size={16} className="text-[#FF2D75]" />
@@ -1330,7 +1330,7 @@ export default function BerandaView({
           </div>
 
           {/* Table Days Header */}
-          <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-slate-500 mb-2">
+          <div className="grid grid-cols-7 gap-1 text-center text-xs font-bold text-slate-500 mb-2">
             <span>Min</span>
             <span>Sen</span>
             <span>Sel</span>
@@ -1389,7 +1389,7 @@ export default function BerandaView({
                       openCreateModalForDate(cellDateStr);
                     }
                   }}
-                  className={`aspect-square text-[11px] font-bold rounded-2xl flex flex-col items-center justify-center transition-all relative cursor-pointer ${cellBaseClass}`}
+                  className={`aspect-square text-xs font-bold rounded-2xl flex flex-col items-center justify-center transition-all relative cursor-pointer ${cellBaseClass}`}
                   title={cellEvents.length ? `${cellEvents.length} Agenda` : "Double click untuk tambah"}
                 >
                   <span className={isToday || (selectedDay === cell.dayNum && cell.isCurrentMonth) ? "" : "text-slate-800 font-extrabold"}>{cell.dayNum}</span>
@@ -1408,7 +1408,7 @@ export default function BerandaView({
           </div>
           
           {/* Legend */}
-          <div className="mt-3.5 pt-2.5 border-t border-slate-100/70 flex flex-wrap gap-x-3 gap-y-1 items-center justify-center text-[9px] font-bold text-slate-400">
+          <div className="mt-3.5 pt-2.5 border-t border-slate-100/70 flex flex-wrap gap-x-3 gap-y-1 items-center justify-center text-xs font-bold text-slate-500">
             <span className="flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
               Pribadi
@@ -1425,7 +1425,7 @@ export default function BerandaView({
         </div>
 
         {/* Agenda Hari Ini Component */}
-        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card">
+        <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-extrabold font-display text-slate-800 text-sm flex items-center gap-1.5">
               <Clock size={16} className="text-[#FF2D75]" />
@@ -1448,10 +1448,10 @@ export default function BerandaView({
               
               if (selectedDayEvents.length === 0) {
                 return (
-                  <div className="py-6 text-center text-slate-400 bg-slate-50/60 rounded-2xl border border-dashed border-slate-200">
+                  <div className="py-6 text-center text-slate-500 bg-slate-50/60 rounded-2xl border border-dashed border-slate-200">
                     <CalendarDays size={20} className="mx-auto text-slate-300 mb-1 pointer-events-none" />
-                    <p className="text-[10px] font-bold text-slate-500">Tenang & Santai...</p>
-                    <p className="text-[9px] text-slate-400">Tidak ada agenda terjadwal.</p>
+                    <p className="text-xs font-bold text-slate-600">Tenang & Santai...</p>
+                    <p className="text-xs text-slate-600">Tidak ada agenda terjadwal.</p>
                   </div>
                 );
               }
@@ -1507,26 +1507,26 @@ export default function BerandaView({
 
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-1.5 mb-1 flex-wrap">
-                              <span className={`text-[8px] font-extrabold px-1.5 py-0.5 rounded-md ${
+                              <span className={`text-xs font-extrabold px-1.5 py-0.5 rounded-md ${
                                 ev.completed
                                   ? "bg-slate-200 text-slate-650"
                                   : isPribadi ? "bg-amber-100" : isTugas ? "bg-red-100" : "bg-blue-100"
                               } ${ev.completed ? "" : categoryTextColor}`}>
                                 {ev.completed ? "Selesai" : categoryLabel}
                               </span>
-                              <span className="text-[9px] font-bold text-slate-600 flex items-center gap-0.5 font-sans tracking-tight tabular-nums">
+                              <span className="text-xs font-bold text-slate-600 flex items-center gap-0.5 font-sans tracking-tight tabular-nums">
                                 <Clock size={9} />
                                 {ev.time}
                               </span>
                             </div>
-                            <h4 className={`text-[11px] font-black leading-snug truncate group-hover:text-[#FF2D75] transition-colors ${
+                            <h4 className={`text-xs font-black leading-snug truncate group-hover:text-[#FF2D75] transition-colors ${
                               ev.completed ? "line-through text-slate-500" : "text-slate-800"
                             }`}>
                               {ev.title}
                             </h4>
                             {ev.description && (
-                              <p className={`text-[10px] font-medium truncate mt-0.5 ${
-                                ev.completed ? "text-slate-400" : "text-slate-500"
+                              <p className={`text-xs font-medium truncate mt-0.5 ${
+                                ev.completed ? "text-slate-600" : "text-slate-600"
                               }`}>
                                 {ev.description}
                               </p>
@@ -1576,14 +1576,14 @@ export default function BerandaView({
             <p className="text-xs font-black text-[#FF2D75] tracking-wider uppercase flex items-center gap-1">
               Kutipan Hari Ini
             </p>
-            <p className="text-xs font-bold text-slate-700 mt-2.5 leading-relaxed italic text-left">
+            <p className="text-sm font-bold text-slate-700 mt-2.5 leading-relaxed italic text-left">
               "{IndonesianQuotes[quoteIndex]}"
             </p>
           </div>
           <div className="mt-3.5 flex justify-end items-center">
             <button 
               onClick={cycleQuote}
-              className="text-[10px] font-bold bg-white border border-pink-100 text-[#FF2D75] px-2.5 py-1 rounded-lg hover:bg-pink-50 hover:border-pink-200 transition-all cursor-pointer shadow-3xs"
+              className="text-xs font-bold bg-white border border-pink-100 text-[#FF2D75] px-2.5 py-1 rounded-lg hover:bg-pink-50 hover:border-pink-200 transition-all cursor-pointer shadow-3xs"
             >
               Kutipan Lain
             </button>
@@ -1592,12 +1592,12 @@ export default function BerandaView({
 
 
         {/* Catatan Akademik Ringkas Sidebar Group (Replacer block to keep visual density) */}
-        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card text-left">
+        <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card text-left">
           <h3 className="font-extrabold font-display text-slate-800 text-sm mb-2 flex items-center gap-1.5">
             <BookOpen size={16} className="text-[#FF2D75]" />
             Catatan Belajar Mandiri
           </h3>
-          <p className="text-[11px] text-slate-600 leading-relaxed font-semibold">
+          <p className="text-xs text-slate-600 leading-relaxed font-semibold">
             Rangkuman bahan materi ujian, presentasi kelompok, dan catatan mingguan KRS Anda terangkum dengan rapi melalui integrasi sinkronisasi kalender Anda.
           </p>
         </div>
@@ -1633,7 +1633,7 @@ export default function BerandaView({
                     <h3 className="font-extrabold text-sm text-slate-800">
                       Reset Progres Mingguan?
                     </h3>
-                    <p className="text-[11px] text-slate-500 font-bold leading-relaxed px-1">
+                    <p className="text-xs text-slate-600 font-bold leading-relaxed px-1">
                       Tindakan ini akan mengembalikan jumlah tugas selesai menjadi <strong className="text-emerald-300 font-black">0</strong> dan jam belajar menjadi <strong className="text-emerald-300 font-black">0j</strong> untuk minggu baru.
                     </p>
                   </div>
@@ -1694,7 +1694,7 @@ export default function BerandaView({
                 </h3>
                 <button
                   onClick={() => setShowEventModal(false)}
-                  className="p-1 hover:bg-slate-102 rounded-lg text-slate-400 hover:text-slate-655 transition-colors cursor-pointer"
+                  className="p-1 hover:bg-slate-102 rounded-lg text-slate-500 hover:text-slate-655 transition-colors cursor-pointer"
                 >
                   <X size={14} />
                 </button>
@@ -1704,9 +1704,9 @@ export default function BerandaView({
               <form onSubmit={handleSaveEvent} className="space-y-3.5 text-left">
                 {/* Title */}
                 <div className="space-y-1">
-                  <label className="block text-[9px] font-black text-slate-500 uppercase tracking-wider">Judul Agenda</label>
+                  <label className="block text-xs font-black text-slate-500 uppercase tracking-wider">Judul Agenda</label>
                   {modalMode === "view" ? (
-                    <p className="text-xs font-bold text-slate-800 bg-slate-50/50 px-3 py-2 rounded-xl border border-slate-100">
+                    <p className="text-sm font-bold text-slate-800 bg-slate-50/50 px-3 py-2 rounded-xl border border-slate-100 leading-normal">
                       {formTitle}
                     </p>
                   ) : (
@@ -1716,16 +1716,16 @@ export default function BerandaView({
                       onChange={(e) => setFormTitle(e.target.value)}
                       placeholder="Masukkan judul agenda..."
                       required
-                      className="w-full bg-slate-50 border border-slate-200 focus:border-[#FF2D75]/50 focus:outline-[#FF2D75]/30 px-3 py-2 rounded-xl font-bold text-xs"
+                      className="w-full bg-slate-50 border border-slate-200 focus:border-[#FF2D75]/50 focus:outline-[#FF2D75]/30 px-3 py-2 rounded-xl font-bold text-sm"
                     />
                   )}
                 </div>
 
                 {/* Description */}
                 <div className="space-y-1">
-                  <label className="block text-[9px] font-black text-slate-500 uppercase tracking-wider">Deskripsi / Detail</label>
+                  <label className="block text-xs font-black text-slate-500 uppercase tracking-wider">Deskripsi / Detail</label>
                   {modalMode === "view" ? (
-                    <p className="text-xs font-medium text-slate-600 bg-slate-50/50 px-3 py-2 rounded-xl border border-slate-100 min-h-[50px] whitespace-pre-wrap">
+                    <p className="text-sm font-medium text-slate-600 bg-slate-50/50 px-3 py-2 rounded-xl border border-slate-100 min-h-[50px] whitespace-pre-wrap leading-normal">
                       {formDescription || "Tidak ada deskripsi."}
                     </p>
                   ) : (
@@ -1734,7 +1734,7 @@ export default function BerandaView({
                       onChange={(e) => setFormDescription(e.target.value)}
                       placeholder="Tuliskan catatan atau detail tambahan..."
                       rows={2}
-                      className="w-full bg-slate-50 border border-slate-200 focus:border-[#FF2D75]/50 focus:outline-[#FF2D75]/30 px-3 py-2 rounded-xl font-bold text-xs resize-none"
+                      className="w-full bg-slate-50 border border-slate-200 focus:border-[#FF2D75]/50 focus:outline-[#FF2D75]/30 px-3 py-2 rounded-xl font-bold text-sm resize-none"
                     />
                   )}
                 </div>
@@ -1742,9 +1742,9 @@ export default function BerandaView({
                 <div className="grid grid-cols-2 gap-2.5">
                   {/* Date */}
                   <div className="space-y-1">
-                    <label className="block text-[9px] font-black text-slate-500 uppercase tracking-wider">Tanggal</label>
+                    <label className="block text-xs font-black text-slate-500 uppercase tracking-wider">Tanggal</label>
                     {modalMode === "view" ? (
-                      <p className="text-[10px] font-bold text-[#FF2D75] bg-slate-50 px-2.5 py-2 rounded-xl border border-slate-100 font-mono">
+                      <p className="text-xs font-bold text-[#FF2D75] bg-slate-50 px-2.5 py-2 rounded-xl border border-slate-100 font-mono">
                         {formDate}
                       </p>
                     ) : (
@@ -1753,16 +1753,16 @@ export default function BerandaView({
                         value={formDate}
                         onChange={(e) => setFormDate(e.target.value)}
                         required
-                        className="w-full bg-slate-50 border border-slate-200 focus:border-[#FF2D75]/50 focus:outline-[#FF2D75]/30 p-2 rounded-xl font-bold text-xs font-mono"
+                        className="w-full bg-slate-50 border border-slate-200 focus:border-[#FF2D75]/50 focus:outline-[#FF2D75]/30 p-2 rounded-xl font-bold text-sm font-mono"
                       />
                     )}
                   </div>
 
                   {/* Time */}
                   <div className="space-y-1">
-                    <label className="block text-[9px] font-black text-slate-500 uppercase tracking-wider">Waktu</label>
+                    <label className="block text-xs font-black text-slate-500 uppercase tracking-wider">Waktu</label>
                     {modalMode === "view" ? (
-                      <p className="text-[10px] font-bold text-[#FF2D75] bg-slate-50 px-2.5 py-2 rounded-xl border border-slate-100 font-mono">
+                      <p className="text-xs font-bold text-[#FF2D75] bg-slate-50 px-2.5 py-2 rounded-xl border border-slate-100 font-mono">
                         {formTime}
                       </p>
                     ) : (
@@ -1771,7 +1771,7 @@ export default function BerandaView({
                         value={formTime}
                         onChange={(e) => setFormTime(e.target.value)}
                         required
-                        className="w-full bg-slate-50 border border-slate-200 focus:border-[#FF2D75]/50 focus:outline-[#FF2D75]/30 p-2 rounded-xl font-bold text-xs font-mono"
+                        className="w-full bg-slate-50 border border-slate-200 focus:border-[#FF2D75]/50 focus:outline-[#FF2D75]/30 p-2 rounded-xl font-bold text-sm font-mono"
                       />
                     )}
                   </div>
@@ -1779,13 +1779,13 @@ export default function BerandaView({
 
                 {/* Category Selection */}
                 <div className="space-y-1">
-                  <label className="block text-[9px] font-black text-slate-500 uppercase tracking-wider">Kategori Agenda</label>
+                  <label className="block text-xs font-black text-slate-500 uppercase tracking-wider">Kategori Agenda</label>
                   {modalMode === "view" ? (
                     <div className="flex items-center gap-1.5 mt-1 bg-slate-50 px-3 py-2 rounded-xl border border-slate-100">
                       <span className={`w-2.5 h-2.5 rounded-full ${
                         formCategory === "Pribadi" ? "bg-amber-400" : formCategory === "Tugas" ? "bg-red-500" : "bg-blue-500"
                       }`} />
-                      <span className="text-[11px] font-bold text-slate-700">
+                      <span className="text-xs font-bold text-slate-700">
                         {formCategory === "Pribadi" ? "Agenda Pribadi (Kuning)" : formCategory === "Tugas" ? "Deadline Tugas (Merah)" : "Kegiatan Lainnya (Biru)"}
                       </span>
                     </div>
@@ -1816,11 +1816,11 @@ export default function BerandaView({
 
                 {/* Status Pelaksanaan */}
                 <div className="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-100 rounded-2xl">
-                  <span className="text-[9px] font-black text-slate-500 uppercase tracking-wider">Status Pelaksanaan</span>
+                  <span className="text-xs font-black text-slate-500 uppercase tracking-wider">Status Pelaksanaan</span>
                   {modalMode === "view" ? (
                     <div className="flex items-center gap-1.5">
                       <span className={`w-2 h-2 rounded-full ${formCompleted ? "bg-emerald-500" : "bg-slate-300"}`} />
-                      <span className={`text-[10px] font-extrabold ${formCompleted ? "text-emerald-700" : "text-slate-500"}`}>
+                      <span className={`text-xs font-extrabold ${formCompleted ? "text-emerald-700" : "text-slate-500"}`}>
                         {formCompleted ? "Selesai (Dilaksanakan)" : "Belum Dilaksanakan"}
                       </span>
                     </div>
@@ -1833,7 +1833,7 @@ export default function BerandaView({
                         className="sr-only peer"
                       />
                       <div className="w-8 h-4.5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3.5 after:w-3.5 after:transition-all peer-checked:bg-emerald-500"></div>
-                      <span className="ml-2 text-[10px] font-extrabold text-slate-700">
+                      <span className="ml-2 text-xs font-extrabold text-slate-700">
                         {formCompleted ? "Sudah Selesai" : "Belum Selesai"}
                       </span>
                     </label>
@@ -1910,7 +1910,7 @@ export default function BerandaView({
                   </div>
                   <h3 className="font-black font-display text-slate-900 text-sm">Konfirmasi Hapus</h3>
                 </div>
-                <p className="text-xs text-slate-500 font-semibold leading-relaxed">
+                <p className="text-sm text-slate-600 font-semibold leading-relaxed">
                   Apakah Anda yakin ingin menghapus agenda/kegiatan ini? Tindakan ini tidak dapat dibatalkan.
                 </p>
                 <div className="flex gap-2.5 pt-2">
