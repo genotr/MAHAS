@@ -215,7 +215,7 @@ export default function SimulasiBimbinganView() {
   };
 
   return (
-    <div className="space-y-6 text-left relative z-10 font-sans">
+    <div className="space-y-4 text-left relative z-10 font-sans">
       
       {/* View Title Header */}
       <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-in fade-in duration-300">
@@ -238,10 +238,10 @@ export default function SimulasiBimbinganView() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
         
         {/* LEFT COMPONENT: ADVISER SELECTOR & FILES PANEL */}
-        <div className="lg:col-span-5 space-y-6">
+        <div className="lg:col-span-5 space-y-4">
           
           {/* Character Selector Options */}
           <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card space-y-4">
@@ -413,7 +413,7 @@ export default function SimulasiBimbinganView() {
         </div>
 
         {/* RIGHT COMPONENT: ACTIVE CHAT DIALOGUE WITH ADVISOR */}
-        <div className="lg:col-span-7 space-y-6">
+        <div className="lg:col-span-7 space-y-4">
           <div className="bg-[#fdfdfe] rounded-panel border border-white shadow-card flex flex-col justify-between overflow-hidden h-[635px]">
             
             {/* Adviser Active Identity Bar */}
