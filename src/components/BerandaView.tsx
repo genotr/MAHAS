@@ -407,10 +407,10 @@ export default function BerandaView({
   ];
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start relative z-10">
+    <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 items-start relative z-10">
       
       {/* Left + Mid Content Columns (Span 2) */}
-      <div className="xl:col-span-2 space-y-6">
+      <div className="xl:col-span-2 space-y-4">
         
         {/* Welcome message & 3D Glassmetric Pills */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
@@ -950,7 +950,7 @@ export default function BerandaView({
         </section>
 
         {/* Upcoming Deadline & Weekly Progress Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           
           {/* Deadline Terdekat Component */}
           <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col">
@@ -1299,7 +1299,7 @@ export default function BerandaView({
       </div>
 
       {/* Right Sidebar Column (Span 1) */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         
         {/* Kalender Card Container */}
         <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card">
