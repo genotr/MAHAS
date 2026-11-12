@@ -688,7 +688,7 @@ export default function TugasView({
             Tugas & Lingkup Deadline Akademik{" "}
             <CheckSquare className="text-[#FF2D75] inline-block align-middle ml-1.5" size={24} />
           </h2>
-          <p className="text-xs text-slate-500 leading-normal font-semibold">
+          <p className="text-sm text-slate-600 leading-normal font-semibold max-w-prose">
             Urus semua penugasan semester, tugas lab, makalah kelompok, kuis, dan ujian akhir sebelum melewati batas waktu pengumpulan.
           </p>
         </div>
@@ -708,11 +708,11 @@ export default function TugasView({
               <Globe size={20} className="text-emerald-600 animate-pulse" />
             </div>
             <div>
-              <p className="text-xs font-black text-emerald-950 flex items-center gap-1.5">
+              <p className="text-sm font-black text-emerald-950 flex items-center gap-1.5 leading-normal">
                 Google Classroom Terhubung
                 <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
               </p>
-              <p className="text-[10px] text-emerald-750 font-bold mt-0.5">
+              <p className="text-xs text-emerald-750 font-bold mt-0.5">
                 Sinkronisasi otomatis aktif untuk {googleUser?.email || "Akun Google Anda"}
               </p>
             </div>
@@ -726,13 +726,13 @@ export default function TugasView({
                 }
               }}
               disabled={classroomLoading}
-              className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-300 text-white font-black text-[10px] px-3.5 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap"
+              className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-300 text-white font-black text-xs px-3.5 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap"
             >
               {classroomLoading ? "Menyinkronkan..." : "Sinkronkan Sekarang"}
             </button>
             <button
               onClick={handleDisconnect}
-              className="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-red-650 font-black text-[10px] px-3.5 py-2 rounded-xl transition-all cursor-pointer"
+              className="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-red-650 font-black text-xs px-3.5 py-2 rounded-xl transition-all cursor-pointer"
             >
               Putuskan
             </button>
@@ -748,7 +748,7 @@ export default function TugasView({
               <Globe size={14} className="text-white" />
               Kode Kelas Classroom
             </h3>
-            <p className="text-[11px] text-emerald-100/90 font-semibold leading-relaxed">
+            <p className="text-xs text-emerald-100/90 font-semibold leading-relaxed">
               Hubungkan mata kuliah Anda dengan memasukkan kode akses kelas untuk sinkronisasi tugas instan.
             </p>
           </div>
@@ -761,7 +761,7 @@ export default function TugasView({
               onChange={(e) => setClassroomCode(e.target.value)}
               disabled={classroomLoading}
               required
-              className="px-4 py-2 rounded-2xl text-xs font-black focus:outline-hidden bg-emerald-950/40 text-white border border-emerald-600/40 placeholder-emerald-300/60 w-full md:w-44 focus:border-amber-400 transition-all font-mono"
+              className="px-4 py-2 rounded-2xl text-sm font-black focus:outline-hidden bg-emerald-950/40 text-white border border-emerald-600/40 placeholder-emerald-300/60 w-full md:w-44 focus:border-amber-400 transition-all font-mono"
             />
             <button
               type="submit"
@@ -785,13 +785,13 @@ export default function TugasView({
         )}
 
         {classroomSuccess && (
-          <div className="p-3 bg-emerald-950/80 border border-emerald-400/40 text-emerald-200 rounded-xl text-xs font-bold leading-relaxed animate-in fade-in slide-in-from-top-1 shadow-md">
+          <div className="p-3 bg-emerald-950/80 border border-emerald-400/40 text-emerald-200 rounded-xl text-sm font-bold leading-relaxed animate-in fade-in slide-in-from-top-1 shadow-md">
             ✔️ {classroomSuccess.replace(/Google Classroom/gi, "Kelas")}
           </div>
         )}
 
         {classroomError && (
-          <div className="p-3 bg-red-950/80 border border-red-400/30 text-rose-200 rounded-xl text-xs font-bold leading-relaxed animate-in fade-in slide-in-from-top-1 shadow-md">
+          <div className="p-3 bg-red-950/80 border border-red-400/30 text-rose-200 rounded-xl text-sm font-bold leading-relaxed animate-in fade-in slide-in-from-top-1 shadow-md">
             ❌ {classroomError.replace(/Google Classroom/gi, "Kelas")}
           </div>
         )}
@@ -805,7 +805,7 @@ export default function TugasView({
               <Plus size={16} />
               Rancang Detail Penugasan Baru
             </h3>
-            <span className="text-[10px] bg-pink-50 text-pink-700 font-bold px-2.5 py-1 rounded-xl border border-pink-200/60">
+            <span className="text-xs bg-pink-50 text-pink-700 font-bold px-2.5 py-1 rounded-xl border border-pink-200/60">
               Terhubung dengan Jadwal Akademik
             </span>
           </div>
@@ -819,14 +819,14 @@ export default function TugasView({
                 required
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
+                className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-sm"
               />
             </div>
 
             <div>
               <label className="block font-bold text-slate-700 mb-1 flex items-center justify-between">
                 <span>Mata Kuliah Terkait *</span>
-                <span className="text-[10px] text-pink-600 font-bold">Pilihan Jadwal Akademik</span>
+                <span className="text-xs text-pink-600 font-bold">Pilihan Jadwal Akademik</span>
               </label>
 
               {courses && courses.length > 0 ? (
@@ -838,7 +838,7 @@ export default function TugasView({
                         setCourse(e.target.value);
                       }
                     }}
-                    className="w-full border border-pink-200 focus:outline-hidden focus:border-pink-400 p-2.5 rounded-xl font-bold bg-white text-xs text-slate-800 shadow-2xs"
+                    className="w-full border border-pink-200 focus:outline-hidden focus:border-pink-400 p-2.5 rounded-xl font-bold bg-white text-sm text-slate-800 shadow-2xs"
                   >
                     <option value="">-- Pilih Mata Kuliah dari Jadwal Akademik --</option>
                     {courses.map((c) => (
@@ -855,18 +855,18 @@ export default function TugasView({
                     required
                     value={course}
                     onChange={(e) => setCourse(e.target.value)}
-                    className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2 rounded-xl font-bold bg-white text-xs"
+                    className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2 rounded-xl font-bold bg-white text-sm"
                   />
 
                   {/* Quick Select Badges */}
                   <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-                    <span className="text-[10px] font-bold text-slate-400">Jadwal:</span>
+                    <span className="text-xs font-bold text-slate-500">Jadwal:</span>
                     {courses.map((c) => (
                       <button
                         key={c.id}
                         type="button"
                         onClick={() => setCourse(c.name)}
-                        className={`text-[10px] font-bold px-2 py-0.5 rounded-lg transition-all cursor-pointer ${
+                        className={`text-xs font-bold px-2 py-0.5 rounded-lg transition-all cursor-pointer ${
                           course === c.name
                             ? "bg-[#FF2D75] text-white shadow-xs"
                             : "bg-pink-50 hover:bg-pink-100 text-pink-700 border border-pink-200/60"
@@ -884,7 +884,7 @@ export default function TugasView({
                   required
                   value={course}
                   onChange={(e) => setCourse(e.target.value)}
-                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
+                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-sm"
                 />
               )}
             </div>
@@ -903,7 +903,7 @@ export default function TugasView({
                     e.preventDefault();
                     safeOpenPicker(e.currentTarget, "date", "add");
                   }}
-                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-xs cursor-pointer select-none hide-native-picker-icon"
+                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-sm cursor-pointer select-none hide-native-picker-icon"
                 />
                 <button
                   type="button"
@@ -914,7 +914,7 @@ export default function TugasView({
                   title="Klik untuk memilih tanggal"
                 >
                   <Calendar className="w-3.5 h-3.5 pointer-events-none" />
-                  <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 pointer-events-none" />
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-pink-600 pointer-events-none" />
                 </button>
               </div>
             </div>
@@ -930,7 +930,7 @@ export default function TugasView({
                     e.preventDefault();
                     safeOpenPicker(e.currentTarget, "time", "add");
                   }}
-                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-xs text-slate-800 cursor-pointer select-none hide-native-picker-icon"
+                  className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-sm text-slate-800 cursor-pointer select-none hide-native-picker-icon"
                 />
                 <button
                   type="button"
@@ -941,19 +941,19 @@ export default function TugasView({
                   title="Klik untuk memilih jam batas waktu"
                 >
                   <Clock className="w-3.5 h-3.5 pointer-events-none" />
-                  <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 pointer-events-none" />
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-pink-600 pointer-events-none" />
                 </button>
               </div>
             </div>
             <div>
-              <label className="block font-bold text-slate-700 mb-1 select-none cursor-not-allowed">Estimasi Hari Tersisa <span className="text-emerald-600 font-extrabold text-[10px]">(Otomatis)</span></label>
+              <label className="block font-bold text-slate-700 mb-1 select-none cursor-not-allowed">Estimasi Hari Tersisa <span className="text-emerald-600 font-extrabold text-xs">(Otomatis)</span></label>
               <input
                 type="number"
                 value={daysValue}
                 readOnly
                 tabIndex={-1}
                 title="Dihitung secara otomatis berdasarkan batas tanggal pengumpulan"
-                className="w-full border border-slate-200 p-2.5 rounded-xl font-bold text-xs text-emerald-700 font-mono bg-slate-100/80 cursor-not-allowed select-none focus:outline-hidden"
+                className="w-full border border-slate-200 p-2.5 rounded-xl font-bold text-sm text-emerald-700 font-mono bg-slate-100/80 cursor-not-allowed select-none focus:outline-hidden"
               />
             </div>
           </div>
@@ -965,7 +965,7 @@ export default function TugasView({
               placeholder="Masukkan instruksi khusus dari dosen, misal: 'File PDF kumpul di portal dengan format NIM_Nama_Tugas'"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
+              className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-sm"
             ></textarea>
           </div>
 
@@ -1011,9 +1011,9 @@ export default function TugasView({
             placeholder="Cari kata kunci tugas..."
             value={searchWord}
             onChange={(e) => setSearchWord(e.target.value)}
-            className="w-full text-xs pl-4 pr-10 py-2.5 border border-pink-100 rounded-2xl focus:outline-hidden focus:border-pink-300 bg-white font-semibold"
+            className="w-full text-sm pl-4 pr-10 py-2.5 border border-pink-100 rounded-2xl focus:outline-hidden focus:border-pink-300 bg-white font-semibold"
           />
-          <Filter size={13} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+          <Filter size={13} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
         </div>
       </div>
 
@@ -1027,7 +1027,7 @@ export default function TugasView({
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.94, y: -15, transition: { duration: 0.22, ease: "easeInOut" } }}
-                className={`bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex flex-col justify-between hover:border-pink-100 hover:shadow-md transition-all duration-300 ${
+                className={`bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col justify-between hover:border-pink-100 hover:shadow-md transition-all duration-300 ${
                   task.completed ? "opacity-75 relative" : ""
                 }`}
               >
@@ -1062,10 +1062,10 @@ export default function TugasView({
                       )}
                     </motion.button>
                     <div>
-                      <h4 className={`font-extrabold text-xs text-[#000000] leading-snug transition-all duration-300 ${task.completed ? "line-through text-slate-400" : ""}`}>
+                      <h4 className={`font-extrabold text-xs text-[#000000] leading-snug transition-all duration-300 ${task.completed ? "line-through text-slate-500" : ""}`}>
                         {task.title}
                       </h4>
-                      <p className="text-[10px] text-slate-450 mt-0.5 font-bold flex items-center gap-1">
+                      <p className="text-xs text-slate-450 mt-0.5 font-bold flex items-center gap-1">
                         <BookOpen size={10} className="text-[#FF2D75]" />
                         <span>{task.course}</span>
                       </p>
@@ -1074,19 +1074,19 @@ export default function TugasView({
                   
                   {!task.completed && (
                     task.daysLeft <= 0 ? (
-                      <span className="text-[9.5px] font-black px-2.5 py-1 rounded-xl shrink-0 uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-300 flex items-center gap-1 shadow-2xs">
+                      <span className="text-xs font-black px-2.5 py-1 rounded-xl shrink-0 uppercase tracking-wider bg-rose-100 text-rose-700 border border-rose-300 flex items-center gap-1 shadow-2xs">
                         <AlertCircle size={11} className="text-rose-600 shrink-0" />
                         <span>Closed</span>
                       </span>
                     ) : (
-                      <span className="text-[9.5px] font-black px-2.5 py-1 rounded-xl shrink-0 uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1 shadow-2xs font-sans">
+                      <span className="text-xs font-black px-2.5 py-1 rounded-xl shrink-0 uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1 shadow-2xs font-sans">
                         <Timer size={11} className="text-amber-800 shrink-0" />
                         <span>{task.daysLeft} hari</span>
                       </span>
                     )
                   )}
                   {task.completed && (
-                    <span className={`text-[9.5px] font-black px-2.5 py-1 rounded-xl bg-[#E6F4EA] border border-emerald-200 shrink-0 uppercase tracking-wider flex items-center gap-1 ${
+                    <span className={`text-xs font-black px-2.5 py-1 rounded-xl bg-[#E6F4EA] border border-emerald-200 shrink-0 uppercase tracking-wider flex items-center gap-1 ${
                       index === 3 ? "text-black" : "text-[#137333]"
                     }`}>
                       <Check size={11} />
@@ -1097,14 +1097,14 @@ export default function TugasView({
 
                 {/* Task notes details */}
                 {task.notes && (
-                  <p className="text-[11px] text-slate-655 bg-slate-50 border border-slate-100 p-3 rounded-xl flex items-start gap-1.5 leading-relaxed font-semibold">
+                  <p className="text-xs text-slate-655 bg-slate-50 border border-slate-100 p-3 rounded-xl flex items-start gap-1.5 leading-relaxed font-semibold">
                     <FileText size={13} className="text-pink-400 shrink-0 mt-0.5" />
                     <span className={index === 3 ? "text-black" : ""}>{task.notes}</span>
                   </p>
                 )}
 
-                <div className={`flex items-center gap-1.5 text-[10px] font-bold ${
-                  !task.completed ? "text-black" : (index === 3 ? "text-black" : "text-slate-400")
+                <div className={`flex items-center gap-1.5 text-xs font-bold ${
+                  !task.completed ? "text-black" : (index === 3 ? "text-black" : "text-slate-500")
                 }`}>
                   <Calendar size={11} className="text-[#FF2D75]" />
                   <span>Batas Waktu: {task.dueDate}</span>
@@ -1117,12 +1117,12 @@ export default function TugasView({
                   {task.completed ? (
                     <button
                       onClick={() => toggleTaskCompletion(task.id)}
-                      className="text-[10px] font-black text-[#FF2D75] cursor-pointer flex items-center gap-1 hover:underline"
+                      className="text-xs font-black text-[#FF2D75] cursor-pointer flex items-center gap-1 hover:underline"
                     >
                       Buka Tugas Kembali
                     </button>
                   ) : (
-                    <span className="text-[10px] font-semibold text-slate-400">
+                    <span className="text-xs font-semibold text-slate-500">
                       Status: Aktif
                     </span>
                   )}
@@ -1130,7 +1130,7 @@ export default function TugasView({
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => handleOpenEdit(task)}
-                    className="transition-colors duration-200 p-1.5 px-2.5 hover:bg-pink-50 rounded-lg cursor-pointer text-slate-600 hover:text-[#FF2D75] flex items-center gap-1 text-[10px] font-bold"
+                    className="transition-colors duration-200 p-1.5 px-2.5 hover:bg-pink-50 rounded-lg cursor-pointer text-slate-600 hover:text-[#FF2D75] flex items-center gap-1 text-xs font-bold"
                     title="Edit isi tugas"
                   >
                     <Pencil size={12} className="text-[#FF2D75]" />
@@ -1157,14 +1157,14 @@ export default function TugasView({
               {allMergedTasks.length === 0 ? "📝" : filterMode === "selesai" ? "⏳" : "🎉"}
             </span>
             <div>
-              <p className="font-extrabold text-slate-700 text-sm">
+              <p className="font-extrabold text-slate-700 text-sm leading-normal">
                 {allMergedTasks.length === 0
                   ? "Masih belum ada tugas yang Anda masukkan"
                   : filterMode === "selesai"
                   ? "Belum ada tugas yang telah diselesaikan"
                   : "Semua tugas beres!"}
               </p>
-              <p className="text-xs text-slate-400 font-semibold mt-1">
+              <p className="text-sm text-slate-600 font-semibold mt-1 leading-normal">
                 {allMergedTasks.length === 0
                   ? "Tambahkan tugas baru pada tombol di atas atau hubungkan dengan kode kelas Classroom Anda."
                   : filterMode === "selesai"
@@ -1194,12 +1194,12 @@ export default function TugasView({
                     </div>
                     <div>
                       <h3 className="font-black font-display text-slate-900 text-sm">Edit Rincian Tugas</h3>
-                      <p className="text-[10px] text-slate-400 font-semibold">Perbarui informasi tugas, mata kuliah, atau tenggat waktu</p>
+                      <p className="text-xs text-slate-600 font-semibold">Perbarui informasi tugas, mata kuliah, atau tenggat waktu</p>
                     </div>
                   </div>
                   <button
                     onClick={() => setEditingTask(null)}
-                    className="text-slate-400 hover:text-slate-600 text-xs font-bold p-1.5 rounded-xl hover:bg-slate-100 cursor-pointer"
+                    className="text-slate-500 hover:text-slate-600 text-xs font-bold p-1.5 rounded-xl hover:bg-slate-100 cursor-pointer"
                   >
                     ✕
                   </button>
@@ -1213,14 +1213,14 @@ export default function TugasView({
                       required
                       value={editTitle}
                       onChange={(e) => setEditTitle(e.target.value)}
-                      className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
+                      className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-sm"
                     />
                   </div>
 
                   <div>
                     <label className="block font-bold text-slate-700 mb-1 flex items-center justify-between">
                       <span>Mata Kuliah Terkait *</span>
-                      <span className="text-[10px] text-pink-600 font-bold">Pilihan Jadwal Akademik</span>
+                      <span className="text-xs text-pink-600 font-bold">Pilihan Jadwal Akademik</span>
                     </label>
 
                     {courses && courses.length > 0 ? (
@@ -1232,7 +1232,7 @@ export default function TugasView({
                               setEditCourse(e.target.value);
                             }
                           }}
-                          className="w-full border border-pink-200 focus:outline-hidden focus:border-pink-400 p-2.5 rounded-xl font-bold bg-white text-xs text-slate-800 shadow-2xs"
+                          className="w-full border border-pink-200 focus:outline-hidden focus:border-pink-400 p-2.5 rounded-xl font-bold bg-white text-sm text-slate-800 shadow-2xs"
                         >
                           <option value="">-- Pilih Mata Kuliah dari Jadwal Akademik --</option>
                           {courses.map((c) => (
@@ -1249,18 +1249,18 @@ export default function TugasView({
                           value={editCourse}
                           onChange={(e) => setEditCourse(e.target.value)}
                           placeholder="Nama mata kuliah"
-                          className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
+                          className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-sm"
                         />
 
                         {/* Quick Selection Badges */}
                         <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-                          <span className="text-[10px] font-bold text-slate-400">Jadwal:</span>
+                          <span className="text-xs font-bold text-slate-500">Jadwal:</span>
                           {courses.map((c) => (
                             <button
                               key={c.id}
                               type="button"
                               onClick={() => setEditCourse(c.name)}
-                              className={`text-[10px] font-bold px-2 py-0.5 rounded-lg transition-all cursor-pointer ${
+                              className={`text-xs font-bold px-2 py-0.5 rounded-lg transition-all cursor-pointer ${
                                 editCourse === c.name
                                   ? "bg-[#FF2D75] text-white shadow-xs"
                                   : "bg-pink-50 hover:bg-pink-100 text-pink-700 border border-pink-200/60"
@@ -1277,7 +1277,7 @@ export default function TugasView({
                         required
                         value={editCourse}
                         onChange={(e) => setEditCourse(e.target.value)}
-                        className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
+                        className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-sm"
                       />
                     )}
                   </div>
@@ -1295,7 +1295,7 @@ export default function TugasView({
                             e.preventDefault();
                             safeOpenPicker(e.currentTarget, "date", "edit");
                           }}
-                          className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-xs cursor-pointer select-none"
+                          className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-sm cursor-pointer select-none"
                         />
                         <button
                           type="button"
@@ -1306,7 +1306,7 @@ export default function TugasView({
                           title="Klik untuk memilih tanggal"
                         >
                           <Calendar className="w-3.5 h-3.5 pointer-events-none" />
-                          <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 pointer-events-none" />
+                          <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-pink-600 pointer-events-none" />
                         </button>
                       </div>
                     </div>
@@ -1322,7 +1322,7 @@ export default function TugasView({
                             e.preventDefault();
                             safeOpenPicker(e.currentTarget, "time", "edit");
                           }}
-                          className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-xs text-slate-800 cursor-pointer select-none"
+                          className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 pr-14 rounded-xl font-bold bg-white text-sm text-slate-800 cursor-pointer select-none"
                         />
                         <button
                           type="button"
@@ -1333,19 +1333,19 @@ export default function TugasView({
                           title="Klik untuk memilih jam batas waktu"
                         >
                           <Clock className="w-3.5 h-3.5 pointer-events-none" />
-                          <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 pointer-events-none" />
+                          <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-pink-600 pointer-events-none" />
                         </button>
                       </div>
                     </div>
                     <div>
-                      <label className="block font-bold text-slate-700 mb-1 select-none cursor-not-allowed">Hari Tersisa <span className="text-emerald-600 font-bold text-[10px]">(Otomatis)</span></label>
+                      <label className="block font-bold text-slate-700 mb-1 select-none cursor-not-allowed">Hari Tersisa <span className="text-emerald-600 font-bold text-xs">(Otomatis)</span></label>
                       <input
                         type="number"
                         value={editDaysValue}
                         readOnly
                         tabIndex={-1}
                         title="Dihitung secara otomatis berdasarkan batas tanggal pengumpulan"
-                        className="w-full border border-slate-200 p-2.5 rounded-xl font-bold bg-slate-100/80 text-emerald-800 text-xs font-mono cursor-not-allowed select-none focus:outline-hidden"
+                        className="w-full border border-slate-200 p-2.5 rounded-xl font-bold bg-slate-100/80 text-emerald-800 text-sm font-mono cursor-not-allowed select-none focus:outline-hidden"
                       />
                     </div>
                   </div>
@@ -1357,7 +1357,7 @@ export default function TugasView({
                       value={editNotes}
                       onChange={(e) => setEditNotes(e.target.value)}
                       placeholder="Catatan instruksi atau kriteria tugas"
-                      className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-xs"
+                      className="w-full border border-pink-150 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-xl font-bold bg-white text-sm"
                     ></textarea>
                   </div>
 
@@ -1401,7 +1401,7 @@ export default function TugasView({
                   </div>
                   <h3 className="font-black font-display text-slate-900 text-sm">Konfirmasi Hapus</h3>
                 </div>
-                <p className="text-xs text-slate-500 font-semibold leading-relaxed">
+                <p className="text-sm text-slate-600 font-semibold leading-relaxed">
                   Apakah Anda yakin ingin menghapus tugas ini? Tindakan ini tidak dapat dibatalkan.
                 </p>
                 <div className="flex gap-2.5 pt-2">
@@ -1441,7 +1441,7 @@ export default function TugasView({
                       <h3 className="font-extrabold text-slate-900 text-sm">
                         {pickerState.type === "date" ? "Pilih Batas Tanggal" : "Pilih Batas Jam"}
                       </h3>
-                      <p className="text-[11px] text-slate-500 font-medium">
+                      <p className="text-xs text-slate-600 font-medium">
                         {pickerState.target === "add" ? "Form Tambah Tugas" : "Edit Tugas"}
                       </p>
                     </div>
@@ -1449,7 +1449,7 @@ export default function TugasView({
                   <button
                     type="button"
                     onClick={() => setPickerState(prev => ({ ...prev, isOpen: false }))}
-                    className="p-1.5 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
+                    className="p-1.5 rounded-xl hover:bg-slate-100 text-slate-500 hover:text-slate-700 transition-colors cursor-pointer"
                   >
                     <X size={18} />
                   </button>
@@ -1500,7 +1500,7 @@ export default function TugasView({
                     </div>
 
                     {/* Day names header */}
-                    <div className="grid grid-cols-7 gap-1 text-center font-bold text-[10px] text-slate-400 mb-1">
+                    <div className="grid grid-cols-7 gap-1 text-center font-bold text-xs text-slate-500 mb-1">
                       {["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"].map((d, idx) => (
                         <div key={idx} className="py-1">{d}</div>
                       ))}
@@ -1574,7 +1574,7 @@ export default function TugasView({
                           if (pickerState.target === "add") setDateStr(str); else setEditDateStr(str);
                           setPickerState(prev => ({ ...prev, isOpen: false }));
                         }}
-                        className="flex-1 py-1.5 text-[11px] font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
+                        className="flex-1 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
                       >
                         Hari Ini
                       </button>
@@ -1587,7 +1587,7 @@ export default function TugasView({
                           if (pickerState.target === "add") setDateStr(str); else setEditDateStr(str);
                           setPickerState(prev => ({ ...prev, isOpen: false }));
                         }}
-                        className="flex-1 py-1.5 text-[11px] font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
+                        className="flex-1 py-1.5 text-xs font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
                       >
                         Besok
                       </button>
@@ -1600,7 +1600,7 @@ export default function TugasView({
                           if (pickerState.target === "add") setDateStr(str); else setEditDateStr(str);
                           setPickerState(prev => ({ ...prev, isOpen: false }));
                         }}
-                        className="flex-1 py-1.5 text-[11px] font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
+                        className="flex-1 py-1.5 text-xs font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
                       >
                         +7 Hari
                       </button>
@@ -1614,7 +1614,7 @@ export default function TugasView({
                     <div className="flex items-center justify-center gap-3 py-2 bg-slate-50 rounded-2xl border border-slate-100">
                       {/* Hour selector */}
                       <div className="flex flex-col items-center">
-                        <span className="text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-wider">Jam</span>
+                        <span className="text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider">Jam</span>
                         <select
                           value={pickerState.hour}
                           onChange={(e) => setPickerState(prev => ({ ...prev, hour: parseInt(e.target.value, 10) }))}
@@ -1632,7 +1632,7 @@ export default function TugasView({
 
                       {/* Minute selector */}
                       <div className="flex flex-col items-center">
-                        <span className="text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-wider">Menit</span>
+                        <span className="text-xs font-bold text-slate-500 mb-1 uppercase tracking-wider">Menit</span>
                         <select
                           value={pickerState.minute}
                           onChange={(e) => setPickerState(prev => ({ ...prev, minute: parseInt(e.target.value, 10) }))}
@@ -1649,7 +1649,7 @@ export default function TugasView({
 
                     {/* Common deadline shortcut chips */}
                     <div>
-                      <span className="block text-[11px] font-bold text-slate-500 mb-1.5">Preset Batas Waktu Cepat:</span>
+                      <span className="block text-xs font-bold text-slate-500 mb-1.5">Preset Batas Waktu Cepat:</span>
                       <div className="grid grid-cols-3 gap-2">
                         {[
                           { label: "23:59 (Malam)", h: 23, m: 59 },
@@ -1665,7 +1665,7 @@ export default function TugasView({
                             onClick={() => {
                               setPickerState(prev => ({ ...prev, hour: preset.h, minute: preset.m }));
                             }}
-                            className={`py-1.5 px-2 rounded-xl text-[10px] font-bold border transition-colors cursor-pointer ${
+                            className={`py-1.5 px-2 rounded-xl text-xs font-bold border transition-colors cursor-pointer ${
                               pickerState.hour === preset.h && pickerState.minute === preset.m
                                 ? "bg-pink-50 border-pink-300 text-[#FF2D75]"
                                 : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
