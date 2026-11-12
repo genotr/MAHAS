@@ -300,7 +300,7 @@ export default function MentalHealthView({
   };
 
   return (
-    <div className="space-y-6 text-left relative z-10 font-sans">
+    <div className="space-y-4 text-left relative z-10 font-sans">
       
       {/* Title */}
       <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-fade-in">
@@ -315,10 +315,10 @@ export default function MentalHealthView({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-start">
         
         {/* Left column: AI Chatbot / Relaxation Space */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-4">
 
           {/* Tab Selector Buttons - Beautiful Segmented Control Button-style Base with same style as Title Card */}
           <div className="bg-[#fdfdfe] p-1.5 rounded-card border border-white shadow-card flex gap-2 w-full">
@@ -461,7 +461,7 @@ export default function MentalHealthView({
               </div>
 
               {/* Row 1: Visual Breathing and Ambient Sound side-by-side */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
                 
                 {/* Visual Breathing Card */}
                 <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col justify-between items-center text-center space-y-4">
@@ -774,7 +774,7 @@ export default function MentalHealthView({
                       }
 
                       return (
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
                           {/* Score indicator panel */}
                           <div className={`p-5 border rounded-3xl text-center flex flex-col justify-center items-center h-full gap-2 ${levelCol}`}>
                             <span className="text-xs font-black tracking-wider block uppercase">Skor Kepenatan Mental</span>
@@ -845,7 +845,7 @@ export default function MentalHealthView({
         </div>
 
         {/* Right column */}
-        <div className="space-y-6 text-left">
+        <div className="space-y-4 text-left">
           
           {/* Scheduled video listings */}
           {sessions.length > 0 && (
