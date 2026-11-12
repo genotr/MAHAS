@@ -682,7 +682,7 @@ export default function TugasView({
     <div className="space-y-6 text-left relative z-10 font-sans">
       
       {/* View Title */}
-      <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="space-y-1">
           <h2 className="text-xl md:text-2xl font-black font-display text-slate-900 leading-tight">
             Tugas & Lingkup Deadline Akademik{" "}
@@ -799,7 +799,7 @@ export default function TugasView({
 
       {/* Add Task Form Collapsible */}
       {showAddForm && (
-        <form onSubmit={handleCreateTask} className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] text-xs text-left space-y-4 animate-in slide-in-from-top-3 duration-200">
+        <form onSubmit={handleCreateTask} className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card text-xs text-left space-y-4 animate-in slide-in-from-top-3 duration-200">
           <div className="flex items-center justify-between border-b border-pink-100/60 pb-3">
             <h3 className="font-extrabold text-[#FF2D75] text-sm flex items-center gap-1.5 font-display">
               <Plus size={16} />
@@ -988,7 +988,7 @@ export default function TugasView({
       )}
 
       {/* Task Filters and Search */}
-      <div className="bg-[#fdfdfe] p-4 rounded-[28px] border border-white flex flex-col md:flex-row gap-4 justify-between items-center shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+      <div className="bg-[#fdfdfe] p-4 rounded-card border border-white flex flex-col md:flex-row gap-4 justify-between items-center shadow-card">
         <div className="flex gap-1.5 flex-wrap">
           {(["semua", "aktif", "selesai"] as const).map((mode) => (
             <button
@@ -1027,7 +1027,7 @@ export default function TugasView({
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.94, y: -15, transition: { duration: 0.22, ease: "easeInOut" } }}
-                className={`bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col justify-between hover:border-pink-100 hover:shadow-md transition-all duration-300 ${
+                className={`bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex flex-col justify-between hover:border-pink-100 hover:shadow-md transition-all duration-300 ${
                   task.completed ? "opacity-75 relative" : ""
                 }`}
               >
@@ -1152,7 +1152,7 @@ export default function TugasView({
         </AnimatePresence>
 
         {displayTasks.length === 0 && (
-          <div className="col-span-full py-16 text-center bg-[#fdfdfe] border border-white rounded-[28px] shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-3">
+          <div className="col-span-full py-16 text-center bg-[#fdfdfe] border border-white rounded-card shadow-card space-y-3">
             <span className="text-4xl">
               {allMergedTasks.length === 0 ? "📝" : filterMode === "selesai" ? "⏳" : "🎉"}
             </span>
