@@ -152,13 +152,13 @@ export default function ZonamuView({
             Profile (Laporan Aktivitas Mahasiswa){" "}
             <User className="text-[#FF2D75] inline-block align-middle ml-1.5" size={24} />
           </h2>
-          <p className="text-xs text-slate-500 leading-normal font-semibold">
+          <p className="text-sm text-slate-600 leading-normal font-semibold max-w-prose">
             Pusat pencatatan riwayat prestasi, data profil Anda, resume lamaran magang, beasiswa yang Anda ikuti, serta rekapitulasi data portfolio MahasSpace Anda.
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
         
         {/* Left Column: Personal info summary */}
         <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card space-y-5">
@@ -170,13 +170,13 @@ export default function ZonamuView({
                 referrerPolicy="no-referrer"
                 className="w-full h-full rounded-full object-cover border-4 border-pink-100 shadow-md mx-auto"
               />
-              <span className="absolute bottom-1 right-1 bg-[#FF2D75] text-white p-1 rounded-full text-[10px] font-black w-6 h-6 flex items-center justify-center border-2 border-white">
+              <span className="absolute bottom-1 right-1 bg-[#FF2D75] text-white p-1 rounded-full text-xs font-black w-6 h-6 flex items-center justify-center border-2 border-white">
                 ✓
               </span>
             </div>
             <div>
               <h3 className="font-extrabold text-sm text-slate-800">{profile.name}</h3>
-              <p className="text-[10px] text-slate-400 font-extrabold tracking-wide uppercase">{profile.major} • Semester {profile.semester}</p>
+              <p className="text-xs text-slate-500 font-extrabold tracking-wide uppercase">{profile.major} • Semester {profile.semester}</p>
             </div>
           </div>
 
@@ -189,7 +189,7 @@ export default function ZonamuView({
                   required
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white font-semibold text-slate-800"
+                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-sm rounded-2xl bg-white font-semibold text-slate-800"
                 />
               </div>
 
@@ -200,7 +200,7 @@ export default function ZonamuView({
                   required
                   value={editMajor}
                   onChange={(e) => setEditMajor(e.target.value)}
-                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white font-semibold text-slate-800"
+                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-sm rounded-2xl bg-white font-semibold text-slate-800"
                 />
               </div>
 
@@ -210,7 +210,7 @@ export default function ZonamuView({
                   <select
                     value={editSemester}
                     onChange={(e) => setEditSemester(Number(e.target.value))}
-                    className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white font-semibold text-slate-800"
+                    className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-sm rounded-2xl bg-white font-semibold text-slate-800"
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((s) => (
                       <option key={s} value={s}>Semester {s}</option>
@@ -224,7 +224,7 @@ export default function ZonamuView({
                     required
                     value={editNim}
                     onChange={(e) => setEditNim(e.target.value)}
-                    className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white font-semibold text-slate-800"
+                    className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-sm rounded-2xl bg-white font-semibold text-slate-800"
                   />
                 </div>
               </div>
@@ -239,14 +239,14 @@ export default function ZonamuView({
                   required
                   value={editGpa}
                   onChange={(e) => setEditGpa(e.target.value)}
-                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-xs rounded-2xl bg-white font-semibold text-slate-800"
+                  className="w-full border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 text-sm rounded-2xl bg-white font-semibold text-slate-800"
                 />
               </div>
 
               <div>
                 {/* Device/Album Local File Upload Option */}
                 <div className="mb-3 bg-pink-50/40 p-2.5 rounded-2xl border border-pink-100/50">
-                  <label className="block text-[10px] font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                  <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
                     <Upload size={11} className="text-[#FF2D75]" />
                     <span>Unggah dari File / Album Device</span>
                   </label>
@@ -255,7 +255,7 @@ export default function ZonamuView({
                     className="flex items-center justify-center gap-2 border-2 border-dashed border-pink-200/70 hover:border-pink-300 hover:bg-white bg-slate-50/60 py-2 px-3 rounded-xl cursor-pointer transition-all text-center select-none"
                   >
                     <Upload size={13} className="text-[#FF2D75]" />
-                    <span className="text-[10px] text-slate-600 font-extrabold">Pilih Berkas Foto</span>
+                    <span className="text-xs text-slate-600 font-extrabold">Pilih Berkas Foto</span>
                     <input
                       type="file"
                       id="device-avatar-upload"
@@ -291,7 +291,7 @@ export default function ZonamuView({
               </div>
               <div className="flex justify-between items-center bg-slate-50 p-3 rounded-2xl border border-slate-100">
                 <span className="text-slate-500 font-bold">IPK Kumulatif:</span>
-                <span className="font-sans font-black text-[#FF2D75]">{profile.gpa} <span className="text-pink-600 font-extrabold text-[10px] ml-1">({getIpkClassification(profile.gpa)})</span></span>
+                <span className="font-sans font-black text-[#FF2D75]">{profile.gpa} <span className="text-pink-600 font-extrabold text-xs ml-1">({getIpkClassification(profile.gpa)})</span></span>
               </div>
               <div className="flex justify-between items-center bg-slate-50 p-3 rounded-2xl border border-slate-100">
                 <span className="text-slate-500 font-bold">Semester:</span>
@@ -308,7 +308,7 @@ export default function ZonamuView({
                   setEditAvatar(profile.avatar);
                   setIsEditing(true);
                 }}
-                className="w-full py-2.5 border border-dashed border-pink-200 hover:border-pink-300 text-slate-600 hover:text-pink-600 font-extrabold text-center rounded-2xl transition-all cursor-pointer text-[11px] bg-slate-50/60"
+                className="w-full py-2.5 border border-dashed border-pink-200 hover:border-pink-300 text-slate-600 hover:text-pink-600 font-extrabold text-center rounded-2xl transition-all cursor-pointer text-xs bg-slate-50/60"
               >
                 Ubah Data Profil Kamu
               </button>
@@ -318,7 +318,7 @@ export default function ZonamuView({
 
         {/* Right Columns: Dynamic statistics resume */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card">
+          <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card">
             <h3 className="font-extrabold font-display text-slate-800 text-sm mb-4">Ringkasan Riwayat Portofolio</h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -326,7 +326,7 @@ export default function ZonamuView({
               <div className="bg-pink-50/50 p-4.5 rounded-2xl border border-pink-100 text-left space-y-2.5 hover:shadow-md transition-all">
                 <CheckSquare size={18} className="text-[#FF2D75]" />
                 <div>
-                  <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Tugas Terselesaikan</p>
+                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Tugas Terselesaikan</p>
                   <p className="text-lg font-black text-slate-800">{completedTasksCount}/{totalTasksCount}</p>
                 </div>
               </div>
@@ -334,8 +334,8 @@ export default function ZonamuView({
               <div className="bg-pink-50/50 p-4.5 rounded-2xl border border-pink-100 text-left space-y-2.5 hover:shadow-md transition-all">
                 <CheckCircle2 size={18} className="text-[#FF2D75]" />
                 <div>
-                  <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Status Kemahasiswaan</p>
-                  <p className="text-sm font-black text-slate-850">Aktif & Terdaftar</p>
+                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Status Kemahasiswaan</p>
+                  <p className="text-sm font-black text-slate-850 leading-normal">Aktif & Terdaftar</p>
                 </div>
               </div>
 
@@ -343,7 +343,7 @@ export default function ZonamuView({
           </div>
 
           {/* Grafik Perkembangan & Peningkatan Belajar */}
-          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card space-y-5">
+          <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card space-y-5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-slate-100">
               <div className="flex items-center gap-2 text-left">
                 <div className="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center shrink-0">
@@ -353,7 +353,7 @@ export default function ZonamuView({
                   <h3 className="font-extrabold font-display text-slate-800 text-sm">
                     Grafik Perkembangan & Peningkatan
                   </h3>
-                  <p className="text-[10px] text-slate-400 font-semibold">
+                  <p className="text-xs text-slate-600 font-semibold">
                     Visualisasi hasil belajar dan penyelesaian tugas Anda
                   </p>
                 </div>
@@ -454,7 +454,7 @@ export default function ZonamuView({
                     content={({ active, payload, label }) => {
                       if (active && payload && payload.length) {
                         return (
-                          <div className="bg-slate-900/90 text-white p-3 rounded-xl shadow-xl border border-slate-800 text-[10px] backdrop-blur-xs">
+                          <div className="bg-slate-900/90 text-white p-3 rounded-xl shadow-xl border border-slate-800 text-xs backdrop-blur-xs">
                             <p className="font-extrabold text-slate-300 mb-1">{label}</p>
                             <p className="font-black flex items-center gap-1.5" style={{ color: currentStrokeColor }}>
                               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: currentStrokeColor }} />
@@ -485,7 +485,7 @@ export default function ZonamuView({
             {/* Bottom Insight Caption */}
             <div className="bg-slate-50/50 p-3.5 rounded-2xl border border-slate-100 flex items-start gap-2.5 text-left">
               <Percent size={14} className={chartMetric === 'tasks' ? 'text-[#FF2D75] shrink-0 mt-0.5' : 'text-blue-500 shrink-0 mt-0.5'} />
-              <p className="text-[10px] text-slate-500 font-semibold leading-relaxed">
+              <p className="text-xs text-slate-600 font-semibold leading-relaxed">
                 {chartMetric === "tasks" ? (
                   <span>
                     Anda telah menyelesaikan <strong className="text-slate-700">{completedCount} tugas</strong> kuliah. Kurva di atas menunjukkan tingkat penyelesaian tugas Anda yang terus meningkat secara konsisten pada periode <strong className="text-slate-700">{chartTimeframe === 'weekly' ? 'Mingguan' : chartTimeframe === 'monthly' ? 'Bulanan' : 'Semester'}</strong> ini!
