@@ -930,7 +930,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
       }
       if (part.startsWith("~~") && part.endsWith("~~")) {
         return (
-          <del key={i} className="line-through text-slate-400">
+          <del key={i} className="line-through text-slate-500">
             {part.slice(2, -2)}
           </del>
         );
@@ -962,14 +962,14 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
   const renderFormattedText = (text: string) => {
     if (!text)
       return (
-        <p className="text-slate-400 italic text-[11px]">
+        <p className="text-slate-600 italic text-xs">
           Belum ada tulisan... Mulai mengetik dan gunakan alat bantu format di
           atas.
         </p>
       );
     const lines = text.split("\n");
     return (
-      <div className="space-y-1 text-left text-xs text-slate-700 leading-relaxed font-semibold">
+      <div className="space-y-1 text-left text-sm text-slate-700 leading-relaxed font-semibold">
         {lines.map((line, idx) => {
           let isList = false;
           let content = line;
@@ -1060,7 +1060,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                   Suara Teks (Live Memo){" "}
                   <Mic size={22} className="text-[#FF2D75] inline-block align-middle ml-1" />
                 </h1>
-                <p className="text-xs text-slate-500 leading-normal font-semibold">
+                <p className="text-sm text-slate-600 leading-normal font-semibold max-w-prose">
                   Sistem asisten rekam lisan dosen secara verbatim otomatis ke transkrip dan manajemen draf materi kuliah.
                 </p>
               </div>
@@ -1128,23 +1128,23 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
       </div>
 
       {/* SECTION B: PENCARIAN & FILTER DISATUKAN */}
-      <div className="bg-[#fdfdfe] rounded-card border border-white p-5 shadow-card">
+      <div className="bg-[#fdfdfe] rounded-card border border-white p-6 shadow-card">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Search input */}
           <div className="relative">
-            <Search className="absolute left-3 top-3 text-slate-400" size={15} />
+            <Search className="absolute left-3 top-3 text-slate-500" size={15} />
             <input
               type="text"
               placeholder="Cari matakuliah, topik, dosen, atau isi catatan..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full text-xs pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 focus:outline-hidden focus:border-pink-500 placeholder-slate-400 font-semibold shadow-3xs"
+              className="w-full text-sm pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 focus:outline-hidden focus:border-pink-500 placeholder-slate-400 font-semibold shadow-3xs"
             />
             {searchTerm && (
               <button
                 type="button"
                 onClick={() => setSearchTerm("")}
-                className="absolute right-3 top-3 p-0.5 text-slate-400 hover:text-slate-650 text-xs font-bold"
+                className="absolute right-3 top-3 p-0.5 text-slate-500 hover:text-slate-650 text-xs font-bold"
               >
                 ✕
               </button>
@@ -1153,7 +1153,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
 
           {/* Tags scrolling list */}
           <div className="flex items-center gap-2 overflow-hidden bg-slate-50 border border-slate-200/60 p-2.5 pb-2 px-3 rounded-xl shadow-3xs">
-            <Filter size={13} className="text-slate-400 shrink-0" />
+            <Filter size={13} className="text-slate-500 shrink-0" />
             <div
               ref={dragScrollRefLiveMemo}
               onMouseDown={handleDragScrollMouseDown}
@@ -1165,7 +1165,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               <button
                 type="button"
                 onClick={() => setSelectedTag("Semua")}
-                className={`px-3 py-1.5 text-[10px] font-black rounded-lg shrink-0 transition-all cursor-pointer ${
+                className={`px-3 py-1.5 text-xs font-black rounded-lg shrink-0 transition-all cursor-pointer ${
                   selectedTag === "Semua"
                     ? "bg-[#FF2D75] text-white shadow-xs"
                     : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
@@ -1183,7 +1183,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                     key={tg}
                     type="button"
                     onClick={() => setSelectedTag(tg)}
-                    className={`px-3 py-1.5 text-[10px] font-black rounded-lg shrink-0 transition-all cursor-pointer ${
+                    className={`px-3 py-1.5 text-xs font-black rounded-lg shrink-0 transition-all cursor-pointer ${
                       selectedTag === tg
                         ? "bg-[#FF2D75] text-white shadow-xs"
                         : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
@@ -1204,7 +1204,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
           <h3 className="text-xs font-black text-[#000000] tracking-wider">
             Daftar Rekaman & Transkrip Suara
           </h3>
-          <span className="text-[10px] font-bold text-[#000000]">
+          <span className="text-xs font-bold text-[#000000]">
             {filteredNotes.length} Catatan Tersimpan
           </span>
         </div>
@@ -1215,7 +1215,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               <div
                 key={note.id}
                 onClick={() => setSelectedNote(note)}
-                className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex flex-col justify-between hover:border-pink-100 hover:shadow-md transition-all duration-150 cursor-pointer group relative text-left will-change-transform"
+                className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col justify-between hover:border-pink-100 hover:shadow-md transition-all duration-150 cursor-pointer group relative text-left will-change-transform"
               >
                 <div className="space-y-3.5 text-left">
                   {/* Header status info */}
@@ -1228,25 +1228,25 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                         <h4 className="font-extrabold text-xs text-[#000000] leading-snug line-clamp-1 group-hover:text-[#FF2D75] transition-colors">
                           {note.topic}
                         </h4>
-                        <p className="text-[10px] text-slate-450 mt-0.5 font-bold">
+                        <p className="text-xs text-slate-450 mt-0.5 font-bold">
                           {note.courseTitle}
                         </p>
                       </div>
                     </div>
                     
-                    <span className="text-[10px] font-bold text-[#000000] shrink-0">
+                    <span className="text-xs font-bold text-[#000000] shrink-0">
                       {note.date}
                     </span>
                   </div>
 
                   {/* Note details snippet */}
-                  <p className="text-[11px] text-slate-655 bg-slate-50 border border-slate-100 p-3 rounded-xl flex items-start gap-1.5 leading-relaxed font-semibold line-clamp-3">
+                  <p className="text-xs text-slate-655 bg-slate-50 border border-slate-100 p-3 rounded-xl flex items-start gap-1.5 leading-relaxed font-semibold line-clamp-3">
                     <FileText size={13} className="text-pink-400 shrink-0 mt-0.5" />
                     <span className="line-clamp-2">{note.content}</span>
                   </p>
 
                   {/* Lecturer Info & Tags */}
-                  <div className="flex items-center justify-between gap-2 flex-wrap text-[10px] font-bold text-black pt-0.5">
+                  <div className="flex items-center justify-between gap-2 flex-wrap text-xs font-bold text-black pt-0.5">
                     <div className="flex items-center gap-1.5">
                       <User size={11} className="text-[#FF2D75]" />
                       <span className="text-slate-600 font-bold">Dosen: {noteLecturer || note.lecturerName || "Dosen Pengampu"}</span>
@@ -1257,7 +1257,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                         {note.tags.slice(0, 2).map((tg) => (
                           <span
                             key={tg}
-                            className="text-[9px] font-black text-[#FF2D75] bg-pink-50/70 border border-pink-100/70 px-2 py-0.5 rounded-md"
+                            className="text-xs font-black text-[#FF2D75] bg-pink-50/70 border border-pink-100/70 px-2 py-0.5 rounded-md"
                           >
                             #{tg}
                           </span>
@@ -1272,7 +1272,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                   <button
                     type="button"
                     onClick={() => setSelectedNote(note)}
-                    className="text-[10px] font-black text-[#000000] hover:text-[#FF2D75] hover:underline cursor-pointer flex items-center gap-1"
+                    className="text-xs font-black text-[#000000] hover:text-[#FF2D75] hover:underline cursor-pointer flex items-center gap-1"
                   >
                     <BookOpen size={12} className="text-[#000000]" />
                     Baca Catatan Lengkap
@@ -1300,9 +1300,9 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center p-8 bg-slate-50/60 border border-dashed border-slate-200 rounded-card text-slate-400 space-y-3 min-h-[300px]">
+          <div className="flex flex-col items-center justify-center p-8 bg-slate-50/60 border border-dashed border-slate-200 rounded-card text-slate-500 space-y-3 min-h-[300px]">
             <FileText size={48} className="text-slate-300 stroke-1" />
-            <p className="text-xs font-bold">Tidak ada catatan kelas "Suara Teks" yang cocok.</p>
+            <p className="text-sm font-bold leading-normal">Tidak ada catatan kelas "Suara Teks" yang cocok.</p>
           </div>
         )}
       </div>
@@ -1332,7 +1332,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                         {editingNoteId ? "Edit Catatan Kuliah" : "Studio Rekam & Draf Kuliah"}
                       </h3>
                     </div>
-                    <p className="text-xs text-slate-500 font-medium mt-0.5">
+                    <p className="text-sm text-slate-600 font-medium mt-0.5 leading-normal">
                       {editingNoteId ? "Perbarui rangkuman materi dan transkrip suara" : "Rekam penjelasan dosen secara verbatim atau tulis ringkasan perkuliahan"}
                     </p>
                   </div>
@@ -1372,7 +1372,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           <p className="font-extrabold text-xs text-white tracking-wide">
                             Perekaman Suara Dosen Aktif • {formatRecordingTime(recordingSeconds)}
                           </p>
-                          <p className="text-[11px] text-pink-100 font-medium">
+                          <p className="text-xs text-pink-100 font-medium">
                             AI sedang menyimak audio secara langsung untuk menghasilkan transkrip.
                           </p>
                         </div>
@@ -1380,7 +1380,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       <button
                         type="button"
                         onClick={handleStartRecording}
-                        className="px-3.5 py-1.5 bg-white text-[#FF2D75] hover:bg-pink-50 text-[11px] font-extrabold rounded-xl cursor-pointer transition-all shadow-sm"
+                        className="px-3.5 py-1.5 bg-white text-[#FF2D75] hover:bg-pink-50 text-xs font-extrabold rounded-xl cursor-pointer transition-all shadow-sm"
                       >
                         Hentikan Rekam
                       </button>
@@ -1448,7 +1448,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                                 e.preventDefault();
                                 openDatePicker();
                               }}
-                              className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 pr-14 rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-xs transition-all shadow-3xs select-none hide-native-picker-icon"
+                              className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 pr-14 rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs select-none hide-native-picker-icon"
                             />
                             <button
                               type="button"
@@ -1459,7 +1459,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                               title="Klik untuk memilih tanggal pertemuan"
                             >
                               <Calendar className="w-3.5 h-3.5 pointer-events-none" />
-                              <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-pink-600 pointer-events-none" />
+                              <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-pink-600 pointer-events-none" />
                             </button>
                           </div>
                         </div>
@@ -1476,7 +1476,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={customCourseTitle}
                             onChange={(e) => setCustomCourseTitle(e.target.value)}
                             placeholder="Contoh: Rekayasa Perangkat Lunak"
-                            className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-xs transition-all shadow-3xs"
+                            className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs"
                           />
                         </div>
                       )}
@@ -1492,7 +1492,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteTopic}
                             onChange={(e) => setNoteTopic(e.target.value)}
                             placeholder="Contoh: Hipotesis Testing & P-Value"
-                            className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-xs transition-all shadow-3xs"
+                            className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs"
                           />
                         </div>
 
@@ -1506,7 +1506,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteLecturer}
                             onChange={(e) => setNoteLecturer(e.target.value)}
                             placeholder="Nama Dosen..."
-                            className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-xs transition-all shadow-3xs"
+                            className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs"
                           />
                         </div>
                       </div>
@@ -1522,14 +1522,14 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             <button
                               type="button"
                               onClick={() => applyTemplateStructure("general")}
-                              className="px-2.5 py-1 bg-sky-50/80 hover:bg-sky-100 text-sky-700 border border-sky-200/70 rounded-lg text-[11px] font-bold transition-all cursor-pointer shadow-2xs"
+                              className="px-2.5 py-1 bg-sky-50/80 hover:bg-sky-100 text-sky-700 border border-sky-200/70 rounded-lg text-xs font-bold transition-all cursor-pointer shadow-2xs"
                             >
                               + Templat Rangkuman
                             </button>
                             <button
                               type="button"
                               onClick={() => applyTemplateStructure("points")}
-                              className="px-2.5 py-1 bg-pink-50/80 hover:bg-pink-100 text-[#FF2D75] border border-pink-200/70 rounded-lg text-[11px] font-bold transition-all cursor-pointer shadow-2xs"
+                              className="px-2.5 py-1 bg-pink-50/80 hover:bg-pink-100 text-[#FF2D75] border border-pink-200/70 rounded-lg text-xs font-bold transition-all cursor-pointer shadow-2xs"
                             >
                               + Poin Penting
                             </button>
@@ -1605,7 +1605,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                               </button>
                             </div>
 
-                            <span className="text-[10px] text-slate-400 font-semibold pr-1.5 hidden sm:inline">
+                            <span className="text-xs text-slate-500 font-semibold pr-1.5 hidden sm:inline">
                               Format Markdown Aktif
                             </span>
                           </div>
@@ -1615,7 +1615,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteContent}
                             onChange={(e) => setNoteContent(e.target.value)}
                             placeholder="Tuliskan ringkasan materi perkuliahan, rumus, definisi konsep, atau kutipan dosen..."
-                            className="w-full p-4 focus:outline-hidden font-normal text-slate-800 leading-relaxed font-sans text-xs min-h-[210px] resize-y bg-transparent"
+                            className="w-full p-4 focus:outline-hidden font-normal text-slate-800 leading-relaxed font-sans text-sm min-h-[210px] resize-y bg-transparent"
                           />
                         </div>
                       </div>
@@ -1623,14 +1623,14 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       {/* Tags */}
                       <div className="space-y-1.5">
                         <label className="block text-xs font-bold text-slate-700">
-                          Label / Tag <span className="text-slate-400 font-medium">(opsional, pisahkan dengan koma)</span>
+                          Label / Tag <span className="text-slate-500 font-medium">(opsional, pisahkan dengan koma)</span>
                         </label>
                         <input
                           type="text"
                           value={noteTagsRaw}
                           onChange={(e) => setNoteTagsRaw(e.target.value)}
                           placeholder="Contoh: Teori, Ujian, Rumus, Praktikum"
-                          className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-xs transition-all shadow-3xs"
+                          className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs"
                         />
                       </div>
                     </div>
@@ -1644,35 +1644,35 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             Perekam Suara & Transkrip
                           </h4>
                           {isRecording ? (
-                            <span className="text-[10px] text-white bg-[#FF2D75] px-2.5 py-0.5 rounded-full font-black animate-pulse shadow-xs">
+                            <span className="text-xs text-white bg-[#FF2D75] px-2.5 py-0.5 rounded-full font-black animate-pulse shadow-xs">
                               LIVE {formatRecordingTime(recordingSeconds)}
                             </span>
                           ) : (
-                            <span className="text-[10px] text-sky-700 bg-sky-50 border border-sky-200/80 px-2.5 py-0.5 rounded-full font-bold">
+                            <span className="text-xs text-sky-700 bg-sky-50 border border-sky-200/80 px-2.5 py-0.5 rounded-full font-bold">
                               AI Transkrip
                             </span>
                           )}
                         </div>
 
-                        <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
+                        <p className="text-xs text-slate-600 leading-relaxed font-medium">
                           Gunakan mikrofon saat perkuliahan berlangsung atau unggah berkas audio rekaman untuk transkripsi otomatis.
                         </p>
 
                         {/* Microphone permission instructions helper */}
                         {micError && (
-                          <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-2xl text-[11px] text-amber-900 leading-relaxed space-y-2">
+                          <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-amber-900 leading-relaxed space-y-2">
                             <div className="flex items-center gap-1.5 font-bold">
                               <AlertTriangle size={13} className="text-amber-700 shrink-0" />
                               <span>Akses Mikrofon Dibatasi</span>
                             </div>
-                            <p className="text-[10px] text-amber-800">
+                            <p className="text-xs text-amber-800">
                               Browser membatasi izin mikrofon pada tab tersemat. Buka aplikasi di jendela browser baru agar rekaman berjalan optimal.
                             </p>
                             <a
                               href="/"
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-700 hover:bg-amber-800 text-white rounded-lg text-[10px] font-bold transition-colors cursor-pointer"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-700 hover:bg-amber-800 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer"
                             >
                               <ExternalLink size={11} />
                               Buka di Tab Baru
@@ -1692,7 +1692,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                               <button
                                 type="button"
                                 onClick={handleTogglePause}
-                                className={`text-[11px] font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+                                className={`text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
                                   isPaused
                                     ? "bg-sky-600 hover:bg-sky-700 text-white border-sky-600 shadow-xs"
                                     : "bg-white hover:bg-slate-50 text-slate-700 border-slate-300 shadow-2xs"
@@ -1705,7 +1705,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                               <button
                                 type="button"
                                 onClick={handleStartRecording}
-                                className="text-[11px] font-bold py-2.5 px-3 rounded-xl bg-[#FF2D75] hover:bg-pink-600 text-white flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-sm shadow-pink-500/20"
+                                className="text-xs font-bold py-2.5 px-3 rounded-xl bg-[#FF2D75] hover:bg-pink-600 text-white flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-sm shadow-pink-500/20"
                               >
                                 <MicOff size={12} />
                                 Hentikan Rekam
@@ -1755,7 +1755,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           <button
                             type="button"
                             onClick={() => audioUploadInputRef.current?.click()}
-                            className="w-full text-[11px] font-bold py-2.5 px-3 rounded-xl border border-sky-200/90 bg-sky-50/60 hover:bg-sky-100 text-sky-800 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+                            className="w-full text-xs font-bold py-2.5 px-3 rounded-xl border border-sky-200/90 bg-sky-50/60 hover:bg-sky-100 text-sky-800 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
                           >
                             <Upload size={13} className="text-sky-600" />
                             Unggah Berkas Audio (MP3/WAV/M4A)
@@ -1763,7 +1763,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                         </div>
 
                         {/* Status Message */}
-                        <div className={`p-2.5 px-3 rounded-xl text-[11px] font-semibold border ${
+                        <div className={`p-2.5 px-3 rounded-xl text-xs font-semibold border ${
                           recordingStatus.includes("Transkrip Sukses") || recordingStatus.includes("Transkrip Berhasil")
                             ? "bg-emerald-50 border-emerald-200 text-emerald-800"
                             : "bg-white border-pink-100 text-slate-700 shadow-3xs"
@@ -1778,13 +1778,13 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
 
                         {/* Transcript Area */}
                         <div className="space-y-1.5">
-                          <div className="flex justify-between items-center text-[11px]">
+                          <div className="flex justify-between items-center text-xs">
                             <span className="font-bold text-slate-700">Hasil Salinan Transkrip:</span>
                             {transcription && (
                               <button
                                 type="button"
                                 onClick={() => setTranscription("")}
-                                className="text-slate-400 hover:text-[#FF2D75] text-[10px] font-bold transition-colors cursor-pointer"
+                                className="text-slate-500 hover:text-[#FF2D75] text-xs font-bold transition-colors cursor-pointer"
                               >
                                 Bersihkan
                               </button>
@@ -1795,7 +1795,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             readOnly
                             value={transcription}
                             placeholder="Teks transkrip perkuliahan akan muncul di sini secara otomatis saat rekaman berjalan atau audio diproses..."
-                            className="w-full border border-pink-100/90 focus:border-[#FF2D75] focus:ring-2 focus:ring-pink-500/15 p-3 rounded-2xl font-mono text-[11px] leading-relaxed bg-white text-slate-800 min-h-[110px] focus:outline-hidden transition-all shadow-3xs"
+                            className="w-full border border-pink-100/90 focus:border-[#FF2D75] focus:ring-2 focus:ring-pink-500/15 p-3 rounded-2xl font-mono text-xs leading-relaxed bg-white text-slate-800 min-h-[110px] focus:outline-hidden transition-all shadow-3xs"
                           />
 
                           <button
@@ -1855,14 +1855,14 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               <div className="flex justify-between items-start pt-1 border-b border-slate-100 pb-3.5">
                 <div className="space-y-1.5">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[11px] font-black bg-pink-50 text-[#FF2D75] px-2.5 py-0.5 rounded-full border border-pink-200 uppercase tracking-wider">
+                    <span className="text-xs font-black bg-pink-50 text-[#FF2D75] px-2.5 py-0.5 rounded-full border border-pink-200 uppercase tracking-wider">
                       {selectedNote.courseTitle}
                     </span>
-                    <span className="text-[11px] font-bold bg-sky-50 text-sky-700 px-2.5 py-0.5 rounded-full border border-sky-200">
+                    <span className="text-xs font-bold bg-sky-50 text-sky-700 px-2.5 py-0.5 rounded-full border border-sky-200">
                       {selectedNote.date}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-500 font-semibold">
+                  <p className="text-sm text-slate-600 font-semibold leading-normal">
                     Dosen Pengampu: <strong className="text-slate-800">{selectedNote.lecturerName || "-"}</strong>
                   </p>
                 </div>
@@ -1879,7 +1879,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               </div>
 
               <div className="space-y-1">
-                <span className="text-[10px] font-black text-[#FF2D75] uppercase tracking-wider">
+                <span className="text-xs font-black text-[#FF2D75] uppercase tracking-wider">
                   Topik Pembahasan
                 </span>
                 <h3 className="text-base font-extrabold font-display text-slate-800 leading-snug">
@@ -1888,20 +1888,20 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               </div>
 
               {/* Rich contents */}
-              <div className="leading-relaxed whitespace-pre-wrap font-normal text-slate-800 bg-white p-4.5 rounded-2xl border border-slate-200 text-xs max-h-80 overflow-y-auto custom-scroll shadow-3xs">
+              <div className="leading-relaxed whitespace-pre-wrap font-normal text-slate-800 bg-white p-4.5 rounded-2xl border border-slate-200 text-sm max-h-80 overflow-y-auto custom-scroll shadow-3xs">
                 {renderFormattedText(selectedNote.content)}
               </div>
 
               {/* tags display */}
               {selectedNote.tags && selectedNote.tags.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 items-center">
-                  <span className="text-[10px] font-bold text-slate-400">
+                  <span className="text-xs font-bold text-slate-500">
                     Label:
                   </span>
                   {selectedNote.tags.map((tg) => (
                     <span
                       key={tg}
-                      className="text-[10px] font-bold text-[#FF2D75] bg-pink-50/60 px-2.5 py-0.5 rounded-lg border border-pink-100"
+                      className="text-xs font-bold text-[#FF2D75] bg-pink-50/60 px-2.5 py-0.5 rounded-lg border border-pink-100"
                     >
                       #{tg}
                     </span>
@@ -1975,7 +1975,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                   </div>
                   <h3 className="font-black font-display text-slate-900 text-sm">Konfirmasi Hapus</h3>
                 </div>
-                <p className="text-xs text-slate-500 font-semibold leading-relaxed">
+                <p className="text-sm text-slate-600 font-semibold leading-relaxed">
                   Apakah Anda yakin ingin menghapus catatan materi kuliah ini? Tindakan ini tidak dapat dibatalkan.
                 </p>
                 <div className="flex gap-2.5 pt-2">
@@ -2015,7 +2015,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                   <h3 className="font-extrabold text-slate-900 text-sm">
                     Pilih Tanggal Pertemuan
                   </h3>
-                  <p className="text-[11px] text-slate-500 font-medium">
+                  <p className="text-xs text-slate-600 font-medium">
                     Jadwal Pertemuan Kuliah
                   </p>
                 </div>
@@ -2023,7 +2023,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               <button
                 type="button"
                 onClick={() => setIsDatePickerOpen(false)}
-                className="p-1.5 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
+                className="p-1.5 rounded-xl hover:bg-slate-100 text-slate-500 hover:text-slate-700 transition-colors cursor-pointer"
               >
                 <X size={18} />
               </button>
@@ -2071,7 +2071,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               </div>
 
               {/* Day names header */}
-              <div className="grid grid-cols-7 gap-1 text-center font-bold text-[10px] text-slate-400 mb-1">
+              <div className="grid grid-cols-7 gap-1 text-center font-bold text-xs text-slate-500 mb-1">
                 {["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"].map((d, idx) => (
                   <div key={idx} className="py-1">{d}</div>
                 ))}
@@ -2139,7 +2139,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                     setNoteDate(str);
                     setIsDatePickerOpen(false);
                   }}
-                  className="flex-1 py-1.5 text-[11px] font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
+                  className="flex-1 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
                 >
                   Hari Ini
                 </button>
@@ -2152,7 +2152,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                     setNoteDate(str);
                     setIsDatePickerOpen(false);
                   }}
-                  className="flex-1 py-1.5 text-[11px] font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
+                  className="flex-1 py-1.5 text-xs font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
                 >
                   Besok
                 </button>
@@ -2165,7 +2165,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                     setNoteDate(str);
                     setIsDatePickerOpen(false);
                   }}
-                  className="flex-1 py-1.5 text-[11px] font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
+                  className="flex-1 py-1.5 text-xs font-bold text-pink-600 bg-pink-50 hover:bg-pink-100 rounded-xl transition-colors cursor-pointer"
                 >
                   +7 Hari
                 </button>
