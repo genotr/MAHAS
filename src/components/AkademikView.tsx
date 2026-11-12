@@ -524,7 +524,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
             {toast.type === "info" && <Info size={18} />}
           </div>
           <div className="flex-1 min-w-0 pr-2 self-center">
-            <p className="text-[11px] font-extrabold leading-normal text-white">
+            <p className="text-xs font-extrabold leading-normal text-white">
               {toast.message}
             </p>
           </div>
@@ -539,27 +539,27 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       )}
       
       {/* Title & Credit System Selector */}
-      <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex flex-col lg:flex-row justify-between lg:items-center gap-5">
+      <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col lg:flex-row justify-between lg:items-center gap-5">
         <div className="space-y-1.5 flex-1">
           <h2 className="text-2xl font-black font-display text-slate-800 leading-tight">
             Detail Akademik & Kartu Hasil Studi (KHS){" "}
             <GraduationCap className="text-[#FF2D75] inline-block align-middle ml-1.5" size={24} />
           </h2>
-          <p className="text-slate-500 text-xs font-semibold leading-relaxed">
+          <p className="text-slate-600 text-sm font-semibold leading-relaxed max-w-prose">
             Pantau rencana studi, jadwal kelas kuliah, dosen ampu, bobot beban belajar, serta perkembangan indeks prestasi kumulatif (IPK).
           </p>
         </div>
 
         {/* Dropdown Selector */}
         <div className="relative shrink-0 w-full sm:w-auto">
-          <label className="block text-[10px] font-black uppercase text-[#FF2D75] tracking-wider mb-1.5">
+          <label className="block text-xs font-black uppercase text-[#FF2D75] tracking-wider mb-1.5">
             Sistem Beban Belajar Negara:
           </label>
           <div className="relative">
             <select
               value={creditSystem}
               onChange={(e) => setCreditSystem(e.target.value)}
-              className="w-full sm:w-72 bg-white border border-pink-200/80 hover:border-pink-300 focus:outline-hidden focus:ring-2 focus:ring-pink-100 p-3 pr-10 rounded-2xl text-xs font-black text-slate-800 appearance-none shadow-xs cursor-pointer transition-all"
+              className="w-full sm:w-72 bg-white border border-pink-200/80 hover:border-pink-300 focus:outline-hidden focus:ring-2 focus:ring-pink-100 p-3 pr-10 rounded-2xl text-sm font-black text-slate-800 appearance-none shadow-xs cursor-pointer transition-all"
             >
               {CREDIT_SYSTEMS.map((sys) => (
                 <option key={sys.id} value={sys.id}>
@@ -582,15 +582,15 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
           <span>{activeSystem.flag}</span>
         </div>
         <div className="space-y-0.5 flex-1 text-left">
-          <p className="text-xs font-black text-slate-800 flex items-center gap-1.5">
+          <p className="text-sm font-black text-slate-800 flex items-center gap-1.5 leading-normal">
             <span>Sistem Aktif:</span>
             <span className="text-[#FF2D75] uppercase tracking-wider">{activeSystem.name} ({activeSystem.country})</span>
           </p>
-          <p className="text-[11px] text-slate-500 font-semibold leading-relaxed">
+          <p className="text-xs text-slate-600 font-semibold leading-relaxed">
             {activeSystem.description}
           </p>
           <p 
-            className="text-[10px] text-pink-600 font-extrabold mt-0.5"
+            className="text-xs text-pink-600 font-extrabold mt-0.5"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
             Konversi: {activeSystem.formula}
@@ -599,53 +599,53 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       </div>
 
       {/* Stats Cards Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
-        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-[#FF2D75] rounded-2xl shadow-xs">
             <GraduationCap size={22} />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">IPK Saat Ini</p>
+            <p className="text-xs uppercase font-bold text-slate-500 tracking-wider">IPK Saat Ini</p>
             <p className="text-lg font-black text-slate-800">{profile.gpa}</p>
-            <p className="text-[10px] text-emerald-600 font-extrabold mt-0.5">{getIpkClassification(profile.gpa)}</p>
+            <p className="text-xs text-emerald-600 font-extrabold mt-0.5">{getIpkClassification(profile.gpa)}</p>
           </div>
         </div>
 
-        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-[#FF2D75] rounded-2xl shadow-xs">
             <BookOpen size={22} />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Jumlah Mata Kuliah</p>
+            <p className="text-xs uppercase font-bold text-slate-500 tracking-wider">Jumlah Mata Kuliah</p>
             <p className="text-lg font-black text-slate-800">{courses.length} Matkul</p>
-            <p className="text-[10px] text-slate-500 font-bold mt-0.5">Aktif Semester ini</p>
+            <p className="text-xs text-slate-600 font-bold mt-0.5">Aktif Semester ini</p>
           </div>
         </div>
 
-        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-sky-600 rounded-2xl shadow-xs">
             <Clock size={22} />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Beban {activeSystem.unit}</p>
+            <p className="text-xs uppercase font-bold text-slate-500 tracking-wider">Beban {activeSystem.unit}</p>
             <p className="text-lg font-black text-slate-800">
               {convertSks(courses.reduce((acc, c) => acc + c.sks, 0))} {activeSystem.unit}
             </p>
-            <p className="text-[10px] text-slate-500 font-bold mt-0.5">Maksimal {convertSks(24)} {activeSystem.unit}</p>
+            <p className="text-xs text-slate-600 font-bold mt-0.5">Maksimal {convertSks(24)} {activeSystem.unit}</p>
           </div>
         </div>
 
-        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-emerald-600 rounded-2xl shadow-xs">
             <PartyPopper size={22} className="text-emerald-600 animate-pulse" />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Progress Akademik</p>
-            <p className="text-xs font-black text-emerald-600 flex items-center gap-1 mt-1">
+            <p className="text-xs uppercase font-bold text-slate-500 tracking-wider">Progress Akademik</p>
+            <p className="text-sm font-black text-emerald-600 flex items-center gap-1 mt-1 leading-normal">
               Semester ini Kamu On Track!
             </p>
-            <p className="text-[10px] text-slate-400 font-bold mt-0.5">Pertahankan IPK Kamu, Semangatt</p>
+            <p className="text-xs text-slate-600 font-bold mt-0.5">Pertahankan IPK Kamu, Semangatt</p>
           </div>
         </div>
 
@@ -659,20 +659,20 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-4 mb-5 relative z-10">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-black uppercase bg-gradient-to-r from-pink-500 to-[#FF2D75] px-2.5 py-1 rounded-lg">
+              <span className="text-xs font-black uppercase bg-gradient-to-r from-pink-500 to-[#FF2D75] px-2.5 py-1 rounded-lg">
                 AUTOMATION AI
               </span>
               <h3 className="text-sm font-black font-display tracking-tight flex items-center gap-1.5">
                 Asisten Pengimpor Jadwal Kuliah Pintar
               </h3>
             </div>
-            <p className="text-[11px] text-slate-300 font-medium">
+            <p className="text-xs text-slate-300 font-medium">
               Unggah berkas foto, PDF, dokumen Word, atau teks catatan jadwal Anda untuk dianalisis oleh AI secara otomatis.
             </p>
           </div>
           
           {/* Format Badges */}
-          <div className="flex flex-wrap items-center gap-1.5 text-[9px] font-black">
+          <div className="flex flex-wrap items-center gap-1.5 text-xs font-black">
             <span className="bg-white/10 text-pink-300 px-2 py-1 rounded-md border border-white/5">PNG</span>
             <span className="bg-white/10 text-sky-300 px-2 py-1 rounded-md border border-white/5">PDF</span>
             <span className="bg-white/10 text-emerald-300 px-2 py-1 rounded-md border border-white/5">TXT</span>
@@ -704,10 +704,10 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
             
             <UploadCloud size={32} className="text-slate-400 group-hover:text-pink-400 transition-colors mb-2.5 animate-bounce" style={{ animationDuration: '3s' }} />
             
-            <p className="text-xs font-black text-white group-hover:text-pink-200 transition-colors">
+            <p className="text-sm font-black text-white group-hover:text-pink-200 transition-colors leading-normal">
               Seret & lepaskan berkas jadwal Anda di sini, atau <span className="text-sky-400 underline decoration-dotted">pilih dari komputer</span>
             </p>
-            <p className="text-[9px] text-slate-400 font-semibold mt-1">
+            <p className="text-xs text-slate-400 font-semibold mt-1">
               Berkas yang didukung: png, pdf, txt, docx (Maks. 10MB)
             </p>
           </div>
@@ -721,8 +721,8 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
               <div className="flex items-center gap-3">
                 <Loader2 size={20} className="text-pink-400 animate-spin" />
                 <div>
-                  <p className="text-xs font-black text-white">Sedang Membaca & Memproses melalui AI...</p>
-                  <p className="text-[9px] text-slate-400 truncate max-w-xs">{aiFile?.name} ({aiFile?.size})</p>
+                  <p className="text-sm font-black text-white leading-normal">Sedang Membaca & Memproses melalui AI...</p>
+                  <p className="text-xs text-slate-400 truncate max-w-xs">{aiFile?.name} ({aiFile?.size})</p>
                 </div>
               </div>
               <span className="text-xs font-black text-[#FF2D75]">{analysisProgress}%</span>
@@ -737,7 +737,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
             </div>
 
             {/* Simulated LOG Console Terminal */}
-            <div className="bg-black/80 rounded-xl p-3.5 font-mono text-[9px] text-emerald-400 space-y-1.5 max-h-[85px] overflow-y-auto whitespace-pre-wrap leading-relaxed text-left border border-white/5">
+            <div className="bg-black/80 rounded-xl p-3.5 font-mono text-xs text-emerald-400 space-y-1.5 max-h-[85px] overflow-y-auto whitespace-pre-wrap leading-relaxed text-left border border-white/5">
               {analysisLogs.map((log, i) => (
                 <div key={i} className="animate-fade-in">&gt; {log}</div>
               ))}
@@ -748,11 +748,11 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
           <div className="bg-slate-950/50 border border-emerald-500/30 rounded-2xl p-5 space-y-4 animate-fade-in text-left">
             <div className="flex justify-between items-center border-b border-white/10 pb-2.5">
               <div>
-                <p className="text-xs font-black text-emerald-400 flex items-center gap-1">
+                <p className="text-sm font-black text-emerald-400 flex items-center gap-1 leading-normal">
                   <Check size={14} className="bg-emerald-500 text-slate-950 rounded-full p-0.5" />
                   AI Analisis Berhasil Rampung!
                 </p>
-                <p className="text-[9px] text-slate-400">Total terdeteksi {aiDetectedCourses.length} mata kuliah. Pilih mana yang ingin Anda simpan ke IRS.</p>
+                <p className="text-xs text-slate-400">Total terdeteksi {aiDetectedCourses.length} mata kuliah. Pilih mana yang ingin Anda simpan ke IRS.</p>
               </div>
               <button
                 type="button"
@@ -760,7 +760,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
                   setAiFile(null);
                   setShowAiResults(false);
                 }}
-                className="text-xs font-bold text-slate-400 hover:text-white px-2.5 py-1 rounded-md bg-white/5 transition-all text-[10px]"
+                className="text-xs font-bold text-slate-400 hover:text-white px-2.5 py-1 rounded-md bg-white/5 transition-all text-xs"
               >
                 Ulangi Unggah
               </button>
@@ -789,15 +789,15 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
                       
                       <div className="space-y-1 min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-1.5 leading-none">
-                          <span className="text-[10px] uppercase font-black text-pink-300">{c.code}</span>
-                          <span className="text-[9px] bg-white/10 px-1 rounded text-slate-350">{convertSks(c.sks)} {activeSystem.unit}</span>
-                          <span className="text-[9px] bg-slate-500/20 border border-slate-450/40 text-slate-300 font-extrabold px-1.5 py-0.2 rounded">
+                          <span className="text-xs uppercase font-black text-pink-300">{c.code}</span>
+                          <span className="text-xs bg-white/10 px-1 rounded text-slate-350">{convertSks(c.sks)} {activeSystem.unit}</span>
+                          <span className="text-xs bg-slate-500/20 border border-slate-450/40 text-slate-300 font-extrabold px-1.5 py-0.2 rounded">
                             {c.day}
                           </span>
                         </div>
-                        <p className="text-xs font-black truncate">{c.name}</p>
-                        <p className="text-[9px] text-slate-400 font-medium truncate">👨‍🏫 Dosen: {c.lecturer} | 📍 {c.room}</p>
-                        <p className="text-[9px] text-sky-300 font-bold">⏰ Jam: {c.time}</p>
+                        <p className="text-sm font-black truncate leading-normal">{c.name}</p>
+                        <p className="text-xs text-slate-400 font-medium truncate">👨‍🏫 Dosen: {c.lecturer} | 📍 {c.room}</p>
+                        <p className="text-xs text-sky-300 font-bold">⏰ Jam: {c.time}</p>
                       </div>
                     </div>
                   </div>
@@ -806,7 +806,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
             </div>
 
             {/* Action Importer Buttons */}
-            <div className="flex justify-end gap-2 border-t border-white/10 pt-3 text-[11px] font-bold">
+            <div className="flex justify-end gap-2 border-t border-white/10 pt-3 text-xs font-bold">
               <button
                 type="button"
                 onClick={() => {
@@ -863,13 +863,13 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
 
         <div className="flex flex-1 md:max-w-md items-center gap-2">
           <div className="relative flex-1">
-            <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
             <input
               type="text"
               placeholder="Cari matkul, kode, atau dosen..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full text-xs pl-10 pr-4 py-2.5 rounded-2xl border border-pink-100 focus:outline-hidden focus:border-pink-300 bg-white font-semibold"
+              className="w-full text-sm pl-10 pr-4 py-2.5 rounded-2xl border border-pink-100 focus:outline-hidden focus:border-pink-300 bg-white font-semibold"
             />
           </div>
           <button
@@ -887,7 +887,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs text-slate-650 border-collapse">
             <thead>
-              <tr className="bg-slate-50 border-b border-slate-100 text-[10px] uppercase font-black text-slate-500 tracking-wider">
+              <tr className="bg-slate-50 border-b border-slate-100 text-xs uppercase font-black text-slate-500 tracking-wider">
                 <th className="py-3.5 px-5">Kode Matkul</th>
                 <th className="py-3.5 px-5">Nama Mata Kuliah</th>
                 <th className="py-3.5 px-5 text-center">Semester</th>
@@ -907,7 +907,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
                   <td className="py-4 px-5 font-bold text-slate-600">{c.lecturer}</td>
                   <td className="py-4 px-5">
                     <span className="text-xs text-slate-800 font-extrabold block">{c.day}, {c.time}</span>
-                    <span className="text-[10px] text-[#FF2D75] font-bold">{c.room}</span>
+                    <span className="text-xs text-[#FF2D75] font-bold">{c.room}</span>
                   </td>
                   <td className="py-4 px-5 text-center">
                     <span className="font-mono font-black tracking-wide bg-pink-100 border border-pink-200 text-[#FF2D75] px-2.5 py-1 rounded-xl">
@@ -918,7 +918,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
               ))}
               {filteredCourses.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="text-center py-12 text-slate-400 font-bold bg-slate-50/60">
+                  <td colSpan={7} className="text-center py-12 text-slate-500 font-bold bg-slate-50/60">
                     Tidak ditemukan mata kuliah yang sesuai kata kunci pencarian.
                   </td>
                 </tr>
@@ -926,7 +926,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
             </tbody>
           </table>
         </div>
-        <div className="bg-slate-50 p-4 border-t border-slate-100 flex justify-between items-center text-[11px] font-black text-slate-500">
+        <div className="bg-slate-50 p-4 border-t border-slate-100 flex justify-between items-center text-xs font-black text-slate-500">
           <span>Menampilkan {filteredCourses.length} Mata Kuliah</span>
           <span className="text-[#FF2D75]">Total Terpilih: {convertSks(totalSksEnroll)} {activeSystem.unit}</span>
         </div>
@@ -1091,7 +1091,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
             </div>
             <form onSubmit={handleAddSemesterSubmit} className="p-5 space-y-4 text-xs font-semibold">
               <div>
-                <p className="text-[11px] text-slate-500 leading-normal mb-3 font-medium">
+                <p className="text-xs text-slate-600 leading-normal mb-3 font-medium">
                   Tambahkan semester baru ke dalam riwayat akademik Anda. Anda dapat menentukan nomor semester secara urut maupun kustom.
                 </p>
                 <label className="block font-black text-slate-700 mb-1.5">Nomor Semester *</label>
