@@ -919,7 +919,7 @@ export function AppDashboard() {
           />
         );
       default:
-        return <div className="p-8 text-center text-slate-400">Section in progress</div>;
+        return <div className="p-8 text-center text-slate-500">Section in progress</div>;
     }
   };
 
@@ -930,7 +930,7 @@ export function AppDashboard() {
   const unreadNotificationsCount = notifications.filter(n => !n.isRead).length;
 
   return (
-    <div id="campushub_root" style={{ "--mouse-x": "0", "--mouse-y": "0" } as React.CSSProperties} className="h-[100dvh] max-h-[100dvh] bg-transparent flex font-sans relative overflow-hidden text-slate-800 p-2 md:p-4">
+    <div id="campushub_root" style={{ "--mouse-x": "0", "--mouse-y": "0" } as React.CSSProperties} className="h-[100dvh] max-h-[100dvh] bg-transparent flex font-sans relative overflow-hidden text-slate-800 p-3 md:p-6 md:gap-6">
       {/* 15% opacity yellow screen overlay for Eye-Care Read Mode, can be overlayed on any theme */}
       {isReadMode && (
         <div className="fixed inset-0 bg-yellow-500/15 pointer-events-none z-[99999]" />
@@ -948,7 +948,7 @@ export function AppDashboard() {
       {/* SIDEBAR NAVIGATION PANEL (SMOOTH GLASSY PUFFY DESIGN) */}
       <aside 
         id="campushub_sidebar"
-        className={`${isExpanded ? "w-[264px] p-4" : "w-[66px] p-2 overflow-x-hidden"} bg-[#fdfdfe] border border-white rounded-[28px] shadow-[0_10px_30px_rgba(70,140,190,0.14)] flex flex-col justify-between shrink-0 transition-none h-full
+        className={`${isExpanded ? "w-[264px] p-4" : "w-[66px] p-2 overflow-x-hidden"} bg-[#fdfdfe] border border-white rounded-panel shadow-[0_10px_30px_rgba(70,140,190,0.14)] flex flex-col justify-between shrink-0 transition-none h-full
           ${sidebarOpen ? "fixed inset-y-2 left-2 z-40 flex" : "hidden md:flex md:relative z-20"}`}
       >
         <div className="space-y-6 flex flex-col h-full justify-between pb-4 overflow-y-auto custom-scroll relative z-10">
@@ -1053,7 +1053,7 @@ export function AppDashboard() {
                     }}
                     title={isIconOnly ? (item.shortcutKey ? `${item.label} (${item.shortcutKey})` : item.label) : undefined}
                     style={{
-                      borderRadius: "16px",
+                      borderRadius: "var(--radius-inner)",
                       ...(index === 0 ? { borderWidth: "1.666667px" } : {})
                     }}
                     className={`w-full flex items-center ${isIconOnly ? "justify-center px-2 gap-0" : "gap-3 px-3.5"} py-3 text-[13px] font-black rounded-2xl text-left transition-none cursor-pointer border ${buttonBgStyle} relative overflow-visible`}
@@ -1124,11 +1124,11 @@ export function AppDashboard() {
           {/* Footer version indicator */}
           <div className="pt-2 border-t border-slate-100 flex items-center justify-center">
             {isExpanded ? (
-              <span className="text-[10px] font-black text-slate-400 font-mono tracking-wider bg-slate-50 px-3 py-1 rounded-lg border border-slate-200/60">
+              <span className="text-xs font-black text-slate-500 font-mono tracking-wider bg-slate-50 px-3 py-1 rounded-lg border border-slate-200/60">
                 MAHAS v2.4.20
               </span>
             ) : (
-              <span className="text-[9px] font-black text-slate-400 font-mono">
+              <span className="text-xs font-black text-slate-500 font-mono">
                 v2.4
               </span>
             )}
@@ -1146,13 +1146,13 @@ export function AppDashboard() {
       )}
 
       {/* CONTENT CANVAS WRAPPER (TOY-BOX REDESIGN) */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden p-1 sm:p-2 md:p-3 relative z-20">
+      <div className="flex-1 flex flex-col h-full overflow-hidden relative z-20">
         
         {/* TOP INTERACTIVE BAR */}
         {!isAddingNote && (
           <header 
-            style={{ borderRadius: "24px" }}
-            className="h-[68px] shrink-0 bg-[#fdfdfe] !overflow-visible border border-white rounded-[24px] shadow-[0_10px_30px_rgba(70,140,190,0.12)] flex items-center justify-between px-3 sm:px-5 relative z-30 ml-0 mt-2 sm:mt-1.5 md:-mt-3 mb-2.5"
+            style={{ borderRadius: "var(--radius-card)" }}
+            className="h-[68px] shrink-0 bg-[#fdfdfe] !overflow-visible border border-white rounded-card shadow-[0_10px_30px_rgba(70,140,190,0.12)] flex items-center justify-between px-3 sm:px-5 relative z-30 mb-4 md:mb-6"
           >
             
             <div className="flex items-center gap-4 flex-1">
@@ -1207,27 +1207,27 @@ export function AppDashboard() {
                   placeholder="Cari fitur, event, beasiswa, atau barang..."
                   value={globalSearch}
                   onChange={(e) => setGlobalSearch(e.target.value)}
-                  className="w-full h-11 text-xs pl-[25px] pr-[10px] -ml-[7px] mr-0 mt-0 rounded-2xl border border-sky-200 bg-white focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-extrabold"
+                  className="w-full h-11 text-sm pl-[25px] pr-[10px] -ml-[7px] mr-0 mt-0 rounded-2xl border border-sky-200 bg-white focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-extrabold"
                 />
 
                 {/* Instant Search Results Dropdown overlay */}
                 {globalSearch !== "" && (
                   <div className="absolute left-0 right-0 top-full mt-2 bg-white border border-slate-100 rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.12)] max-h-80 overflow-y-auto z-50 p-4 space-y-3.5 text-xs text-left">
-                    <div className="flex justify-between items-center text-[10px] text-slate-400 font-bold uppercase tracking-wider pb-1 border-b border-slate-100">
+                    <div className="flex justify-between items-center text-xs text-slate-500 font-bold uppercase tracking-wider pb-1 border-b border-slate-100">
                       <span>Hasil Pencarian Cepat</span>
                       <button onClick={() => setGlobalSearch("")} className="hover:text-red-500 cursor-pointer text-[#FF2D75] font-black">✕ Tutup</button>
                     </div>
                     
                     {foundTasks.length > 0 && (
                       <div className="space-y-1">
-                        <p className="font-extrabold text-[10px] text-[#FF2D75]">Kategori: Tugas & Deadline</p>
+                        <p className="font-extrabold text-xs text-[#FF2D75]">Kategori: Tugas & Deadline</p>
                         {foundTasks.map(t => (
                           <div 
                             key={t.id} 
                             onClick={() => handleGlobalSearchItemClick("Tugas & Deadline")}
                             className="p-2 hover:bg-pink-50 rounded-lg cursor-pointer font-bold text-slate-800 border border-transparent hover:border-slate-900"
                           >
-                            {t.title} <span className="font-normal text-[10px] text-slate-500 font-medium">({t.course})</span>
+                            {t.title} <span className="font-normal text-xs text-slate-500 font-medium">({t.course})</span>
                           </div>
                         ))}
                       </div>
@@ -1235,21 +1235,21 @@ export function AppDashboard() {
 
                     {foundMarket.length > 0 && (
                       <div className="space-y-1">
-                        <p className="font-extrabold text-[10px] text-amber-600">Kategori: Marketplace</p>
+                        <p className="font-extrabold text-xs text-amber-600">Kategori: Marketplace</p>
                         {foundMarket.map(m => (
                           <div 
                             key={m.id} 
                             onClick={() => handleGlobalSearchItemClick("Marketplace")}
                             className="p-2 hover:bg-amber-50 rounded-lg cursor-pointer font-bold text-slate-800 border border-transparent hover:border-slate-900"
                           >
-                            {m.title} <span className="font-mono text-[10px] text-[#2e1065]">Rp{m.price.toLocaleString("id-ID")}</span>
+                            {m.title} <span className="font-mono text-xs text-[#2e1065]">Rp{m.price.toLocaleString("id-ID")}</span>
                           </div>
                         ))}
                       </div>
                     )}
 
                     {foundTasks.length === 0 && foundMarket.length === 0 && (
-                      <p className="text-center py-4 text-slate-400 font-bold">Hmm, tidak ditemukan item pencarian yang cocok.</p>
+                      <p className="text-center py-4 text-slate-600 font-bold">Hmm, tidak ditemukan item pencarian yang cocok.</p>
                     )}
                   </div>
                 )}
@@ -1269,7 +1269,7 @@ export function AppDashboard() {
                 >
                   <Bell size={18} className="animate-wiggle" style={{ animationDuration: "3s" }} />
                   {unreadNotificationsCount > 0 && (
-                    <span className="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 bg-[#FF2D75] rounded-full flex items-center justify-center text-[10px] text-white font-black border-2 border-white shadow-md z-30 pointer-events-none translate-x-1 -translate-y-1">
+                    <span className="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 bg-[#FF2D75] rounded-full flex items-center justify-center text-[11px] text-white font-black border-2 border-white shadow-md z-30 pointer-events-none translate-x-1 -translate-y-1">
                       {unreadNotificationsCount}
                     </span>
                   )}
@@ -1280,11 +1280,11 @@ export function AppDashboard() {
                     {/* Arrow / Triangle pointing up to the notification button */}
                     <div className="absolute -top-2 right-3 w-4 h-4 bg-white border-t border-l border-slate-200/90 rotate-45 rounded-tl-[2px] z-10"></div>
                     
-                    <div className="px-4 pb-2.5 border-b border-slate-100 flex justify-between items-center text-[10px] uppercase font-black text-slate-400 tracking-wider relative z-20">
+                    <div className="px-4 pb-2.5 border-b border-slate-100 flex justify-between items-center text-xs uppercase font-black text-slate-500 tracking-wider relative z-20">
                       <span className="text-slate-900">Notifikasi ({notifications.length})</span>
                       <div className="flex gap-2">
-                        <button onClick={handleMarkAllNotificationsAsRead} className="hover:text-pink-600 text-[#FF2D75] text-[10px] font-black cursor-pointer">Unread</button>
-                        <button onClick={handleClearNotifications} className="hover:text-rose-650 text-slate-500 text-[10px] font-black cursor-pointer">Hapus</button>
+                        <button onClick={handleMarkAllNotificationsAsRead} className="hover:text-pink-600 text-[#FF2D75] text-xs font-black cursor-pointer">Unread</button>
+                        <button onClick={handleClearNotifications} className="hover:text-rose-650 text-slate-500 text-xs font-black cursor-pointer">Hapus</button>
                       </div>
                     </div>
 
@@ -1297,13 +1297,13 @@ export function AppDashboard() {
                         >
                           <span className={`w-2 h-2 rounded-full shrink-0 mt-1.5 ${!item.isRead ? "bg-[#FF2D75]" : "bg-slate-200"}`}></span>
                           <div className="min-w-0 flex-1">
-                            <p className={`${!item.isRead ? "text-slate-900 font-black" : "text-slate-500 font-normal"} leading-snug break-words`}>{item.text}</p>
-                            <span className="text-[10px] text-slate-400 block mt-0.5 font-bold">{item.time}</span>
+                            <p className={`${!item.isRead ? "text-slate-900 font-black" : "text-slate-600 font-normal"} leading-snug break-words`}>{item.text}</p>
+                            <span className="text-xs text-slate-500 block mt-0.5 font-bold">{item.time}</span>
                           </div>
                         </div>
                       ))}
                       {notifications.length === 0 && (
-                        <div className="py-8 text-center text-slate-400 font-bold">
+                        <div className="py-8 text-center text-slate-500 font-bold">
                           Tidak ada notifikasi baru harian.
                         </div>
                       )}
@@ -1330,10 +1330,10 @@ export function AppDashboard() {
                     className="w-8 h-8 rounded-full object-cover border border-slate-200 shrink-0 shadow-xs"
                   />
                   <div className="hidden md:block text-left">
-                    <p className="text-xs font-black text-slate-900 leading-tight">
+                    <p className="text-sm font-black text-slate-900 leading-tight">
                       {profile.name}
                     </p>
-                    <p className="text-[9px] font-bold text-slate-500">
+                    <p className="text-xs font-bold text-slate-600">
                       {profile.role}
                     </p>
                   </div>
@@ -1399,7 +1399,7 @@ export function AppDashboard() {
                     
                     <div className="border-t border-slate-150 my-1.5"></div>
                     
-                    <div className="px-4 py-1.5 text-[10px] uppercase font-black tracking-wider text-slate-400">
+                    <div className="px-4 py-1.5 text-xs uppercase font-black tracking-wider text-slate-500">
                       Pengaturan Lainnya
                     </div>
                     <div className="px-2 pb-1 space-y-1">
@@ -1455,7 +1455,7 @@ export function AppDashboard() {
       {showAuthModal && (
         <div className="fixed inset-0 bg-slate-950/60 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
           <div 
-            className="bg-white border border-slate-200 rounded-[32px] w-full max-w-md overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-200"
+            className="bg-white border border-slate-200 rounded-panel w-full max-w-md overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-200"
           >
             {/* Header with clean slate-focused design */}
             <div className="bg-slate-50 px-6 py-5 border-b border-slate-100 flex justify-between items-center relative">
@@ -1534,52 +1534,52 @@ export function AppDashboard() {
               <form onSubmit={handleEmailAuth} className="space-y-4">
                 {authMode === "signup" && (
                   <div className="space-y-1 text-left">
-                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Nama Lengkap</label>
+                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Nama Lengkap</label>
                     <div className="relative">
-                      <User size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                      <User size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
                       <input
                         type="text"
                         required
                         placeholder="Contoh: Andi Pratama"
                         value={authName}
                         onChange={(e) => setAuthName(e.target.value)}
-                        className="w-full h-11 text-xs pl-10 pr-4 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-bold"
+                        className="w-full h-11 text-sm pl-10 pr-4 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-bold"
                       />
                     </div>
                   </div>
                 )}
 
                 <div className="space-y-1 text-left">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Alamat Email</label>
+                  <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Alamat Email</label>
                   <div className="relative">
-                    <Mail size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                    <Mail size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
                     <input
                       type="email"
                       required
                       placeholder="nama@mahasiswa.ac.id"
                       value={authEmail}
                       onChange={(e) => setAuthEmail(e.target.value)}
-                      className="w-full h-11 text-xs pl-10 pr-4 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-bold"
+                      className="w-full h-11 text-sm pl-10 pr-4 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-bold"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-1 text-left">
-                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Kata Sandi</label>
+                  <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Kata Sandi</label>
                   <div className="relative">
-                    <KeyRound size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                    <KeyRound size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
                     <input
                       type={showPassword ? "text" : "password"}
                       required
                       placeholder="••••••••"
                       value={authPassword}
                       onChange={(e) => setAuthPassword(e.target.value)}
-                      className="w-full h-11 text-xs pl-10 pr-10 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-bold"
+                      className="w-full h-11 text-sm pl-10 pr-10 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-bold"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer p-1 rounded-lg hover:bg-slate-100 transition-colors flex items-center justify-center"
+                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-600 cursor-pointer p-1 rounded-lg hover:bg-slate-100 transition-colors flex items-center justify-center"
                       title={showPassword ? "Sembunyikan sandi" : "Tampilkan sandi"}
                     >
                       {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
@@ -1605,7 +1605,7 @@ export function AppDashboard() {
               {/* Divider */}
               <div className="relative flex py-1 items-center">
                 <div className="flex-grow border-t border-slate-200"></div>
-                <span className="flex-shrink mx-3 text-[9px] font-bold uppercase tracking-wider text-slate-400 bg-transparent">Atau Masuk Dengan</span>
+                <span className="flex-shrink mx-3 text-xs font-bold uppercase tracking-wider text-slate-500 bg-transparent">Atau Masuk Dengan</span>
                 <div className="flex-grow border-t border-slate-200"></div>
               </div>
 
