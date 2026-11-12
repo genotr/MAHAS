@@ -510,7 +510,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
   const totalSksEnroll = filteredCourses.reduce((acc, c) => acc + c.sks, 0);
 
   return (
-    <div className="space-y-6 text-left relative z-10">
+    <div className="space-y-4 text-left relative z-10">
       
       {/* Toast Notification */}
       {toast && (
@@ -599,7 +599,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       </div>
 
       {/* Stats Cards Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-[#FF2D75] rounded-2xl shadow-xs">
