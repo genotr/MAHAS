@@ -1049,7 +1049,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
   });
 
   return (
-    <div className="space-y-6 text-left relative z-10 font-sans">
+    <div className="space-y-4 text-left relative z-10 font-sans">
       {/* SECTION A: HEADER & ACTIONS */}
       <div className="bg-[#fdfdfe] rounded-card border border-white p-5 md:p-6 shadow-card relative">
         <div className="flex flex-col gap-4">
@@ -1210,7 +1210,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
         </div>
 
         {filteredNotes.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredNotes.map((note) => (
               <div
                 key={note.id}
@@ -1387,7 +1387,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                     </motion.div>
                   )}
 
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
                     
                     {/* Left Column: Form Fields and Main Editor */}
                     <div className="lg:col-span-7 space-y-4">
