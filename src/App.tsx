@@ -930,7 +930,7 @@ export function AppDashboard() {
   const unreadNotificationsCount = notifications.filter(n => !n.isRead).length;
 
   return (
-    <div id="campushub_root" style={{ "--mouse-x": "0", "--mouse-y": "0" } as React.CSSProperties} className="h-[100dvh] max-h-[100dvh] bg-transparent flex font-sans relative overflow-hidden text-slate-800 p-3 md:p-6 md:gap-6">
+    <div id="campushub_root" style={{ "--mouse-x": "0", "--mouse-y": "0" } as React.CSSProperties} className="h-[100dvh] max-h-[100dvh] bg-transparent flex font-sans relative overflow-hidden text-slate-800 p-3 md:p-4 md:gap-4">
       {/* 15% opacity yellow screen overlay for Eye-Care Read Mode, can be overlayed on any theme */}
       {isReadMode && (
         <div className="fixed inset-0 bg-yellow-500/15 pointer-events-none z-[99999]" />
@@ -1152,7 +1152,7 @@ export function AppDashboard() {
         {!isAddingNote && (
           <header 
             style={{ borderRadius: "var(--radius-card)" }}
-            className="h-[68px] shrink-0 bg-[#fdfdfe] !overflow-visible border border-white rounded-card shadow-[0_10px_30px_rgba(70,140,190,0.12)] flex items-center justify-between px-3 sm:px-5 relative z-30 mb-4 md:mb-6"
+            className="h-[68px] shrink-0 bg-[#fdfdfe] !overflow-visible border border-white rounded-card shadow-[0_10px_30px_rgba(70,140,190,0.12)] flex items-center justify-between px-3 sm:px-5 relative z-30 mb-4"
           >
             
             <div className="flex items-center gap-4 flex-1">
