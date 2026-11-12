@@ -309,7 +309,7 @@ export default function MentalHealthView({
             Obrolan Kesehatan Mental Anda{" "}
             <Heart className="text-[#FF2D75] inline-block align-middle ml-1.5" size={24} />
           </h2>
-          <p className="text-xs text-slate-500 leading-normal font-semibold">
+          <p className="text-sm text-slate-600 leading-normal font-semibold max-w-prose">
             Kesehatan mentalmu sama pentingnya dengan nilai akademik. Tumpahkan beban pikiranmu ke Chatbot AI Sahabat Rasa yang super peka dan memahami perasaanmu harian, serta relaksasi diri di Ruang Tenang.
           </p>
         </div>
@@ -364,10 +364,10 @@ export default function MentalHealthView({
                         </span>
                       )}
                       <div className="max-w-[80%] space-y-0.5 text-left">
-                        <span className="text-[9px] font-bold text-slate-400 block">
+                        <span className="text-xs font-bold text-slate-500 block">
                           {isUser ? "Saya (Nadia)" : "Sahabat Rasa AI"}
                         </span>
-                        <div className={`p-3.5 rounded-2xl text-[11px] leading-relaxed font-bold ${
+                        <div className={`p-3.5 rounded-2xl text-xs leading-relaxed font-bold ${
                           isUser 
                             ? "bg-gradient-to-r from-pink-500 to-[#FF2D75] text-white rounded-tr-none text-right" 
                             : "bg-pink-50/40 text-slate-800 border border-pink-100 rounded-tl-none text-left"
@@ -384,7 +384,7 @@ export default function MentalHealthView({
                     <span className="w-8 h-8 rounded-full bg-[#FF2D75]/10 flex items-center justify-center text-xs">
                       💖
                     </span>
-                    <div className="bg-pink-50/20 border border-pink-100 p-3.5 rounded-2xl rounded-tl-none text-[10px] text-slate-450 italic font-bold flex items-center gap-1.5">
+                    <div className="bg-pink-50/20 border border-pink-100 p-3.5 rounded-2xl rounded-tl-none text-xs text-slate-450 italic font-bold flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 bg-[#FF2D75] rounded-full animate-ping"></span>
                       <span>Sedang mencoba memahami perasaanmu, bersabarlah...</span>
                     </div>
@@ -394,7 +394,7 @@ export default function MentalHealthView({
 
               {/* Stress / Feeling suggest chips */}
               <div className="space-y-1.5">
-                <span className="text-[8px] text-slate-400 font-extrabold block uppercase tracking-wider text-left">KONDISI EMOSIMU SAAT INI:</span>
+                <span className="text-xs text-slate-500 font-extrabold block uppercase tracking-wider text-left">KONDISI EMOSIMU SAAT INI:</span>
                 <div className="flex flex-wrap gap-1.5 justify-start">
                   {[
                     { label: "Saya cemas mau Ujian 😭", prompt: "Saya sedang sangat cemas karena besok ada ujian besar dan rasanya materi belum ada yang masuk ke otak saya." },
@@ -406,7 +406,7 @@ export default function MentalHealthView({
                       key={chip.label}
                       onClick={() => triggerChatSubmit(chip.prompt)}
                       disabled={chatLoading}
-                      className="text-[10px] font-bold px-2.5 py-1.5 rounded-xl border border-pink-100 hover:border-[#FF2D75] hover:bg-pink-50/20 bg-white cursor-pointer select-none text-slate-600 transition-all active:scale-95"
+                      className="text-xs font-bold px-2.5 py-1.5 rounded-xl border border-pink-100 hover:border-[#FF2D75] hover:bg-pink-50/20 bg-white cursor-pointer select-none text-slate-600 transition-all active:scale-95"
                     >
                       {chip.label}
                     </button>
@@ -423,7 +423,7 @@ export default function MentalHealthView({
                   onChange={(e) => setChatbotInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && triggerChatSubmit()}
                   disabled={chatLoading}
-                  className="flex-1 border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-2xl font-semibold text-xs bg-slate-50 text-slate-800"
+                  className="flex-1 border border-pink-100 focus:outline-hidden focus:border-pink-300 p-2.5 rounded-2xl font-semibold text-sm bg-slate-50 text-slate-800"
                 />
                 <button
                   onClick={() => triggerChatSubmit()}
@@ -443,34 +443,34 @@ export default function MentalHealthView({
               <div className="bg-gradient-to-r from-sky-400 via-[#38bdf8] to-[#0284c7] text-white p-5 rounded-3xl border border-sky-200/20 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-md text-left">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-black bg-white/20 text-white border border-white/25 uppercase tracking-wide">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black bg-white/20 text-white border border-white/25 uppercase tracking-wide">
                       Mindfulness Center
                     </span>
                     <span className="text-xs font-bold">
                       🧘 Ambil Jeda, Sehatkan Jiwa
                     </span>
                   </div>
-                  <p className="text-[11px] text-sky-50 font-bold leading-relaxed max-w-xl">
+                  <p className="text-xs text-sky-50 font-bold leading-relaxed max-w-xl">
                     "Kesehatan batinmu adalah aset akademik terpenting. Latihlah pernapasan kotak penenang batin secara instan, dengarkan suara melodi bising alam, dan diagnosis kondisi jiwamu secara rahasia."
                   </p>
                 </div>
                 <div className="text-left md:text-right shrink-0">
-                  <span className="text-[10px] text-white/80 font-mono tracking-wider block font-bold">STABILITAS EMOSI</span>
+                  <span className="text-xs text-white/80 font-mono tracking-wider block font-bold">STABILITAS EMOSI</span>
                   <span className="text-sm font-black tracking-tight">{breathingCycles} Kali Tarik Napas</span>
                 </div>
               </div>
 
               {/* Row 1: Visual Breathing and Ambient Sound side-by-side */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-left">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                 
                 {/* Visual Breathing Card */}
-                <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex flex-col justify-between items-center text-center space-y-4">
+                <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col justify-between items-center text-center space-y-4">
                   <div className="w-full text-left">
                     <h4 className="font-extrabold text-[#2e1065] text-xs uppercase tracking-wide flex items-center gap-1.5 font-display mb-1">
                       <Wind className="text-sky-500 animate-pulse" size={15} />
                       Atur Napas (Breathing Guide)
                     </h4>
-                    <p className="text-[10px] text-slate-450 font-bold leading-normal">
+                    <p className="text-xs text-slate-450 font-bold leading-normal">
                       Metode klinis penurun pemicu kecemasan dan stresor harian Anda.
                     </p>
                   </div>
@@ -492,7 +492,7 @@ export default function MentalHealthView({
                         height: `${breathingProgress}%` 
                       }}
                     >
-                      <span className="text-[9px] font-black uppercase tracking-wider block opacity-95">
+                      <span className="text-xs font-black uppercase tracking-wider block opacity-95">
                         {breathingPhase === "inhale" ? "Tarik Napas" : 
                          breathingPhase === "holdIn" ? "Tahan Napas" : 
                          breathingPhase === "exhale" ? "Hembuskan" : "Tahan"}
@@ -504,7 +504,7 @@ export default function MentalHealthView({
                   </div>
 
                   {/* Tech selection */}
-                  <div className="text-left py-1.5 px-3 bg-sky-50/50 rounded-xl border border-sky-100/60 w-full flex justify-between items-center text-[10.5px]">
+                  <div className="text-left py-1.5 px-3 bg-sky-50/50 rounded-xl border border-sky-100/60 w-full flex justify-between items-center text-xs">
                     <span className="font-bold text-slate-500">Pilihan Pola:</span>
                     <select
                       value={breathingTechnique}
@@ -545,13 +545,13 @@ export default function MentalHealthView({
                 </div>
 
                 {/* Ambient Sound Card */}
-                <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex flex-col justify-between text-left space-y-4">
+                <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col justify-between text-left space-y-4">
                   <div>
                     <h4 className="font-extrabold text-[#2e1065] text-xs uppercase tracking-wide flex items-center gap-1.5 font-display mb-1">
                       <Music className="text-pink-500" size={15} />
                       Generator Suara Alam Penenang
                     </h4>
-                    <p className="text-[10px] text-slate-450 font-bold leading-normal">
+                    <p className="text-xs text-slate-450 font-bold leading-normal">
                       Putar melodi ambient alami untuk pengantar tidur asrama or melatih fokus ujian.
                     </p>
                   </div>
@@ -578,8 +578,8 @@ export default function MentalHealthView({
                           }`}
                         >
                           <div>
-                            <p className={`font-black text-[10.5px] ${isSelected ? "text-pink-600" : "text-slate-700"}`}>{sound.label}</p>
-                            <p className="text-[9px] text-slate-400 font-medium">{sound.desc}</p>
+                            <p className={`font-black text-xs ${isSelected ? "text-pink-600" : "text-slate-700"}`}>{sound.label}</p>
+                            <p className="text-xs text-slate-600 font-medium">{sound.desc}</p>
                           </div>
                           {isSelected && <span className="w-1.5 h-1.5 bg-pink-500 rounded-full"></span>}
                         </div>
@@ -602,7 +602,7 @@ export default function MentalHealthView({
                       ))}
                     </div>
                   ) : (
-                    <div className="h-7 border border-dashed border-slate-200/85 rounded-xl flex items-center justify-center text-[10px] text-slate-400 font-bold">
+                    <div className="h-7 border border-dashed border-slate-200/85 rounded-xl flex items-center justify-center text-xs text-slate-500 font-bold">
                       🔇 Ambient Suara Berhenti Diputar
                     </div>
                   )}
@@ -633,14 +633,14 @@ export default function MentalHealthView({
               </div>
 
               {/* Stress Quiz assessment element */}
-              <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card text-left space-y-4">
+              <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card text-left space-y-4">
                 <div className="flex justify-between items-center flex-wrap gap-2 pb-2.5 border-b border-slate-100/50">
                   <div>
                     <h4 className="font-extrabold text-[#2e1065] text-xs uppercase tracking-wide flex items-center gap-1.5 font-display">
                       <Activity className="text-orange-500" size={15} />
                       Asesmen Pendeteksi Kepenatan Mental (Stress Test)
                     </h4>
-                    <p className="text-[10px] text-slate-450 font-bold mt-0.5 leading-normal">
+                    <p className="text-xs text-slate-450 font-bold mt-0.5 leading-normal">
                       Kalkulasi cepat potensi academic fatigue, kejenuhan skripsi, kecemasan sosial, or impostor syndrome.
                     </p>
                   </div>
@@ -652,7 +652,7 @@ export default function MentalHealthView({
                         setQuizSubmitted(false);
                         setQuizCurrentStep(0);
                       }}
-                      className="px-2.5 py-1 text-[9px] font-black bg-orange-100 text-orange-700 hover:bg-orange-150 border border-orange-200 rounded-lg cursor-pointer"
+                      className="px-2.5 py-1 text-xs font-black bg-orange-100 text-orange-700 hover:bg-orange-150 border border-orange-200 rounded-lg cursor-pointer"
                     >
                       Ulangi Tes
                     </button>
@@ -664,8 +664,8 @@ export default function MentalHealthView({
                   <div className="space-y-4 animate-fade-in text-xs font-bold text-[#2e1065]">
                     
                     {/* Question navigation tabs */}
-                    <div className="flex items-center justify-between text-slate-400">
-                      <span className="text-[9.5px] font-bold">PERNYATAAN {quizCurrentStep + 1} DARI 5</span>
+                    <div className="flex items-center justify-between text-slate-500">
+                      <span className="text-xs font-bold">PERNYATAAN {quizCurrentStep + 1} DARI 5</span>
                       {/* simple bar */}
                       <div className="w-1/2 bg-slate-100 rounded-full h-1.5 overflow-hidden">
                         <div 
@@ -681,8 +681,8 @@ export default function MentalHealthView({
                         {["📚", "🌙", "🔋", "👤", "🔮"][quizCurrentStep]}
                       </span>
                       <div className="space-y-1">
-                        <p className="font-mono text-[9px] tracking-wider text-orange-700 font-extrabold uppercase">ASPEK EVALUASI KE-{quizCurrentStep+1}</p>
-                        <p className="text-slate-800 leading-relaxed font-extrabold text-[11px]">
+                        <p className="font-mono text-xs tracking-wider text-orange-700 font-extrabold uppercase">ASPEK EVALUASI KE-{quizCurrentStep+1}</p>
+                        <p className="text-slate-800 leading-relaxed font-extrabold text-xs">
                           {[
                             "Seberapa sering kamu merasa terbebani, cemas, atau mengalami stresor berat akibat penatnya jadwal kuliah/skripsi belakangan ini?",
                             "Seberapa parah kecemasan harian Anda mencederai kualitas istirahat malam (sulit memejamkan mata or overthinking berkepanjangan)?",
@@ -711,7 +711,7 @@ export default function MentalHealthView({
                               newAns[quizCurrentStep] = opt.val;
                               setQuizAnswers(newAns);
                             }}
-                            className={`p-3 rounded-xl border transition-all cursor-pointer text-[10.5px] font-bold ${
+                            className={`p-3 rounded-xl border transition-all cursor-pointer text-xs font-bold ${
                               isChosen 
                                 ? "bg-slate-800 border-slate-900 text-white shadow-2xs" 
                                 : opt.color
@@ -729,7 +729,7 @@ export default function MentalHealthView({
                         type="button"
                         onClick={() => setQuizCurrentStep((s) => s - 1)}
                         disabled={quizCurrentStep === 0}
-                        className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 hover:text-slate-900 disabled:opacity-45 text-slate-500 font-bold rounded-xl text-[11px] cursor-pointer"
+                        className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 hover:text-slate-900 disabled:opacity-45 text-slate-500 font-bold rounded-xl text-xs cursor-pointer"
                       >
                         Sebelumnya
                       </button>
@@ -738,7 +738,7 @@ export default function MentalHealthView({
                         <button
                           type="button"
                           onClick={() => setQuizCurrentStep((s) => s + 1)}
-                          className="px-5 py-2 bg-slate-900 hover:bg-slate-950 text-white font-black rounded-xl text-[11px] cursor-pointer"
+                          className="px-5 py-2 bg-slate-900 hover:bg-slate-950 text-white font-black rounded-xl text-xs cursor-pointer"
                         >
                           Lanjutkan Pernyataan →
                         </button>
@@ -746,7 +746,7 @@ export default function MentalHealthView({
                         <button
                           type="button"
                           onClick={() => setQuizSubmitted(true)}
-                          className="px-6 py-2 bg-gradient-to-r from-orange-500 to-red-600 hover:brightness-105 text-white font-black rounded-xl text-[11px] shadow-sm cursor-pointer animate-pulse"
+                          className="px-6 py-2 bg-gradient-to-r from-orange-500 to-red-600 hover:brightness-105 text-white font-black rounded-xl text-xs shadow-sm cursor-pointer animate-pulse"
                         >
                           Kalkulasi Hasil Tes Stres
                         </button>
@@ -774,16 +774,16 @@ export default function MentalHealthView({
                       }
 
                       return (
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-center">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                           {/* Score indicator panel */}
                           <div className={`p-5 border rounded-3xl text-center flex flex-col justify-center items-center h-full gap-2 ${levelCol}`}>
-                            <span className="text-[9px] font-black tracking-wider block uppercase">Skor Kepenatan Mental</span>
+                            <span className="text-xs font-black tracking-wider block uppercase">Skor Kepenatan Mental</span>
                             <div className="w-18 h-18 rounded-full border-4 border-current flex items-center justify-center font-display font-black text-2xl">
                               {totalScore}
-                              <span className="text-[10px] font-normal text-slate-450 block absolute mt-11">/ 15 Poin</span>
+                              <span className="text-xs font-normal text-slate-450 block absolute mt-11">/ 15 Poin</span>
                             </div>
                             <div>
-                              <span className="text-[10px] font-black tracking-tight block uppercase">{level}</span>
+                              <span className="text-xs font-black tracking-tight block uppercase">{level}</span>
                             </div>
                           </div>
 
@@ -791,12 +791,12 @@ export default function MentalHealthView({
                           <div className="md:col-span-2 space-y-4 text-xs font-bold text-slate-700 text-left">
                             <div className="space-y-1">
                               <h5 className="font-extrabold text-[#2e1065] text-xs">Penjelasan Klinis Asesmen Anda:</h5>
-                              <p className="leading-relaxed text-slate-500 text-[11px] font-semibold">{desc}</p>
+                              <p className="leading-relaxed text-slate-600 text-xs font-semibold">{desc}</p>
                             </div>
 
                             {/* Recommendations chips */}
                             <div className="space-y-2">
-                              <p className="font-mono text-[9px] text-[#2e1065] tracking-widest uppercase mb-1">Anjuran Tindakan Cepat:</p>
+                              <p className="font-mono text-xs text-[#2e1065] tracking-widest uppercase mb-1">Anjuran Tindakan Cepat:</p>
                               <div className="flex flex-wrap gap-2">
                                 <button
                                   type="button"
@@ -854,21 +854,21 @@ export default function MentalHealthView({
                 <CheckCircle size={14} className="text-emerald-600" /> Sesi Terdekat Terjadwal
               </h4>
               {sessions.map((sess) => (
-                <div key={sess.id} className="text-[11px] font-bold space-y-0.5 border-l-2 border-emerald-500 pl-3 py-0.5">
+                <div key={sess.id} className="text-xs font-bold space-y-0.5 border-l-2 border-emerald-500 pl-3 py-0.5">
                   <p className="font-black text-slate-800">{sess.counselorName}</p>
-                  <p className="text-[10px] text-slate-500">{sess.date} — {sess.time}</p>
-                  <p className="text-[10px] italic text-slate-500 font-semibold">Topik: "{sess.topic}"</p>
+                  <p className="text-xs text-slate-600">{sess.date} — {sess.time}</p>
+                  <p className="text-xs italic text-slate-600 font-semibold">Topik: "{sess.topic}"</p>
                 </div>
               ))}
             </div>
           )}
 
           {/* New Self-Care Tip Card */}
-          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card space-y-3.5">
+          <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card space-y-3.5">
             <h4 className="font-extrabold text-[#2e1065] text-xs uppercase tracking-wider font-display flex items-center gap-1.5">
               Tips Relaksasi Hari Ini
             </h4>
-            <p className="text-xs text-slate-600 leading-relaxed font-semibold">
+            <p className="text-sm text-slate-600 leading-relaxed font-semibold">
               Kelelahan belajar seringkali datang akibat durasi duduk yang terlalu lama. Cobalah aturan <b>20-20-20</b>: Setiap 20 menit menatap layar komputer, lihatlah objek sejauh 20 kaki (6 meter) selama 20 detik untuk mengistirahatkan saraf mata dan otakmu.
             </p>
           </div>
@@ -879,10 +879,10 @@ export default function MentalHealthView({
               <Wind size={14} className="text-indigo-600 animate-pulse" />
               Metode Redakan Panik (5-4-3-2-1)
             </h4>
-            <p className="text-[11px] text-slate-500 font-semibold">
+            <p className="text-xs text-slate-600 font-semibold">
               Jika kamu merasa tiba-tiba sangat cemas atau panik karena tekanan tugas kuliah, diamlah sejenak dan sebutkan di dalam hati:
             </p>
-            <div className="space-y-2.5 text-[11px] font-bold text-slate-700">
+            <div className="space-y-2.5 text-xs font-bold text-slate-700">
               <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100">
                 <span className="text-xs shrink-0 font-extrabold text-indigo-600 bg-indigo-50 w-5 h-5 rounded-full flex items-center justify-center">5</span>
                 <span>Hal yang bisa kamu <b>lihat</b> di sekitarmu</span>
@@ -907,10 +907,10 @@ export default function MentalHealthView({
           </div>
 
           {/* Positive Affirmation Card */}
-          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card space-y-2 text-center">
+          <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card space-y-2 text-center">
             <span className="text-2xl block animate-bounce">💬</span>
-            <p className="text-[11px] text-slate-450 font-black uppercase tracking-widest text-[#FF2D75]">Afirmasi Diri</p>
-            <p className="text-xs text-slate-700 italic font-extrabold leading-relaxed">
+            <p className="text-xs text-slate-450 font-black uppercase tracking-widest text-[#FF2D75]">Afirmasi Diri</p>
+            <p className="text-sm text-slate-700 italic font-extrabold leading-relaxed">
               "Nilai indeks prestasi penting, namun kedamaian jiwamu jauh lebih berharga. Kamu telah berusaha luar biasa hari ini, berterimakasihlah pada dirimu sendiri."
             </p>
           </div>
