@@ -143,7 +143,7 @@ export default function ZonamuView({
   const currentDataKey = chartMetric === "tasks" ? "Tugas Selesai" : "Peningkatan Belajar";
 
   return (
-    <div className="space-y-6 text-left relative z-10">
+    <div className="space-y-4 text-left relative z-10">
       
       {/* Title */}
       <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -158,7 +158,7 @@ export default function ZonamuView({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-start">
         
         {/* Left Column: Personal info summary */}
         <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card space-y-5">
@@ -317,7 +317,7 @@ export default function ZonamuView({
         </div>
 
         {/* Right Columns: Dynamic statistics resume */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-4">
           <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card">
             <h3 className="font-extrabold font-display text-slate-800 text-sm mb-4">Ringkasan Riwayat Portofolio</h3>
             
