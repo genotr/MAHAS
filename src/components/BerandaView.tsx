@@ -429,7 +429,7 @@ export default function BerandaView({
             <div 
               id="gpa-pill-dropdown-trigger"
               onClick={() => setShowGpaProjection(!showGpaProjection)}
-              className="group flex items-center gap-2.5 bg-[#fdfdfe] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] px-3.5 py-2 rounded-2xl transition-all duration-300 cursor-pointer hover:border-blue-400 select-none relative"
+              className="group flex items-center gap-2.5 bg-[#fdfdfe] border border-white shadow-card px-3.5 py-2 rounded-2xl transition-all duration-300 cursor-pointer hover:border-blue-400 select-none relative"
             >
               <div className="bg-blue-50 p-2 rounded-full text-blue-600 group-hover:bg-blue-500/20 transition-all">
                 <GraduationCap size={15} />
@@ -574,7 +574,7 @@ export default function BerandaView({
             </div>
 
             {/* Level Kamu Pill */}
-            <div className="flex items-center gap-2.5 bg-[#fdfdfe] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] px-3.5 py-2 rounded-2xl">
+            <div className="flex items-center gap-2.5 bg-[#fdfdfe] border border-white shadow-card px-3.5 py-2 rounded-2xl">
               <div className="bg-purple-50 p-2 rounded-full text-purple-600">
                 <TrendingUp size={15} />
               </div>
@@ -592,7 +592,7 @@ export default function BerandaView({
         </div>
 
         {/* Dynamic Interactive Banner - Pastel green gradient without decorative circles */}
-        <div className="relative bg-[#fdfdfe] border border-white rounded-[32px] p-6 md:p-10 text-slate-900 overflow-hidden shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+        <div className="relative bg-[#fdfdfe] border border-white rounded-panel p-6 md:p-10 text-slate-900 overflow-hidden shadow-card">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
             <div className="max-w-sm text-left relative min-h-[190px] md:min-h-[220px] flex flex-col justify-between">
               <div className="flex-1">
@@ -709,7 +709,7 @@ export default function BerandaView({
                     initial={{ opacity: 0, scale: 0.8, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     key={uncompletedTasksCount + (octopusQuote ? 100 : 0)}
-                    className="absolute top-1 left-1/2 transform -translate-x-1/2 z-30 bg-white border-2 border-pink-200 rounded-[18px] px-3.5 py-2 w-max max-w-[240px] text-center select-none"
+                    className="absolute top-1 left-1/2 transform -translate-x-1/2 z-30 bg-white border-2 border-pink-200 rounded-inner px-3.5 py-2 w-max max-w-[240px] text-center select-none"
                   >
                     <p className="text-[10px] font-black leading-tight text-slate-800">
                       {activeQuote}
@@ -935,7 +935,7 @@ export default function BerandaView({
                 <button
                   key={idx}
                   onClick={() => setTab(item.tab)}
-                  className="bg-[#fdfdfe] p-4 rounded-3xl border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] transition-shadow duration-300 text-center flex flex-col items-center justify-center gap-2.5 cursor-pointer group hover:shadow-[0_12px_28px_rgba(70,140,190,0.22)]"
+                  className="bg-[#fdfdfe] p-4 rounded-3xl border border-white shadow-card transition-shadow duration-300 text-center flex flex-col items-center justify-center gap-2.5 cursor-pointer group hover:shadow-[0_12px_28px_rgba(70,140,190,0.22)]"
                 >
                   <div className={`p-3 rounded-full ${item.color} border border-white shadow-xs`}>
                     <Icon size={18} />
@@ -953,7 +953,7 @@ export default function BerandaView({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Deadline Terdekat Component */}
-          <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col">
+          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-extrabold font-display text-slate-800 text-sm flex items-center gap-2">
                 <Clock size={16} className="text-blue-500" />
@@ -1018,7 +1018,7 @@ export default function BerandaView({
           </div>
 
           {/* Progres Mingguan saya */}
-          <div className="bg-[#fdfdfe] p-5.5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col justify-between">
+          <div className="bg-[#fdfdfe] p-5.5 rounded-card border border-white shadow-card flex flex-col justify-between">
             <div className="flex justify-between items-center mb-3">
               <h3 className="font-extrabold font-display text-slate-800 text-sm flex items-center gap-2">
                 <Smile size={16} className="text-pink-500" />
@@ -1286,7 +1286,7 @@ export default function BerandaView({
 
         {/* Tip Belajar Sukses Section (Replacer for event slot to keep visual balance block) */}
         <section className="space-y-4">
-          <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] text-left">
+          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card text-left">
             <h3 className="font-extrabold font-display text-slate-800 text-sm flex items-center gap-2 mb-2">
               Tips Belajar Pintar Hari Ini
             </h3>
@@ -1302,7 +1302,7 @@ export default function BerandaView({
       <div className="space-y-8">
         
         {/* Kalender Card Container */}
-        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-extrabold font-display text-slate-800 text-sm flex items-center gap-1.5">
               <Calendar size={16} className="text-[#FF2D75]" />
@@ -1425,7 +1425,7 @@ export default function BerandaView({
         </div>
 
         {/* Agenda Hari Ini Component */}
-        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-extrabold font-display text-slate-800 text-sm flex items-center gap-1.5">
               <Clock size={16} className="text-[#FF2D75]" />
@@ -1592,7 +1592,7 @@ export default function BerandaView({
 
 
         {/* Catatan Akademik Ringkas Sidebar Group (Replacer block to keep visual density) */}
-        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] text-left">
+        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card text-left">
           <h3 className="font-extrabold font-display text-slate-800 text-sm mb-2 flex items-center gap-1.5">
             <BookOpen size={16} className="text-[#FF2D75]" />
             Catatan Belajar Mandiri
