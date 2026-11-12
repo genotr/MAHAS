@@ -539,7 +539,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       )}
       
       {/* Title & Credit System Selector */}
-      <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col lg:flex-row justify-between lg:items-center gap-5">
+      <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex flex-col lg:flex-row justify-between lg:items-center gap-5">
         <div className="space-y-1.5 flex-1">
           <h2 className="text-2xl font-black font-display text-slate-800 leading-tight">
             Detail Akademik & Kartu Hasil Studi (KHS){" "}
@@ -577,7 +577,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       </div>
 
       {/* Selected Credit System Info Banner */}
-      <div className="bg-[#fdfdfe] p-4.5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col sm:flex-row items-start sm:items-center gap-3.5 animate-in fade-in duration-200">
+      <div className="bg-[#fdfdfe] p-4.5 rounded-card border border-white shadow-card flex flex-col sm:flex-row items-start sm:items-center gap-3.5 animate-in fade-in duration-200">
         <div className="w-10 h-10 bg-white rounded-xl shadow-2xs flex items-center justify-center text-xl shrink-0">
           <span>{activeSystem.flag}</span>
         </div>
@@ -601,7 +601,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       {/* Stats Cards Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex items-center gap-4 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-[#FF2D75] rounded-2xl shadow-xs">
             <GraduationCap size={22} />
           </div>
@@ -612,7 +612,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
           </div>
         </div>
 
-        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex items-center gap-4 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-[#FF2D75] rounded-2xl shadow-xs">
             <BookOpen size={22} />
           </div>
@@ -623,7 +623,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
           </div>
         </div>
 
-        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex items-center gap-4 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-sky-600 rounded-2xl shadow-xs">
             <Clock size={22} />
           </div>
@@ -636,7 +636,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
           </div>
         </div>
 
-        <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex items-center gap-4 hover:shadow-md transition-all">
+        <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card flex items-center gap-4 hover:shadow-md transition-all">
           <div className="p-3.5 bg-white text-emerald-600 rounded-2xl shadow-xs">
             <PartyPopper size={22} className="text-emerald-600 animate-pulse" />
           </div>
@@ -830,7 +830,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       </div>
 
       {/* Filter and Search Section */}
-      <div className="bg-[#fdfdfe] p-4 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col md:flex-row justify-between gap-4">
+      <div className="bg-[#fdfdfe] p-4 rounded-card border border-white shadow-card flex flex-col md:flex-row justify-between gap-4">
         <div className="flex gap-1.5 shrink-0 max-w-full overflow-x-auto pb-1.5 md:pb-0 items-center">
           <button
             onClick={() => setSemesterFilter(0)}
@@ -883,7 +883,7 @@ export default function AkademikView({ courses, setCourses, profile }: AkademikV
       </div>
 
       {/* Academic course Table/Cards */}
-      <div className="bg-[#fdfdfe] border border-white rounded-[28px] overflow-hidden shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+      <div className="bg-[#fdfdfe] border border-white rounded-card overflow-hidden shadow-card">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs text-slate-650 border-collapse">
             <thead>
