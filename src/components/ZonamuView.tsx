@@ -146,7 +146,7 @@ export default function ZonamuView({
     <div className="space-y-6 text-left relative z-10">
       
       {/* Title */}
-      <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="space-y-1">
           <h2 className="text-xl md:text-2xl font-black font-display text-slate-900 leading-tight">
             Profile (Laporan Aktivitas Mahasiswa){" "}
@@ -161,7 +161,7 @@ export default function ZonamuView({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         
         {/* Left Column: Personal info summary */}
-        <div className="bg-[#fdfdfe] p-6 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-5">
+        <div className="bg-[#fdfdfe] p-6 rounded-card border border-white shadow-card space-y-5">
           <div className="text-center space-y-4">
             <div className="relative mx-auto w-24 h-24">
               <img 
@@ -318,7 +318,7 @@ export default function ZonamuView({
 
         {/* Right Columns: Dynamic statistics resume */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)]">
+          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card">
             <h3 className="font-extrabold font-display text-slate-800 text-sm mb-4">Ringkasan Riwayat Portofolio</h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -343,7 +343,7 @@ export default function ZonamuView({
           </div>
 
           {/* Grafik Perkembangan & Peningkatan Belajar */}
-          <div className="bg-[#fdfdfe] p-5 rounded-[28px] border border-white shadow-[0_8px_24px_rgba(70,140,190,0.12)] space-y-5">
+          <div className="bg-[#fdfdfe] p-5 rounded-card border border-white shadow-card space-y-5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-slate-100">
               <div className="flex items-center gap-2 text-left">
                 <div className="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center shrink-0">
