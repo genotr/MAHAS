@@ -951,9 +951,9 @@ export function AppDashboard() {
         className={`${isExpanded ? "w-[264px] p-4" : "w-[66px] p-2 overflow-x-hidden"} bg-[#fdfdfe] border border-white rounded-panel shadow-[0_10px_30px_rgba(70,140,190,0.14)] flex flex-col justify-between shrink-0 transition-none h-full
           ${sidebarOpen ? "fixed inset-y-2 left-2 z-40 flex" : "hidden md:flex md:relative z-20"}`}
       >
-        <div className="space-y-6 flex flex-col h-full justify-between pb-4 overflow-y-auto custom-scroll relative z-10">
+        <div className="space-y-4 flex flex-col h-full justify-between pb-4 overflow-y-auto custom-scroll relative z-10">
           
-          <div className="space-y-6">
+          <div className="space-y-4">
             {/* MahasSpace Logo vs Hamburger button */}
             <div className="flex items-center justify-between px-1">
               <div 
@@ -1018,7 +1018,7 @@ export function AppDashboard() {
             </div>
  
             {/* Sidebar nav items checklist */}
-            <nav className={`space-y-1.5 ${isIconOnly ? "" : "pr-0.5"}`}>
+            <nav className={`space-y-2 ${isIconOnly ? "" : "pr-0.5"}`}>
               {sidebarItems.map((item, index) => {
                 const Icon = item.icon;
                 const isActive = activeTab === item.label;
@@ -1028,11 +1028,11 @@ export function AppDashboard() {
                 let buttonBgStyle = "";
                 if (isActive) {
                   if (isProfile) {
-                    buttonBgStyle = "bg-[#FF2D75] text-white border-[#FF2D75]/20 shadow-none scale-102 hover-wiggle";
+                    buttonBgStyle = "bg-[#FF2D75] text-white border-[#FF2D75]/20 shadow-none";
                   } else if (isSuaraTeks) {
-                    buttonBgStyle = "bg-gradient-to-r from-pink-500 via-[#FF2D75] to-rose-600 text-white border-white/30 shadow-none scale-102 hover-wiggle transition-all duration-300";
+                    buttonBgStyle = "bg-gradient-to-r from-pink-500 via-[#FF2D75] to-rose-600 text-white border-white/30 shadow-none transition-all duration-300";
                   } else {
-                    buttonBgStyle = "bg-gradient-to-r from-pink-400 via-[#FF2D75] to-[#db2777] text-white border-white/20 shadow-none scale-102 hover-wiggle";
+                    buttonBgStyle = "bg-gradient-to-r from-pink-400 via-[#FF2D75] to-[#db2777] text-white border-white/20 shadow-none";
                   }
                 } else {
                   if (isProfile) {
@@ -1056,7 +1056,7 @@ export function AppDashboard() {
                       borderRadius: "var(--radius-inner)",
                       ...(index === 0 ? { borderWidth: "1.666667px" } : {})
                     }}
-                    className={`w-full flex items-center ${isIconOnly ? "justify-center px-2 gap-0" : "gap-3 px-3.5"} py-3 text-[13px] font-black rounded-2xl text-left transition-none cursor-pointer border ${buttonBgStyle} relative overflow-visible`}
+                    className={`w-full flex items-center ${isIconOnly ? "justify-center px-2 gap-0" : "gap-3 px-3.5"} py-2.5 min-h-11 text-[13px] font-black rounded-inner text-left transition-none cursor-pointer border ${buttonBgStyle} relative overflow-visible`}
                   >
                     <div className="relative flex items-center justify-center shrink-0">
                       <Icon size={isIconOnly ? 18 : 15} className={isActive ? "text-white" : (isProfile ? "text-[#0284c7]" : (isSuaraTeks ? "text-pink-600" : "text-slate-500"))} />
@@ -1079,7 +1079,7 @@ export function AppDashboard() {
                       {item.label}
                     </span>
                     {isSuaraTeks && (
-                      <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+                      <div className="absolute inset-0 rounded-inner overflow-hidden pointer-events-none">
                         {/* Shimmer light effect running across */}
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full animate-shimmer-sweep" />
                         
