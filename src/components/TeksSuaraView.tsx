@@ -1450,7 +1450,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                               }
                             }
                           }}
-                          className="w-full h-10 px-3 text-ellipsis border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/20 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs"
+                          className="w-full h-10 px-3 text-ellipsis border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs"
                         >
                           {courses && courses.length > 0 ? (
                             courses.map((c) => (
@@ -1482,7 +1482,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={customCourseTitle}
                             onChange={(e) => setCustomCourseTitle(e.target.value)}
                             placeholder="Contoh: Rekayasa Perangkat Lunak"
-                            className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/20 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                            className="w-full h-10 px-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
                         </div>
                       )}
@@ -1502,7 +1502,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                                 e.preventDefault();
                                 openDatePicker();
                               }}
-                              className="w-full h-10 pl-3 pr-14 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/20 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs select-none hide-native-picker-icon"
+                              className="w-full h-10 pl-3 pr-14 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs select-none hide-native-picker-icon"
                             />
                             <button
                               type="button"
@@ -1527,7 +1527,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteTopic}
                             onChange={(e) => setNoteTopic(e.target.value)}
                             placeholder="Contoh: Hipotesis Testing & P-Value"
-                            className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/20 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                            className="w-full h-10 px-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
                         </div>
                       </div>
@@ -1542,7 +1542,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           value={noteLecturer}
                           onChange={(e) => setNoteLecturer(e.target.value)}
                           placeholder="Nama Dosen..."
-                          className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/20 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                          className="w-full h-10 px-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                         />
                       </div>
 
@@ -1552,7 +1552,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           Isi Catatan Materi <span className="text-[#FF2D75]">*</span>
                         </label>
 
-                        <div className="border border-slate-200 rounded-inner overflow-hidden focus-within:border-sky-400 focus-within:ring-3 focus-within:ring-sky-400/20 bg-white transition-all shadow-3xs">
+                        <div className="border border-slate-200 rounded-inner overflow-hidden focus-within:border-[#FF2D75] focus-within:ring-3 focus-within:ring-pink-500/10 bg-white transition-all shadow-3xs">
                           <div className="flex flex-wrap items-center justify-between gap-1 p-2 bg-slate-50 border-b border-slate-100 text-slate-700">
                             <div className="flex items-center gap-2">
                               <button
@@ -1632,7 +1632,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteTagsRaw}
                             onChange={(e) => setNoteTagsRaw(e.target.value)}
                             placeholder="Contoh: Teori, Ujian, Rumus, Praktikum"
-                            className="w-full h-10 pl-9 pr-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/20 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                            className="w-full h-10 pl-9 pr-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
                         </div>
                       </div>
@@ -1809,7 +1809,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           readOnly
                           value={transcription}
                           placeholder="Hasil transkripsi akan muncul di sini setelah proses rekaman atau unggah audio selesai."
-                          className="block mb-5 w-full border border-slate-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 p-3 rounded-inner font-mono text-xs leading-relaxed bg-slate-50 text-slate-800 min-h-[96px] focus:outline-hidden transition-all"
+                          className="block mb-5 w-full border border-slate-200 focus:border-[#FF2D75] focus:ring-2 focus:ring-pink-500/15 p-3 rounded-inner font-mono text-xs leading-relaxed bg-slate-50 text-slate-800 min-h-[96px] focus:outline-hidden transition-all"
                         />
 
                         <button
@@ -1927,68 +1927,98 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.98, opacity: 0 }}
               transition={{ duration: 0.12, ease: "easeOut" }}
-              className="bg-white border border-slate-200 shadow-2xl rounded-3xl max-w-xl w-full p-5 sm:p-6 text-left space-y-4 relative overflow-hidden my-auto max-h-[90vh] flex flex-col z-[100000] will-change-transform"
+              className="bg-white border border-slate-200 shadow-2xl rounded-panel max-w-2xl w-full text-left relative overflow-hidden my-auto max-h-[90vh] flex flex-col z-[100000] will-change-transform"
             >
-              {/* Header card info */}
-              <div className="flex justify-between items-start pt-1 border-b border-slate-100 pb-3.5">
-                <div className="space-y-1.5">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-xs font-black bg-pink-50 text-[#FF2D75] px-2.5 py-0.5 rounded-full border border-pink-200 uppercase tracking-wider">
-                      {selectedNote.courseTitle}
-                    </span>
-                    <span className="text-xs font-bold bg-sky-50 text-sky-700 px-2.5 py-0.5 rounded-full border border-sky-200">
-                      {selectedNote.date}
-                    </span>
+              {/* Header */}
+              <div className="px-6 pt-6 shrink-0">
+                <div className="flex items-center justify-between gap-4 pb-5 border-b border-slate-100">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className="w-14 h-14 rounded-inner bg-pink-100/80 text-[#FF2D75] flex items-center justify-center shrink-0">
+                      <FileText size={26} className="stroke-[2]" />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-extrabold font-display text-slate-900 text-xl sm:text-2xl tracking-tight leading-tight">
+                        Detail Catatan Kuliah
+                      </h3>
+                      <p className="text-sm text-slate-600 font-medium mt-2 leading-normal">
+                        Informasi dan isi catatan dari pertemuan ini.
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-sm text-slate-600 font-semibold leading-normal">
-                    Dosen Pengampu: <strong className="text-slate-800">{selectedNote.lecturerName || "-"}</strong>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedNote(null)}
+                    className="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all cursor-pointer shrink-0 self-start"
+                    title="Tutup Modal"
+                    aria-label="Tutup"
+                  >
+                    <X size={18} className="stroke-[2.5]" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Isi detail (bisa digulir) */}
+              <div className="flex-1 overflow-y-auto custom-scroll px-6 py-5 space-y-4">
+                {/* Mata kuliah | Tanggal */}
+                <div className="flex flex-col sm:flex-row sm:items-stretch gap-4">
+                  <div className="min-w-0 flex-1 space-y-1">
+                    <p className="text-xs font-medium text-slate-500">Mata Kuliah</p>
+                    <p className="text-sm font-semibold text-slate-900 leading-snug">
+                      {selectedNote.courseTitle}
+                    </p>
+                  </div>
+                  <div className="shrink-0 space-y-1 sm:border-l sm:border-slate-200 sm:pl-5">
+                    <p className="text-xs font-medium text-slate-500">Tanggal</p>
+                    <p className="text-sm font-semibold text-slate-900 leading-snug">
+                      {selectedNote.date}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Dosen */}
+                <div className="space-y-1">
+                  <p className="text-xs font-medium text-slate-500">Dosen Pengampu</p>
+                  <p className="text-sm font-semibold text-slate-900 leading-snug">
+                    {selectedNote.lecturerName || "-"}
                   </p>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => setSelectedNote(null)}
-                  className="w-8 h-8 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 hover:text-rose-700 border border-rose-200/80 hover:border-rose-300 flex items-center justify-center transition-all cursor-pointer shadow-2xs hover:scale-105"
-                  title="Tutup Modal"
-                  aria-label="Tutup"
-                >
-                  <X size={16} className="stroke-[2.5]" />
-                </button>
-              </div>
-
-              <div className="space-y-1">
-                <span className="text-xs font-black text-[#FF2D75] uppercase tracking-wider">
-                  Topik Pembahasan
-                </span>
-                <h3 className="text-base font-extrabold font-display text-slate-800 leading-snug">
-                  {selectedNote.topic}
-                </h3>
-              </div>
-
-              {/* Rich contents */}
-              <div className="leading-relaxed whitespace-pre-wrap font-normal text-slate-800 bg-white p-4.5 rounded-2xl border border-slate-200 text-sm max-h-80 overflow-y-auto custom-scroll shadow-3xs">
-                {renderFormattedText(selectedNote.content)}
-              </div>
-
-              {/* tags display */}
-              {selectedNote.tags && selectedNote.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 items-center">
-                  <span className="text-xs font-bold text-slate-500">
-                    Label:
-                  </span>
-                  {selectedNote.tags.map((tg) => (
-                    <span
-                      key={tg}
-                      className="text-xs font-bold text-[#FF2D75] bg-pink-50/60 px-2.5 py-0.5 rounded-lg border border-pink-100"
-                    >
-                      #{tg}
-                    </span>
-                  ))}
+                {/* Topik */}
+                <div className="space-y-2">
+                  <p className="text-xs font-medium text-slate-500">Topik Pembahasan</p>
+                  <p className="bg-slate-100 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-900 leading-snug">
+                    {selectedNote.topic}
+                  </p>
                 </div>
-              )}
 
-              {/* Action buttons inside note modal */}
-              <div className="flex flex-col sm:flex-row justify-between items-center gap-3 pt-3 border-t border-slate-100">
+                {/* Isi catatan */}
+                <div className="space-y-2">
+                  <p className="text-xs font-medium text-slate-500">Isi Catatan</p>
+                  <div className="leading-relaxed whitespace-pre-wrap font-normal text-slate-800 bg-white p-4 rounded-inner border border-slate-200 text-sm max-h-64 overflow-y-auto custom-scroll shadow-3xs">
+                    {renderFormattedText(selectedNote.content)}
+                  </div>
+                </div>
+
+                {/* Label */}
+                {selectedNote.tags && selectedNote.tags.length > 0 && (
+                  <div className="space-y-2">
+                    <p className="text-xs font-medium text-slate-500">Label / Tag</p>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedNote.tags.map((tg) => (
+                        <span
+                          key={tg}
+                          className="text-xs font-bold text-[#FF2D75] bg-pink-100/80 px-3 py-1.5 rounded-full"
+                        >
+                          #{tg}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Tombol aksi */}
+              <div className="px-6 py-4 border-t border-slate-100 flex flex-wrap justify-end gap-2 shrink-0">
                 <button
                   type="button"
                   onClick={() => {
@@ -2004,30 +2034,27 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       "Sukses menyalin draf laporan materi perkuliahan ke papan klip!",
                     );
                   }}
-                  className="w-full sm:w-auto text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-slate-200 bg-white py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+                  className="h-10 px-5 text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-slate-200 bg-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <Copy size={13} className="text-sky-600" />
+                  <Copy size={13} className="text-slate-500" />
                   Salin Catatan
                 </button>
-
-                <div className="flex gap-2 w-full sm:w-auto">
-                  <button
-                    type="button"
-                    onClick={() => openEditNoteModal(selectedNote)}
-                    className="flex-1 sm:flex-none bg-sky-600 hover:bg-sky-700 px-4 py-2.5 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all shadow-xs"
-                  >
-                    <Edit size={13} />
-                    Edit
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setDeleteConfirm({ id: selectedNote.id })}
-                    className="flex-1 sm:flex-none bg-pink-50 hover:bg-pink-100 text-[#FF2D75] border border-pink-200 px-4 py-2.5 font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all"
-                  >
-                    <Trash2 size={13} />
-                    Hapus
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => openEditNoteModal(selectedNote)}
+                  className="h-10 px-5 text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-slate-200 bg-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <Edit size={13} className="text-slate-500" />
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setDeleteConfirm({ id: selectedNote.id })}
+                  className="h-10 px-5 bg-[#FF2D75] hover:bg-pink-600 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md shadow-pink-500/25"
+                >
+                  <Trash2 size={13} />
+                  Hapus
+                </button>
               </div>
             </motion.div>
           </div>
