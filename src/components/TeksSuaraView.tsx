@@ -6,7 +6,7 @@ import {
   FileText, Copy, Edit, Trash2, Bold, Italic, Underline, Strikethrough, 
   List, ListOrdered, Highlighter, Quote, Calendar, User, Save, X, BookOpen, Volume2, AudioLines,
   BarChart2, Clock, Award, Upload, AlertTriangle, ExternalLink, Pause, Play,
-  ChevronDown, ChevronLeft, ChevronRight
+  ChevronDown, ChevronLeft, ChevronRight, Tag
 } from "lucide-react";
 import { AgendaItem, CalendarNote, AcademicCourse } from "../types";
 
@@ -1318,24 +1318,21 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.98, opacity: 0 }}
               transition={{ duration: 0.12, ease: "easeOut" }}
-              className="bg-white rounded-3xl w-full max-w-5xl shadow-2xl border border-slate-200 overflow-hidden text-left max-h-[92vh] flex flex-col ring-1 ring-black/5 will-change-transform"
+              className="bg-white rounded-panel w-full max-w-5xl shadow-2xl border border-slate-200 overflow-hidden text-left max-h-[92vh] flex flex-col ring-1 ring-black/5 will-change-transform"
             >
-              {/* Clean White Header */}
-              <div className="bg-white px-6 sm:px-7 py-4.5 flex justify-between items-center shrink-0 border-b border-slate-100">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-pink-500 to-[#FF2D75] text-white flex items-center justify-center shrink-0 shadow-md shadow-pink-200">
-                    <Mic size={20} className="stroke-[2.5] text-white" />
+              {/* Header modal */}
+              <div className="bg-white px-6 pt-6 pb-5 flex justify-between items-start gap-4 shrink-0 border-b border-slate-100">
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF2D75] shrink-0" />
+                    <span className="text-xs font-bold text-slate-500">Academic Workspace</span>
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="font-extrabold font-display text-slate-900 text-base sm:text-lg tracking-tight">
-                        {editingNoteId ? "Edit Catatan Kuliah" : "Studio Rekam & Draf Kuliah"}
-                      </h3>
-                    </div>
-                    <p className="text-sm text-slate-600 font-medium mt-0.5 leading-normal">
-                      {editingNoteId ? "Perbarui rangkuman materi dan transkrip suara" : "Rekam penjelasan dosen secara verbatim atau tulis ringkasan perkuliahan"}
-                    </p>
-                  </div>
+                  <h3 className="font-extrabold font-display text-slate-900 text-xl sm:text-2xl tracking-tight leading-tight">
+                    {editingNoteId ? "Edit Catatan Kuliah" : "Studio Rekam & Draf Kuliah"}
+                  </h3>
+                  <p className="text-sm text-slate-600 font-medium mt-2 leading-normal">
+                    {editingNoteId ? "Perbarui rangkuman materi dan transkrip suara." : "Rekam penjelasan dosen atau tulis ringkasan perkuliahan."}
+                  </p>
                 </div>
                 <button
                   type="button"
@@ -1346,7 +1343,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       setShowAddNoteModal(false);
                     }
                   }}
-                  className="w-9 h-9 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 hover:text-rose-700 border border-rose-200/80 hover:border-rose-300 flex items-center justify-center transition-all cursor-pointer shadow-2xs hover:scale-105"
+                  className="w-10 h-10 rounded-xl bg-white hover:bg-slate-50 text-slate-500 hover:text-slate-800 border border-slate-200 flex items-center justify-center transition-all cursor-pointer shrink-0"
                   aria-label="Tutup Modal"
                   title="Tutup Modal"
                 >
@@ -1355,16 +1352,16 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               </div>
 
               <form onSubmit={handleSaveNote} className="flex-1 overflow-hidden flex flex-col">
-                <div className="flex-1 overflow-y-auto p-5 sm:p-6 text-xs custom-scroll space-y-5">
-                  
+                <div className="flex-1 overflow-y-auto text-xs custom-scroll">
+
                   {isRecording && (
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="bg-gradient-to-r from-rose-500 via-[#FF2D75] to-pink-500 text-white p-3.5 px-4.5 rounded-2xl flex items-center justify-between gap-3 shadow-lg shadow-pink-500/20"
+                      className="mx-6 mt-6 bg-gradient-to-r from-rose-500 via-[#FF2D75] to-pink-500 text-white p-4 rounded-inner flex items-center justify-between gap-3 shadow-lg shadow-pink-500/20"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="relative flex h-3 w-3">
+                        <span className="relative flex h-3 w-3 shrink-0">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
                         </span>
@@ -1380,62 +1377,83 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       <button
                         type="button"
                         onClick={handleStartRecording}
-                        className="px-3.5 py-1.5 bg-white text-[#FF2D75] hover:bg-pink-50 text-xs font-extrabold rounded-xl cursor-pointer transition-all shadow-sm"
+                        className="px-3.5 py-1.5 bg-white text-[#FF2D75] hover:bg-pink-50 text-xs font-extrabold rounded-xl cursor-pointer transition-all shadow-sm shrink-0"
                       >
                         Hentikan Rekam
                       </button>
                     </motion.div>
                   )}
 
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
-                    
-                    {/* Left Column: Form Fields and Main Editor */}
-                    <div className="lg:col-span-7 space-y-4">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                        {/* Course select or kustom */}
-                        <div className="space-y-1.5">
-                          <label className="block text-xs font-bold text-slate-700">
-                            Mata Kuliah <span className="text-[#FF2D75]">*</span>
-                          </label>
-                          <select
-                            value={isCustomCourse ? "Kustom" : noteCourse}
-                            onChange={(e) => {
-                              if (e.target.value === "Kustom") {
-                                setIsCustomCourse(true);
-                              } else {
-                                setIsCustomCourse(false);
-                                setNoteCourse(e.target.value);
-                                if (courses) {
-                                  const foundCourse = courses.find((c) => c.name === e.target.value);
-                                  if (foundCourse) {
-                                    setNoteLecturer(foundCourse.lecturer || "");
-                                  }
+                  <div className="grid grid-cols-1 lg:grid-cols-2">
+
+                    {/* Kolom kiri: 01 Informasi Perkuliahan */}
+                    <div className="p-6 space-y-4">
+                      <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
+                        <span className="text-base font-black text-[#FF2D75] tabular-nums">01</span>
+                        <h4 className="text-sm sm:text-base font-extrabold text-slate-900">Informasi Perkuliahan</h4>
+                      </div>
+
+                      {/* Mata kuliah (lebar penuh) */}
+                      <div className="space-y-2">
+                        <label className="block text-xs font-bold text-slate-700">
+                          Mata Kuliah <span className="text-[#FF2D75]">*</span>
+                        </label>
+                        <select
+                          value={isCustomCourse ? "Kustom" : noteCourse}
+                          onChange={(e) => {
+                            if (e.target.value === "Kustom") {
+                              setIsCustomCourse(true);
+                            } else {
+                              setIsCustomCourse(false);
+                              setNoteCourse(e.target.value);
+                              if (courses) {
+                                const foundCourse = courses.find((c) => c.name === e.target.value);
+                                if (foundCourse) {
+                                  setNoteLecturer(foundCourse.lecturer || "");
                                 }
                               }
-                            }}
-                            className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-xs transition-all shadow-3xs"
-                          >
-                            {courses && courses.length > 0 ? (
-                              courses.map((c) => (
-                                <option key={c.id} value={c.name}>
-                                  {c.name}
-                                </option>
-                              ))
-                            ) : agenda && agenda.length > 0 ? (
-                              agenda.map((a) => (
-                                <option key={a.id} value={a.title}>
-                                  {a.title}
-                                </option>
-                              ))
-                            ) : (
-                              <option value="">-- Pilih Mata Kuliah --</option>
-                            )}
-                            <option value="Kustom">+ Tambah Mata Kuliah Kustom...</option>
-                          </select>
-                        </div>
+                            }
+                          }}
+                          className="w-full h-10 px-3 text-ellipsis border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs"
+                        >
+                          {courses && courses.length > 0 ? (
+                            courses.map((c) => (
+                              <option key={c.id} value={c.name}>
+                                {c.name}
+                              </option>
+                            ))
+                          ) : agenda && agenda.length > 0 ? (
+                            agenda.map((a) => (
+                              <option key={a.id} value={a.title}>
+                                {a.title}
+                              </option>
+                            ))
+                          ) : (
+                            <option value="">-- Pilih Mata Kuliah --</option>
+                          )}
+                          <option value="Kustom">+ Tambah Mata Kuliah Kustom...</option>
+                        </select>
+                      </div>
 
-                        {/* Date */}
-                        <div className="space-y-1.5">
+                      {/* Nama mata kuliah kustom */}
+                      {isCustomCourse && (
+                        <div className="space-y-2">
+                          <label className="block text-xs font-bold text-slate-700">
+                            Nama Mata Kuliah Baru <span className="text-[#FF2D75]">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            value={customCourseTitle}
+                            onChange={(e) => setCustomCourseTitle(e.target.value)}
+                            placeholder="Contoh: Rekayasa Perangkat Lunak"
+                            className="w-full h-10 px-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                          />
+                        </div>
+                      )}
+
+                      {/* Tanggal & Topik */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-2">
                           <label className="block text-xs font-bold text-slate-700">
                             Tanggal Pertemuan <span className="text-[#FF2D75]">*</span>
                           </label>
@@ -1448,7 +1466,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                                 e.preventDefault();
                                 openDatePicker();
                               }}
-                              className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 pr-14 rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs select-none hide-native-picker-icon"
+                              className="w-full h-10 pl-3 pr-14 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs select-none hide-native-picker-icon"
                             />
                             <button
                               type="button"
@@ -1459,31 +1477,12 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                               title="Klik untuk memilih tanggal pertemuan"
                             >
                               <Calendar className="w-3.5 h-3.5 pointer-events-none" />
-                              <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-pink-600 pointer-events-none" />
+                              <ChevronDown className="w-3.5 h-3.5 text-slate-500 pointer-events-none" />
                             </button>
                           </div>
                         </div>
-                      </div>
 
-                      {/* custom course title */}
-                      {isCustomCourse && (
-                        <div className="space-y-1.5">
-                          <label className="block text-xs font-bold text-slate-700">
-                            Nama Mata Kuliah Baru <span className="text-[#FF2D75]">*</span>
-                          </label>
-                          <input
-                            type="text"
-                            value={customCourseTitle}
-                            onChange={(e) => setCustomCourseTitle(e.target.value)}
-                            placeholder="Contoh: Rekayasa Perangkat Lunak"
-                            className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs"
-                          />
-                        </div>
-                      )}
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                        {/* Topic bahasan */}
-                        <div className="space-y-1.5">
+                        <div className="space-y-2">
                           <label className="block text-xs font-bold text-slate-700">
                             Topik Pembahasan <span className="text-[#FF2D75]">*</span>
                           </label>
@@ -1492,121 +1491,71 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteTopic}
                             onChange={(e) => setNoteTopic(e.target.value)}
                             placeholder="Contoh: Hipotesis Testing & P-Value"
-                            className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs"
-                          />
-                        </div>
-
-                        {/* Lecturer name */}
-                        <div className="space-y-1.5">
-                          <label className="block text-xs font-bold text-slate-700">
-                            Dosen Pengampu / Pembicara
-                          </label>
-                          <input
-                            type="text"
-                            value={noteLecturer}
-                            onChange={(e) => setNoteLecturer(e.target.value)}
-                            placeholder="Nama Dosen..."
-                            className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs"
+                            className="w-full h-10 px-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
                         </div>
                       </div>
 
-                      {/* Editor rich input toolbar */}
+                      {/* Dosen (lebar penuh) */}
                       <div className="space-y-2">
-                        <div className="flex flex-wrap justify-between items-center gap-2 pt-1">
-                          <label className="block text-xs font-bold text-slate-700">
-                            Isi Catatan Materi <span className="text-[#FF2D75]">*</span>
-                          </label>
+                        <label className="block text-xs font-bold text-slate-700">
+                          Dosen Pengampu / Pembicara
+                        </label>
+                        <input
+                          type="text"
+                          value={noteLecturer}
+                          onChange={(e) => setNoteLecturer(e.target.value)}
+                          placeholder="Nama Dosen..."
+                          className="w-full h-10 px-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                        />
+                      </div>
 
-                          <div className="flex gap-1.5">
-                            <button
-                              type="button"
-                              onClick={() => applyTemplateStructure("general")}
-                              className="px-2.5 py-1 bg-sky-50/80 hover:bg-sky-100 text-sky-700 border border-sky-200/70 rounded-lg text-xs font-bold transition-all cursor-pointer shadow-2xs"
-                            >
-                              + Templat Rangkuman
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => applyTemplateStructure("points")}
-                              className="px-2.5 py-1 bg-pink-50/80 hover:bg-pink-100 text-[#FF2D75] border border-pink-200/70 rounded-lg text-xs font-bold transition-all cursor-pointer shadow-2xs"
-                            >
-                              + Poin Penting
-                            </button>
-                          </div>
-                        </div>
+                      {/* Editor catatan */}
+                      <div className="space-y-2">
+                        <label className="block text-xs font-bold text-slate-700">
+                          Isi Catatan Materi <span className="text-[#FF2D75]">*</span>
+                        </label>
 
-                        {/* Rich text container with design system elevation */}
-                        <div className="border border-slate-200/90 rounded-2xl overflow-hidden focus-within:border-[#FF2D75] focus-within:ring-3 focus-within:ring-pink-500/10 bg-white transition-all shadow-3xs">
-                          <div className="flex flex-wrap items-center justify-between gap-1 p-2 bg-white border-b border-slate-100 text-slate-700">
-                            <div className="flex items-center gap-1">
+                        <div className="border border-slate-200 rounded-inner overflow-hidden focus-within:border-[#FF2D75] focus-within:ring-3 focus-within:ring-pink-500/10 bg-white transition-all shadow-3xs">
+                          <div className="flex flex-wrap items-center justify-between gap-1 p-2 bg-slate-50 border-b border-slate-100 text-slate-700">
+                            <div className="flex items-center gap-2">
                               <button
                                 type="button"
-                                onClick={() =>
-                                  formatText(
-                                    setNoteContent,
-                                    noteContent,
-                                    "bold",
-                                    "teks-suara-textarea",
-                                  )
-                                }
-                                className="w-7 h-7 bg-white hover:bg-pink-50 border border-slate-200 hover:border-pink-200 text-slate-800 hover:text-[#FF2D75] rounded-lg flex items-center justify-center font-bold text-xs cursor-pointer transition-all shadow-2xs"
+                                onClick={() => formatText(setNoteContent, noteContent, "bold", "teks-suara-textarea")}
+                                className="w-8 h-8 bg-white hover:bg-pink-50 border border-slate-200 hover:border-pink-200 text-slate-800 hover:text-[#FF2D75] rounded-lg flex items-center justify-center font-bold text-xs cursor-pointer transition-all"
                                 title="Tebal (Bold)"
                               >
                                 B
                               </button>
-
                               <button
                                 type="button"
-                                onClick={() =>
-                                  formatText(
-                                    setNoteContent,
-                                    noteContent,
-                                    "italic",
-                                    "teks-suara-textarea",
-                                  )
-                                }
-                                className="w-7 h-7 bg-white hover:bg-pink-50 border border-slate-200 hover:border-pink-200 text-slate-800 hover:text-[#FF2D75] rounded-lg flex items-center justify-center italic font-serif text-xs cursor-pointer transition-all shadow-2xs"
+                                onClick={() => formatText(setNoteContent, noteContent, "italic", "teks-suara-textarea")}
+                                className="w-8 h-8 bg-white hover:bg-pink-50 border border-slate-200 hover:border-pink-200 text-slate-800 hover:text-[#FF2D75] rounded-lg flex items-center justify-center italic font-serif text-xs cursor-pointer transition-all"
                                 title="Miring (Italic)"
                               >
                                 I
                               </button>
-
                               <button
                                 type="button"
-                                onClick={() =>
-                                  formatText(
-                                    setNoteContent,
-                                    noteContent,
-                                    "underline",
-                                    "teks-suara-textarea",
-                                  )
-                                }
-                                className="w-7 h-7 bg-white hover:bg-pink-50 border border-slate-200 hover:border-pink-200 text-slate-800 hover:text-[#FF2D75] rounded-lg flex items-center justify-center underline text-xs cursor-pointer transition-all shadow-2xs"
+                                onClick={() => formatText(setNoteContent, noteContent, "underline", "teks-suara-textarea")}
+                                className="w-8 h-8 bg-white hover:bg-pink-50 border border-slate-200 hover:border-pink-200 text-slate-800 hover:text-[#FF2D75] rounded-lg flex items-center justify-center underline text-xs cursor-pointer transition-all"
                                 title="Garis Bawah (Underline)"
                               >
                                 U
                               </button>
-
                               <button
                                 type="button"
-                                onClick={() =>
-                                  formatText(
-                                    setNoteContent,
-                                    noteContent,
-                                    "bullet",
-                                    "teks-suara-textarea",
-                                  )
-                                }
-                                className="px-2.5 h-7 bg-white hover:bg-pink-50 border border-slate-200 hover:border-pink-200 text-slate-800 hover:text-[#FF2D75] rounded-lg flex items-center justify-center text-xs font-bold cursor-pointer transition-all shadow-2xs"
+                                onClick={() => formatText(setNoteContent, noteContent, "bullet", "teks-suara-textarea")}
+                                className="px-3 h-8 bg-white hover:bg-pink-50 border border-slate-200 hover:border-pink-200 text-slate-800 hover:text-[#FF2D75] rounded-lg flex items-center justify-center gap-1 text-xs font-bold cursor-pointer transition-all"
                                 title="Daftar Poin"
                               >
-                                • Daftar
+                                <List size={12} />
+                                Daftar
                               </button>
                             </div>
 
                             <span className="text-xs text-slate-500 font-semibold pr-1.5 hidden sm:inline">
-                              Format Markdown Aktif
+                              Markdown Aktif
                             </span>
                           </div>
 
@@ -1615,207 +1564,250 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteContent}
                             onChange={(e) => setNoteContent(e.target.value)}
                             placeholder="Tuliskan ringkasan materi perkuliahan, rumus, definisi konsep, atau kutipan dosen..."
-                            className="w-full p-4 focus:outline-hidden font-normal text-slate-800 leading-relaxed font-sans text-sm min-h-[210px] resize-y bg-transparent"
+                            className="w-full p-4 focus:outline-hidden font-normal text-slate-800 leading-relaxed font-sans text-sm min-h-[160px] resize-y bg-transparent"
                           />
+                        </div>
+
+                        <div className="flex flex-wrap gap-2 pt-1">
+                          <button
+                            type="button"
+                            onClick={() => applyTemplateStructure("general")}
+                            className="px-4 h-8 bg-white hover:bg-pink-50 text-[#FF2D75] border border-pink-200 rounded-full text-xs font-bold transition-all cursor-pointer"
+                          >
+                            + Templat Rangkuman
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => applyTemplateStructure("points")}
+                            className="px-4 h-8 bg-white hover:bg-pink-50 text-[#FF2D75] border border-pink-200 rounded-full text-xs font-bold transition-all cursor-pointer"
+                          >
+                            + Poin Penting
+                          </button>
                         </div>
                       </div>
 
-                      {/* Tags */}
-                      <div className="space-y-1.5">
+                      {/* Tag */}
+                      <div className="space-y-2">
                         <label className="block text-xs font-bold text-slate-700">
                           Label / Tag <span className="text-slate-500 font-medium">(opsional, pisahkan dengan koma)</span>
                         </label>
-                        <input
-                          type="text"
-                          value={noteTagsRaw}
-                          onChange={(e) => setNoteTagsRaw(e.target.value)}
-                          placeholder="Contoh: Teori, Ujian, Rumus, Praktikum"
-                          className="w-full border border-slate-200/90 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden p-2.5 rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs"
-                        />
+                        <div className="relative">
+                          <Tag size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                          <input
+                            type="text"
+                            value={noteTagsRaw}
+                            onChange={(e) => setNoteTagsRaw(e.target.value)}
+                            placeholder="Contoh: Teori, Ujian, Rumus, Praktikum"
+                            className="w-full h-10 pl-9 pr-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                          />
+                        </div>
                       </div>
                     </div>
 
-                    {/* Right Column: Audio Recording and Assistant Panel */}
-                    <div className="lg:col-span-5 space-y-4">
-                      <div className="bg-white border border-slate-200 p-5 rounded-3xl space-y-4 shadow-sm">
-                        <div className="flex items-center justify-between">
-                          <h4 className="font-extrabold text-xs text-slate-900 flex items-center gap-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-[#FF2D75] ring-4 ring-pink-100" />
-                            Perekam Suara & Transkrip
-                          </h4>
-                          {isRecording ? (
-                            <span className="text-xs text-white bg-[#FF2D75] px-2.5 py-0.5 rounded-full font-black animate-pulse shadow-xs">
-                              LIVE {formatRecordingTime(recordingSeconds)}
-                            </span>
-                          ) : (
-                            <span className="text-xs text-sky-700 bg-sky-50 border border-sky-200/80 px-2.5 py-0.5 rounded-full font-bold">
-                              AI Transkrip
-                            </span>
-                          )}
+                    {/* Kolom kanan: 02 Perekam Suara & Transkrip */}
+                    <div className="p-6 space-y-4 border-t border-slate-100 lg:border-t-0 lg:border-l">
+                      <div className="flex items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                        <div className="flex items-center gap-3 min-w-0">
+                          <span className="text-base font-black text-[#FF2D75] tabular-nums">02</span>
+                          <h4 className="text-sm sm:text-base font-extrabold text-slate-900 truncate">Perekam Suara & Transkrip</h4>
                         </div>
+                        {isRecording ? (
+                          <span className="text-xs text-white bg-[#FF2D75] px-3 py-1 rounded-full font-black animate-pulse shrink-0">
+                            LIVE {formatRecordingTime(recordingSeconds)}
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 text-[10px] text-[#FF2D75] bg-pink-50 px-3 py-1 rounded-full font-black tracking-wide shrink-0">
+                            <Sparkles size={11} />
+                            AI POWERED
+                          </span>
+                        )}
+                      </div>
 
+                      <div className="space-y-1">
+                        <h5 className="text-sm font-extrabold text-slate-900">AI Transkrip</h5>
                         <p className="text-xs text-slate-600 leading-relaxed font-medium">
                           Gunakan mikrofon saat perkuliahan berlangsung atau unggah berkas audio rekaman untuk transkripsi otomatis.
                         </p>
+                      </div>
 
-                        {/* Microphone permission instructions helper */}
-                        {micError && (
-                          <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-2xl text-xs text-amber-900 leading-relaxed space-y-2">
-                            <div className="flex items-center gap-1.5 font-bold">
-                              <AlertTriangle size={13} className="text-amber-700 shrink-0" />
-                              <span>Akses Mikrofon Dibatasi</span>
-                            </div>
-                            <p className="text-xs text-amber-800">
-                              Browser membatasi izin mikrofon pada tab tersemat. Buka aplikasi di jendela browser baru agar rekaman berjalan optimal.
-                            </p>
-                            <a
-                              href="/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-700 hover:bg-amber-800 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer"
-                            >
-                              <ExternalLink size={11} />
-                              Buka di Tab Baru
-                            </a>
+                      {/* Petunjuk izin mikrofon */}
+                      {micError && (
+                        <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-inner text-xs text-amber-900 leading-relaxed space-y-2">
+                          <div className="flex items-center gap-1.5 font-bold">
+                            <AlertTriangle size={13} className="text-amber-700 shrink-0" />
+                            <span>Akses Mikrofon Dibatasi</span>
                           </div>
-                        )}
+                          <p className="text-xs text-amber-800">
+                            Browser membatasi izin mikrofon pada tab tersemat. Buka aplikasi di jendela browser baru agar rekaman berjalan optimal.
+                          </p>
+                          <a
+                            href="/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-700 hover:bg-amber-800 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer"
+                          >
+                            <ExternalLink size={11} />
+                            Buka di Tab Baru
+                          </a>
+                        </div>
+                      )}
 
-                        {/* Audio Wave Visualizer */}
-                        <div className="bg-white p-1 rounded-2xl border border-pink-100/90 shadow-2xs">
+                      {/* Panel rekam */}
+                      <div className="bg-blue-50/70 border border-pink-100 rounded-inner p-4 space-y-4 text-center">
+                        <div className="flex justify-center">
+                          <span className="w-16 h-16 rounded-full bg-pink-100/80 flex items-center justify-center">
+                            <span className={`w-12 h-12 rounded-full bg-[#FF2D75] text-white flex items-center justify-center shadow-md shadow-pink-500/30 ${isRecording && !isPaused ? "animate-pulse" : ""}`}>
+                              <Mic size={20} className="stroke-[2.5]" />
+                            </span>
+                          </span>
+                        </div>
+
+                        {/* Status rekaman */}
+                        <div className="space-y-1">
+                          <p className={`text-sm font-extrabold leading-snug ${
+                            recordingStatus.includes("Transkrip Sukses") || recordingStatus.includes("Transkrip Berhasil")
+                              ? "text-emerald-700"
+                              : "text-slate-900"
+                          }`}>
+                            {recordingStatus}
+                          </p>
+                          {!isRecording && recordingStatus === "Siap merekam audio dosen di kelas." && (
+                            <p className="text-xs text-slate-600 font-medium">Pastikan mikrofon perangkat Anda aktif.</p>
+                          )}
+                        </div>
+
+                        {/* Visualizer gelombang suara */}
+                        <div className="bg-white p-1 rounded-xl border border-pink-100/90">
                           <AudioVisualizer stream={activeStream} isRecording={isRecording} isPaused={isPaused} />
                         </div>
 
-                        {/* Action buttons with cohesive visual tokens */}
-                        <div className="space-y-2">
-                          {isRecording ? (
-                            <div className="grid grid-cols-2 gap-2">
-                              <button
-                                type="button"
-                                onClick={handleTogglePause}
-                                className={`text-xs font-bold py-2.5 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
-                                  isPaused
-                                    ? "bg-sky-600 hover:bg-sky-700 text-white border-sky-600 shadow-xs"
-                                    : "bg-white hover:bg-slate-50 text-slate-700 border-slate-300 shadow-2xs"
-                                }`}
-                              >
-                                {isPaused ? <Play size={12} className="fill-white" /> : <Pause size={12} />}
-                                {isPaused ? "Lanjutkan" : "Jeda"}
-                              </button>
+                        {/* Tombol aksi rekam */}
+                        {isRecording ? (
+                          <div className="grid grid-cols-2 gap-2">
+                            <button
+                              type="button"
+                              onClick={handleTogglePause}
+                              className={`text-xs font-bold h-10 px-3 rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+                                isPaused
+                                  ? "bg-sky-600 hover:bg-sky-700 text-white border-sky-600 shadow-xs"
+                                  : "bg-white hover:bg-slate-50 text-slate-700 border-slate-300 shadow-2xs"
+                              }`}
+                            >
+                              {isPaused ? <Play size={12} className="fill-white" /> : <Pause size={12} />}
+                              {isPaused ? "Lanjutkan" : "Jeda"}
+                            </button>
 
-                              <button
-                                type="button"
-                                onClick={handleStartRecording}
-                                className="text-xs font-bold py-2.5 px-3 rounded-xl bg-[#FF2D75] hover:bg-pink-600 text-white flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-sm shadow-pink-500/20"
-                              >
-                                <MicOff size={12} />
-                                Hentikan Rekam
-                              </button>
-                            </div>
-                          ) : (
                             <button
                               type="button"
                               onClick={handleStartRecording}
-                              className="relative overflow-hidden w-full text-xs font-black py-3 px-4 rounded-xl bg-gradient-to-r from-[#FF2D75] via-pink-500 to-rose-500 hover:opacity-95 text-white flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md shadow-pink-500/25 active:scale-[0.98] border border-white/20"
+                              className="text-xs font-bold h-10 px-3 rounded-xl bg-[#FF2D75] hover:bg-pink-600 text-white flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-sm shadow-pink-500/20"
                             >
-                              {/* Shimmer sweep effect */}
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer-sweep pointer-events-none" />
-                              
-                              {/* Floating micro-stars */}
-                              <div className="absolute top-1 left-4 animate-float-sparkle-1 opacity-80 pointer-events-none">
-                                <Sparkle size={6} className="text-white fill-white" />
-                              </div>
-                              <div className="absolute bottom-1 right-4 animate-float-sparkle-2 opacity-75 pointer-events-none">
-                                <Sparkle size={6} className="text-pink-200 fill-pink-200" />
-                              </div>
-                              <div className="absolute top-1.5 right-8 animate-float-sparkle-3 opacity-90 pointer-events-none">
-                                <Sparkle size={5} className="text-white fill-white" />
-                              </div>
-
-                              <div className="relative flex items-center justify-center shrink-0">
-                                <Mic size={15} className="text-white stroke-[2.5] relative z-10" />
-                                <Sparkle 
-                                  size={10} 
-                                  className="absolute -top-2 -right-2 text-white fill-white animate-twinkle-4point-fast drop-shadow-[0_0_5px_rgba(255,255,255,0.95)]" 
-                                />
-                              </div>
-                              <span className="relative z-10">Mulai Rekam Suara Dosen</span>
-                              <div className="flex items-center gap-1 shrink-0 relative z-10">
-                                <Sparkle 
-                                  size={11} 
-                                  className="text-white fill-white animate-twinkle-4point-fast drop-shadow-[0_0_5px_rgba(255,255,255,0.95)]" 
-                                />
-                                <Sparkle 
-                                  size={8} 
-                                  className="text-white fill-white opacity-90 animate-twinkle-4point-slow drop-shadow-[0_0_3px_rgba(255,255,255,0.8)]" 
-                                />
-                              </div>
+                              <MicOff size={12} />
+                              Hentikan Rekam
                             </button>
+                          </div>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={handleStartRecording}
+                            className="relative overflow-hidden w-full text-xs font-black h-11 px-4 rounded-xl bg-gradient-to-r from-[#FF2D75] via-pink-500 to-rose-500 hover:opacity-95 text-white flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md shadow-pink-500/25 active:scale-[0.98] border border-white/20"
+                          >
+                            {/* Shimmer sweep effect */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer-sweep pointer-events-none" />
+
+                            {/* Floating micro-stars */}
+                            <div className="absolute top-1 left-4 animate-float-sparkle-1 opacity-80 pointer-events-none">
+                              <Sparkle size={6} className="text-white fill-white" />
+                            </div>
+                            <div className="absolute bottom-1 right-4 animate-float-sparkle-2 opacity-75 pointer-events-none">
+                              <Sparkle size={6} className="text-pink-200 fill-pink-200" />
+                            </div>
+                            <div className="absolute top-1.5 right-8 animate-float-sparkle-3 opacity-90 pointer-events-none">
+                              <Sparkle size={5} className="text-white fill-white" />
+                            </div>
+
+                            <div className="relative flex items-center justify-center shrink-0">
+                              <Mic size={15} className="text-white stroke-[2.5] relative z-10" />
+                              <Sparkle
+                                size={10}
+                                className="absolute -top-2 -right-2 text-white fill-white animate-twinkle-4point-fast drop-shadow-[0_0_5px_rgba(255,255,255,0.95)]"
+                              />
+                            </div>
+                            <span className="relative z-10">Mulai Rekam Suara Dosen</span>
+                            <div className="flex items-center gap-1 shrink-0 relative z-10">
+                              <Sparkle
+                                size={11}
+                                className="text-white fill-white animate-twinkle-4point-fast drop-shadow-[0_0_5px_rgba(255,255,255,0.95)]"
+                              />
+                              <Sparkle
+                                size={8}
+                                className="text-white fill-white opacity-90 animate-twinkle-4point-slow drop-shadow-[0_0_3px_rgba(255,255,255,0.8)]"
+                              />
+                            </div>
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Pembatas ATAU */}
+                      <div className="flex items-center gap-3">
+                        <span className="flex-1 h-px bg-slate-200" />
+                        <span className="text-xs font-bold text-slate-500">ATAU</span>
+                        <span className="flex-1 h-px bg-slate-200" />
+                      </div>
+
+                      {/* Unggah audio */}
+                      <button
+                        type="button"
+                        onClick={() => audioUploadInputRef.current?.click()}
+                        className="w-full py-4 px-4 rounded-inner border border-dashed border-pink-300 bg-white hover:bg-pink-50/60 transition-all flex items-center justify-center gap-3 cursor-pointer text-left"
+                      >
+                        <Upload size={24} className="text-[#FF2D75] shrink-0" />
+                        <span>
+                          <span className="block text-sm font-extrabold text-slate-900">Unggah Berkas Audio</span>
+                          <span className="block text-xs font-medium text-slate-500">MP3 / WAV / M4A</span>
+                        </span>
+                      </button>
+
+                      {/* Hasil transkrip */}
+                      <div className="space-y-2">
+                        <div className="flex justify-between items-center text-xs">
+                          <span className="text-sm font-extrabold text-slate-900">Hasil Salinan Transkrip</span>
+                          {transcription ? (
+                            <button
+                              type="button"
+                              onClick={() => setTranscription("")}
+                              className="text-slate-500 hover:text-[#FF2D75] text-xs font-bold transition-colors cursor-pointer"
+                            >
+                              Bersihkan
+                            </button>
+                          ) : (
+                            <span className="text-xs font-bold text-[#FF2D75]">AI Output</span>
                           )}
-
-                          <button
-                            type="button"
-                            onClick={() => audioUploadInputRef.current?.click()}
-                            className="w-full text-xs font-bold py-2.5 px-3 rounded-xl border border-sky-200/90 bg-sky-50/60 hover:bg-sky-100 text-sky-800 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
-                          >
-                            <Upload size={13} className="text-sky-600" />
-                            Unggah Berkas Audio (MP3/WAV/M4A)
-                          </button>
                         </div>
 
-                        {/* Status Message */}
-                        <div className={`p-2.5 px-3 rounded-xl text-xs font-semibold border ${
-                          recordingStatus.includes("Transkrip Sukses") || recordingStatus.includes("Transkrip Berhasil")
-                            ? "bg-emerald-50 border-emerald-200 text-emerald-800"
-                            : "bg-white border-pink-100 text-slate-700 shadow-3xs"
-                        }`}>
-                          <div className="flex items-start gap-2">
-                            {!(recordingStatus.includes("Transkrip Sukses") || recordingStatus.includes("Transkrip Berhasil")) && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#FF2D75] mt-1.5 shrink-0" />
-                            )}
-                            <span className="leading-snug">{recordingStatus}</span>
-                          </div>
-                        </div>
+                        <textarea
+                          readOnly
+                          value={transcription}
+                          placeholder="Hasil transkripsi akan muncul di sini setelah proses rekaman atau unggah audio selesai."
+                          className="w-full border border-slate-200 focus:border-[#FF2D75] focus:ring-2 focus:ring-pink-500/15 p-3 rounded-inner font-mono text-xs leading-relaxed bg-slate-50 text-slate-800 min-h-[96px] focus:outline-hidden transition-all"
+                        />
 
-                        {/* Transcript Area */}
-                        <div className="space-y-1.5">
-                          <div className="flex justify-between items-center text-xs">
-                            <span className="font-bold text-slate-700">Hasil Salinan Transkrip:</span>
-                            {transcription && (
-                              <button
-                                type="button"
-                                onClick={() => setTranscription("")}
-                                className="text-slate-500 hover:text-[#FF2D75] text-xs font-bold transition-colors cursor-pointer"
-                              >
-                                Bersihkan
-                              </button>
-                            )}
-                          </div>
-
-                          <textarea
-                            readOnly
-                            value={transcription}
-                            placeholder="Teks transkrip perkuliahan akan muncul di sini secara otomatis saat rekaman berjalan atau audio diproses..."
-                            className="w-full border border-pink-100/90 focus:border-[#FF2D75] focus:ring-2 focus:ring-pink-500/15 p-3 rounded-2xl font-mono text-xs leading-relaxed bg-white text-slate-800 min-h-[110px] focus:outline-hidden transition-all shadow-3xs"
-                          />
-
-                          <button
-                            type="button"
-                            disabled={!transcription.trim()}
-                            onClick={appendTranscriptToNote}
-                            className="w-full py-2.5 bg-gradient-to-r from-pink-50 to-sky-50 hover:from-[#FF2D75] hover:to-pink-600 hover:text-white text-[#FF2D75] border border-pink-200/80 text-xs font-black rounded-xl cursor-pointer transition-all shadow-2xs disabled:opacity-40 disabled:bg-slate-100 disabled:text-slate-400 disabled:border-slate-200 disabled:cursor-not-allowed"
-                          >
-                            + Sisipkan Transkrip ke Isi Catatan
-                          </button>
-                        </div>
+                        <button
+                          type="button"
+                          disabled={!transcription.trim()}
+                          onClick={appendTranscriptToNote}
+                          className="w-full h-10 bg-white hover:bg-[#FF2D75] hover:text-white text-[#FF2D75] border border-pink-200 text-xs font-black rounded-xl cursor-pointer transition-all disabled:opacity-40 disabled:bg-slate-100 disabled:text-slate-400 disabled:border-slate-200 disabled:cursor-not-allowed"
+                        >
+                          + Sisipkan Transkrip ke Isi Catatan
+                        </button>
                       </div>
                     </div>
 
                   </div>
-
                 </div>
 
-                {/* Footer buttons */}
-                <div className="px-6 sm:px-7 py-4 bg-white border-t border-slate-100 flex justify-end gap-3 shrink-0">
+                {/* Footer */}
+                <div className="px-6 py-4 bg-white border-t border-slate-100 flex justify-end items-center gap-3 shrink-0">
                   <button
                     type="button"
                     onClick={() => {
@@ -1825,13 +1817,13 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                         setShowAddNoteModal(false);
                       }
                     }}
-                    className="px-5 py-2.5 bg-white border border-slate-200/90 hover:bg-slate-50 text-slate-600 font-bold rounded-xl text-xs cursor-pointer transition-all shadow-2xs"
+                    className="px-5 h-10 bg-white hover:bg-slate-50 text-slate-600 font-bold rounded-xl text-xs cursor-pointer transition-all"
                   >
                     Batal
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2.5 bg-gradient-to-r from-[#FF2D75] via-pink-500 to-rose-500 hover:opacity-95 text-white font-black rounded-xl text-xs cursor-pointer transition-all shadow-md shadow-pink-500/25 active:scale-[0.98]"
+                    className="px-6 h-10 bg-gradient-to-r from-[#FF2D75] via-pink-500 to-rose-500 hover:opacity-95 text-white font-black rounded-xl text-xs cursor-pointer transition-all shadow-md shadow-pink-500/25 active:scale-[0.98]"
                   >
                     Simpan Catatan
                   </button>
