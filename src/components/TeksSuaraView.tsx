@@ -1554,9 +1554,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                               </button>
                             </div>
 
-                            <span className="text-xs text-slate-500 font-semibold pr-1.5 hidden sm:inline">
-                              Markdown Aktif
-                            </span>
+                            <span className="text-xs text-slate-500 font-semibold pr-1.5 hidden sm:inline"></span>
                           </div>
 
                           <textarea
@@ -1611,20 +1609,14 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           <span className="text-base font-black text-[#FF2D75] tabular-nums">02</span>
                           <h4 className="text-sm sm:text-base font-extrabold text-slate-900 truncate">Perekam Suara & Transkrip</h4>
                         </div>
-                        {isRecording ? (
-                          <span className="text-xs text-white bg-[#FF2D75] px-3 py-1 rounded-full font-black animate-pulse shrink-0">
-                            LIVE {formatRecordingTime(recordingSeconds)}
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center gap-1 text-[10px] text-[#FF2D75] bg-pink-50 px-3 py-1 rounded-full font-black tracking-wide shrink-0">
-                            <Sparkles size={11} />
-                            AI POWERED
-                          </span>
-                        )}
+                        <span className="inline-flex items-center gap-1 text-[10px] text-[#FF2D75] bg-pink-50 px-3 py-1 rounded-full font-black tracking-wide shrink-0">
+                          <Sparkles size={11} />
+                          AI POWERED
+                        </span>
                       </div>
 
                       <div className="space-y-1">
-                        <h5 className="text-sm font-extrabold text-slate-900">AI Transkrip</h5>
+                        <h5 className="text-sm font-extrabold text-slate-900">Transkrip Suara</h5>
                         <p className="text-xs text-slate-600 leading-relaxed font-medium">
                           Gunakan mikrofon saat perkuliahan berlangsung atau unggah berkas audio rekaman untuk transkripsi otomatis.
                         </p>
@@ -1653,27 +1645,19 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       )}
 
                       {/* Panel rekam */}
-                      <div className="bg-blue-50/70 border border-pink-100 rounded-inner p-4 space-y-4 text-center">
-                        <div className="flex justify-center">
-                          <span className="w-16 h-16 rounded-full bg-pink-100/80 flex items-center justify-center">
-                            <span className={`w-12 h-12 rounded-full bg-[#FF2D75] text-white flex items-center justify-center shadow-md shadow-pink-500/30 ${isRecording && !isPaused ? "animate-pulse" : ""}`}>
-                              <Mic size={20} className="stroke-[2.5]" />
-                            </span>
-                          </span>
-                        </div>
-
-                        {/* Status rekaman */}
-                        <div className="space-y-1">
-                          <p className={`text-sm font-extrabold leading-snug ${
+                      <div className="bg-blue-50/70 border border-pink-100 rounded-inner p-3 space-y-3">
+                        {/* Baris status + timer (hemat ruang) */}
+                        <div className="flex items-center justify-between gap-3">
+                          <p className={`min-w-0 flex-1 truncate text-xs font-bold ${
                             recordingStatus.includes("Transkrip Sukses") || recordingStatus.includes("Transkrip Berhasil")
                               ? "text-emerald-700"
-                              : "text-slate-900"
-                          }`}>
+                              : "text-slate-700"
+                          }`} title={recordingStatus}>
                             {recordingStatus}
                           </p>
-                          {!isRecording && recordingStatus === "Siap merekam audio dosen di kelas." && (
-                            <p className="text-xs text-slate-600 font-medium">Pastikan mikrofon perangkat Anda aktif.</p>
-                          )}
+                          <span className={`shrink-0 text-xs font-black text-white bg-red-600 px-3 py-1 rounded-full ${isRecording && !isPaused ? "animate-pulse" : ""}`}>
+                            Live {formatRecordingTime(recordingSeconds)}
+                          </span>
                         </div>
 
                         {/* Visualizer gelombang suara */}
@@ -1781,7 +1765,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                               Bersihkan
                             </button>
                           ) : (
-                            <span className="text-xs font-bold text-[#FF2D75]">AI Output</span>
+                            <span className="text-xs font-bold text-[#FF2D75]"></span>
                           )}
                         </div>
 
