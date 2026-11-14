@@ -1128,23 +1128,23 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
       </div>
 
       {/* SECTION B: PENCARIAN & FILTER DISATUKAN */}
-      <div className="bg-[#fdfdfe] rounded-card border border-white p-6 shadow-card">
+      <div className="bg-[#fdfdfe] rounded-card border border-white p-4 shadow-card">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Search input */}
           <div className="relative">
-            <Search className="absolute left-3 top-3 text-slate-500" size={15} />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={15} />
             <input
               type="text"
               placeholder="Cari matakuliah, topik, dosen, atau isi catatan..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full text-sm pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 focus:outline-hidden focus:border-pink-500 placeholder-slate-400 font-semibold shadow-3xs"
+              className="w-full h-10 text-sm pl-10 pr-9 bg-white border border-slate-200 rounded-xl text-slate-800 focus:outline-hidden focus:border-pink-500 placeholder-slate-400 font-semibold shadow-3xs"
             />
             {searchTerm && (
               <button
                 type="button"
                 onClick={() => setSearchTerm("")}
-                className="absolute right-3 top-3 p-0.5 text-slate-500 hover:text-slate-650 text-xs font-bold"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 text-slate-500 hover:text-slate-650 text-xs font-bold"
               >
                 ✕
               </button>
@@ -1152,7 +1152,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
           </div>
 
           {/* Tags scrolling list */}
-          <div className="flex items-center gap-2 overflow-hidden bg-slate-50 border border-slate-200/60 p-2.5 pb-2 px-3 rounded-xl shadow-3xs">
+          <div className="flex items-center gap-2 h-10 overflow-hidden bg-slate-50 border border-slate-200/60 px-3 rounded-xl shadow-3xs">
             <Filter size={13} className="text-slate-500 shrink-0" />
             <div
               ref={dragScrollRefLiveMemo}
@@ -1160,12 +1160,12 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               onMouseLeave={handleDragScrollMouseLeave}
               onMouseUp={handleDragScrollMouseUp}
               onMouseMove={handleDragScrollMouseMove}
-              className="flex gap-2 overflow-x-auto custom-scroll pb-2 select-none cursor-grab active:cursor-grabbing w-full scroll-smooth"
+              className="flex items-center gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden select-none cursor-grab active:cursor-grabbing w-full scroll-smooth"
             >
               <button
                 type="button"
                 onClick={() => setSelectedTag("Semua")}
-                className={`px-3 py-1.5 text-xs font-black rounded-lg shrink-0 transition-all cursor-pointer ${
+                className={`px-3 py-1 text-xs font-black rounded-lg shrink-0 transition-all cursor-pointer ${
                   selectedTag === "Semua"
                     ? "bg-[#FF2D75] text-white shadow-xs"
                     : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
@@ -1183,7 +1183,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                     key={tg}
                     type="button"
                     onClick={() => setSelectedTag(tg)}
-                    className={`px-3 py-1.5 text-xs font-black rounded-lg shrink-0 transition-all cursor-pointer ${
+                    className={`px-3 py-1 text-xs font-black rounded-lg shrink-0 transition-all cursor-pointer ${
                       selectedTag === tg
                         ? "bg-[#FF2D75] text-white shadow-xs"
                         : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
