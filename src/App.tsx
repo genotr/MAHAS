@@ -884,13 +884,8 @@ export function AppDashboard() {
           />
         );
       case "Suara Teks":
-        return (
-          <TeksSuaraView 
-            agenda={agenda}
-            courses={courses}
-            onWritingNoteChange={setIsAddingNote}
-          />
-        );
+        // Dirender permanen di <main> (lihat di bawah) agar rekaman tidak terputus saat pindah menu
+        return null;
       case "Bimbingan Skripsi":
         return (
           <SimulasiBimbinganView />
@@ -1426,6 +1421,14 @@ export function AppDashboard() {
         {/* ACTIVE CANVAS MAIN BODY (TOY-BOX REDESIGN) */}
         <main className="flex-1 overflow-y-auto p-1 relative z-20 custom-scroll">
           <div className="max-w-7xl mx-auto relative">
+            {/* Suara Teks selalu aktif di latar belakang: hanya disembunyikan saat berada di menu lain */}
+            <div className={activeTab === "Suara Teks" ? "block" : "hidden"}>
+              <TeksSuaraView 
+                agenda={agenda}
+                courses={courses}
+                onWritingNoteChange={setIsAddingNote}
+              />
+            </div>
             {renderTabContent()}
           </div>
         </main>

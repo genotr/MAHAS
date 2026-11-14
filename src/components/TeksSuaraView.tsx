@@ -6,7 +6,7 @@ import {
   FileText, Copy, Edit, Trash2, Bold, Italic, Underline, Strikethrough, 
   List, ListOrdered, Highlighter, Quote, Calendar, User, Save, X, BookOpen, Volume2, AudioLines,
   BarChart2, Clock, Award, Upload, AlertTriangle, ExternalLink, Pause, Play,
-  ChevronDown, ChevronLeft, ChevronRight, Tag
+  ChevronDown, ChevronLeft, ChevronRight, Tag, Minus
 } from "lucide-react";
 import { AgendaItem, CalendarNote, AcademicCourse } from "../types";
 
@@ -290,6 +290,8 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
 
   // Modals & fields
   const [showAddNoteModal, setShowAddNoteModal] = useState(false);
+  // true = pop up diperkecil: rekaman/draf tetap hidup dan banner peringatan tampil
+  const [isMinimized, setIsMinimized] = useState(false);
   const mediaRecorderRef = useRef<any>(null);
   const recognitionRef = useRef<any>(null);
   const liveTranscriptRef = useRef<string>("");
@@ -668,13 +670,24 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
   };
 
   useEffect(() => {
-    if (!showAddNoteModal && activeStream) {
+    if (!showAddNoteModal && !isMinimized && activeStream) {
       activeStream.getTracks().forEach((track) => track.stop());
       setActiveStream(null);
       setIsRecording(false);
       setIsPaused(false);
     }
-  }, [showAddNoteModal, activeStream]);
+  }, [showAddNoteModal, isMinimized, activeStream]);
+
+  // Perkecil pop up (rekaman tetap berjalan) & buka kembali draf
+  const handleMinimizeModal = () => {
+    setIsMinimized(true);
+    setShowAddNoteModal(false);
+  };
+
+  const handleRestoreModal = () => {
+    setIsMinimized(false);
+    setShowAddNoteModal(true);
+  };
 
   const appendTranscriptToNote = () => {
     if (!transcription.trim()) {
@@ -696,6 +709,11 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
   }, [showAddNoteModal, selectedNote, onWritingNoteChange]);
 
   const openNewNoteModal = () => {
+    // Ada draf yang diperkecil: buka kembali, jangan reset isian maupun rekaman
+    if (isMinimized) {
+      handleRestoreModal();
+      return;
+    }
     setEditingNoteId(null);
     setNoteLecturer("");
     setNoteTopic("");
@@ -718,6 +736,10 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
   };
 
   const openEditNoteModal = (note: CalendarNote) => {
+    if (isMinimized) {
+      alert("Masih ada draf rekaman yang diperkecil. Buka draf tersebut lalu simpan terlebih dahulu.");
+      return;
+    }
     setEditingNoteId(note.id);
     const inCourses = courses && courses.some((c) => c.name === note.courseTitle);
     const inAgenda = agenda && agenda.some((a) => a.title === note.courseTitle);
@@ -802,6 +824,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
     }
 
     setShowAddNoteModal(false);
+    setIsMinimized(false);
   };
 
   const handleDeleteNote = (id: string) => {
@@ -1334,21 +1357,34 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                     {editingNoteId ? "Perbarui rangkuman materi dan transkrip suara." : "Rekam penjelasan dosen atau tulis ringkasan perkuliahan."}
                   </p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (isRecording) {
-                      alert("Perekaman Suara Teks belum selesai! Harap hentikan rekaman live terlebih dahulu sebelum menutup.");
-                    } else {
-                      setShowAddNoteModal(false);
-                    }
-                  }}
-                  className="w-10 h-10 rounded-xl bg-white hover:bg-slate-50 text-slate-500 hover:text-slate-800 border border-slate-200 flex items-center justify-center transition-all cursor-pointer shrink-0"
-                  aria-label="Tutup Modal"
-                  title="Tutup Modal"
-                >
-                  <X size={18} className="stroke-[2.5]" />
-                </button>
+                <div className="flex items-center gap-2 shrink-0">
+                  {isRecording && (
+                    <button
+                      type="button"
+                      onClick={handleMinimizeModal}
+                      className="w-10 h-10 rounded-xl bg-white hover:bg-slate-50 text-slate-500 hover:text-slate-800 border border-slate-200 flex items-center justify-center transition-all cursor-pointer"
+                      aria-label="Perkecil pop up"
+                      title="Perkecil (rekaman tetap berjalan)"
+                    >
+                      <Minus size={18} className="stroke-[2.5]" />
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (isRecording) {
+                        alert("Perekaman Suara Teks belum selesai! Hentikan rekaman terlebih dahulu, atau tekan tombol \"–\" (Perkecil) agar rekaman tetap berjalan.");
+                      } else {
+                        setShowAddNoteModal(false);
+                      }
+                    }}
+                    className="w-10 h-10 rounded-xl bg-white hover:bg-slate-50 text-slate-500 hover:text-slate-800 border border-slate-200 flex items-center justify-center transition-all cursor-pointer"
+                    aria-label="Tutup Modal"
+                    title="Tutup Modal"
+                  >
+                    <X size={18} className="stroke-[2.5]" />
+                  </button>
+                </div>
               </div>
 
               <form onSubmit={handleSaveNote} className="flex-1 overflow-hidden flex flex-col">
@@ -1387,14 +1423,14 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                   <div className="grid grid-cols-1 lg:grid-cols-2">
 
                     {/* Kolom kiri: 01 Informasi Perkuliahan */}
-                    <div className="p-6 space-y-4">
+                    <div className="p-6 space-y-5">
                       <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
                         <span className="text-base font-black text-[#FF2D75] tabular-nums">01</span>
                         <h4 className="text-sm sm:text-base font-extrabold text-slate-900">Informasi Perkuliahan</h4>
                       </div>
 
                       {/* Mata kuliah (lebar penuh) */}
-                      <div className="space-y-2">
+                      <div className="space-y-2 pt-1">
                         <label className="block text-xs font-bold text-slate-700">
                           Mata Kuliah <span className="text-[#FF2D75]">*</span>
                         </label>
@@ -1452,7 +1488,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       )}
 
                       {/* Tanggal & Topik */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="space-y-2">
                           <label className="block text-xs font-bold text-slate-700">
                             Tanggal Pertemuan <span className="text-[#FF2D75]">*</span>
@@ -1511,8 +1547,8 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       </div>
 
                       {/* Editor catatan */}
-                      <div className="space-y-2">
-                        <label className="block text-xs font-bold text-slate-700">
+                      <div>
+                        <label className="block mb-2 text-xs font-bold text-slate-700">
                           Isi Catatan Materi <span className="text-[#FF2D75]">*</span>
                         </label>
 
@@ -1566,7 +1602,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           />
                         </div>
 
-                        <div className="flex flex-wrap gap-2 pt-1">
+                        <div className="flex flex-wrap gap-2 mt-1">
                           <button
                             type="button"
                             onClick={() => applyTemplateStructure("general")}
@@ -1603,7 +1639,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                     </div>
 
                     {/* Kolom kanan: 02 Perekam Suara & Transkrip */}
-                    <div className="p-6 space-y-4 border-t border-slate-100 lg:border-t-0 lg:border-l">
+                    <div className="p-6 space-y-5 border-t border-slate-100 lg:border-t-0 lg:border-l">
                       <div className="flex items-center justify-between gap-3 border-b border-slate-100 pb-3">
                         <div className="flex items-center gap-3 min-w-0">
                           <span className="text-base font-black text-[#FF2D75] tabular-nums">02</span>
@@ -1615,7 +1651,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                         </span>
                       </div>
 
-                      <div className="space-y-1">
+                      <div className="space-y-2 pt-1">
                         <h5 className="text-sm font-extrabold text-slate-900">Transkrip Suara</h5>
                         <p className="text-xs text-slate-600 leading-relaxed font-medium">
                           Gunakan mikrofon saat perkuliahan berlangsung atau unggah berkas audio rekaman untuk transkripsi otomatis.
@@ -1624,7 +1660,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
 
                       {/* Petunjuk izin mikrofon */}
                       {micError && (
-                        <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-inner text-xs text-amber-900 leading-relaxed space-y-2">
+                        <div className="p-4 bg-amber-50 border border-amber-200 rounded-inner text-xs text-amber-900 leading-relaxed space-y-2">
                           <div className="flex items-center gap-1.5 font-bold">
                             <AlertTriangle size={13} className="text-amber-700 shrink-0" />
                             <span>Akses Mikrofon Dibatasi</span>
@@ -1645,7 +1681,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       )}
 
                       {/* Panel rekam */}
-                      <div className="bg-blue-50/70 border border-pink-100 rounded-inner p-3 space-y-3">
+                      <div className="bg-blue-50/70 border border-pink-100 rounded-inner p-3 space-y-2">
                         {/* Baris status + timer (hemat ruang) */}
                         <div className="flex items-center justify-between gap-3">
                           <p className={`min-w-0 flex-1 truncate text-xs font-bold ${
@@ -1733,7 +1769,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       </div>
 
                       {/* Pembatas ATAU */}
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 py-1">
                         <span className="flex-1 h-px bg-slate-200" />
                         <span className="text-xs font-bold text-slate-500">ATAU</span>
                         <span className="flex-1 h-px bg-slate-200" />
@@ -1753,8 +1789,8 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       </button>
 
                       {/* Hasil transkrip */}
-                      <div className="space-y-2">
-                        <div className="flex justify-between items-center text-xs">
+                      <div>
+                        <div className="flex justify-between items-center text-xs mb-2">
                           <span className="text-sm font-extrabold text-slate-900">Hasil Salinan Transkrip</span>
                           {transcription ? (
                             <button
@@ -1773,7 +1809,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           readOnly
                           value={transcription}
                           placeholder="Hasil transkripsi akan muncul di sini setelah proses rekaman atau unggah audio selesai."
-                          className="w-full border border-slate-200 focus:border-[#FF2D75] focus:ring-2 focus:ring-pink-500/15 p-3 rounded-inner font-mono text-xs leading-relaxed bg-slate-50 text-slate-800 min-h-[96px] focus:outline-hidden transition-all"
+                          className="block mb-5 w-full border border-slate-200 focus:border-[#FF2D75] focus:ring-2 focus:ring-pink-500/15 p-3 rounded-inner font-mono text-xs leading-relaxed bg-slate-50 text-slate-800 min-h-[96px] focus:outline-hidden transition-all"
                         />
 
                         <button
@@ -1791,7 +1827,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                 </div>
 
                 {/* Footer */}
-                <div className="px-6 py-4 bg-white border-t border-slate-100 flex justify-end items-center gap-3 shrink-0">
+                <div className="px-6 py-4 bg-white border-t border-slate-100 flex justify-end items-center gap-2 shrink-0">
                   <button
                     type="button"
                     onClick={() => {
@@ -1815,6 +1851,72 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               </form>
             </motion.div>
           </div>
+        )}
+
+        {/* BANNER REKAMAN: tampil saat pop up diperkecil, hilang setelah rekaman dihentikan & catatan disimpan */}
+        {isMinimized && !showAddNoteModal && (
+          <motion.div
+            key="recording-minimized-banner"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="fixed inset-x-0 bottom-4 z-[99998] px-4 flex justify-center pointer-events-none"
+          >
+            <div
+              className={`pointer-events-auto w-full max-w-3xl rounded-card p-4 flex flex-wrap items-center justify-between gap-4 shadow-lg ${
+                isRecording
+                  ? "bg-gradient-to-r from-rose-500 via-[#FF2D75] to-pink-500 text-white shadow-pink-500/30"
+                  : "bg-white text-slate-900 border border-pink-200 shadow-pink-500/10"
+              }`}
+            >
+              <div className="flex items-center gap-3 min-w-0">
+                <span className="relative flex h-3 w-3 shrink-0">
+                  {isRecording && !isPaused && (
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                  )}
+                  <span className={`relative inline-flex rounded-full h-3 w-3 ${isRecording ? "bg-white" : "bg-[#FF2D75]"}`}></span>
+                </span>
+                <div className="min-w-0">
+                  <p className="font-extrabold text-xs tracking-wide">
+                    {isRecording
+                      ? `Perekaman Suara Dosen ${isPaused ? "Dijeda" : "Aktif"} • ${formatRecordingTime(recordingSeconds)}`
+                      : "Rekaman selesai • belum disimpan"}
+                  </p>
+                  <p className={`text-xs font-medium mt-1 ${isRecording ? "text-pink-100" : "text-slate-600"}`}>
+                    {isRecording
+                      ? recordingModeRef.current === "upload"
+                        ? recordingStatus
+                        : "AI sedang menyimak audio secara langsung untuk menghasilkan transkrip."
+                      : "Buka draf, sisipkan transkrip, lalu tekan Simpan Catatan untuk menutup peringatan ini."}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 shrink-0">
+                {isRecording && (
+                  <button
+                    type="button"
+                    onClick={handleStartRecording}
+                    className="px-4 h-10 bg-white text-[#FF2D75] hover:bg-pink-50 text-xs font-extrabold rounded-xl cursor-pointer transition-all shadow-sm"
+                  >
+                    Hentikan Rekam
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={handleRestoreModal}
+                  className={`px-4 h-10 text-xs font-extrabold rounded-xl cursor-pointer transition-all ${
+                    isRecording
+                      ? "bg-white/15 hover:bg-white/25 border border-white/40 text-white"
+                      : "bg-gradient-to-r from-[#FF2D75] via-pink-500 to-rose-500 hover:opacity-95 text-white shadow-md shadow-pink-500/25"
+                  }`}
+                >
+                  {isRecording ? "Buka Draf" : "Buka & Simpan"}
+                </button>
+              </div>
+            </div>
+          </motion.div>
         )}
 
         {/* DETAILED NOTE PREVIEW MODAL */}
