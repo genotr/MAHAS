@@ -1132,7 +1132,7 @@ export function AppDashboard() {
         {!isAddingNote && (
           <header 
             style={{ borderRadius: "var(--radius-card)" }}
-            className="h-[68px] shrink-0 bg-[#fdfdfe] !overflow-visible border border-white rounded-card shadow-[0_10px_30px_rgba(70,140,190,0.12)] flex items-center justify-between px-3 sm:px-5 relative z-30 mb-4"
+            className="h-[68px] shrink-0 bg-[#fdfdfe] !overflow-visible border border-white rounded-card shadow-[0_10px_30px_rgba(70,140,190,0.12)] flex items-center justify-between p-3 relative z-30 mb-4"
           >
             
             <div className="flex items-center gap-4 flex-1">
@@ -1145,7 +1145,7 @@ export function AppDashboard() {
                     setSidebarCollapsed(prev => !prev);
                   }
                 }}
-                className="h-11 w-11 bg-[#FF2D75] text-white rounded-2xl border border-white/30 shadow-none flex items-center justify-center cursor-pointer hover:bg-pink-600 transition-none"
+                className="h-11 w-11 bg-[#FF2D75] text-white rounded-control border border-white/30 shadow-none flex items-center justify-center cursor-pointer hover:bg-pink-600 transition-none"
                 title={isExpanded ? "Tutup Sidebar" : "Buka Sidebar"}
               >
                 {isExpanded ? (
@@ -1181,13 +1181,13 @@ export function AppDashboard() {
 
               {/* Global Finder Input */}
               <div className="relative flex-1 max-w-[160px] xs:max-w-xs sm:max-w-md lg:max-w-lg">
-                <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 pr-0 pt-0 pb-0 mr-[6px] -ml-[12px]" />
+                <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
                 <input
                   type="text"
                   placeholder="Cari fitur, event, beasiswa, atau barang..."
                   value={globalSearch}
                   onChange={(e) => setGlobalSearch(e.target.value)}
-                  className="w-full h-11 text-sm pl-[25px] pr-[10px] -ml-[7px] mr-0 mt-0 rounded-2xl border border-sky-200 bg-white focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-extrabold"
+                  className="w-full h-11 text-sm pl-10 pr-4 rounded-control border border-sky-200 bg-white focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-extrabold"
                 />
 
                 {/* Instant Search Results Dropdown overlay */}
@@ -1245,7 +1245,7 @@ export function AppDashboard() {
                     setNotificationOpen(!notificationOpen);
                     setProfileDropdown(false);
                   }}
-                  className="notification-trigger h-10 w-10 flex items-center justify-center text-[#FF2D75] bg-white border border-slate-200/90 hover:bg-slate-50 hover:border-slate-300 rounded-full cursor-pointer relative transition-all shadow-xs active:scale-95 pr-0 -mr-2"
+                  className="notification-trigger h-11 w-11 flex items-center justify-center text-[#FF2D75] bg-white border border-slate-200/90 hover:bg-slate-50 hover:border-slate-300 rounded-full cursor-pointer relative transition-all shadow-xs active:scale-95"
                 >
                   <Bell size={18} className="animate-wiggle" style={{ animationDuration: "3s" }} />
                   {unreadNotificationsCount > 0 && (
@@ -1299,7 +1299,7 @@ export function AppDashboard() {
                     setProfileDropdown(!profileDropdown);
                     setNotificationOpen(false);
                   }}
-                  className={`profile-trigger flex items-center gap-2 border border-slate-200/80 rounded-2xl p-1 md:pr-4 shadow-xs hover:scale-102 transition-all cursor-pointer ${
+                  className={`profile-trigger flex items-center gap-2 border border-slate-200/80 rounded-control p-1 md:pr-4 shadow-xs transition-all cursor-pointer ${
                     profileDropdown ? "bg-white" : "bg-white hover:bg-slate-50"
                   }`}
                 >
