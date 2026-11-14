@@ -1328,7 +1328,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                     <span className="text-xs font-bold text-slate-500">Academic Workspace</span>
                   </div>
                   <h3 className="font-extrabold font-display text-slate-900 text-xl sm:text-2xl tracking-tight leading-tight">
-                    {editingNoteId ? "Edit Catatan Kuliah" : "Studio Rekam & Draf Kuliah"}
+                    {editingNoteId ? "Edit Catatan Kuliah" : "Catat & Rekam Materi Kuliah"}
                   </h3>
                   <p className="text-sm text-slate-600 font-medium mt-2 leading-normal">
                     {editingNoteId ? "Perbarui rangkuman materi dan transkrip suara." : "Rekam penjelasan dosen atau tulis ringkasan perkuliahan."}
