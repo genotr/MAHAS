@@ -948,18 +948,15 @@ export function AppDashboard() {
       {/* SIDEBAR NAVIGATION PANEL (SMOOTH GLASSY PUFFY DESIGN) */}
       <aside 
         id="campushub_sidebar"
-        className={`${isExpanded ? "w-[264px] p-4" : "w-[66px] p-2 overflow-x-hidden"} bg-[#fdfdfe] border border-white rounded-panel shadow-[0_10px_30px_rgba(70,140,190,0.14)] flex flex-col justify-between shrink-0 transition-none h-full
+        className={`${isExpanded ? "w-[264px] p-4 rounded-panel" : "w-[66px] p-2 overflow-x-hidden rounded-card"} bg-[#fdfdfe] border border-white shadow-[0_10px_30px_rgba(70,140,190,0.14)] flex flex-col justify-between shrink-0 transition-none h-full
           ${sidebarOpen ? "fixed inset-y-2 left-2 z-40 flex" : "hidden md:flex md:relative z-20"}`}
       >
         <div className="space-y-4 flex flex-col h-full justify-between pb-4 overflow-y-auto custom-scroll relative z-10">
           
           <div className="space-y-4">
             {/* MahasSpace Logo vs Hamburger button */}
-            <div className="flex items-center justify-between px-1">
-              <div 
-                className="flex items-center gap-3"
-                style={{ fontSize: "20px", height: "45px", lineHeight: "31px" }}
-              >
+            <div className="flex items-center justify-between">
+              <div className={`flex items-center h-12 ${isExpanded ? "gap-3" : "gap-0"}`}>
                 <div 
                   onClick={() => {
                     if (isIconOnly) {
@@ -972,15 +969,7 @@ export function AppDashboard() {
                   <img 
                     src={mahasLogo} 
                     alt="Mahas Mascot" 
-                    className="object-contain rounded-xl hover:scale-110 transition-all duration-200" 
-                    style={{
-                      width: "50px",
-                      height: "46px",
-                      paddingTop: "0px",
-                      paddingLeft: "0px",
-                      marginLeft: "-7px",
-                      marginTop: "7px"
-                    }}
+                    className="size-12 object-contain" 
                     referrerPolicy="no-referrer" 
                   />
                 </div>
@@ -991,17 +980,8 @@ export function AppDashboard() {
                   style={{ 
                     fontFamily: "'Unbounded', sans-serif", 
                     fontWeight: 700,
-                    width: "121.24px",
-                    height: "35.9896px",
                     fontSize: "24px",
-                    lineHeight: "39px",
-                    marginLeft: "-4px",
-                    marginRight: "3px",
-                    marginTop: "10px",
-                    paddingTop: "0px",
-                    paddingRight: "0px",
-                    paddingBottom: "7px",
-                    paddingLeft: "0px"
+                    lineHeight: "1"
                   }}
                 >
                   mahas
