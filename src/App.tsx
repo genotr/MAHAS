@@ -4,7 +4,7 @@ import {
   Home, GraduationCap, CheckSquare, Calendar, Users, Star, Sparkle,
   Heart, Briefcase, User, Search, Bell, Menu, X, ChevronDown, HelpCircle, LogOut, Check, 
   BookOpen, Sparkles, ShieldCheck, Mail, KeyRound,
-  Eye, EyeOff, Sun, Moon, Mic, Wind, Settings, LogIn
+  Eye, EyeOff, Sun, Moon, Wind, Settings, LogIn
 } from "lucide-react";
 import { 
   onAuthStateChanged, 
@@ -35,7 +35,7 @@ import MentalHealthView from "./components/MentalHealthView";
 import SimulasiBimbinganView from "./components/SimulasiBimbinganView";
 import ZonamuView from "./components/ZonamuView";
 import RuangBelajarView from "./components/RuangBelajarView";
-import TeksSuaraView from "./components/TeksSuaraView";
+import TeksSuaraView, { AiTranscribeAudioIcon } from "./components/TeksSuaraView";
 // @ts-ignore
 import mahasLogo from "./assets/images/regenerated_image_1784117604430 (2).png";
 
@@ -729,7 +729,7 @@ export function AppDashboard() {
 
   // Nav items matching user image sidebar with shortcuts
   const sidebarItems = [
-    { label: "Suara Teks", icon: Mic, shortcutKey: "Alt + V" },
+    { label: "Suara Teks", icon: AiTranscribeAudioIcon, shortcutKey: "Alt + V" },
     { label: "Beranda", icon: Home, shortcutKey: "Alt + H" },
     { label: "Akademik", icon: GraduationCap, shortcutKey: "Alt + A" },
     { label: "Tugas & Deadline", icon: CheckSquare, shortcutKey: "Alt + T" },

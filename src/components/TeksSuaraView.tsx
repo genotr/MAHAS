@@ -10,6 +10,38 @@ import {
 } from "lucide-react";
 import { AgendaItem, CalendarNote, AcademicCourse } from "../types";
 
+/**
+ * Ikon catatan + mikrofon + gelombang AI (diekspor agar bisa dipakai juga di sidebar App.tsx).
+ * - Warna mengikuti `currentColor` (atur lewat className, mis. text-[#FF2D75]).
+ * - Ketebalan garis lewat `strokeWidth` (default 2, sama seperti ikon lucide lain).
+ * - Kompatibel dengan pemakaian ikon lucide: <Icon size={..} className={..} />
+ */
+export const AiTranscribeAudioIcon = ({
+  size = 36,
+  strokeWidth = 2,
+  ...props
+}: React.SVGProps<SVGSVGElement> & { size?: number | string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    {...props}
+  >
+    <path d="M13 3H11C7.22876 3 5.34315 3 4.17157 4.17157C3 5.34315 3 7.22876 3 11V13.5C3 16.7875 3 18.4312 3.90796 19.5376C4.07418 19.7401 4.25989 19.9258 4.46243 20.092C5.56878 21 7.21252 21 10.5 21H12.5C13.8956 21 14.5933 21 15.1611 20.8278C16.4395 20.44 17.44 19.4395 17.8278 18.1611C18 17.5933 18 16.8956 18 15.5" />
+    <path d="M18 2.5V6.5M17 3V6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6V3C19 2.44772 18.5523 2 18 2C17.4477 2 17 2.44772 17 3Z" />
+    <path d="M18 10V12M18 10C19.8638 10 21.556 8.72523 22 7M18 10C16.1361 10 14.444 8.72523 14 7" />
+    <path d="M7 17H14" />
+    <path d="M7 13H11" />
+  </svg>
+);
+
 interface AudioVisualizerProps {
   stream: MediaStream | null;
   isRecording: boolean;
@@ -1100,7 +1132,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               <div>
                 <h1 className="text-xl font-black font-display text-slate-900 tracking-tight leading-tight">
                   Suara Teks (Live Memo){" "}
-                  <Mic size={22} className="text-[#FF2D75] inline-block align-middle ml-1" />
+                  <AiTranscribeAudioIcon size={24} strokeWidth={2} className="text-[#FF2D75] inline-block align-middle ml-1" />
                 </h1>
                 <p className="text-sm text-slate-600 leading-normal font-semibold max-w-prose">
                   Sistem asisten rekam lisan dosen secara verbatim otomatis ke transkrip dan manajemen draf materi kuliah.
@@ -1367,7 +1399,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                 <div className="flex items-center justify-between gap-4 pb-5 border-b border-slate-100">
                   <div className="flex items-center gap-4 min-w-0">
                     <div className="w-14 h-14 rounded-inner bg-pink-100/80 text-[#FF2D75] flex items-center justify-center shrink-0">
-                      {editingNoteId ? <Edit size={26} className="stroke-[2]" /> : <Mic size={26} className="stroke-[2]" />}
+                      {editingNoteId ? <Edit size={26} className="stroke-[2]" /> : <AiTranscribeAudioIcon size={28} strokeWidth={1.5} />}
                     </div>
                     <div className="min-w-0">
                       <h3 className="font-extrabold font-display text-slate-900 text-xl sm:text-2xl tracking-tight leading-tight">
