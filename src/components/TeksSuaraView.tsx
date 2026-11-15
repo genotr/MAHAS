@@ -1474,7 +1474,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                               }
                             }
                           }}
-                          className="w-full h-10 px-3 text-ellipsis border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs"
+                          className="w-full h-10 px-3 text-ellipsis border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-slate-50 text-slate-800 cursor-pointer text-sm transition-all shadow-3xs"
                         >
                           {courses && courses.length > 0 ? (
                             courses.map((c) => (
@@ -1506,7 +1506,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={customCourseTitle}
                             onChange={(e) => setCustomCourseTitle(e.target.value)}
                             placeholder="Contoh: Rekayasa Perangkat Lunak"
-                            className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                            className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-slate-50 text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
                         </div>
                       )}
@@ -1526,7 +1526,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                                 e.preventDefault();
                                 openDatePicker();
                               }}
-                              className="w-full h-10 pl-3 pr-14 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs select-none hide-native-picker-icon"
+                              className="w-full h-10 pl-3 pr-14 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-slate-50 text-slate-800 cursor-pointer text-sm transition-all shadow-3xs select-none hide-native-picker-icon"
                             />
                             <button
                               type="button"
@@ -1551,7 +1551,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteTopic}
                             onChange={(e) => setNoteTopic(e.target.value)}
                             placeholder="Contoh: Hipotesis Testing & P-Value"
-                            className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                            className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-slate-50 text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
                         </div>
                       </div>
@@ -1566,7 +1566,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           value={noteLecturer}
                           onChange={(e) => setNoteLecturer(e.target.value)}
                           placeholder="Nama Dosen..."
-                          className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                          className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-slate-50 text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                         />
                       </div>
 
@@ -1671,7 +1671,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteTagsRaw}
                             onChange={(e) => setNoteTagsRaw(e.target.value)}
                             placeholder="Contoh: Teori, Ujian, Rumus, Praktikum"
-                            className="w-full h-10 pl-9 pr-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                            className="w-full h-10 pl-9 pr-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-slate-50 text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
                         </div>
                       </div>
