@@ -69,7 +69,24 @@ export function AppDashboard() {
   }, [isReadMode]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const isExpanded = !sidebarCollapsed;
+  // Mode mobile (<768px): sidebar berupa drawer yang selalu tampil penuh (ikon + teks)
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches
+  );
+  React.useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const syncViewport = () => {
+      setIsMobile(mq.matches);
+      // Kembali ke desktop/tablet: tutup drawer mobile agar tidak menimpa tombol collapse
+      if (!mq.matches) setSidebarOpen(false);
+    };
+    syncViewport();
+    mq.addEventListener("change", syncViewport);
+    return () => mq.removeEventListener("change", syncViewport);
+  }, []);
+  const isExpanded = isMobile ? true : !sidebarCollapsed;
+  // Status untuk ikon & judul tombol toggle di header
+  const isToggleOpen = isMobile ? sidebarOpen : !sidebarCollapsed;
   const isIconOnly = !isExpanded;
   const [profileDropdown, setProfileDropdown] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
@@ -925,7 +942,7 @@ export function AppDashboard() {
   const unreadNotificationsCount = notifications.filter(n => !n.isRead).length;
 
   return (
-    <div id="campushub_root" style={{ "--mouse-x": "0", "--mouse-y": "0" } as React.CSSProperties} className="h-[100dvh] max-h-[100dvh] bg-transparent flex font-sans relative overflow-hidden text-slate-800 p-3 md:p-4 md:gap-4">
+    <div id="campushub_root" style={{ "--mouse-x": "0", "--mouse-y": "0" } as React.CSSProperties} className="h-[100dvh] max-h-[100dvh] bg-transparent flex font-sans relative overflow-hidden text-slate-800 p-3 md:p-0 md:gap-0">
       {/* 15% opacity yellow screen overlay for Eye-Care Read Mode, can be overlayed on any theme */}
       {isReadMode && (
         <div className="fixed inset-0 bg-yellow-500/15 pointer-events-none z-[99999]" />
@@ -943,15 +960,15 @@ export function AppDashboard() {
       {/* SIDEBAR NAVIGATION PANEL (SMOOTH GLASSY PUFFY DESIGN) */}
       <aside 
         id="campushub_sidebar"
-        className={`${isExpanded ? "w-[264px] p-4 rounded-panel" : "w-[66px] p-2 overflow-x-hidden rounded-card"} bg-[#fdfdfe] border border-white shadow-[0_10px_30px_rgba(70,140,190,0.14)] flex flex-col justify-between shrink-0 transition-none h-full
-          ${sidebarOpen ? "fixed inset-y-2 left-2 z-40 flex" : "hidden md:flex md:relative z-20"}`}
+        className={`${isExpanded ? "w-[264px] p-4" : "w-[66px] p-2 overflow-x-hidden"} rounded-none bg-white border-0 border-r border-white shadow-[4px_0_30px_rgba(70,140,190,0.14)] flex flex-col justify-between shrink-0 transition-none h-full
+          ${sidebarOpen ? "fixed inset-y-0 left-0 z-40 flex" : "hidden md:flex md:relative z-20"}`}
       >
         <div className="space-y-4 flex flex-col h-full justify-between pb-4 overflow-y-auto custom-scroll relative z-10">
           
           <div className="space-y-4">
             {/* MahasSpace Logo vs Hamburger button */}
             <div className="flex items-center justify-between">
-              <div className={`flex items-center h-12 ${isExpanded ? "gap-3" : "gap-0"}`}>
+              <div className={`flex items-center ${isExpanded ? "h-14 gap-3" : "h-12 gap-0"}`}>
                 <div 
                   onClick={() => {
                     if (isIconOnly) {
@@ -964,18 +981,18 @@ export function AppDashboard() {
                   <img 
                     src={mahasLogo} 
                     alt="Mahas Mascot" 
-                    className="size-12 object-contain" 
+                    className={`${isExpanded ? "size-14" : "size-12"} object-contain`} 
                     referrerPolicy="no-referrer" 
                   />
                 </div>
                 <span 
                   className={`font-bold tracking-tight text-slate-900 select-none whitespace-nowrap overflow-hidden transition-all duration-200 ease-out flex items-center ${
-                    isExpanded ? "opacity-100 max-w-[150px] translate-x-0" : "opacity-0 max-w-0 -translate-x-2 pointer-events-none"
+                    isExpanded ? "opacity-100 max-w-[160px] translate-x-0" : "opacity-0 max-w-0 -translate-x-2 pointer-events-none"
                   }`}
                   style={{ 
                     fontFamily: "'Unbounded', sans-serif", 
                     fontWeight: 700,
-                    fontSize: "24px",
+                    fontSize: "32px",
                     lineHeight: "1"
                   }}
                 >
@@ -1121,7 +1138,7 @@ export function AppDashboard() {
       )}
 
       {/* CONTENT CANVAS WRAPPER (TOY-BOX REDESIGN) */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden relative z-20">
+      <div className="flex-1 flex flex-col h-full overflow-hidden relative z-20 md:p-4">
         
         {/* TOP INTERACTIVE BAR */}
         {!isAddingNote && (
@@ -1141,9 +1158,9 @@ export function AppDashboard() {
                   }
                 }}
                 className="h-11 w-11 bg-[#FF2D75] text-white rounded-control border border-white/30 shadow-none flex items-center justify-center cursor-pointer hover:bg-pink-600 transition-none"
-                title={isExpanded ? "Tutup Sidebar" : "Buka Sidebar"}
+                title={isToggleOpen ? "Tutup Sidebar" : "Buka Sidebar"}
               >
-                {isExpanded ? (
+                {isToggleOpen ? (
                   /* Terbuka: Outline Icon dengan Garis Sidebar dan Panah Menutup (<) */
                   <svg 
                     width="19" 
