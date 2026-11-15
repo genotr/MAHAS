@@ -1180,7 +1180,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               placeholder="Cari matakuliah, topik, dosen, atau isi catatan..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full h-10 text-sm pl-10 pr-9 bg-white border border-slate-200 rounded-xl text-slate-800 focus:outline-hidden focus:border-pink-500 placeholder-slate-400 font-semibold shadow-3xs"
+              className="w-full h-10 text-sm pl-10 pr-9 bg-white border border-slate-200 rounded-xl text-slate-800 focus:outline-hidden focus:border-sky-400 placeholder-slate-400 font-semibold shadow-3xs"
             />
             {searchTerm && (
               <button
@@ -1474,7 +1474,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                               }
                             }
                           }}
-                          className="w-full h-10 px-3 text-ellipsis border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs"
+                          className="w-full h-10 px-3 text-ellipsis border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs"
                         >
                           {courses && courses.length > 0 ? (
                             courses.map((c) => (
@@ -1506,7 +1506,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={customCourseTitle}
                             onChange={(e) => setCustomCourseTitle(e.target.value)}
                             placeholder="Contoh: Rekayasa Perangkat Lunak"
-                            className="w-full h-10 px-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                            className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
                         </div>
                       )}
@@ -1526,7 +1526,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                                 e.preventDefault();
                                 openDatePicker();
                               }}
-                              className="w-full h-10 pl-3 pr-14 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs select-none hide-native-picker-icon"
+                              className="w-full h-10 pl-3 pr-14 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 cursor-pointer text-sm transition-all shadow-3xs select-none hide-native-picker-icon"
                             />
                             <button
                               type="button"
@@ -1551,7 +1551,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteTopic}
                             onChange={(e) => setNoteTopic(e.target.value)}
                             placeholder="Contoh: Hipotesis Testing & P-Value"
-                            className="w-full h-10 px-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                            className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
                         </div>
                       </div>
@@ -1566,7 +1566,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           value={noteLecturer}
                           onChange={(e) => setNoteLecturer(e.target.value)}
                           placeholder="Nama Dosen..."
-                          className="w-full h-10 px-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                          className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                         />
                       </div>
 
@@ -1576,7 +1576,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           Isi Catatan Materi <span className="text-[#FF2D75]">*</span>
                         </label>
 
-                        <div className={`border border-slate-200 rounded-inner overflow-hidden focus-within:border-[#FF2D75] focus-within:ring-3 focus-within:ring-pink-500/10 bg-white transition-all ${isEditorExpanded ? "absolute inset-6 z-20 flex flex-col shadow-xl" : "shadow-3xs"}`}>
+                        <div className={`border border-slate-200 rounded-inner overflow-hidden focus-within:border-sky-400 focus-within:ring-3 focus-within:ring-sky-400/25 bg-white transition-all ${isEditorExpanded ? "absolute inset-6 z-20 flex flex-col shadow-xl" : "shadow-3xs"}`}>
                           <div className="flex flex-wrap items-center justify-between gap-1 p-2 bg-slate-50 border-b border-slate-100 text-slate-700">
                             <div className="flex items-center gap-2">
                               <button
@@ -1671,7 +1671,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteTagsRaw}
                             onChange={(e) => setNoteTagsRaw(e.target.value)}
                             placeholder="Contoh: Teori, Ujian, Rumus, Praktikum"
-                            className="w-full h-10 pl-9 pr-3 border border-slate-200 focus:border-[#FF2D75] focus:ring-3 focus:ring-pink-500/10 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
+                            className="w-full h-10 pl-9 pr-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-white text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
                         </div>
                       </div>
@@ -1848,7 +1848,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           readOnly
                           value={transcription}
                           placeholder="Hasil transkripsi akan muncul di sini setelah proses rekaman atau unggah audio selesai."
-                          className="block mb-5 w-full border border-slate-200 focus:border-[#FF2D75] focus:ring-2 focus:ring-pink-500/15 p-3 rounded-inner font-mono text-xs leading-relaxed bg-slate-50 text-slate-800 min-h-[96px] focus:outline-hidden transition-all"
+                          className="block mb-5 w-full border border-slate-200 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/25 p-3 rounded-inner font-mono text-xs leading-relaxed bg-slate-50 text-slate-800 min-h-[96px] focus:outline-hidden transition-all"
                         />
 
                         <button
