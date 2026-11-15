@@ -6,7 +6,7 @@ import {
   FileText, Copy, Edit, Trash2, Bold, Italic, Underline, Strikethrough, 
   List, ListOrdered, Highlighter, Quote, Calendar, User, Save, X, BookOpen, Volume2, AudioLines,
   BarChart2, Clock, Award, Upload, AlertTriangle, ExternalLink, Pause, Play,
-  ChevronDown, ChevronLeft, ChevronRight, Tag, Minus
+  ChevronDown, ChevronLeft, ChevronRight, Tag, Minus, Maximize2, Minimize2
 } from "lucide-react";
 import { AgendaItem, CalendarNote, AcademicCourse } from "../types";
 
@@ -292,6 +292,8 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
   const [showAddNoteModal, setShowAddNoteModal] = useState(false);
   // true = pop up diperkecil: rekaman/draf tetap hidup dan banner peringatan tampil
   const [isMinimized, setIsMinimized] = useState(false);
+  // true = editor catatan diperlebar memenuhi area isi pop up
+  const [isEditorExpanded, setIsEditorExpanded] = useState(false);
   const mediaRecorderRef = useRef<any>(null);
   const recognitionRef = useRef<any>(null);
   const liveTranscriptRef = useRef<string>("");
@@ -688,6 +690,23 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
     setIsMinimized(false);
     setShowAddNoteModal(true);
   };
+
+  // Editor diperlebar: reset saat pop up benar-benar ditutup, dan Esc untuk memperkecil kembali
+  useEffect(() => {
+    if (!showAddNoteModal && !isMinimized) setIsEditorExpanded(false);
+  }, [showAddNoteModal, isMinimized]);
+
+  useEffect(() => {
+    if (!isEditorExpanded) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.stopPropagation();
+        setIsEditorExpanded(false);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
+  }, [isEditorExpanded]);
 
   const appendTranscriptToNote = () => {
     if (!transcription.trim()) {
@@ -1344,50 +1363,55 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               className="bg-white rounded-panel w-full max-w-5xl shadow-2xl border border-slate-200 overflow-hidden text-left max-h-[92vh] flex flex-col ring-1 ring-black/5 will-change-transform"
             >
               {/* Header modal */}
-              <div className="bg-white px-6 pt-6 pb-5 flex justify-between items-start gap-4 shrink-0 border-b border-slate-100">
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF2D75] shrink-0" />
-                    <span className="text-xs font-bold text-slate-500">Academic Workspace</span>
+              <div className="px-6 pt-6 shrink-0">
+                <div className="flex items-center justify-between gap-4 pb-5 border-b border-slate-100">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className="w-14 h-14 rounded-inner bg-pink-100/80 text-[#FF2D75] flex items-center justify-center shrink-0">
+                      {editingNoteId ? <Edit size={26} className="stroke-[2]" /> : <Mic size={26} className="stroke-[2]" />}
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-extrabold font-display text-slate-900 text-xl sm:text-2xl tracking-tight leading-tight">
+                        {editingNoteId ? "Edit Catatan Kuliah" : "Catat & Rekam Materi Kuliah"}
+                      </h3>
+                      <p className="text-sm text-slate-600 font-medium mt-2 leading-normal">
+                        {editingNoteId ? "Perbarui rangkuman materi dan transkrip suara." : "Rekam penjelasan dosen atau tulis ringkasan perkuliahan."}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="font-extrabold font-display text-slate-900 text-xl sm:text-2xl tracking-tight leading-tight">
-                    {editingNoteId ? "Edit Catatan Kuliah" : "Catat & Rekam Materi Kuliah"}
-                  </h3>
-                  <p className="text-sm text-slate-600 font-medium mt-2 leading-normal">
-                    {editingNoteId ? "Perbarui rangkuman materi dan transkrip suara." : "Rekam penjelasan dosen atau tulis ringkasan perkuliahan."}
-                  </p>
-                </div>
-                <div className="flex items-center gap-2 shrink-0">
-                  {isRecording && (
+                  <div className="flex items-center gap-2 shrink-0">
+                    {isRecording && (
+                      <button
+                        type="button"
+                        onClick={handleMinimizeModal}
+                        className="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all cursor-pointer shrink-0"
+                        aria-label="Perkecil pop up"
+                        title="Perkecil (rekaman tetap berjalan)"
+                      >
+                        <Minus size={18} className="stroke-[2.5]" />
+                      </button>
+                    )}
                     <button
                       type="button"
-                      onClick={handleMinimizeModal}
-                      className="w-10 h-10 rounded-xl bg-white hover:bg-slate-50 text-slate-500 hover:text-slate-800 border border-slate-200 flex items-center justify-center transition-all cursor-pointer"
-                      aria-label="Perkecil pop up"
-                      title="Perkecil (rekaman tetap berjalan)"
+                      onClick={() => {
+                        if (isRecording) {
+                          alert("Perekaman Suara Teks belum selesai! Hentikan rekaman terlebih dahulu, atau tekan tombol \"–\" (Perkecil) agar rekaman tetap berjalan.");
+                        } else {
+                          setShowAddNoteModal(false);
+                        }
+                      }}
+                      className="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all cursor-pointer shrink-0"
+                      aria-label="Tutup Modal"
+                      title="Tutup Modal"
                     >
-                      <Minus size={18} className="stroke-[2.5]" />
+                      <X size={18} className="stroke-[2.5]" />
                     </button>
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (isRecording) {
-                        alert("Perekaman Suara Teks belum selesai! Hentikan rekaman terlebih dahulu, atau tekan tombol \"–\" (Perkecil) agar rekaman tetap berjalan.");
-                      } else {
-                        setShowAddNoteModal(false);
-                      }
-                    }}
-                    className="w-10 h-10 rounded-xl bg-white hover:bg-slate-50 text-slate-500 hover:text-slate-800 border border-slate-200 flex items-center justify-center transition-all cursor-pointer"
-                    aria-label="Tutup Modal"
-                    title="Tutup Modal"
-                  >
-                    <X size={18} className="stroke-[2.5]" />
-                  </button>
+                  </div>
                 </div>
               </div>
 
               <form onSubmit={handleSaveNote} className="flex-1 overflow-hidden flex flex-col">
+                <div className="relative flex-1 min-h-0 flex flex-col">
+                {isEditorExpanded && <div className="absolute inset-0 z-10 bg-white" />}
                 <div className="flex-1 overflow-y-auto text-xs custom-scroll">
 
                   {isRecording && (
@@ -1431,7 +1455,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
 
                       {/* Mata kuliah (lebar penuh) */}
                       <div className="space-y-2 pt-1">
-                        <label className="block text-xs font-bold text-slate-700">
+                        <label className="block text-xs font-bold text-slate-600">
                           Mata Kuliah <span className="text-[#FF2D75]">*</span>
                         </label>
                         <select
@@ -1474,7 +1498,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       {/* Nama mata kuliah kustom */}
                       {isCustomCourse && (
                         <div className="space-y-2">
-                          <label className="block text-xs font-bold text-slate-700">
+                          <label className="block text-xs font-bold text-slate-600">
                             Nama Mata Kuliah Baru <span className="text-[#FF2D75]">*</span>
                           </label>
                           <input
@@ -1490,7 +1514,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                       {/* Tanggal & Topik */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="space-y-2">
-                          <label className="block text-xs font-bold text-slate-700">
+                          <label className="block text-xs font-bold text-slate-600">
                             Tanggal Pertemuan <span className="text-[#FF2D75]">*</span>
                           </label>
                           <div className="relative flex items-center">
@@ -1519,7 +1543,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                         </div>
 
                         <div className="space-y-2">
-                          <label className="block text-xs font-bold text-slate-700">
+                          <label className="block text-xs font-bold text-slate-600">
                             Topik Pembahasan <span className="text-[#FF2D75]">*</span>
                           </label>
                           <input
@@ -1534,7 +1558,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
 
                       {/* Dosen (lebar penuh) */}
                       <div className="space-y-2">
-                        <label className="block text-xs font-bold text-slate-700">
+                        <label className="block text-xs font-bold text-slate-600">
                           Dosen Pengampu / Pembicara
                         </label>
                         <input
@@ -1548,11 +1572,11 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
 
                       {/* Editor catatan */}
                       <div>
-                        <label className="block mb-2 text-xs font-bold text-slate-700">
+                        <label className="block mb-2 text-xs font-bold text-slate-600">
                           Isi Catatan Materi <span className="text-[#FF2D75]">*</span>
                         </label>
 
-                        <div className="border border-slate-200 rounded-inner overflow-hidden focus-within:border-[#FF2D75] focus-within:ring-3 focus-within:ring-pink-500/10 bg-white transition-all shadow-3xs">
+                        <div className={`border border-slate-200 rounded-inner overflow-hidden focus-within:border-[#FF2D75] focus-within:ring-3 focus-within:ring-pink-500/10 bg-white transition-all ${isEditorExpanded ? "absolute inset-6 z-20 flex flex-col shadow-xl" : "shadow-3xs"}`}>
                           <div className="flex flex-wrap items-center justify-between gap-1 p-2 bg-slate-50 border-b border-slate-100 text-slate-700">
                             <div className="flex items-center gap-2">
                               <button
@@ -1590,7 +1614,22 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                               </button>
                             </div>
 
-                            <span className="text-xs text-slate-500 font-semibold pr-1.5 hidden sm:inline"></span>
+                            <div className="flex items-center gap-2">
+                              {isEditorExpanded && isRecording && (
+                                <span className="text-xs font-black text-white bg-red-600 px-3 py-1 rounded-full animate-pulse">
+                                  Live {formatRecordingTime(recordingSeconds)}
+                                </span>
+                              )}
+                              <button
+                                type="button"
+                                onClick={() => setIsEditorExpanded((v) => !v)}
+                                className="w-8 h-8 bg-white hover:bg-pink-50 border border-slate-200 hover:border-pink-200 text-slate-600 hover:text-[#FF2D75] rounded-lg flex items-center justify-center cursor-pointer transition-all"
+                                title={isEditorExpanded ? "Perkecil editor (Esc)" : "Perlebar editor"}
+                                aria-label={isEditorExpanded ? "Perkecil editor" : "Perlebar editor"}
+                              >
+                                {isEditorExpanded ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
+                              </button>
+                            </div>
                           </div>
 
                           <textarea
@@ -1598,7 +1637,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             value={noteContent}
                             onChange={(e) => setNoteContent(e.target.value)}
                             placeholder="Tuliskan ringkasan materi perkuliahan, rumus, definisi konsep, atau kutipan dosen..."
-                            className="w-full p-4 focus:outline-hidden font-normal text-slate-800 leading-relaxed font-sans text-sm min-h-[160px] resize-y bg-transparent"
+                            className={`w-full p-4 focus:outline-hidden font-normal text-slate-800 leading-relaxed font-sans bg-transparent ${isEditorExpanded ? "flex-1 min-h-0 resize-none text-base" : "text-sm min-h-[160px] resize-y"}`}
                           />
                         </div>
 
@@ -1622,7 +1661,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
 
                       {/* Tag */}
                       <div className="space-y-2">
-                        <label className="block text-xs font-bold text-slate-700">
+                        <label className="block text-xs font-bold text-slate-600">
                           Label / Tag <span className="text-slate-500 font-medium">(opsional, pisahkan dengan koma)</span>
                         </label>
                         <div className="relative">
@@ -1825,9 +1864,10 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
 
                   </div>
                 </div>
+                </div>
 
                 {/* Footer */}
-                <div className="px-6 py-4 bg-white border-t border-slate-100 flex justify-end items-center gap-2 shrink-0">
+                <div className="px-6 py-4 bg-white border-t border-slate-100 flex flex-wrap justify-end items-center gap-2 shrink-0">
                   <button
                     type="button"
                     onClick={() => {
@@ -1837,13 +1877,13 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                         setShowAddNoteModal(false);
                       }
                     }}
-                    className="px-5 h-10 bg-white hover:bg-slate-50 text-slate-600 font-bold rounded-xl text-xs cursor-pointer transition-all"
+                    className="h-10 px-5 text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-slate-200 bg-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Batal
                   </button>
                   <button
                     type="submit"
-                    className="px-6 h-10 bg-gradient-to-r from-[#FF2D75] via-pink-500 to-rose-500 hover:opacity-95 text-white font-black rounded-xl text-xs cursor-pointer transition-all shadow-md shadow-pink-500/25 active:scale-[0.98]"
+                    className="h-10 px-5 bg-gradient-to-r from-[#FF2D75] via-pink-500 to-rose-500 hover:opacity-95 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md shadow-pink-500/25 active:scale-[0.98]"
                   >
                     Simpan Catatan
                   </button>
@@ -1927,7 +1967,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.98, opacity: 0 }}
               transition={{ duration: 0.12, ease: "easeOut" }}
-              className="bg-white border border-slate-200 shadow-2xl rounded-panel max-w-2xl w-full text-left relative overflow-hidden my-auto max-h-[90vh] flex flex-col z-[100000] will-change-transform"
+              className="bg-white border border-slate-200 shadow-2xl rounded-panel max-w-2xl w-full text-left relative overflow-hidden my-auto max-h-[92vh] flex flex-col ring-1 ring-black/5 z-[100000] will-change-transform"
             >
               {/* Header */}
               <div className="px-6 pt-6 shrink-0">
@@ -1948,7 +1988,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                   <button
                     type="button"
                     onClick={() => setSelectedNote(null)}
-                    className="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all cursor-pointer shrink-0 self-start"
+                    className="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center transition-all cursor-pointer shrink-0"
                     title="Tutup Modal"
                     aria-label="Tutup"
                   >
@@ -1958,56 +1998,43 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               </div>
 
               {/* Isi detail (bisa digulir) */}
-              <div className="flex-1 overflow-y-auto custom-scroll px-6 py-5 space-y-4">
-                {/* Mata kuliah | Tanggal */}
-                <div className="flex flex-col sm:flex-row sm:items-stretch gap-4">
-                  <div className="min-w-0 flex-1 space-y-1">
-                    <p className="text-xs font-medium text-slate-500">Mata Kuliah</p>
-                    <p className="text-sm font-semibold text-slate-900 leading-snug">
-                      {selectedNote.courseTitle}
-                    </p>
-                  </div>
-                  <div className="shrink-0 space-y-1 sm:border-l sm:border-slate-200 sm:pl-5">
-                    <p className="text-xs font-medium text-slate-500">Tanggal</p>
-                    <p className="text-sm font-semibold text-slate-900 leading-snug">
-                      {selectedNote.date}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Dosen */}
-                <div className="space-y-1">
-                  <p className="text-xs font-medium text-slate-500">Dosen Pengampu</p>
-                  <p className="text-sm font-semibold text-slate-900 leading-snug">
-                    {selectedNote.lecturerName || "-"}
-                  </p>
-                </div>
-
-                {/* Topik */}
+              <div className="flex-1 overflow-y-auto custom-scroll p-6 space-y-5">
                 <div className="space-y-2">
-                  <p className="text-xs font-medium text-slate-500">Topik Pembahasan</p>
-                  <p className="bg-slate-100 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-900 leading-snug">
-                    {selectedNote.topic}
-                  </p>
+                  <p className="block text-xs font-bold text-slate-600">Mata Kuliah</p>
+                  <p className="w-full min-h-10 px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 leading-snug break-words">{selectedNote.courseTitle}</p>
                 </div>
 
-                {/* Isi catatan */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="space-y-2">
+                    <p className="block text-xs font-bold text-slate-600">Tanggal Pertemuan</p>
+                    <p className="w-full min-h-10 px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 leading-snug break-words">{selectedNote.date}</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="block text-xs font-bold text-slate-600">Topik Pembahasan</p>
+                    <p className="w-full min-h-10 px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 leading-snug break-words">{selectedNote.topic}</p>
+                  </div>
+                </div>
+
                 <div className="space-y-2">
-                  <p className="text-xs font-medium text-slate-500">Isi Catatan</p>
+                  <p className="block text-xs font-bold text-slate-600">Dosen Pengampu / Pembicara</p>
+                  <p className="w-full min-h-10 px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 leading-snug break-words">{selectedNote.lecturerName || "-"}</p>
+                </div>
+
+                <div className="space-y-2">
+                  <p className="block text-xs font-bold text-slate-600">Isi Catatan Materi</p>
                   <div className="leading-relaxed whitespace-pre-wrap font-normal text-slate-800 bg-white p-4 rounded-inner border border-slate-200 text-sm max-h-64 overflow-y-auto custom-scroll shadow-3xs">
                     {renderFormattedText(selectedNote.content)}
                   </div>
                 </div>
 
-                {/* Label */}
                 {selectedNote.tags && selectedNote.tags.length > 0 && (
                   <div className="space-y-2">
-                    <p className="text-xs font-medium text-slate-500">Label / Tag</p>
+                    <p className="block text-xs font-bold text-slate-600">Label / Tag</p>
                     <div className="flex flex-wrap gap-2">
                       {selectedNote.tags.map((tg) => (
                         <span
                           key={tg}
-                          className="text-xs font-bold text-[#FF2D75] bg-pink-100/80 px-3 py-1.5 rounded-full"
+                          className="px-4 h-8 inline-flex items-center bg-pink-50 text-[#FF2D75] border border-pink-200 rounded-full text-xs font-bold"
                         >
                           #{tg}
                         </span>
@@ -2018,7 +2045,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
               </div>
 
               {/* Tombol aksi */}
-              <div className="px-6 py-4 border-t border-slate-100 flex flex-wrap justify-end gap-2 shrink-0">
+              <div className="px-6 py-4 bg-white border-t border-slate-100 flex flex-wrap justify-end items-center gap-2 shrink-0">
                 <button
                   type="button"
                   onClick={() => {
@@ -2050,7 +2077,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                 <button
                   type="button"
                   onClick={() => setDeleteConfirm({ id: selectedNote.id })}
-                  className="h-10 px-5 bg-[#FF2D75] hover:bg-pink-600 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md shadow-pink-500/25"
+                  className="h-10 px-5 bg-gradient-to-r from-[#FF2D75] via-pink-500 to-rose-500 hover:opacity-95 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md shadow-pink-500/25 active:scale-[0.98]"
                 >
                   <Trash2 size={13} />
                   Hapus
