@@ -35,7 +35,7 @@ import MentalHealthView from "./components/MentalHealthView";
 import SimulasiBimbinganView from "./components/SimulasiBimbinganView";
 import ZonamuView from "./components/ZonamuView";
 import RuangBelajarView from "./components/RuangBelajarView";
-import TeksSuaraView, { AiTranscribeAudioIcon } from "./components/TeksSuaraView";
+import TeksSuaraView, { AiTranscribeAudioIcon, BufferedInput } from "./components/TeksSuaraView";
 // @ts-ignore
 import mahasLogo from "./assets/images/regenerated_image_1784117604430 (2).png";
 
@@ -69,24 +69,7 @@ export function AppDashboard() {
   }, [isReadMode]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  // Mode mobile (<768px): sidebar berupa drawer yang selalu tampil penuh (ikon + teks)
-  const [isMobile, setIsMobile] = useState(
-    () => typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches
-  );
-  React.useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    const syncViewport = () => {
-      setIsMobile(mq.matches);
-      // Kembali ke desktop/tablet: tutup drawer mobile agar tidak menimpa tombol collapse
-      if (!mq.matches) setSidebarOpen(false);
-    };
-    syncViewport();
-    mq.addEventListener("change", syncViewport);
-    return () => mq.removeEventListener("change", syncViewport);
-  }, []);
-  const isExpanded = isMobile ? true : !sidebarCollapsed;
-  // Status untuk ikon & judul tombol toggle di header
-  const isToggleOpen = isMobile ? sidebarOpen : !sidebarCollapsed;
+  const isExpanded = !sidebarCollapsed;
   const isIconOnly = !isExpanded;
   const [profileDropdown, setProfileDropdown] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
@@ -942,7 +925,7 @@ export function AppDashboard() {
   const unreadNotificationsCount = notifications.filter(n => !n.isRead).length;
 
   return (
-    <div id="campushub_root" style={{ "--mouse-x": "0", "--mouse-y": "0" } as React.CSSProperties} className="h-[100dvh] max-h-[100dvh] bg-transparent flex font-sans relative overflow-hidden text-slate-800 p-3 md:p-0 md:gap-0">
+    <div id="campushub_root" style={{ "--mouse-x": "0", "--mouse-y": "0" } as React.CSSProperties} className="h-[100dvh] max-h-[100dvh] bg-transparent flex font-sans relative overflow-hidden text-slate-800 p-3 md:p-4 md:gap-4">
       {/* 15% opacity yellow screen overlay for Eye-Care Read Mode, can be overlayed on any theme */}
       {isReadMode && (
         <div className="fixed inset-0 bg-yellow-500/15 pointer-events-none z-[99999]" />
@@ -960,15 +943,15 @@ export function AppDashboard() {
       {/* SIDEBAR NAVIGATION PANEL (SMOOTH GLASSY PUFFY DESIGN) */}
       <aside 
         id="campushub_sidebar"
-        className={`${isExpanded ? "w-[264px] p-4" : "w-[66px] p-2 overflow-x-hidden"} rounded-none bg-white border-0 border-r border-white shadow-[4px_0_30px_rgba(70,140,190,0.14)] flex flex-col justify-between shrink-0 transition-none h-full
-          ${sidebarOpen ? "fixed inset-y-0 left-0 z-40 flex" : "hidden md:flex md:relative z-20"}`}
+        className={`${isExpanded ? "w-[264px] p-4 rounded-panel" : "w-[66px] p-2 overflow-x-hidden rounded-card"} bg-[#fdfdfe] border border-white shadow-[0_10px_30px_rgba(70,140,190,0.14)] flex flex-col justify-between shrink-0 transition-none h-full
+          ${sidebarOpen ? "fixed inset-y-2 left-2 z-40 flex" : "hidden md:flex md:relative z-20"}`}
       >
         <div className="space-y-4 flex flex-col h-full justify-between pb-4 overflow-y-auto custom-scroll relative z-10">
           
           <div className="space-y-4">
             {/* MahasSpace Logo vs Hamburger button */}
             <div className="flex items-center justify-between">
-              <div className={`flex items-center ${isExpanded ? "h-14 gap-3" : "h-12 gap-0"}`}>
+              <div className={`flex items-center h-12 ${isExpanded ? "gap-3" : "gap-0"}`}>
                 <div 
                   onClick={() => {
                     if (isIconOnly) {
@@ -981,18 +964,18 @@ export function AppDashboard() {
                   <img 
                     src={mahasLogo} 
                     alt="Mahas Mascot" 
-                    className={`${isExpanded ? "size-14" : "size-12"} object-contain`} 
+                    className="size-12 object-contain" 
                     referrerPolicy="no-referrer" 
                   />
                 </div>
                 <span 
                   className={`font-bold tracking-tight text-slate-900 select-none whitespace-nowrap overflow-hidden transition-all duration-200 ease-out flex items-center ${
-                    isExpanded ? "opacity-100 max-w-[160px] translate-x-0" : "opacity-0 max-w-0 -translate-x-2 pointer-events-none"
+                    isExpanded ? "opacity-100 max-w-[150px] translate-x-0" : "opacity-0 max-w-0 -translate-x-2 pointer-events-none"
                   }`}
                   style={{ 
                     fontFamily: "'Unbounded', sans-serif", 
                     fontWeight: 700,
-                    fontSize: "32px",
+                    fontSize: "24px",
                     lineHeight: "1"
                   }}
                 >
@@ -1138,7 +1121,7 @@ export function AppDashboard() {
       )}
 
       {/* CONTENT CANVAS WRAPPER (TOY-BOX REDESIGN) */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden relative z-20 md:p-4">
+      <div className="flex-1 flex flex-col h-full overflow-hidden relative z-20">
         
         {/* TOP INTERACTIVE BAR */}
         {!isAddingNote && (
@@ -1158,9 +1141,9 @@ export function AppDashboard() {
                   }
                 }}
                 className="h-11 w-11 bg-[#FF2D75] text-white rounded-control border border-white/30 shadow-none flex items-center justify-center cursor-pointer hover:bg-pink-600 transition-none"
-                title={isToggleOpen ? "Tutup Sidebar" : "Buka Sidebar"}
+                title={isExpanded ? "Tutup Sidebar" : "Buka Sidebar"}
               >
-                {isToggleOpen ? (
+                {isExpanded ? (
                   /* Terbuka: Outline Icon dengan Garis Sidebar dan Panah Menutup (<) */
                   <svg 
                     width="19" 
@@ -1194,11 +1177,11 @@ export function AppDashboard() {
               {/* Global Finder Input */}
               <div className="relative flex-1 max-w-[160px] xs:max-w-xs sm:max-w-md lg:max-w-lg">
                 <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
-                <input
+                <BufferedInput
                   type="text"
                   placeholder="Cari fitur, event, beasiswa, atau barang..."
                   value={globalSearch}
-                  onChange={(e) => setGlobalSearch(e.target.value)}
+                  onValueChange={setGlobalSearch}
                   className="w-full h-11 text-sm pl-10 pr-4 rounded-control border border-sky-200 bg-white focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-extrabold"
                 />
 
@@ -1537,12 +1520,12 @@ export function AppDashboard() {
                     <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Nama Lengkap</label>
                     <div className="relative">
                       <User size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
-                      <input
+                      <BufferedInput
                         type="text"
                         required
                         placeholder="Contoh: Andi Pratama"
                         value={authName}
-                        onChange={(e) => setAuthName(e.target.value)}
+                        onValueChange={setAuthName}
                         className="w-full h-11 text-sm pl-10 pr-4 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-bold"
                       />
                     </div>
@@ -1553,12 +1536,12 @@ export function AppDashboard() {
                   <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Alamat Email</label>
                   <div className="relative">
                     <Mail size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
-                    <input
+                    <BufferedInput
                       type="email"
                       required
                       placeholder="nama@mahasiswa.ac.id"
                       value={authEmail}
-                      onChange={(e) => setAuthEmail(e.target.value)}
+                      onValueChange={setAuthEmail}
                       className="w-full h-11 text-sm pl-10 pr-4 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-bold"
                     />
                   </div>
@@ -1568,12 +1551,12 @@ export function AppDashboard() {
                   <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Kata Sandi</label>
                   <div className="relative">
                     <KeyRound size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
-                    <input
+                    <BufferedInput
                       type={showPassword ? "text" : "password"}
                       required
                       placeholder="••••••••"
                       value={authPassword}
-                      onChange={(e) => setAuthPassword(e.target.value)}
+                      onValueChange={setAuthPassword}
                       className="w-full h-11 text-sm pl-10 pr-10 border border-slate-200 bg-white rounded-xl focus:outline-hidden focus:border-[#FF2D75] transition-all text-slate-800 font-bold"
                     />
                     <button

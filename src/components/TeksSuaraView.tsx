@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef, startTransition } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { 
@@ -41,6 +41,102 @@ export const AiTranscribeAudioIcon = ({
     <path d="M7 13H11" />
   </svg>
 );
+
+/**
+ * ===== PERFORMA KETIKAN =====
+ * Kolom isian dibuat "buffered": teks yang diketik disimpan di state lokal kolom itu sendiri
+ * (hanya kolom kecil itu yang dirender ulang per ketukan), lalu diteruskan ke state induk lewat
+ * startTransition (prioritas rendah, bisa diinterupsi) sehingga komponen besar tidak memblokir keyboard.
+ * Perubahan dari luar (reset form, format Bold/Italic, templat, sisip transkrip) tetap tersinkron otomatis.
+ */
+function useBufferedValue(value: string, onValueChange: (v: string) => void) {
+  const [local, setLocal] = useState(value);
+  const latestRef = useRef(value); // nilai terbaru yang diketik pengguna
+  const sentRef = useRef<string[]>([]); // nilai yang sudah dikirim ke induk (untuk mengenali "gema")
+  const propRef = useRef(value);
+  const cbRef = useRef(onValueChange);
+  cbRef.current = onValueChange;
+  propRef.current = value;
+
+  // Sinkron dari luar: abaikan gema ketikan sendiri, ikuti perubahan yang berasal dari kode lain
+  useLayoutEffect(() => {
+    if (value === latestRef.current) {
+      sentRef.current = [];
+      return;
+    }
+    if (sentRef.current.includes(value)) return;
+    latestRef.current = value;
+    sentRef.current = [];
+    setLocal(value);
+  }, [value]);
+
+  // Pastikan nilai terakhir tidak hilang jika kolom dilepas (mis. pop up diperkecil) sebelum transisi selesai
+  useEffect(() => {
+    return () => {
+      if (latestRef.current !== propRef.current) cbRef.current(latestRef.current);
+    };
+  }, []);
+
+  const flush = () => {
+    if (latestRef.current !== propRef.current) cbRef.current(latestRef.current);
+  };
+
+  const handleChange = (v: string) => {
+    latestRef.current = v;
+    sentRef.current.push(v);
+    if (sentRef.current.length > 50) sentRef.current.shift();
+    setLocal(v);
+    startTransition(() => cbRef.current(v));
+  };
+
+  return { local, handleChange, flush };
+}
+
+type BufferedInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> & {
+  value: string;
+  onValueChange: (v: string) => void;
+};
+
+/** Pengganti <input> terkontrol yang ringan (diekspor agar bisa dipakai di App.tsx) */
+export function BufferedInput({ value, onValueChange, onBlur, onKeyDown, ...rest }: BufferedInputProps) {
+  const b = useBufferedValue(value, onValueChange);
+  return (
+    <input
+      {...rest}
+      value={b.local}
+      onChange={(e) => b.handleChange(e.target.value)}
+      onBlur={(e) => {
+        b.flush();
+        onBlur?.(e);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") b.flush();
+        onKeyDown?.(e);
+      }}
+    />
+  );
+}
+
+type BufferedTextareaProps = Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "value" | "onChange"> & {
+  value: string;
+  onValueChange: (v: string) => void;
+};
+
+/** Pengganti <textarea> terkontrol yang ringan */
+function BufferedTextarea({ value, onValueChange, onBlur, ...rest }: BufferedTextareaProps) {
+  const b = useBufferedValue(value, onValueChange);
+  return (
+    <textarea
+      {...rest}
+      value={b.local}
+      onChange={(e) => b.handleChange(e.target.value)}
+      onBlur={(e) => {
+        b.flush();
+        onBlur?.(e);
+      }}
+    />
+  );
+}
 
 interface AudioVisualizerProps {
   stream: MediaStream | null;
@@ -212,7 +308,7 @@ interface TeksSuaraViewProps {
   onWritingNoteChange?: (isWriting: boolean) => void;
 }
 
-export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChange }: TeksSuaraViewProps) {
+function TeksSuaraView({ agenda, courses = [], onWritingNoteChange }: TeksSuaraViewProps) {
   // Audio state
   const [soundEnabled] = useState(true);
 
@@ -725,6 +821,14 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
     setShowAddNoteModal(true);
   };
 
+  // Saat pop up terbuka, beri kelas "modal-open" pada <html>. index.css memakainya untuk menjeda
+  // animasi di halaman belakang sehingga latar blur tidak dihitung ulang setiap frame.
+  const anyModalOpen = showAddNoteModal || !!selectedNote || !!deleteConfirm || isDatePickerOpen;
+  useEffect(() => {
+    document.documentElement.classList.toggle("modal-open", anyModalOpen);
+    return () => document.documentElement.classList.remove("modal-open");
+  }, [anyModalOpen]);
+
   // Salin isi catatan materi ke papan klip
   const handleCopyNoteContent = async () => {
     if (!noteContent.trim()) return;
@@ -934,9 +1038,10 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
     const textarea = document.getElementById(elementId) as HTMLTextAreaElement;
     if (!textarea) return;
 
+    const current = textarea.value; // selalu nilai terbaru yang tampil di layar
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
-    const selectedText = value.substring(start, end);
+    const selectedText = current.substring(start, end);
     let newText = "";
 
     switch (formatType) {
@@ -991,7 +1096,7 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
     }
 
     const updatedValue =
-      value.substring(0, start) + newText + value.substring(end);
+      current.substring(0, start) + newText + current.substring(end);
     setText(updatedValue);
 
     setTimeout(() => {
@@ -1225,11 +1330,11 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
           {/* Search input */}
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={15} />
-            <input
+            <BufferedInput
               type="text"
               placeholder="Cari matakuliah, topik, dosen, atau isi catatan..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onValueChange={setSearchTerm}
               className="w-full h-10 text-sm pl-10 pr-9 bg-white border border-slate-200 rounded-xl text-slate-800 focus:outline-hidden focus:border-sky-400 placeholder-slate-400 font-semibold shadow-3xs"
             />
             {searchTerm && (
@@ -1551,10 +1656,10 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           <label className="block text-xs font-bold text-slate-600">
                             Nama Mata Kuliah Baru <span className="text-[#FF2D75]">*</span>
                           </label>
-                          <input
+                          <BufferedInput
                             type="text"
                             value={customCourseTitle}
-                            onChange={(e) => setCustomCourseTitle(e.target.value)}
+                            onValueChange={setCustomCourseTitle}
                             placeholder="Contoh: Rekayasa Perangkat Lunak"
                             className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-slate-50 text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
@@ -1596,10 +1701,10 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                           <label className="block text-xs font-bold text-slate-600">
                             Topik Pembahasan <span className="text-[#FF2D75]">*</span>
                           </label>
-                          <input
+                          <BufferedInput
                             type="text"
                             value={noteTopic}
-                            onChange={(e) => setNoteTopic(e.target.value)}
+                            onValueChange={setNoteTopic}
                             placeholder="Contoh: Hipotesis Testing & P-Value"
                             className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-slate-50 text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
@@ -1611,10 +1716,10 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                         <label className="block text-xs font-bold text-slate-600">
                           Dosen Pengampu / Pembicara
                         </label>
-                        <input
+                        <BufferedInput
                           type="text"
                           value={noteLecturer}
-                          onChange={(e) => setNoteLecturer(e.target.value)}
+                          onValueChange={setNoteLecturer}
                           placeholder="Nama Dosen..."
                           className="w-full h-10 px-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-slate-50 text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                         />
@@ -1692,10 +1797,10 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                             </div>
                           </div>
 
-                          <textarea
+                          <BufferedTextarea
                             id="teks-suara-textarea"
                             value={noteContent}
-                            onChange={(e) => setNoteContent(e.target.value)}
+                            onValueChange={setNoteContent}
                             placeholder="Tuliskan ringkasan materi perkuliahan, rumus, definisi konsep, atau kutipan dosen..."
                             className={`w-full p-4 focus:outline-hidden font-normal text-slate-800 leading-relaxed font-sans bg-transparent ${isEditorExpanded ? "flex-1 min-h-0 resize-none text-base" : "text-sm min-h-[160px] resize-y"}`}
                           />
@@ -1726,10 +1831,10 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                         </label>
                         <div className="relative">
                           <Tag size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
-                          <input
+                          <BufferedInput
                             type="text"
                             value={noteTagsRaw}
-                            onChange={(e) => setNoteTagsRaw(e.target.value)}
+                            onValueChange={setNoteTagsRaw}
                             placeholder="Contoh: Teori, Ujian, Rumus, Praktikum"
                             className="w-full h-10 pl-9 pr-3 border border-slate-200 focus:border-sky-400 focus:ring-3 focus:ring-sky-400/25 focus:outline-hidden rounded-xl font-semibold bg-slate-50 text-slate-800 text-sm transition-all shadow-3xs placeholder-slate-400"
                           />
@@ -2371,3 +2476,6 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
     </div>
   );
 }
+
+// React.memo: komponen tidak dirender ulang saat state App berubah (hover, notifikasi, dll.) selama props sama
+export default React.memo(TeksSuaraView);
