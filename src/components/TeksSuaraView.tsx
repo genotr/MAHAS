@@ -6,7 +6,7 @@ import {
   FileText, Copy, Edit, Trash2, Bold, Italic, Underline, Strikethrough, 
   List, ListOrdered, Highlighter, Quote, Calendar, User, Save, X, BookOpen, Volume2, AudioLines,
   BarChart2, Clock, Award, Upload, AlertTriangle, ExternalLink, Pause, Play,
-  ChevronDown, ChevronLeft, ChevronRight, Tag, Minus, Maximize2, Minimize2
+  ChevronDown, ChevronLeft, ChevronRight, Tag, Minus, Maximize2, Minimize2, Check
 } from "lucide-react";
 import { AgendaItem, CalendarNote, AcademicCourse } from "../types";
 
@@ -326,6 +326,8 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
   const [isMinimized, setIsMinimized] = useState(false);
   // true = editor catatan diperlebar memenuhi area isi pop up
   const [isEditorExpanded, setIsEditorExpanded] = useState(false);
+  // true sesaat setelah isi catatan berhasil disalin (untuk umpan balik ikon centang)
+  const [isNoteCopied, setIsNoteCopied] = useState(false);
   const mediaRecorderRef = useRef<any>(null);
   const recognitionRef = useRef<any>(null);
   const liveTranscriptRef = useRef<string>("");
@@ -721,6 +723,22 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
   const handleRestoreModal = () => {
     setIsMinimized(false);
     setShowAddNoteModal(true);
+  };
+
+  // Salin isi catatan materi ke papan klip
+  const handleCopyNoteContent = async () => {
+    if (!noteContent.trim()) return;
+    try {
+      await navigator.clipboard.writeText(noteContent);
+    } catch {
+      const el = document.getElementById("teks-suara-textarea") as HTMLTextAreaElement | null;
+      if (el) {
+        el.select();
+        document.execCommand("copy");
+      }
+    }
+    setIsNoteCopied(true);
+    setTimeout(() => setIsNoteCopied(false), 1500);
   };
 
   // Editor diperlebar: reset saat pop up benar-benar ditutup, dan Esc untuk memperkecil kembali
@@ -1652,6 +1670,16 @@ export default function TeksSuaraView({ agenda, courses = [], onWritingNoteChang
                                   Live {formatRecordingTime(recordingSeconds)}
                                 </span>
                               )}
+                              <button
+                                type="button"
+                                onClick={handleCopyNoteContent}
+                                disabled={!noteContent.trim()}
+                                className="w-8 h-8 bg-white hover:bg-pink-50 border border-slate-200 hover:border-pink-200 text-slate-600 hover:text-[#FF2D75] rounded-lg flex items-center justify-center cursor-pointer transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:border-slate-200 disabled:hover:text-slate-600"
+                                title={isNoteCopied ? "Tersalin!" : "Salin isi catatan"}
+                                aria-label="Salin isi catatan"
+                              >
+                                {isNoteCopied ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
+                              </button>
                               <button
                                 type="button"
                                 onClick={() => setIsEditorExpanded((v) => !v)}
